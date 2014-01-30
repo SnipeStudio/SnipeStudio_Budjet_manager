@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "version.h"
+#include <cstdlib>
 #pragma once
 #define CATID unsigned int
 namespace ssbm{
