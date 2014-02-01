@@ -1,30 +1,28 @@
 #define CATID unsigned int
+#pragma once
+
 namespace ssbm
 {
 
 	class category
 	{
 	public:
-		category(char* name, bool type);
 		category();
-		category* operator=(const category& right);
-		static bool saveCategories(std::vector<category> cats, unsigned int count);
-		static std::vector<category>* loadCategories();
-		static int deleteElement(CATID id, std::vector<category>* cat, bool type);
-		static CATID addCategory(CATID id, std::vector<category>* cat, bool type);
-		static CATID selectCategory(std::vector<category>* cat, bool type);
-		static char* getCategoryByID(CATID id, std::vector<category>* cat, bool type);
-		static int deleteCategory(CATID id,std::vector<category>* cat, bool type);
-		static bool changeCount(CATID id, double summ, std::vector<category>* cat, bool type);
+		virtual ~category();
 	private:
-		CATID id;
-		char categoryName[50];
+		unsigned int id;
+		char categoryName[100];
 		unsigned int catCount;
-		double catSum;
-		// 1 is expense
-		// 0 is profit
-		bool cat_type;
-
+		double catSumm;
+		bool catType;
+	public:
+		// Operator = copy 
+		category* operator=(const category& right);
+		static bool saveCategories(std::vector<category> categories, unsigned int count);
+		static std::vector<category>* loadCategories();
+		static CATID addCategory(std::vector<category> category_holder, bool type);
+		static CATID selectCategory(std::vector<category>* category_holder, bool type);
+		static char* getCategoryNameById(CATID id, std::vector<category>* category_holder, bool type);
+		static bool changeCount(CATID id, double summ, std::vector<category>* categoryHolder, bool type);
 	};
-
 }

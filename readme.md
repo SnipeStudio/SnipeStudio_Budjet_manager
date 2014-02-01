@@ -1,9 +1,9 @@
 SSBM
 ===
 ~~~~~~~~~~
-Current version: 0.0.0.4 for Windows
+Current version: 0.0.0.5 for Windows
 Minimal requirements: MS .NET framework 2.0
 ~~~~~~~~~~
 
 There are simple budget manager from snipe studio for you
-Last update broke everything
+Fix categories class error now it works =)

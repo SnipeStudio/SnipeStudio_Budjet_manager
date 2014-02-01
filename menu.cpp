@@ -1,5 +1,4 @@
 #include "main.h"
-#include "categories.h"
 namespace ssbm
 {
 
@@ -99,7 +98,7 @@ namespace ssbm
 		{
 			strcpy(side, "profit");
 		}
-		char catName[100];
+		//char catName[100];
 		file << t_m->tm_hour << ":" << t_m->tm_min << ":" << t_m->tm_sec << " " << summ << " " << side << " " << "" << std::endl;
 		file.close();
 	}

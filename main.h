@@ -5,7 +5,10 @@
 #include <ctime>
 
 #include "version.h"
-#include "categories.h"
+#ifndef CATEGORIES_INCLUDED
+#define SETTINGS_INCLUDED
+#include "categories.h"    
+#endif
 #pragma once
 #define CATID unsigned int
 namespace ssbm{
