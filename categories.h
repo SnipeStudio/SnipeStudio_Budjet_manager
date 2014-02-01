@@ -1,66 +1,30 @@
-#include "main.h"
+#define CATID unsigned int
 namespace ssbm
 {
 
 	class category
 	{
 	public:
+		category(char* name, bool type);
 		category();
-		~category();
-		void killList();
 		category* operator=(const category& right);
-		CATID addElement();
-		int deleteElement(CATID id);
-
-
+		static bool saveCategories(std::vector<category> cats, unsigned int count);
+		static std::vector<category>* loadCategories();
+		static int deleteElement(CATID id, std::vector<category>* cat, bool type);
+		static CATID addCategory(CATID id, std::vector<category>* cat, bool type);
+		static CATID selectCategory(std::vector<category>* cat, bool type);
+		static char* getCategoryByID(CATID id, std::vector<category>* cat, bool type);
+		static int deleteCategory(CATID id,std::vector<category>* cat, bool type);
+		static bool changeCount(CATID id, double summ, std::vector<category>* cat, bool type);
 	private:
 		CATID id;
 		char categoryName[50];
 		unsigned int catCount;
-		category* first;
-		category* last;
-		category* next;
-		category* previous;
+		double catSum;
+		// 1 is expense
+		// 0 is profit
+		bool cat_type;
 
 	};
-	category* category::operator=(const category& right)
-	{
-		//проверка на самоприсваивание
-		if (this == &right) {
-			return this;
-		}
-		this->id = right.id;
-		this->catCount = right.catCount;
-		this->first = right.first;
-		this->last = right.last;
-		this->next = right.next;
-		this->previous = right.previous;
-		return this;
-	}
-	category::category()
-	{
-		this->id = 1;
-		this->catCount = 1;
-		this->first = this;
-		this->last = this;
-		this->next = nullptr;
-		this->previous = nullptr;
-	}
-	category::~category()
-	{
-	}
-	void category::killList()
-	{
-		category* buff1,*buff2;
-		buff1 = this;
-		buff1->first;
-		while (buff1->next != nullptr)
-		{
-			buff2 = buff1;
-			buff1 = buff1->next;
-			buff1->previous = nullptr;
-			buff1->first = buff1;
-			delete buff2;
-		}
-	}
+
 }

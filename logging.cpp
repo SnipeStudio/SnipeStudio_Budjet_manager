@@ -19,13 +19,14 @@ int ssbm::openLog()
 	ssbm::logFile.open("ssbm.log", std::ios::app);
 	if (ssbm::logFile.is_open())
 	{
-		writeLog("Logfile sucsesfully opened", 1);
+		//writeLog("Logfile sucsesfully opened", 1);
 	}
 	else
 	{
 		writeLog("Could not open log file... exiting", 0);
 		return 1;
 	}
+	ssbm::getVersion();
 	return 0;
 }
 

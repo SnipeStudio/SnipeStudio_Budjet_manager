@@ -1,7 +1,11 @@
 #include <iostream>
 #include <fstream>
-#include "version.h"
 #include <cstdlib>
+#include <vector>
+#include <ctime>
+
+#include "version.h"
+#include "categories.h"
 #pragma once
 #define CATID unsigned int
 namespace ssbm{
@@ -17,12 +21,8 @@ namespace ssbm{
 	int saveDatabase(char* filename);//Not figured yet
 	//setting manager
 	int loadSettings();//In basic functionality
-	//Categories 
-	CATID addCategory(CATID id,char** cat);
-	CATID selectCategory(char** cat);
-	char* getCategoryByID(CATID id, char** cat);
-	int deleteCategory(CATID id, char** cat);
 	//accepting financical changes
-	int pay(double summ,CATID id);
-	int get(double summ, CATID id);
+	int pay(double summ, CATID id, std::vector<category>* category_hold);
+	int get(double summ, CATID id, std::vector<category>* category_hold);
+	void addOperation(double summ, CATID id, bool type, std::vector<category>* cat);
 }
