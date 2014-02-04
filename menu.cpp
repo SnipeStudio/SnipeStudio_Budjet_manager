@@ -1,5 +1,6 @@
 #include "main.h"
 #define Categories 4
+#define _CRT_SECURE_NO_WARNINGS
 namespace ssbm
 {
 
@@ -9,41 +10,41 @@ namespace ssbm
 	{
 		std::ifstream balance_file;
 		std::ofstream balance_out;
+		balance_file.open("balance.db", std::ios::in);
+		category::loadCategories();
+		if (balance_file.is_open() == 0)
+		{
+			balance = 0;
+		}
+		else
+		{
+			balance_file >> balance;
+			balance_file.close();
+		}
 		unsigned int Select = 0;
 		while (true)
 		{
-            balance_file.open("balance.db", std::ios::in);
-            category::loadCategories();
-            if (balance_file.is_open() == 0)
-            {
-                balance = 0;
-            }
-            else
-            {
-                balance_file >> balance;
-                balance_file.close();
-            }
 			system("cls");
 			ssbm::getVersion(0);
 			char* logbuff = new char[100];
 			sprintf(logbuff, "Your current balance is %.2f RUR", balance);
 			writeLog(logbuff, 2);
 			delete[] logbuff;
-			std::cout	<<	"1) Expense"				<< std::endl;
-			std::cout	<<	"2) Income"					<< std::endl;
-			std::cout	<<	"3) Add new category"		<<std::endl;
-			std::cout	<<	"4) Exit"					<< std::endl;
+			std::cout << "1) Expense" << std::endl;
+			std::cout << "2) Income" << std::endl;
+			std::cout << "3) Add new category" << std::endl;
+			std::cout << "4) Delete category" << std::endl;
+			std::cout << "5) Exit" << std::endl;
 			ssbm::getCopyRight(0);
 			char Changer = std::cin.get();
-			if(!isdigit(Changer))
+			if (!isdigit(Changer))
 			{
-				writeLog("Invalid input presented",1);
+				writeLog("Invalid input presented", 1);
 				continue;
 			}
-			char summ_ch[20];
-			//double summ;
 			CATID category = 0;
-			
+			double summ=0;
+			char* summ_ch = new char[20],*error;
 			switch (Changer)
 			{
 			case '1':
@@ -58,17 +59,51 @@ namespace ssbm
 					std::cout<<"Specify how much money you spent on "<<category::getCategoryNameById(category,false)<<std::endl;
 					std::cin>>summ_ch;
 					std::cout<<summ_ch<<std::endl<<ssbm::checkSumm(summ_ch);
-
+					if (ssbm::checkSumm(summ_ch))
+						summ = strtod(summ_ch, &error);
+					delete[] summ_ch;
+					pay(summ, category);
 					ssbm::getCopyRight(0);
 					break;
 				}
+			case '2':
+			{
+						system("cls");
+						ssbm::getVersion(0);
+						std::cout << "Specify what category you select" << std::endl;
+						category = category::selectCategory(true);
+						ssbm::getCopyRight(0);
+						system("cls");
+						ssbm::getVersion(0);
+						std::cout << "Specify how much money you spent on " << category::getCategoryNameById(category, false) << std::endl;
+						std::cin >> summ_ch;
+						std::cout << summ_ch << std::endl << ssbm::checkSumm(summ_ch);
+						if (ssbm::checkSumm(summ_ch))
+							summ = strtod(summ_ch, &error);
+						delete[] summ_ch;
+						get(summ, category);
+						ssbm::getCopyRight(0);
+						break;
+			}
+			case '3':
+			{
+						category::addCategory();
+						break;
+			}
+			case '4':
+				category::deleteCategory();
+				break;
+			case '5':
+			{
+						balance_out.open("balance.db", std::ios::out);
+						balance_out << balance;
+						category::saveCategories();
+						balance_out.close();
+						exit(0);
+			}
 			default:
 				continue;
 			}
-			balance_out.open("balance.db", std::ios::out);
-			balance_out << balance;
-			category::saveCategories();
-			balance_out.close();
 		}
 		return 0;
 	}

@@ -5,6 +5,8 @@
 #include <ctime>
 #include <cstring>
 #include <conio.h>
+#include <cstdlib>
+#include <string>
 
 #include "version.h"
 
@@ -22,7 +24,7 @@ namespace ssbm{
 	int menu();
 	void getVersion(unsigned int type);
 	void getCopyRight(unsigned int type);
-	bool checkSumm(char summ_ch[]);
+	bool checkSumm(char* summ_ch);
 	//logging section
 	int openLog();
 	int closeLog();

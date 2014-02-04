@@ -1,38 +1,38 @@
 #include "main.h"
 namespace ssbm
 {
-   std::vector<category> category_hold;
-   bool checkSumm(char summ_ch[])
-   {
-	   int i=0;
-	   bool valid=false;
-	   while(summ_ch[i]!='\0')
-	   {
-		   if(isdigit(summ_ch[i])||summ_ch[i]!='.'||summ_ch[i]!=',')
-		   {
-			   if(summ_ch[i]=='.'||summ_ch[i]==','&&i==0)
-			   {
-				   valid=false;
-			   }
-			   else
-			   {
-			   valid=true;
-			   }
-			   if(summ_ch[i]==',')
-			   {
-				   summ_ch[i]=='.';
-			   }
+	std::vector<category> category_hold;
+	bool checkSumm(char* summ_ch)
+	{
+		int i = 0;
+		bool valid = false;
+		while (summ_ch[i] != '\0')
+		{
+			if (isdigit(summ_ch[i]) || summ_ch[i] != '.' || summ_ch[i] != ',')
+			{
+				if ((summ_ch[i] == '.' || summ_ch[i] == ',')&&i == 0)
+				{
+					valid = false;
+				}
+				else
+				{
+					valid = true;
+				}
+				if (summ_ch[i] == ',')
+				{
+					summ_ch[i] = '.';
+				}
 
-			   
-		   }
-		   else
-		   {
-			  valid=false; 
-		   }
-		   i++;
-	   }
-	   return valid;
-   }
+
+			}
+			else
+			{
+				valid = false;
+			}
+			i++;
+		}
+		return valid;
+	}
 	category::category()
 	{
 		id = 0;
@@ -40,16 +40,6 @@ namespace ssbm
 		catSumm = 0.0;
 	}
 
-	// Operator = copy
-	category category::operator=(const category right)
-	{
-		category tmp;
-		tmp.id = right.id;
-		tmp.catCount = right.catCount;
-		tmp.catSumm = right.catSumm;
-		tmp.catType = right.catType;
-		return tmp;
-	}
 
 	category::~category()
 	{
@@ -80,8 +70,6 @@ namespace ssbm
 			category cat_temp;
 			while (category_file >> cat_temp.id >> cat_temp.categoryName >> cat_temp.catCount >> cat_temp.catSumm >> cat_temp.catType)
 			{
-				//if (category_file.eof()) break;
-				//category_file >> cat_temp.id >> cat_temp.categoryName >> cat_temp.catCount >> cat_temp.catSumm >> cat_temp.catType;
 				category_hold.push_back(cat_temp);
 			}
 			category_file.close();
@@ -91,28 +79,52 @@ namespace ssbm
 				category_file_new << "0 Default_expence 0 0 0" << std::endl;
 				category_file_new << "1 Default_profit 0 0 1";
 				category_file_new.close();
-				category::loadCategories();
 			}
 		}
 		else
 		{
 			std::ofstream category_file_new("categories.dll", std::ios::out);
-			category_file_new << "0 Default_expence 0 0 0"<<std::endl;
+			category_file_new << "0 Default_expence 0 0 0" << std::endl;
 			category_file_new << "1 Default_profit 0 0 1";
 			category_file_new.close();
-			category::loadCategories();
 		}
 	}
 
 
 	CATID category::addCategory()
 	{
-		category cat_temp;
-		std::cout << "Please enter new category name and it's type (0 for expence, 1 for profit)"<<std::endl;
-		cat_temp.id=category_hold.at(category_hold.size() - 1).id+1;
-		std::cin >>cat_temp.categoryName>>cat_temp.catType;
-		category_hold.push_back(cat_temp);
-		return cat_temp.id;
+		category cat_template;
+		std::cout << "Please enter new category name" << std::endl;
+		if (category_hold.size() != 0)
+			cat_template.id = category_hold.at(category_hold.size() - 1).id + 1;
+		else
+			cat_template.id = 0;
+		char* catName=new char[100];
+		std::cin >> catName;
+		strcpy(cat_template.categoryName, catName);
+		std::cout << "Please enter new category type (0 for expence, 1 for profit)" << std::endl;
+		char* type = new char[2];
+		std::cin >> type;
+		if (*type != '0' && *type != '1')
+		{
+			writeLog("Invalid data presented", 2);
+			return 0;
+		}
+		else
+		{
+			if (*type == '0')
+			{
+				cat_template.catType = cat_template.expence;
+			}
+			else
+			{
+				cat_template.catType = cat_template.profit;
+			}
+			category_hold.push_back(cat_template);
+			int id = cat_template.id;
+			return id;
+		}
+
 	}
 
 
@@ -139,29 +151,37 @@ namespace ssbm
 				std::cout << pId << ") " << category_hold.at(i).categoryName << std::endl;
 			}
 		}
-		CATID ident;
- 		ident=49-getch()+1;
-		id = category_hold.at(arr[ident - 1][1]).id;
-		for (int i = 0; i < size; i++)
+		char ident_c;
+		std::cin >> ident_c;//= std::cin.get();
+		if (isdigit(ident_c))
 		{
-			delete[] arr[i];
+			CATID ident = ident_c;
+			ident -= 49;
+			if (ident >= 0)
+			{
+				id = category_hold.at(arr[ident][1]).id;
+				for (int i = 0; i < size; i++)
+				{
+					delete[] arr[i];
+				}
+				delete[] arr;
+				return id;
+			}
+			else
+				return 0;
 		}
-		delete[] arr;
-		return id;
 	}
 
 
 	char* category::getCategoryNameById(CATID id, bool type)
 	{
 		char* catName = new char[100];
-		category tmp = category_hold.at(0);
 		const int size = category_hold.size();
 		for (int i = 0; i < size; i++)
 		{
-			tmp = category_hold.at(i);
-			if (tmp.id == id)
+			if (category_hold.at(i).id == id)
 			{
-				strcpy(catName, tmp.categoryName);
+				strcpy(catName, category_hold.at(i).categoryName);
 				break;
 			}
 		}
@@ -171,7 +191,7 @@ namespace ssbm
 
 
 
-	bool category::changeCount(CATID id,double summ,bool type)
+	bool category::changeCount(CATID id, double summ, bool type)
 	{
 		category tmp = category_hold.at(0);
 		const int size = category_hold.size();
@@ -186,5 +206,58 @@ namespace ssbm
 			}
 		}
 		return false;
+	}
+	bool category::deleteCategory()
+	{
+		category tmp;
+		int size = category_hold.size();
+		int pId = 0;
+		int** arr = new int*[size];
+		for (int i = 0; i < size; i++)
+		{
+			arr[i] = new int[2];
+			arr[i][0] = 0;
+			arr[i][1] = 0;
+		}
+		for (int i = 0; i < size; i++)
+		{
+
+			pId++;
+			arr[pId - 1][0] = pId - 1;
+			arr[pId - 1][1] = i;
+			std::cout << pId << ") " << category_hold.at(i).categoryName << std::endl;
+		}
+		char* ident_c = new char[20];
+		std::cin >> ident_c;
+		if (isdigit(*ident_c))
+		{
+			CATID ident = atoi(ident_c)-1;
+			if (ident >= 0)
+			{
+
+				//tmp.operator=(category_hold.at(size - 1));
+				tmp.copy(&category_hold.at(size - 1));
+				category_hold.at(arr[ident][1]).copy(&tmp);
+				tmp.copy(&category_hold.at(size - 1));
+				category_hold.pop_back();
+				for (int i = 0; i < size; i++)
+				{
+					delete[] arr[i];
+				}
+				delete[] arr;
+			}
+			else
+				return 0;
+		}
+		return 1;
+	}
+
+	void category::copy(category* src)
+	{
+		this->id = src->id;
+		strcpy(this->categoryName, src->categoryName);
+		this->catCount = src->catCount;
+		this->catSumm = src->catSumm;
+		this->catType = src->catType;
 	}
 }
