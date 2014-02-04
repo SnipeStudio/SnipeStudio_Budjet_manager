@@ -20,7 +20,9 @@
 #define CATID unsigned int
 namespace ssbm{
 	int menu();
-	void getVersion();
+	void getVersion(unsigned int type);
+	void getCopyRight(unsigned int type);
+	bool checkSumm(char summ_ch[]);
 	//logging section
 	int openLog();
 	int closeLog();

@@ -2,6 +2,37 @@
 namespace ssbm
 {
    std::vector<category> category_hold;
+   bool checkSumm(char summ_ch[])
+   {
+	   int i=0;
+	   bool valid=false;
+	   while(summ_ch[i]!='\0')
+	   {
+		   if(isdigit(summ_ch[i])||summ_ch[i]!='.'||summ_ch[i]!=',')
+		   {
+			   if(summ_ch[i]=='.'||summ_ch[i]==','&&i==0)
+			   {
+				   valid=false;
+			   }
+			   else
+			   {
+			   valid=true;
+			   }
+			   if(summ_ch[i]==',')
+			   {
+				   summ_ch[i]=='.';
+			   }
+
+			   
+		   }
+		   else
+		   {
+			  valid=false; 
+		   }
+		   i++;
+	   }
+	   return valid;
+   }
 	category::category()
 	{
 		id = 0;
@@ -47,13 +78,11 @@ namespace ssbm
 		if (category_file.is_open())
 		{
 			category cat_temp;
-			bool eof =!category_file.eof();
 			while (category_file >> cat_temp.id >> cat_temp.categoryName >> cat_temp.catCount >> cat_temp.catSumm >> cat_temp.catType)
 			{
 				//if (category_file.eof()) break;
 				//category_file >> cat_temp.id >> cat_temp.categoryName >> cat_temp.catCount >> cat_temp.catSumm >> cat_temp.catType;
 				category_hold.push_back(cat_temp);
-				eof = !category_file.eof();
 			}
 			category_file.close();
 			if (category_hold.size() == 0)

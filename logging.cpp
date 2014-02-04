@@ -26,7 +26,6 @@ int ssbm::openLog()
 		writeLog("Could not open log file... exiting", 0);
 		return 1;
 	}
-	ssbm::getVersion();
 	return 0;
 }
 
