@@ -1,7 +1,7 @@
 SSBM
 ===
 ~~~~~~~~~~
-Current version: 0.0.0.7 for Windows
+Current version: 0.0.0.8 for Windows
 Minimal requirements: MS .NET framework 2.0
 ~~~~~~~~~~
 

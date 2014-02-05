@@ -1,3 +1,5 @@
+#ifndef MAIN
+#define MAIN
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -19,7 +21,7 @@
 #include "categories.h"
 #endif
 #pragma once
-#define CATID unsigned int
+#define CATID int
 namespace ssbm{
 	int menu();
 	void getVersion(unsigned int type);
@@ -40,3 +42,4 @@ namespace ssbm{
 	int get(double summ, CATID id);
 	void addOperation(double summ, CATID id, bool type);
 }
+#endif // MAIN

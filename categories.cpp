@@ -107,7 +107,7 @@ namespace ssbm
 		std::cin >> type;
 		if (*type != '0' && *type != '1')
 		{
-			writeLog("Invalid data presented", 2);
+			writeLog((char*)"Invalid data presented", 2);
 			return 0;
 		}
 		else
@@ -151,8 +151,14 @@ namespace ssbm
 				std::cout << pId << ") " << category_hold.at(i).categoryName << std::endl;
 			}
 		}
+		if (pId == 0)
+		{
+			writeLog((char*)"There are no categories yet, but you can add your own", 2);
+			addCategory();
+			return -1;
+		}
 		char ident_c;
-		std::cin >> ident_c;//= std::cin.get();
+		std::cin >> ident_c;
 		if (isdigit(ident_c))
 		{
 			CATID ident = ident_c;
@@ -170,6 +176,7 @@ namespace ssbm
 			else
 				return 0;
 		}
+		return -1;
 	}
 
 
@@ -205,12 +212,17 @@ namespace ssbm
 				break;
 			}
 		}
-		return false;
+		return 0;
 	}
-	bool category::deleteCategory()
+	int category::deleteCategory()
 	{
 		category tmp;
 		int size = category_hold.size();
+		if (size == 0)
+		{
+			writeLog((char*)"Trying to delete empty category folder", 2);
+			return 2;
+		}
 		int pId = 0;
 		int** arr = new int*[size];
 		for (int i = 0; i < size; i++)
@@ -235,7 +247,6 @@ namespace ssbm
 			if (ident >= 0)
 			{
 
-				//tmp.operator=(category_hold.at(size - 1));
 				tmp.copy(&category_hold.at(size - 1));
 				category_hold.at(arr[ident][1]).copy(&tmp);
 				tmp.copy(&category_hold.at(size - 1));

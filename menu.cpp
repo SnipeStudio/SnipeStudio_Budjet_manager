@@ -21,7 +21,6 @@ namespace ssbm
 			balance_file >> balance;
 			balance_file.close();
 		}
-		unsigned int Select = 0;
 		while (true)
 		{
 			system("cls");
@@ -34,12 +33,14 @@ namespace ssbm
 			std::cout << "2) Income" << std::endl;
 			std::cout << "3) Add new category" << std::endl;
 			std::cout << "4) Delete category" << std::endl;
-			std::cout << "5) Exit" << std::endl;
+			std::cout << "5) Save"<< std::endl;
+			std::cout << "6) Reload Data" << std::endl;
+			std::cout << "7) Exit" << std::endl;
 			ssbm::getCopyRight(0);
 			char Changer = std::cin.get();
 			if (!isdigit(Changer))
 			{
-				writeLog("Invalid input presented", 1);
+				writeLog((char*)"Invalid input presented", 1);
 				continue;
 			}
 			CATID category = 0;
@@ -53,6 +54,10 @@ namespace ssbm
 					ssbm::getVersion(0);
 					std::cout<<"Specify what category you select"<<std::endl;
 					category=category::selectCategory(false);
+					if (category < 0)
+					{
+						break;
+					}
 					ssbm::getCopyRight(0);
 					system("cls");
 					ssbm::getVersion(0);
@@ -72,6 +77,10 @@ namespace ssbm
 						ssbm::getVersion(0);
 						std::cout << "Specify what category you select" << std::endl;
 						category = category::selectCategory(true);
+						if (category < 0)
+						{
+							break;
+						}
 						ssbm::getCopyRight(0);
 						system("cls");
 						ssbm::getVersion(0);
@@ -99,6 +108,29 @@ namespace ssbm
 						balance_out << balance;
 						category::saveCategories();
 						balance_out.close();
+						break;
+			}
+			case '6':
+			{
+						category::loadCategories();
+						balance_file.open("balance.db", std::ios::in);
+						if (balance_file.is_open() == 0)
+						{
+							balance = 0;
+						}
+						else
+						{
+							balance_file >> balance;
+							balance_file.close();
+						}
+						break;
+			}
+			case '7':
+			{
+						balance_out.open("balance.db", std::ios::out);
+						balance_out << balance;
+						category::saveCategories();
+						balance_out.close();
 						exit(0);
 			}
 			default:
@@ -112,7 +144,6 @@ namespace ssbm
 	{
 		balance -= summ;
 		category::changeCount(id, summ, false);
-		//addOperation(summ,id,false,category_hold);
 		addOperation(summ, id, false);
 		return 0;
 	}
@@ -139,8 +170,7 @@ namespace ssbm
 		{
 			strcpy(side, "profit");
 		}
-		//char catName[100];
-		file << t_m->tm_hour << ":" << t_m->tm_min << ":" << t_m->tm_sec << " " << summ << " " << side << " " << category::getCategoryNameById(id,type) << std::endl;
+		file <<t_m->tm_year << "\\" << t_m->tm_mon << "\\" << t_m->tm_mday<<" "<< t_m->tm_hour << ":" << t_m->tm_min << ":" << t_m->tm_sec << " | " << summ << " " << side << " " << category::getCategoryNameById(id, type) << std::endl;
 		char* debug = new char[255];
 		sprintf(debug, "The value was added \n %i:%i:%i %f %s %s", t_m->tm_hour, t_m->tm_min, t_m->tm_sec, summ, side, category::getCategoryNameById(id, type));
 		writeLog(debug,1);

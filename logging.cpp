@@ -7,8 +7,12 @@ namespace ssbm{ std::ofstream logFile; }
 //2 - both console and log
 //0 - console only
 int ssbm::writeLog(char* message,unsigned int mode){
+	time_t t;
+	struct tm *t_m;
+	t = time(NULL);
+	t_m = localtime(&t);
 	if (mode == 1 || mode == 2)
-		ssbm::logFile << message << std::endl;
+		ssbm::logFile << t_m->tm_year << "\\" << t_m->tm_mon << "\\" << t_m->tm_mday << " " << t_m->tm_hour << ":" << t_m->tm_min << ":" << t_m->tm_sec << " | " << message << std::endl;
 	if (mode == 0 || mode == 2)
 	std::cout << message << std::endl;
 	return 0;
@@ -23,7 +27,7 @@ int ssbm::openLog()
 	}
 	else
 	{
-		writeLog("Could not open log file... exiting", 0);
+		writeLog((char *)"Could not open log file... exiting", 0);
 		return 1;
 	}
 	return 0;
@@ -31,8 +35,8 @@ int ssbm::openLog()
 
 int ssbm::closeLog()
 {
-	ssbm::writeLog("Log file is closing",1);
-	ssbm::writeLog("Bye", 2);
+	ssbm::writeLog((char *)"Log file is closing",1);
+	ssbm::writeLog((char *)"Bye", 2);
 	ssbm::logFile.close();
 	return 0;
 }

@@ -1,0 +1,9 @@
+05 February 2014
+   released version 0.0.1 of SnipeStudio_Budjet_manager
+
+     Change log:
+        -Fixed: Bugs in deleting function
+        -Added: Checkouts for adding operations
+        -Added: Force reload function
+        -Added: Force save function
+
