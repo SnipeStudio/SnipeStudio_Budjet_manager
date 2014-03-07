@@ -1,3 +1,8 @@
+07 March 2014
+   Version 0.0.1.9
+     Change log:
+        -Changed Folder Structure for base project
+
 05 February 2014
    released version 0.0.1 of SnipeStudio_Budjet_manager
 
