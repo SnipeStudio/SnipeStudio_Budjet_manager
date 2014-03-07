@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../log.h"
 
 namespace ssbm{ std::ofstream logFile; }
 //Write log
@@ -20,12 +20,9 @@ int ssbm::writeLog(char* message,unsigned int mode){
 
 int ssbm::openLog()
 {
+	
 	ssbm::logFile.open("ssbm.log", std::ios::app);
-	if (ssbm::logFile.is_open())
-	{
-		//writeLog("Logfile sucsesfully opened", 1);
-	}
-	else
+	if (!ssbm::logFile.is_open())
 	{
 		writeLog((char *)"Could not open log file... exiting", 0);
 		return 1;
@@ -35,8 +32,6 @@ int ssbm::openLog()
 
 int ssbm::closeLog()
 {
-	ssbm::writeLog((char *)"Log file is closing",1);
-	ssbm::writeLog((char *)"Bye", 2);
 	ssbm::logFile.close();
 	return 0;
 }

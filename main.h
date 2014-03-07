@@ -4,29 +4,24 @@
 #include <fstream>
 #include <cstdlib>
 #include <vector>
-#include <ctime>
 #include <cstring>
 #include <conio.h>
 #include <cstdlib>
 #include <string>
 
-#include "service/version.h"
-
-#ifndef CATEGORIES_INCLUDED
+#ifndef SETTINGS_INCLUDED
 #define SETTINGS_INCLUDED
-#include "categories.h"
+#include "categories/categories.h"
 #endif
 #pragma once
 #define CATID int
+#include "service/version.h"
+#include "logging/log.h"
 namespace ssbm{
 	int menu();
 	void getVersion(unsigned int type);
 	void getCopyRight(unsigned int type);
 	bool checkSumm(char* summ_ch);
-	//logging section
-	int openLog();
-	int closeLog();
-	int writeLog(char* message, unsigned int mode);
 	//database file handling
 	int loadDatabase(char* filename);//Not figured yet
 	int updateDatabase(char* filename);//Not figured yet
