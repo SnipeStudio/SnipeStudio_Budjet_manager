@@ -1,14 +1,21 @@
+16 March 2014
+	Released version 0.0.2 of Snipe Studio Budget Manager
+	Change log:
+		-Added:		Graphical UI
+		-Fixed: 	Issues
+		-Changed:	Save on exit
+		
 07 March 2014
-   Version 0.0.1.9
-     Change log:
-        -Changed Folder Structure for base project
+	Version 0.0.1.9
+    Change log:
+        -Changed: Folder Structure for base project
 
 05 February 2014
-   released version 0.0.1 of SnipeStudio_Budjet_manager
-
-     Change log:
-        -Fixed: Bugs in deleting function
+	Released version 0.0.1 of Snipe Studio Budget Manager
+	Change log:
+		-Fixed: Bugs in deleting function
         -Added: Checkouts for adding operations
         -Added: Force reload function
         -Added: Force save function
+
 

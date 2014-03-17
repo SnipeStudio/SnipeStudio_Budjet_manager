@@ -1,9 +1,22 @@
 SSBM
 ===
 ~~~~~~~~~~
-Current version: 0.0.0.8 for Windows
-Minimal requirements: MS .NET framework 2.0
+Current version: 0.0.2.0 for Windows
 ~~~~~~~~~~
 
 There are simple budget manager from snipe studio for you
-Fix categories class error now it works =)
+
+16 March 2014
+	Released version 0.0.2 of Snipe Studio Budget Manager
+	Change log:
+		-Added:		Graphical UI
+		-Fixed: 	Issues
+		-Changed:	Save on exit
+		
+05 February 2014
+	Released version 0.0.1 of Snipe Studio Budget Manager
+	Change log:
+		-Fixed: Bugs in deleting function
+        -Added: Checkouts for adding operations
+        -Added: Force reload function
+        -Added: Force save function
