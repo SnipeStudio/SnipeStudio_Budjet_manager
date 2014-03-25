@@ -4,13 +4,9 @@
 #include <QWidget>
 #include <QMessageBox>
 #include <QTableWidgetItem>
-#include <QDebug>
-#include <QtCore/QFile>
-#include <QtCore/QTextStream>
-#include <QtCore/QStringList>
-#include <fstream>
-#include <QTextCodec>
 
+#include "datamanager/datamanager.h"
+#include <fstream>
 namespace Ui {
 class Widget;
 }

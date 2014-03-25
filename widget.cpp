@@ -6,20 +6,31 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
+    ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
-    balanceInput.open("bal.ssff",std::ios::in);
+    dataManager* data=new dataManager(this);
+    QString path=data->getPath()+"bal.ssff";
+    QFile file_bal(path);
+    QTextStream in_bal(&file_bal);
+    in_bal.setCodec("UTF-8");
+    if(file_bal.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QString line = in_bal.readLine();
+        ui->balance->setText(line);
+    }
+    file_bal.close();
     double balance=0;
     if(balanceInput.is_open())
     {
         balanceInput>>balance;
         balanceInput.close();
     }
-    ui->setupUi(this);
+
     //std::ifstream tableInput;
     ui->date->setDateTime(QDateTime::currentDateTime());
     //sprintf(fileName,"snipeStudio_%i.%i.csv",ui->date->date().month(),ui->date->date().year());
-    QString fileNameQ=tr("snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year()));
+    QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year())).arg(data->getPath());
     qDebug() << fileNameQ;
     QFile file(fileNameQ);
     QString dataTe,commentTe,typeTe,summTe,balanceTe;
@@ -77,15 +88,17 @@ Widget::~Widget()
 
 void Widget::closeEvent(QCloseEvent*)
 {
-    std::ofstream balanceOutput;
-    balanceOutput.open("bal.ssff",std::ios::out);
-    if(balanceOutput.is_open())
+    dataManager* data=new dataManager(this);
+    QString path=data->getPath()+"bal.ssff";
+    QFile file_bal(path);
+    QTextStream out_bal(&file_bal);
+    out_bal.setCodec("UTF-8");
+    if(file_bal.open(QIODevice::WriteOnly))
     {
-        balanceOutput<<ui->balance->text().toDouble();
-       balanceOutput.close();
-   }
-
-    QString fileNameQ=tr("snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year()));
+        out_bal<<ui->balance->text().toDouble();
+    }
+    file_bal.close();
+    QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year())).arg(data->getPath());
     QFile file(fileNameQ);
     QTextStream out(&file);
     out.setCodec("UTF-8");
@@ -154,3 +167,5 @@ void Widget::addOperation()
 
     }
 }
+
+
