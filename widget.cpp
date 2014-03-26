@@ -6,6 +6,7 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
+    version="14.04-beta(0.0.2.5)";
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
@@ -78,6 +79,9 @@ Widget::Widget(QWidget *parent) :
     ui->date->setDateTime(QDateTime::currentDateTime());
     connect(ui->about,SIGNAL(clicked()),this,SLOT(help()));
     connect(ui->confirm,SIGNAL(clicked()),this,SLOT(addOperation()));
+    settings* set=new settings();
+    connect(ui->settings,SIGNAL(clicked()),set,SLOT(show()));
+    connect(ui->save,SIGNAL(clicked()),this,SLOT(save()));
     ui->profit->setChecked(true);
 }
 
@@ -122,7 +126,7 @@ void Widget::closeEvent(QCloseEvent*)
 void Widget::help()
 {
     QMessageBox* a=new QMessageBox(this);
-    a->setText(tr("Snipe Studio Budget Manager\n(CopyLeft)2010-2014"));
+    a->setText(tr("Snipe Studio Budget Manager v.%1\n(CopyLeft)2010-2014").arg(this->version));
     a->setWindowTitle(QString::fromStdString("About SSBM"));
     connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
     a->show();
@@ -166,6 +170,39 @@ void Widget::addOperation()
         ui->tableWidget->sortByColumn(0);
 
     }
+}
+
+void Widget::save()
+{
+    dataManager* data=new dataManager(this);
+
+    QString path=data->getPath()+"bal.ssff";
+    QFile file_bal(path);
+    QTextStream out_bal(&file_bal);
+    out_bal.setCodec("UTF-8");
+    if(file_bal.open(QIODevice::WriteOnly))
+    {
+        out_bal<<ui->balance->text().toDouble();
+    }
+    file_bal.close();
+    QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year())).arg(data->getPath());
+    QFile file(fileNameQ);
+    QTextStream out(&file);
+    out.setCodec("UTF-8");
+    if(file.open(QIODevice::WriteOnly))
+    {
+        for(int i=0;i<ui->tableWidget->rowCount();i++)
+        {
+            out<<i+1
+                      <<";"<<ui->tableWidget->item(i,0)->text()
+                     <<";"<<ui->tableWidget->item(i,1)->text()
+                    <<";"<<ui->tableWidget->item(i,2)->text()
+                   <<";"<<ui->tableWidget->item(i,3)->text()
+                  <<";"<<ui->tableWidget->item(i,4)->text()
+                 <<"\n";
+        }
+    }
+    file.close();
 }
 
 

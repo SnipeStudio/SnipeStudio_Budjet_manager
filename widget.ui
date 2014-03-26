@@ -41,22 +41,30 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+       <widget class="QPushButton" name="save">
+        <property name="text">
+         <string>&amp;Save</string>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="settings">
+        <property name="text">
+         <string>&amp;Settings</string>
         </property>
-       </spacer>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="about">
         <property name="text">
-         <string>about</string>
+         <string>&amp;About</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="exit">
+        <property name="text">
+         <string>&amp;Exit</string>
         </property>
        </widget>
       </item>
@@ -205,5 +213,22 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>exit</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>274</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

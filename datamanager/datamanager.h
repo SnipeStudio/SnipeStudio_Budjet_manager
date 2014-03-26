@@ -6,6 +6,7 @@
 #include <QTextCodec>
 #include <QDebug>
 
+
 class dataManager : public QObject
 {
     Q_OBJECT
@@ -49,9 +50,27 @@ public:
     {
         return dataPath;
     }
+
+    ~dataManager()
+    {
+        QString fileNameSettings=tr("settings.cfg");
+        QFile file(fileNameSettings);
+        if(file.open(QIODevice::WriteOnly))
+        {
+            QTextStream out(&file);
+            out.setCodec("UTF-8");
+            out<<tr("DataPath=%1\n").arg(dataPath);
+        }
+
+    }
+
 signals:
 
 public slots:
+    void setPath(QString data)
+    {
+        dataPath=data;
+    }
 private:
     QString dataPath;
     QString configPath;

@@ -13,10 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        widget.cpp
+        widget.cpp \
+    settings.cpp
 
 HEADERS  += widget.h \
-    datamanager/datamanager.h
+    datamanager/datamanager.h \
+    settings.h
 
 FORMS    += widget.ui
 

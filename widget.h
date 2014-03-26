@@ -2,10 +2,11 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QMenu>
+#include <QAction>
 #include <QMessageBox>
 #include <QTableWidgetItem>
-
-#include "datamanager/datamanager.h"
+#include "settings.h"
 #include <fstream>
 namespace Ui {
 class Widget;
@@ -22,10 +23,12 @@ public:
 private:
     Ui::Widget *ui;
     QString tmp;
+    QString version;
 public slots:
     void closeEvent(QCloseEvent*);
     void help();
     void addOperation();
+    void save();
 };
 
 #endif // WIDGET_H
