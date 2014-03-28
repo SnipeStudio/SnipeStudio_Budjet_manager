@@ -129,7 +129,7 @@ void Widget::closeEvent(QCloseEvent*)
 void Widget::help()
 {
     QMessageBox* a=new QMessageBox(this);
-    a->setText(tr("Snipe Studio Budget Manager v.%1\n(CopyLeft)2010-2014").arg(this->version));
+    a->setText(tr("Snipe Studio Budget Manager v.%1\nUsing QT5 in Ubuntu Linux\n(CopyLeft)2010-2014").arg(this->version));
     a->setWindowTitle(QString::fromStdString("About SSBM"));
     connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
     a->show();
