@@ -6,7 +6,7 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-    version="14.04-beta(0.0.2.5)";
+    version="14.04-beta(0.0.2.7)";
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
@@ -15,19 +15,21 @@ Widget::Widget(QWidget *parent) :
     QFile file_bal(path);
     QTextStream in_bal(&file_bal);
     in_bal.setCodec("UTF-8");
+    double balance;
     if(file_bal.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QString line = in_bal.readLine();
-        ui->balance->setText(line);
-    }
-    file_bal.close();
-    double balance=0;
-    if(balanceInput.is_open())
-    {
-        balanceInput>>balance;
-        balanceInput.close();
-    }
+        qDebug()<<line;
+        balance=line.toDouble();
 
+        file_bal.close();
+    }
+    else
+    {
+        balance=0;
+    }
+    qDebug()<<balance;
+    ui->balance->setNum(balance);
     //std::ifstream tableInput;
     ui->date->setDateTime(QDateTime::currentDateTime());
     //sprintf(fileName,"snipeStudio_%i.%i.csv",ui->date->date().month(),ui->date->date().year());
