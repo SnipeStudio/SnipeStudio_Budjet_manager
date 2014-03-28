@@ -24,6 +24,7 @@ private:
     Ui::Widget *ui;
     QString tmp;
     QString version;
+    settings* set;
 public slots:
     void closeEvent(QCloseEvent*);
     void help();

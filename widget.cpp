@@ -79,7 +79,7 @@ Widget::Widget(QWidget *parent) :
     ui->date->setDateTime(QDateTime::currentDateTime());
     connect(ui->about,SIGNAL(clicked()),this,SLOT(help()));
     connect(ui->confirm,SIGNAL(clicked()),this,SLOT(addOperation()));
-    settings* set=new settings();
+    set=new settings();
     connect(ui->settings,SIGNAL(clicked()),set,SLOT(show()));
     connect(ui->save,SIGNAL(clicked()),this,SLOT(save()));
     ui->profit->setChecked(true);
@@ -119,6 +119,7 @@ void Widget::closeEvent(QCloseEvent*)
                  <<"\n";
         }
     }
+    set->close();
     file.close();
     close();
 }
