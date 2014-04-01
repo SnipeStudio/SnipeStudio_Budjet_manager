@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QMenu>
 #include <QAction>
-#include <QMessageBox>
+
 #include <QTableWidgetItem>
 #include "settings.h"
 #include <fstream>

@@ -15,14 +15,17 @@ public:
     settings(QWidget *parent = 0);
 private:
     QVBoxLayout* params;
-    QHBoxLayout* element;
+    QHBoxLayout* element_data;
+    QHBoxLayout* element_cur;
     QLabel* DataPath;
     QLineEdit* DataPathLine;
+    QLabel* Currency;
+    QLineEdit* CurrencyLine;
     QPushButton* ok;
 signals:
 
 public slots:
-    void changePath();
+    void okSlot();
 };
 
 #endif // SETTINGS_H

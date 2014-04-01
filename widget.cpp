@@ -12,10 +12,13 @@ Widget::Widget(QWidget *parent) :
     std::ifstream balanceInput;
     dataManager* data=new dataManager(this);
     QString path=data->getPath()+"bal.ssff";
+    qDebug()<<data->GetCurrency();
+    ui->currency->setText(data->GetCurrency());
     QFile file_bal(path);
     QTextStream in_bal(&file_bal);
     in_bal.setCodec("UTF-8");
     double balance;
+
     if(file_bal.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QString line = in_bal.readLine();
