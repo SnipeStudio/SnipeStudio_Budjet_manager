@@ -30,6 +30,7 @@ public slots:
     void help();
     void addOperation();
     void save();
+    void load();
 };
 
 #endif // WIDGET_H

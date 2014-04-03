@@ -36,7 +36,7 @@ void settings::okSlot()
    data->setCurrency(CurrencyLine->text());
    delete data;
    QMessageBox* a=new QMessageBox(this);
-   a->setText(tr("Your settings saved. \n Visual changes will be applied after program restart"));
+   a->setText(tr("Your settings saved. \n Visual changes will be applied after program restart or press load"));
    a->setWindowTitle(QString::fromStdString("Data saved"));
    connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
    a->show();
