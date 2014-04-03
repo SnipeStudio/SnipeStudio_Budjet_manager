@@ -48,6 +48,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="load">
+        <property name="text">
+         <string>&amp;Load</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="settings">
         <property name="text">
          <string>&amp;Settings</string>
@@ -151,6 +158,13 @@
          <widget class="QLabel" name="balance">
           <property name="text">
            <string>0</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="currency">
+          <property name="text">
+           <string/>
           </property>
          </widget>
         </item>

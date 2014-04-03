@@ -1,16 +1,19 @@
-SSBM
+Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.0.2.0 for Windows
+Current version: 0.0.2.7 for Windows (14.04 beta)
+Soft requirenments: QT5
+Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
 
-There are simple budget manager from snipe studio for you
+Simple Budget Manager for you by Snipe Studio
 
+Release Log:
 16 March 2014
 	Released version 0.0.2 of Snipe Studio Budget Manager
 	Change log:
 		-Added:		Graphical UI
-		-Fixed: 	Issues
+		-Fixed: 	Small issues in code
 		-Changed:	Save on exit
 		
 05 February 2014

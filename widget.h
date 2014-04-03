@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QMenu>
 #include <QAction>
-#include <QMessageBox>
+
 #include <QTableWidgetItem>
 #include "settings.h"
 #include <fstream>
@@ -30,6 +30,7 @@ public slots:
     void help();
     void addOperation();
     void save();
+    void load();
 };
 
 #endif // WIDGET_H
