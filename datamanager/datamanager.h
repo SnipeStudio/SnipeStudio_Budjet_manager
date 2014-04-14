@@ -12,7 +12,7 @@ class dataManager : public QObject
 {
     Q_OBJECT
 public:
-    dataManager(QObject *parent=0)
+    dataManager()
     {
         QString fileNameSettings=tr("settings.cfg");
         QFile file(fileNameSettings);
@@ -75,8 +75,6 @@ public:
 
             out<<tr("DataPath=%1\n").arg(dataPath);
             out<<tr("Currency=%1\n").arg(Currency);
-            qDebug()<<tr("Final data Currency=%1\n").arg(Currency);
-            qDebug()<<tr("Final data DataPath=%1\n").arg(dataPath);
         }
         file.close();
 

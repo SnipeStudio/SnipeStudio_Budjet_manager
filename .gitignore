@@ -13,6 +13,7 @@
 *.cbp
 *.dll
 *.exe
+*.qm
 debug/
 release/
 prj/

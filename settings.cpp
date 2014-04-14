@@ -8,9 +8,9 @@ settings::settings(QWidget *parent) :
     element_data=new QHBoxLayout();
     element_cur=new QHBoxLayout();
     DataPath=new QLabel();
-    DataPath->setText("Data Path:");
+    DataPath->setText(tr("Data Path:"));
     DataPathLine=new QLineEdit();
-    Currency=new QLabel("Currency");
+    Currency=new QLabel(tr("Currency"));
     CurrencyLine=new QLineEdit();
     element_data->addWidget(DataPath);
     element_data->addWidget(DataPathLine);
@@ -18,12 +18,12 @@ settings::settings(QWidget *parent) :
     element_cur->addWidget(Currency);
     element_cur->addWidget(CurrencyLine);
     params->addLayout(element_cur);
-    ok=new QPushButton("Ok");
+    ok=new QPushButton(tr("Ok"));
     DataPathLine->setText(data->getPath());
     CurrencyLine->setText(data->GetCurrency());
     params->addWidget(ok);
     this->setLayout(params);
-    this->setWindowTitle("Settings");
+    this->setWindowTitle(tr("Settings"));
     connect(ok,SIGNAL(clicked()),this,SLOT(close()));
     connect(ok,SIGNAL(clicked()),this,SLOT(okSlot()));
     delete data;
@@ -37,7 +37,7 @@ void settings::okSlot()
    delete data;
    QMessageBox* a=new QMessageBox(this);
    a->setText(tr("Your settings saved. \n Visual changes will be applied after program restart or press load"));
-   a->setWindowTitle(QString::fromStdString("Data saved"));
+   a->setWindowTitle(tr("Data saved"));
    connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
    a->show();
    close();
