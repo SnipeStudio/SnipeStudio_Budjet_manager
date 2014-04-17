@@ -1,7 +1,7 @@
 Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.0.2.7 for Linux
+Current version: 0.0.2.8 for Linux
 Soft requirenments: QT5
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~

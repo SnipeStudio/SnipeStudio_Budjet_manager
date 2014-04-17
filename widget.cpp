@@ -6,7 +6,7 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-    version=tr("14.04-beta(0.0.2.7)");
+    version=tr("14.04-beta(0.0.2.8)");
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;

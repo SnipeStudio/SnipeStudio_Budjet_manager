@@ -7,6 +7,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QPushButton>
+#include "ui_widget.h"
 
 class settings : public QWidget
 {
@@ -17,15 +18,19 @@ private:
     QVBoxLayout* params;
     QHBoxLayout* element_data;
     QHBoxLayout* element_cur;
+    QHBoxLayout* element_clean;
     QLabel* DataPath;
     QLineEdit* DataPathLine;
     QLabel* Currency;
     QLineEdit* CurrencyLine;
+    QPushButton* clear;
     QPushButton* ok;
 signals:
 
 public slots:
     void okSlot();
+    void cleanData();
+    void cleanDataOk();
 };
 
 #endif // SETTINGS_H
