@@ -1,7 +1,7 @@
 Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.0.2.7 for Windows (14.04 beta)
+Current version: 0.0.2.8 for Windows (14.04 beta)
 Soft requirenments: QT5
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
