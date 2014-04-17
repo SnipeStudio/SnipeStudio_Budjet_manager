@@ -5,11 +5,11 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-    version="14.04-beta(0.0.2.7)";
+    version=tr("14.04-beta(0.0.2.8)");
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
-    dataManager* data=new dataManager(this);
+    dataManager* data=new dataManager();
     QString path=data->getPath()+"bal.ssff";
     ui->currency->setText(data->GetCurrency());
     QFile file_bal(path);
@@ -31,9 +31,7 @@ Widget::Widget(QWidget *parent) :
     }
     qDebug()<<balance;
     ui->balance->setNum(balance);
-    //std::ifstream tableInput;
     ui->date->setDateTime(QDateTime::currentDateTime());
-    //sprintf(fileName,"snipeStudio_%i.%i.csv",ui->date->date().month(),ui->date->date().year());
     QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year())).arg(data->getPath());
     qDebug() << fileNameQ;
     QFile file(fileNameQ);
@@ -77,7 +75,7 @@ Widget::Widget(QWidget *parent) :
         file.close();
     }
     ui->balance->setNum(balance);
-    this->setWindowTitle("Snipe Studio Budget Manager");
+    this->setWindowTitle(tr("Snipe Studio Budget Manager"));
     ui->date->setDateTime(QDateTime::currentDateTime());
     connect(ui->about,SIGNAL(clicked()),this,SLOT(help()));
     connect(ui->confirm,SIGNAL(clicked()),this,SLOT(addOperation()));
@@ -95,7 +93,7 @@ Widget::~Widget()
 
 void Widget::closeEvent(QCloseEvent*)
 {
-    dataManager* data=new dataManager(this);
+    dataManager* data=new dataManager();
     QString path=data->getPath()+"bal.ssff";
     QFile file_bal(path);
     QTextStream out_bal(&file_bal);
@@ -130,8 +128,8 @@ void Widget::closeEvent(QCloseEvent*)
 void Widget::help()
 {
     QMessageBox* a=new QMessageBox(this);
-    a->setText(tr("Snipe Studio Budget Manager v.%1\nUsing QT5 in Windows\n(CopyLeft)2010-2014").arg(this->version));
-    a->setWindowTitle(QString::fromStdString("About SSBM"));
+    a->setText(tr("Snipe Studio Budget Manager v.%1\nUsing QT5 in Ubuntu Linux\n(CopyLeft)2010-2014").arg(this->version));
+    a->setWindowTitle(tr("About SSBM"));
     connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
     a->show();
 }
@@ -140,7 +138,7 @@ void Widget::addOperation()
 {
     QString commentText=ui->comment->text();
     if(commentText.isEmpty())
-        commentText="Default";
+        commentText=tr("Default");
     QString typeText="";
     QString data=ui->date->text();
     int count=ui->tableWidget->rowCount()+1;
@@ -178,7 +176,7 @@ void Widget::addOperation()
 
 void Widget::save()
 {
-    dataManager* data=new dataManager(this);
+    dataManager* data=new dataManager();
 
     QString path=data->getPath()+"bal.ssff";
     QFile file_bal(path);
@@ -213,7 +211,7 @@ void Widget::load()
 {
     {
         int rowCount=0;
-        dataManager* data=new dataManager(this);
+        dataManager* data=new dataManager();
         QString path=data->getPath()+"bal.ssff";
         ui->currency->setText(data->GetCurrency());
         QFile file_bal(path);

@@ -86,9 +86,6 @@
           <property name="toolTip">
            <string>Comment to balance changing</string>
           </property>
-          <property name="toolTipDuration">
-           <number>-1</number>
-          </property>
          </widget>
         </item>
         <item>
