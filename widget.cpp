@@ -6,7 +6,7 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-    version=tr("14.04-beta(0.0.2.8)");
+    version=tr("14.05-beta(0.0.3.3)");
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
@@ -75,6 +75,10 @@ Widget::Widget(QWidget *parent) :
         ui->tableWidget->sortByColumn(0);
         file.close();
     }
+    monthSelected=ui->date->date().month();
+    yearSelected=ui->date->date().year();
+    ui->monthTitle->setText(ui->date->date().longMonthName(monthSelected));
+    ui->yearLabel->setNum(yearSelected);
     ui->balance->setNum(balance);
     this->setWindowTitle(tr("Snipe Studio Budget Manager"));
     ui->date->setDateTime(QDateTime::currentDateTime());
@@ -84,6 +88,8 @@ Widget::Widget(QWidget *parent) :
     connect(ui->settings,SIGNAL(clicked()),set,SLOT(show()));
     connect(ui->save,SIGNAL(clicked()),this,SLOT(save()));
     connect(ui->load,SIGNAL(clicked()),this,SLOT(load()));
+    connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
+    connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
 }
 
@@ -129,10 +135,8 @@ void Widget::closeEvent(QCloseEvent*)
 void Widget::help()
 {
     QMessageBox* a=new QMessageBox(this);
-    a->setText(tr("Snipe Studio Budget Manager v.%1\nUsing QT5 in Ubuntu Linux\n(CopyLeft)2010-2014").arg(this->version));
-    a->setWindowTitle(tr("About SSBM"));
-    connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
-    a->show();
+    a->about(this,tr("About SSBM"),tr("Snipe Studio Budget Manager v.%1\nUsing QT5 in Ubuntu Linux\n2010-2014(ɔ)").arg(this->version));
+    a->close();
 }
 
 void Widget::addOperation()
@@ -188,7 +192,7 @@ void Widget::save()
         out_bal<<ui->balance->text().toDouble();
     }
     file_bal.close();
-    QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year())).arg(data->getPath());
+    QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(monthSelected)).arg(QString::number(ui->date->date().year())).arg(data->getPath());
     QFile file(fileNameQ);
     QTextStream out(&file);
     out.setCodec("UTF-8");
@@ -215,6 +219,7 @@ void Widget::load()
         dataManager* data=new dataManager();
         QString path=data->getPath()+"bal.ssff";
         ui->currency->setText(data->GetCurrency());
+        ui->yearLabel->setNum(yearSelected);
         QFile file_bal(path);
         QTextStream in_bal(&file_bal);
         in_bal.setCodec("UTF-8");
@@ -234,14 +239,16 @@ void Widget::load()
         }
         ui->balance->setNum(balance);
         ui->date->setDateTime(QDateTime::currentDateTime());
-        QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year())).arg(data->getPath());
+        QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(monthSelected)).arg(QString::number(yearSelected)).arg(data->getPath());
         qDebug() << fileNameQ;
         QFile file(fileNameQ);
+        ui->tableWidget->setRowCount(0);
         QString dataTe,commentTe,typeTe,summTe,balanceTe;
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             QTextStream in(&file);
             in.setCodec(QTextCodec::codecForName("UTF-8"));
+
             QString line = in.readLine();
             QStringList result;
             while (!line.isNull())
@@ -254,6 +261,7 @@ void Widget::load()
                 summTe=result.at(4);
                 balanceTe=result.at(5);
                 line = in.readLine();
+
                 if(!dataTe.isEmpty())
                 {
                     rowCount++;
@@ -278,4 +286,28 @@ void Widget::load()
         ui->currency->setText(data->GetCurrency());
         delete data;
     }
+}
+void Widget::NextMonth()
+{
+  monthSelected++;
+  if(monthSelected>12)
+    {
+      monthSelected=1;
+      yearSelected++;
+    }
+  ui->monthTitle->setText(ui->date->date().longMonthName(monthSelected));
+  qDebug()<<monthSelected<<" "<<yearSelected;
+  this->load();
+}
+void Widget::PrevMonth()
+{
+  monthSelected--;
+  if(monthSelected<1)
+    {
+      monthSelected=12;
+      yearSelected--;
+    }
+  ui->monthTitle->setText(ui->date->date().longMonthName(monthSelected));
+  qDebug()<<monthSelected<<" "<<yearSelected;
+  this->load();
 }

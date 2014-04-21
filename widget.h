@@ -25,12 +25,16 @@ private:
     QString tmp;
     QString version;
     settings* set;
+    short monthSelected;
+    short yearSelected;
 public slots:
     void closeEvent(QCloseEvent*);
     void help();
     void addOperation();
     void save();
     void load();
+    void NextMonth();
+    void PrevMonth();
 };
 
 #endif // WIDGET_H
