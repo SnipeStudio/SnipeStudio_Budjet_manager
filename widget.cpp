@@ -155,9 +155,6 @@ void Widget::addOperation()
         if((ui->sum->text().at(i)=='.')||(ui->sum->text().at(i)==','))
           {
            ui->sum->setText(ui->sum->text().replace(i,1,delimiter));
-           QMessageBox* a=new QMessageBox(this);
-           a->setText(ui->sum->text());
-           a->show();
            }
         }
       }
