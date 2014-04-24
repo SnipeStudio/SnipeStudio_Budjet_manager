@@ -142,6 +142,32 @@ void Widget::help()
 void Widget::addOperation()
 {
     QString commentText=ui->comment->text();
+    const QChar delimiter=(uchar)'.';
+    bool summDigits=true;
+    if(!ui->sum->text().isEmpty())
+      {
+      for(int i=0;i<ui->sum->text().length();i++)
+      {
+        if(!ui->sum->text().at(i).isDigit()&&!(ui->sum->text().at(i)=='.')&&!(ui->sum->text().at(i)==','))
+          {
+           summDigits=false;
+           }
+        if((ui->sum->text().at(i)=='.')||(ui->sum->text().at(i)==','))
+          {
+           ui->sum->setText(ui->sum->text().replace(i,1,delimiter));
+           QMessageBox* a=new QMessageBox(this);
+           a->setText(ui->sum->text());
+           a->show();
+           }
+        }
+      }
+    if((commentText.isEmpty()&&ui->sum->text().isEmpty())||!summDigits)
+      {
+        QMessageBox* a=new QMessageBox(this);
+        a->setText("Invalid summ value");
+        a->show();
+        return;
+      }
     if(commentText.isEmpty())
         commentText=tr("Default");
     QString typeText="";
@@ -175,6 +201,8 @@ void Widget::addOperation()
         ui->tableWidget->setItem(count-1,3,summT);
         ui->tableWidget->setItem(count-1,4,ballT);
         ui->tableWidget->sortByColumn(0);
+        ui->comment->clear();
+        ui->sum->clear();
 
     }
 }
