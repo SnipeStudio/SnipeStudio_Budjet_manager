@@ -96,12 +96,18 @@
           <property name="toolTip">
            <string>Comment to balance changing</string>
           </property>
+          <property name="placeholderText">
+           <string>Comment</string>
+          </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="sum">
           <property name="toolTip">
            <string>summ of changing</string>
+          </property>
+          <property name="placeholderText">
+           <string>Summ</string>
           </property>
          </widget>
         </item>
