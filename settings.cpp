@@ -32,7 +32,10 @@ settings::settings(Widget baseWindow) :
     connect(clear,SIGNAL(clicked()),this,SLOT(cleanData()));
     connect(ok,SIGNAL(clicked()),this,SLOT(close()));
     connect(ok,SIGNAL(clicked()),this,SLOT(okSlot()));
+<<<<<<< HEAD
+=======
     connect(ok,SIGNAL(clicked()),baseWindow,SLOT(load));
+>>>>>>> origin/linux_maste
     delete data;
 }
 
@@ -40,6 +43,12 @@ void settings::okSlot()
 {
   QMessageBox* a=new QMessageBox(this);
    dataManager* data=new dataManager();
+<<<<<<< HEAD
+   data->setPath(DataPathLine->text());
+   data->setCurrency(CurrencyLine->text());
+   delete data;
+   QMessageBox* a=new QMessageBox(this);
+=======
    if(DataPathLine->text()!=data->getPath())
      {
        data->setPath(DataPathLine->text());
@@ -48,6 +57,7 @@ void settings::okSlot()
 
    data->setCurrency(CurrencyLine->text());
    delete data;
+>>>>>>> origin/linux_maste
    a->setText(tr("Your settings saved. \n Visual changes will be applied after program restart or press load"));
    a->setWindowTitle(tr("Data saved"));
    connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
@@ -69,6 +79,10 @@ void settings::cleanData()
 
 void settings::cleanDataOk()
 {
+<<<<<<< HEAD
+  qDebug()<<"Accepted";
+=======
+>>>>>>> origin/linux_maste
   dataManager* data=new dataManager();
   if(!data->getPath().isEmpty())
   {
