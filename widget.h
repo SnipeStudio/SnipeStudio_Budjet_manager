@@ -4,10 +4,11 @@
 #include <QWidget>
 #include <QMenu>
 #include <QAction>
-
 #include <QTableWidgetItem>
-#include "settings.h"
 #include <fstream>
+#ifndef SETTINGS_H
+#include "settings.h"
+#endif
 namespace Ui {
 class Widget;
 }
@@ -35,6 +36,7 @@ public slots:
     void load();
     void NextMonth();
     void PrevMonth();
+    void showSettings();
 };
 
 #endif // WIDGET_H

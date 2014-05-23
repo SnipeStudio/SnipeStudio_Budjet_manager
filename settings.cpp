@@ -1,7 +1,7 @@
 #include "settings.h"
 
-settings::settings(QWidget *parent) :
-    QWidget(parent)
+settings::settings(Widget baseWindow) :
+    QWidget()
 {
     dataManager* data=new dataManager();
     params=new QVBoxLayout();
@@ -32,16 +32,22 @@ settings::settings(QWidget *parent) :
     connect(clear,SIGNAL(clicked()),this,SLOT(cleanData()));
     connect(ok,SIGNAL(clicked()),this,SLOT(close()));
     connect(ok,SIGNAL(clicked()),this,SLOT(okSlot()));
+    connect(ok,SIGNAL(clicked()),baseWindow,SLOT(load));
     delete data;
 }
 
 void settings::okSlot()
 {
+  QMessageBox* a=new QMessageBox(this);
    dataManager* data=new dataManager();
-   data->setPath(DataPathLine->text());
+   if(DataPathLine->text()!=data->getPath())
+     {
+       data->setPath(DataPathLine->text());
+       connect(a,SIGNAL(accepted()),
+     }
+
    data->setCurrency(CurrencyLine->text());
    delete data;
-   QMessageBox* a=new QMessageBox(this);
    a->setText(tr("Your settings saved. \n Visual changes will be applied after program restart or press load"));
    a->setWindowTitle(tr("Data saved"));
    connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
@@ -63,7 +69,6 @@ void settings::cleanData()
 
 void settings::cleanDataOk()
 {
-  qDebug()<<"Accepted";
   dataManager* data=new dataManager();
   if(!data->getPath().isEmpty())
   {

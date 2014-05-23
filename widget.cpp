@@ -84,8 +84,7 @@ Widget::Widget(QWidget *parent) :
     ui->date->setDateTime(QDateTime::currentDateTime());
     connect(ui->about,SIGNAL(clicked()),this,SLOT(help()));
     connect(ui->confirm,SIGNAL(clicked()),this,SLOT(addOperation()));
-    set=new settings();
-    connect(ui->settings,SIGNAL(clicked()),set,SLOT(show()));
+    connect(ui->settings,SIGNAL(clicked()),this,SLOT(showSettings()));
     connect(ui->save,SIGNAL(clicked()),this,SLOT(save()));
     connect(ui->load,SIGNAL(clicked()),this,SLOT(load()));
     connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
@@ -335,4 +334,10 @@ void Widget::PrevMonth()
   ui->monthTitle->setText(ui->date->date().longMonthName(monthSelected));
   qDebug()<<monthSelected<<" "<<yearSelected;
   this->load();
+}
+
+void Widget::showSettings()
+{
+  set=new settings();
+  set->show();
 }
