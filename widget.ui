@@ -176,8 +176,6 @@
          </widget>
         </item>
         <item>
-<<<<<<< HEAD
-=======
          <widget class="QPushButton" name="PreviousMonth">
           <property name="maximumSize">
            <size>
@@ -218,7 +216,6 @@
          </widget>
         </item>
         <item>
->>>>>>> origin/linux_maste
          <spacer name="horizontalSpacer_2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>

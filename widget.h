@@ -4,10 +4,6 @@
 #include <QWidget>
 #include <QMenu>
 #include <QAction>
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/linux_maste
 #include <QTableWidgetItem>
 #include <fstream>
 #ifndef SETTINGS_H
@@ -38,12 +34,9 @@ public slots:
     void addOperation();
     void save();
     void load();
-<<<<<<< HEAD
-=======
     void NextMonth();
     void PrevMonth();
     void showSettings();
->>>>>>> origin/linux_maste
 };
 
 #endif // WIDGET_H

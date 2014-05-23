@@ -1,15 +1,12 @@
 #include "widget.h"
+#include "ui_widget.h"
 
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-<<<<<<< HEAD
-    version=tr("14.04-beta(0.0.2.8)");
-=======
     version=tr("14.05-beta(0.0.3.3)");
->>>>>>> origin/linux_maste
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
@@ -90,11 +87,8 @@ Widget::Widget(QWidget *parent) :
     connect(ui->settings,SIGNAL(clicked()),this,SLOT(showSettings()));
     connect(ui->save,SIGNAL(clicked()),this,SLOT(save()));
     connect(ui->load,SIGNAL(clicked()),this,SLOT(load()));
-<<<<<<< HEAD
-=======
     connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
->>>>>>> origin/linux_maste
     ui->profit->setChecked(true);
 }
 
@@ -140,15 +134,8 @@ void Widget::closeEvent(QCloseEvent*)
 void Widget::help()
 {
     QMessageBox* a=new QMessageBox(this);
-<<<<<<< HEAD
-    a->setText(tr("Snipe Studio Budget Manager v.%1\nUsing QT5 in Ubuntu Linux\n(CopyLeft)2010-2014").arg(this->version));
-    a->setWindowTitle(tr("About SSBM"));
-    connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
-    a->show();
-=======
     a->about(this,tr("About SSBM"),tr("Snipe Studio Budget Manager v.%1\nUsing QT5 in Ubuntu Linux\n2010-2014(ɔ)").arg(this->version));
     a->close();
->>>>>>> origin/linux_maste
 }
 
 void Widget::addOperation()
@@ -256,10 +243,7 @@ void Widget::load()
         dataManager* data=new dataManager();
         QString path=data->getPath()+"bal.ssff";
         ui->currency->setText(data->GetCurrency());
-<<<<<<< HEAD
-=======
         ui->yearLabel->setNum(yearSelected);
->>>>>>> origin/linux_maste
         QFile file_bal(path);
         QTextStream in_bal(&file_bal);
         in_bal.setCodec("UTF-8");
@@ -270,37 +254,6 @@ void Widget::load()
             QString line = in_bal.readLine();
             qDebug()<<line;
             balance=line.toDouble();
-<<<<<<< HEAD
-
-            file_bal.close();
-        }
-        else
-        {
-            balance=0;
-        }
-        ui->balance->setNum(balance);
-        ui->date->setDateTime(QDateTime::currentDateTime());
-        QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year())).arg(data->getPath());
-        qDebug() << fileNameQ;
-        QFile file(fileNameQ);
-        QString dataTe,commentTe,typeTe,summTe,balanceTe;
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            QTextStream in(&file);
-            in.setCodec(QTextCodec::codecForName("UTF-8"));
-            QString line = in.readLine();
-            QStringList result;
-            while (!line.isNull())
-            {
-                line.remove(QRegExp("//[\\W\\w]{0,}"));
-                result.append(line.split(QString(';')));
-                dataTe=result.at(1);
-                commentTe=result.at(2);
-                typeTe=result.at(3);
-                summTe=result.at(4);
-                balanceTe=result.at(5);
-                line = in.readLine();
-=======
 
             file_bal.close();
         }
@@ -333,7 +286,6 @@ void Widget::load()
                 balanceTe=result.at(5);
                 line = in.readLine();
 
->>>>>>> origin/linux_maste
                 if(!dataTe.isEmpty())
                 {
                     rowCount++;
@@ -359,8 +311,6 @@ void Widget::load()
         delete data;
     }
 }
-<<<<<<< HEAD
-=======
 void Widget::NextMonth()
 {
   monthSelected++;
@@ -391,4 +341,3 @@ void Widget::showSettings()
   set=new settings();
   set->show();
 }
->>>>>>> origin/linux_maste
