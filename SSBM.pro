@@ -24,3 +24,7 @@ FORMS    += widget.ui
 
 RESOURCES += icons.qrc
 RC_FILE = icon.rc
+
+TRANSLATIONS = spreadsheet_de.ts \
+               spreadsheet_en.ts \
+               spreadsheet_ru.ts

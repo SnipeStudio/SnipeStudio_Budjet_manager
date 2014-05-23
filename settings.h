@@ -7,13 +7,20 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QPushButton>
+<<<<<<< HEAD
 #include "ui_widget.h"
 
 class settings : public QWidget
+=======
+#ifdef WIDGET_H
+#include "widget.h"
+#endif
+class settings:public QWidget
+>>>>>>> origin/linux_maste
 {
     Q_OBJECT
 public:
-    settings(QWidget *parent = 0);
+    settings(Widget::Widget baseWindow);
 private:
     QVBoxLayout* params;
     QHBoxLayout* element_data;

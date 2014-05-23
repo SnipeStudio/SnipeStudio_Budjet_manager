@@ -4,10 +4,15 @@
 #include <QWidget>
 #include <QMenu>
 #include <QAction>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/linux_maste
 #include <QTableWidgetItem>
-#include "settings.h"
 #include <fstream>
+#ifndef SETTINGS_H
+#include "settings.h"
+#endif
 namespace Ui {
 class Widget;
 }
@@ -25,12 +30,20 @@ private:
     QString tmp;
     QString version;
     settings* set;
+    short monthSelected;
+    short yearSelected;
 public slots:
     void closeEvent(QCloseEvent*);
     void help();
     void addOperation();
     void save();
     void load();
+<<<<<<< HEAD
+=======
+    void NextMonth();
+    void PrevMonth();
+    void showSettings();
+>>>>>>> origin/linux_maste
 };
 
 #endif // WIDGET_H
