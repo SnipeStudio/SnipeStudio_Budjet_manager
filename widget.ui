@@ -96,12 +96,21 @@
           <property name="toolTip">
            <string>Comment to balance changing</string>
           </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>Comment for entry</string>
+          </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="sum">
           <property name="toolTip">
            <string>summ of changing</string>
+          </property>
+          <property name="placeholderText">
+           <string>Summ </string>
           </property>
          </widget>
         </item>
@@ -176,8 +185,6 @@
          </widget>
         </item>
         <item>
-<<<<<<< HEAD
-=======
          <widget class="QPushButton" name="PreviousMonth">
           <property name="maximumSize">
            <size>
@@ -218,7 +225,6 @@
          </widget>
         </item>
         <item>
->>>>>>> origin/linux_maste
          <spacer name="horizontalSpacer_2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
