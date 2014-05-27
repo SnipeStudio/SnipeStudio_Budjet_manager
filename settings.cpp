@@ -1,6 +1,6 @@
 #include "widget.h"
 
-settings::settings() :
+settings::settings(Widget* baseWindow) :
     QWidget()
 {
     dataManager* data=new dataManager();
@@ -32,9 +32,10 @@ settings::settings() :
     connect(clear,SIGNAL(clicked()),this,SLOT(cleanData()));
     connect(ok,SIGNAL(clicked()),this,SLOT(close()));
     connect(ok,SIGNAL(clicked()),this,SLOT(okSlot()));
-    //connect(ok,SIGNAL(clicked()),baseWindow,SLOT(load));
+    connect(this,SIGNAL(destroyed()),baseWindow,SLOT(load()));
     delete data;
 }
+
 
 void settings::okSlot()
 {
@@ -43,7 +44,6 @@ void settings::okSlot()
    if(DataPathLine->text()!=data->getPath())
      {
        data->setPath(DataPathLine->text());
-       //connect(a,SIGNAL(accepted()),
      }
 
    data->setCurrency(CurrencyLine->text());
@@ -53,6 +53,7 @@ void settings::okSlot()
    connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
    a->show();
    close();
+
 }
 
 void settings::cleanData()

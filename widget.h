@@ -8,6 +8,7 @@ class settings;
 #include <QMenu>
 #include <QAction>
 #include <QTableWidgetItem>
+#include <QDialogButtonBox>
 #include <fstream>
 namespace Ui {
 class Widget;
@@ -28,6 +29,7 @@ private:
     settings* set;
     short monthSelected;
     short yearSelected;
+    bool fLoad;
 public slots:
     void closeEvent(QCloseEvent*);
     void help();
@@ -37,6 +39,7 @@ public slots:
     void NextMonth();
     void PrevMonth();
     void showSettings();
+    void updLoad(bool);
 };
 
 #endif // WIDGET_H

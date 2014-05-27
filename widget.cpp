@@ -6,7 +6,8 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-    version=tr("14.05-beta(0.0.3.3)");
+    fLoad=false;
+    version=tr("14.06-beta(0.0.3.5)");
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
@@ -90,6 +91,7 @@ Widget::Widget(QWidget *parent) :
     connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
+    set=new settings(this);
 }
 
 Widget::~Widget()
@@ -99,6 +101,7 @@ Widget::~Widget()
 
 void Widget::closeEvent(QCloseEvent*)
 {
+    set->window()->close();
     dataManager* data=new dataManager();
     QString path=data->getPath()+"bal.ssff";
     QFile file_bal(path);
@@ -126,7 +129,8 @@ void Widget::closeEvent(QCloseEvent*)
                  <<"\n";
         }
     }
-    set->close();
+    //delete set;
+
     file.close();
     close();
 }
@@ -220,10 +224,12 @@ void Widget::save()
     QFile file(fileNameQ);
     QTextStream out(&file);
     out.setCodec("UTF-8");
+    ulong count=0;
     if(file.open(QIODevice::WriteOnly))
     {
         for(int i=0;i<ui->tableWidget->rowCount();i++)
         {
+            count++;
             out<<i+1
                       <<";"<<ui->tableWidget->item(i,0)->text()
                      <<";"<<ui->tableWidget->item(i,1)->text()
@@ -234,11 +240,33 @@ void Widget::save()
         }
     }
     file.close();
+    QMessageBox* a=new QMessageBox(this);
+    if(count!=0)
+      {
+        a->setText("All your data are saved");
+      }
+    else
+      {
+        a->setText("Nothing to be saved");
+      }
+    a->show();
 }
 
 void Widget::load()
 {
     {
+    fLoad=false;
+    QPushButton* ok=new QPushButton(tr("&ok"));
+    QPushButton* cancel=new QPushButton(tr("&cancel"));
+    QMessageBox* load=new QMessageBox();
+    load->setText(tr("Are you sure to force load. Data may be lost"));
+    load->addButton(ok,QMessageBox::AcceptRole);
+    load->addButton(cancel,QMessageBox::RejectRole);
+    connect(load,SIGNAL(accepted()),this,SLOT(updLoad(true)));
+    connect(load,SIGNAL(rejected()),this,SLOT(updLoad(false)));
+    load->show();
+    if(fLoad==true)
+      {
         int rowCount=0;
         dataManager* data=new dataManager();
         QString path=data->getPath()+"bal.ssff";
@@ -309,8 +337,10 @@ void Widget::load()
         ui->balance->setNum(balance);
         ui->currency->setText(data->GetCurrency());
         delete data;
+      }
     }
 }
+
 void Widget::NextMonth()
 {
   monthSelected++;
@@ -338,6 +368,9 @@ void Widget::PrevMonth()
 
 void Widget::showSettings()
 {
-  set=new settings();
   set->show();
+}
+void Widget::updLoad(bool load)
+{
+  fLoad=load;
 }

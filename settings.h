@@ -8,11 +8,12 @@
 #include <QLabel>
 #include <QPushButton>
 class settings;
+class Widget;
 class settings:public QWidget
 {
     Q_OBJECT
 public:
-    settings();//(Widget::Widget baseWindow);
+    settings(Widget*);//* baseWindow);
 private:
     QVBoxLayout* params;
     QHBoxLayout* element_data;
