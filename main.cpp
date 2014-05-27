@@ -1,10 +1,4 @@
-#ifndef
 #include "widget.h"
-#endif
-#ifndef SETTINGS_H
-#endif
-#ifndef
-#endif
 #include <QApplication>
 
 int main(int argc, char *argv[])

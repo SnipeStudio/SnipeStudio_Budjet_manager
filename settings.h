@@ -1,20 +1,18 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
-
 #include "datamanager/datamanager.h"
+#include "widget.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLineEdit>
 #include <QLabel>
 #include <QPushButton>
-#ifdef WIDGET_H
-#include "widget.h"
-#endif
+class settings;
 class settings:public QWidget
 {
     Q_OBJECT
 public:
-    settings(Widget::Widget baseWindow);
+    settings();//(Widget::Widget baseWindow);
 private:
     QVBoxLayout* params;
     QHBoxLayout* element_data;

@@ -1,14 +1,14 @@
 #ifndef WIDGET_H
 #define WIDGET_H
-
+#include "settings.h"
+#ifdef SETTINGS_H
+class settings;
+#endif
 #include <QWidget>
 #include <QMenu>
 #include <QAction>
 #include <QTableWidgetItem>
 #include <fstream>
-#ifndef SETTINGS_H
-#include "settings.h"
-#endif
 namespace Ui {
 class Widget;
 }

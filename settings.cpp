@@ -1,6 +1,6 @@
-#include "settings.h"
+#include "widget.h"
 
-settings::settings(Widget baseWindow) :
+settings::settings() :
     QWidget()
 {
     dataManager* data=new dataManager();
@@ -32,7 +32,7 @@ settings::settings(Widget baseWindow) :
     connect(clear,SIGNAL(clicked()),this,SLOT(cleanData()));
     connect(ok,SIGNAL(clicked()),this,SLOT(close()));
     connect(ok,SIGNAL(clicked()),this,SLOT(okSlot()));
-    connect(ok,SIGNAL(clicked()),baseWindow,SLOT(load));
+    //connect(ok,SIGNAL(clicked()),baseWindow,SLOT(load));
     delete data;
 }
 
@@ -43,7 +43,7 @@ void settings::okSlot()
    if(DataPathLine->text()!=data->getPath())
      {
        data->setPath(DataPathLine->text());
-       connect(a,SIGNAL(accepted()),
+       //connect(a,SIGNAL(accepted()),
      }
 
    data->setCurrency(CurrencyLine->text());
