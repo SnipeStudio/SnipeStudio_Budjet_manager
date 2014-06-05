@@ -30,6 +30,7 @@ private:
     short monthSelected;
     short yearSelected;
     bool fLoad;
+    unsigned long idLoaded;
 public slots:
     void closeEvent(QCloseEvent*);
     void help();

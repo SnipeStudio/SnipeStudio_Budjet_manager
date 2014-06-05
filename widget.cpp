@@ -7,7 +7,8 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     fLoad=false;
-    version=tr("14.06-beta(0.0.3.5)");
+    idLoaded=0;
+    version=tr("14.06-beta(0.0.3.9)");
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
@@ -48,26 +49,33 @@ Widget::Widget(QWidget *parent) :
         {
             line.remove(QRegExp("//[\\W\\w]{0,}"));
             result.append(line.split(QString(';')));
+            qDebug()<<result.count();
+            if(result.count()==6)
+              {
+            idLoaded=result.at(0).toLong();
             dataTe=result.at(1);
             commentTe=result.at(2);
             typeTe=result.at(3);
             summTe=result.at(4);
             balanceTe=result.at(5);
+              }
             line = in.readLine();
             if(!dataTe.isEmpty())
             {
                 rowCount++;
                 ui->tableWidget->setRowCount(rowCount);
+                QTableWidgetItem* idT=new QTableWidgetItem(tr("%1").arg(idLoaded));
                 QTableWidgetItem* dataT=new QTableWidgetItem(tr("%1").arg(dataTe));
                 QTableWidgetItem* commentT=new QTableWidgetItem(tr("%1").arg(commentTe));
                 QTableWidgetItem* typeT=new QTableWidgetItem(tr("%1").arg(typeTe));
                 QTableWidgetItem* summT=new QTableWidgetItem(tr("%1").arg(summTe));
                 QTableWidgetItem* ballT=new QTableWidgetItem(tr("%1").arg(balanceTe));
-                ui->tableWidget->setItem(rowCount-1,0,dataT);
-                ui->tableWidget->setItem(rowCount-1,1,commentT);
-                ui->tableWidget->setItem(rowCount-1,2,typeT);
-                ui->tableWidget->setItem(rowCount-1,3,summT);
-                ui->tableWidget->setItem(rowCount-1,4,ballT);
+                ui->tableWidget->setItem(rowCount-1,0,idT);
+                ui->tableWidget->setItem(rowCount-1,1,dataT);
+                ui->tableWidget->setItem(rowCount-1,2,commentT);
+                ui->tableWidget->setItem(rowCount-1,3,typeT);
+                ui->tableWidget->setItem(rowCount-1,4,summT);
+                ui->tableWidget->setItem(rowCount-1,5,ballT);
                 result.clear();
 
             }
@@ -91,6 +99,7 @@ Widget::Widget(QWidget *parent) :
     connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
+    ui->tableWidget->horizontalHeader()->resizeSection(0,40);
     set=new settings(this);
 }
 
@@ -101,8 +110,11 @@ Widget::~Widget()
 
 void Widget::closeEvent(QCloseEvent*)
 {
+    set->window()->show();
     set->window()->close();
+
     dataManager* data=new dataManager();
+
     QString path=data->getPath()+"bal.ssff";
     QFile file_bal(path);
     QTextStream out_bal(&file_bal);
@@ -130,7 +142,8 @@ void Widget::closeEvent(QCloseEvent*)
         }
     }
     //delete set;
-
+    set->close();
+    delete data;
     file.close();
     close();
 }
@@ -189,17 +202,20 @@ void Widget::addOperation()
             typeText="-";
             bal=bal-summ;
         }
+        idLoaded++;
+        QTableWidgetItem* idT=new QTableWidgetItem(tr("%1").arg(idLoaded));
         QTableWidgetItem* dataT=new QTableWidgetItem(tr("%1").arg(data));
         QTableWidgetItem* commentT=new QTableWidgetItem(tr("%1").arg(commentText));
         QTableWidgetItem* typeT=new QTableWidgetItem(tr("%1").arg(typeText));
         QTableWidgetItem* summT=new QTableWidgetItem(tr("%1").arg(summ));
         QTableWidgetItem* ballT=new QTableWidgetItem(tr("%1").arg(bal));
         ui->tableWidget->setRowCount(count);
-        ui->tableWidget->setItem(count-1,0,dataT);
-        ui->tableWidget->setItem(count-1,1,commentT);
-        ui->tableWidget->setItem(count-1,2,typeT);
-        ui->tableWidget->setItem(count-1,3,summT);
-        ui->tableWidget->setItem(count-1,4,ballT);
+        ui->tableWidget->setItem(count-1,0,idT);
+        ui->tableWidget->setItem(count-1,1,dataT);
+        ui->tableWidget->setItem(count-1,2,commentT);
+        ui->tableWidget->setItem(count-1,3,typeT);
+        ui->tableWidget->setItem(count-1,4,summT);
+        ui->tableWidget->setItem(count-1,5,ballT);
         ui->tableWidget->sortByColumn(0);
         ui->comment->clear();
         ui->sum->clear();
@@ -230,13 +246,13 @@ void Widget::save()
         for(int i=0;i<ui->tableWidget->rowCount();i++)
         {
             count++;
-            out<<i+1
-                      <<";"<<ui->tableWidget->item(i,0)->text()
-                     <<";"<<ui->tableWidget->item(i,1)->text()
-                    <<";"<<ui->tableWidget->item(i,2)->text()
-                   <<";"<<ui->tableWidget->item(i,3)->text()
-                  <<";"<<ui->tableWidget->item(i,4)->text()
-                 <<"\n";
+            out<<ui->tableWidget->item(i,0)->text()
+                      <<";"<<ui->tableWidget->item(i,1)->text()
+                     <<";"<<ui->tableWidget->item(i,2)->text()
+                    <<";"<<ui->tableWidget->item(i,3)->text()
+                   <<";"<<ui->tableWidget->item(i,4)->text()
+                  <<";"<<ui->tableWidget->item(i,5)->text()
+                 <<";\n";
         }
     }
     file.close();
@@ -295,7 +311,7 @@ void Widget::load()
         qDebug() << fileNameQ;
         QFile file(fileNameQ);
         ui->tableWidget->setRowCount(0);
-        QString dataTe,commentTe,typeTe,summTe,balanceTe;
+        QString dataTe,commentTe,typeTe,summTe,balanceTe,idTe;
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             QTextStream in(&file);
@@ -303,31 +319,35 @@ void Widget::load()
 
             QString line = in.readLine();
             QStringList result;
+            idLoaded=0;
             while (!line.isNull())
             {
                 line.remove(QRegExp("//[\\W\\w]{0,}"));
                 result.append(line.split(QString(';')));
-                dataTe=result.at(1);
-                commentTe=result.at(2);
-                typeTe=result.at(3);
-                summTe=result.at(4);
-                balanceTe=result.at(5);
+                idLoaded=result.at(1).toLong();
+                dataTe=result.at(2);
+                commentTe=result.at(3);
+                typeTe=result.at(4);
+                summTe=result.at(5);
+                balanceTe=result.at(6);
                 line = in.readLine();
 
                 if(!dataTe.isEmpty())
                 {
                     rowCount++;
                     ui->tableWidget->setRowCount(rowCount);
+                    QTableWidgetItem* idT=new QTableWidgetItem(tr("%1").arg(idLoaded));
                     QTableWidgetItem* dataT=new QTableWidgetItem(tr("%1").arg(dataTe));
                     QTableWidgetItem* commentT=new QTableWidgetItem(tr("%1").arg(commentTe));
                     QTableWidgetItem* typeT=new QTableWidgetItem(tr("%1").arg(typeTe));
                     QTableWidgetItem* summT=new QTableWidgetItem(tr("%1").arg(summTe));
                     QTableWidgetItem* ballT=new QTableWidgetItem(tr("%1").arg(balanceTe));
-                    ui->tableWidget->setItem(rowCount-1,0,dataT);
-                    ui->tableWidget->setItem(rowCount-1,1,commentT);
-                    ui->tableWidget->setItem(rowCount-1,2,typeT);
-                    ui->tableWidget->setItem(rowCount-1,3,summT);
-                    ui->tableWidget->setItem(rowCount-1,4,ballT);
+                    ui->tableWidget->setItem(rowCount-1,0,idT);
+                    ui->tableWidget->setItem(rowCount-1,1,dataT);
+                    ui->tableWidget->setItem(rowCount-1,2,commentT);
+                    ui->tableWidget->setItem(rowCount-1,3,typeT);
+                    ui->tableWidget->setItem(rowCount-1,4,summT);
+                    ui->tableWidget->setItem(rowCount-1,5,ballT);
                     result.clear();
                 }
             }

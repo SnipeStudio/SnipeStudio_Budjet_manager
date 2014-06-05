@@ -14,9 +14,7 @@
 *.dll
 *.exe
 *.qm
-*pro.user*
-*pro.user
 debug/
 release/
 prj/
-*.user
+*.user*
