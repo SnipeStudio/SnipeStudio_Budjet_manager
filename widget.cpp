@@ -8,7 +8,7 @@ Widget::Widget(QWidget *parent) :
 {
     fLoad=false;
     idLoaded=0;
-    version=tr("14.06-beta(0.0.3.9)");
+    version=tr("14.06-pre(0.0.3.9)");
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
