@@ -1,11 +1,9 @@
 #ifndef DATAMANAGER_H
 #define DATAMANAGER_H
 #include <QtCore/QFile>
-#include <QtCore/QTextStream>
-#include <QtCore/QStringList>
 #include <QTextCodec>
-#include <QDebug>
 #include <QMessageBox>
+#include <sqlman/sqlman.h>
 
 
 class dataManager : public QObject

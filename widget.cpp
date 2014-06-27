@@ -1,5 +1,5 @@
 #include "widget.h"
-#include "ui_widget.h"
+
 
 
 Widget::Widget(QWidget *parent) :
@@ -63,25 +63,11 @@ Widget::Widget(QWidget *parent) :
             if(!dataTe.isEmpty())
             {
                 rowCount++;
-                ui->tableWidget->setRowCount(rowCount);
-                QTableWidgetItem* idT=new QTableWidgetItem(tr("%1").arg(idLoaded));
-                QTableWidgetItem* dataT=new QTableWidgetItem(tr("%1").arg(dataTe));
-                QTableWidgetItem* commentT=new QTableWidgetItem(tr("%1").arg(commentTe));
-                QTableWidgetItem* typeT=new QTableWidgetItem(tr("%1").arg(typeTe));
-                QTableWidgetItem* summT=new QTableWidgetItem(tr("%1").arg(summTe));
-                QTableWidgetItem* ballT=new QTableWidgetItem(tr("%1").arg(balanceTe));
-                ui->tableWidget->setItem(rowCount-1,0,idT);
-                ui->tableWidget->setItem(rowCount-1,1,dataT);
-                ui->tableWidget->setItem(rowCount-1,2,commentT);
-                ui->tableWidget->setItem(rowCount-1,3,typeT);
-                ui->tableWidget->setItem(rowCount-1,4,summT);
-                ui->tableWidget->setItem(rowCount-1,5,ballT);
                 result.clear();
 
             }
 
         }
-        ui->tableWidget->sortByColumn(0);
         file.close();
     }
     monthSelected=ui->date->date().month();
@@ -99,8 +85,12 @@ Widget::Widget(QWidget *parent) :
     connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
-    ui->tableWidget->horizontalHeader()->resizeSection(0,40);
     set=new settings(this);
+    sqlMan* db=new sqlMan("ssbm.db");
+    //qDebug()<<db->model->database().databaseName();
+    //ui->view->setModel(model);
+    ui->view->show();
+
 }
 
 Widget::~Widget()
@@ -130,16 +120,6 @@ void Widget::closeEvent(QCloseEvent*)
     out.setCodec("UTF-8");
     if(file.open(QIODevice::WriteOnly))
     {
-        for(int i=0;i<ui->tableWidget->rowCount();i++)
-        {
-            out<<i+1
-                      <<";"<<ui->tableWidget->item(i,0)->text()
-                     <<";"<<ui->tableWidget->item(i,1)->text()
-                    <<";"<<ui->tableWidget->item(i,2)->text()
-                   <<";"<<ui->tableWidget->item(i,3)->text()
-                  <<";"<<ui->tableWidget->item(i,4)->text()
-                 <<"\n";
-        }
     }
     //delete set;
     set->close();
@@ -185,7 +165,6 @@ void Widget::addOperation()
         commentText=tr("Default");
     QString typeText="";
     QString data=ui->date->text();
-    int count=ui->tableWidget->rowCount()+1;
     double bal=ui->balance->text().toDouble();
     if(!ui->sum->text().isEmpty())
     {
@@ -203,22 +182,6 @@ void Widget::addOperation()
             bal=bal-summ;
         }
         idLoaded++;
-        QTableWidgetItem* idT=new QTableWidgetItem(tr("%1").arg(idLoaded));
-        QTableWidgetItem* dataT=new QTableWidgetItem(tr("%1").arg(data));
-        QTableWidgetItem* commentT=new QTableWidgetItem(tr("%1").arg(commentText));
-        QTableWidgetItem* typeT=new QTableWidgetItem(tr("%1").arg(typeText));
-        QTableWidgetItem* summT=new QTableWidgetItem(tr("%1").arg(summ));
-        QTableWidgetItem* ballT=new QTableWidgetItem(tr("%1").arg(bal));
-        ui->tableWidget->setRowCount(count);
-        ui->tableWidget->setItem(count-1,0,idT);
-        ui->tableWidget->setItem(count-1,1,dataT);
-        ui->tableWidget->setItem(count-1,2,commentT);
-        ui->tableWidget->setItem(count-1,3,typeT);
-        ui->tableWidget->setItem(count-1,4,summT);
-        ui->tableWidget->setItem(count-1,5,ballT);
-        ui->tableWidget->sortByColumn(0);
-        ui->comment->clear();
-        ui->sum->clear();
 
     }
 }
@@ -243,17 +206,6 @@ void Widget::save()
     ulong count=0;
     if(file.open(QIODevice::WriteOnly))
     {
-        for(int i=0;i<ui->tableWidget->rowCount();i++)
-        {
-            count++;
-            out<<ui->tableWidget->item(i,0)->text()
-                      <<";"<<ui->tableWidget->item(i,1)->text()
-                     <<";"<<ui->tableWidget->item(i,2)->text()
-                    <<";"<<ui->tableWidget->item(i,3)->text()
-                   <<";"<<ui->tableWidget->item(i,4)->text()
-                  <<";"<<ui->tableWidget->item(i,5)->text()
-                 <<";\n";
-        }
     }
     file.close();
     QMessageBox* a=new QMessageBox(this);
@@ -271,6 +223,7 @@ void Widget::save()
 void Widget::load()
 {
     {
+
     fLoad=false;
     QPushButton* ok=new QPushButton(tr("&ok"));
     QPushButton* cancel=new QPushButton(tr("&cancel"));
@@ -278,8 +231,8 @@ void Widget::load()
     load->setText(tr("Are you sure to force load. Data may be lost"));
     load->addButton(ok,QMessageBox::AcceptRole);
     load->addButton(cancel,QMessageBox::RejectRole);
-    connect(load,SIGNAL(accepted()),this,SLOT(updLoad(true)));
-    connect(load,SIGNAL(rejected()),this,SLOT(updLoad(false)));
+    connect(load,SIGNAL(accepted()),this,SLOT(updLoad(true);));
+    connect(load,SIGNAL(rejected()),this,SLOT(updLoad(false);));
     load->show();
     if(fLoad==true)
       {
@@ -310,50 +263,13 @@ void Widget::load()
         QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(monthSelected)).arg(QString::number(yearSelected)).arg(data->getPath());
         qDebug() << fileNameQ;
         QFile file(fileNameQ);
-        ui->tableWidget->setRowCount(0);
+
         QString dataTe,commentTe,typeTe,summTe,balanceTe,idTe;
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
-            QTextStream in(&file);
-            in.setCodec(QTextCodec::codecForName("UTF-8"));
-
-            QString line = in.readLine();
-            QStringList result;
-            idLoaded=0;
-            while (!line.isNull())
-            {
-                line.remove(QRegExp("//[\\W\\w]{0,}"));
-                result.append(line.split(QString(';')));
-                idLoaded=result.at(1).toLong();
-                dataTe=result.at(2);
-                commentTe=result.at(3);
-                typeTe=result.at(4);
-                summTe=result.at(5);
-                balanceTe=result.at(6);
-                line = in.readLine();
-
-                if(!dataTe.isEmpty())
-                {
-                    rowCount++;
-                    ui->tableWidget->setRowCount(rowCount);
-                    QTableWidgetItem* idT=new QTableWidgetItem(tr("%1").arg(idLoaded));
-                    QTableWidgetItem* dataT=new QTableWidgetItem(tr("%1").arg(dataTe));
-                    QTableWidgetItem* commentT=new QTableWidgetItem(tr("%1").arg(commentTe));
-                    QTableWidgetItem* typeT=new QTableWidgetItem(tr("%1").arg(typeTe));
-                    QTableWidgetItem* summT=new QTableWidgetItem(tr("%1").arg(summTe));
-                    QTableWidgetItem* ballT=new QTableWidgetItem(tr("%1").arg(balanceTe));
-                    ui->tableWidget->setItem(rowCount-1,0,idT);
-                    ui->tableWidget->setItem(rowCount-1,1,dataT);
-                    ui->tableWidget->setItem(rowCount-1,2,commentT);
-                    ui->tableWidget->setItem(rowCount-1,3,typeT);
-                    ui->tableWidget->setItem(rowCount-1,4,summT);
-                    ui->tableWidget->setItem(rowCount-1,5,ballT);
-                    result.clear();
-                }
-            }
-            ui->tableWidget->sortByColumn(0);
             file.close();
         }
+
         ui->balance->setNum(balance);
         ui->currency->setText(data->GetCurrency());
         delete data;
