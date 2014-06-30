@@ -6,9 +6,25 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
+   QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
+   sdb.setDatabaseName("ssbm.db");
+   QSqlTableModel* model;
+   if (!sdb.open()) {
+          qDebug()<<"ERROR OCCURED";
+          exit(-1);
+   }
+   else
+   {
+    QSqlQuery* query=new QSqlQuery(sdb);
+    query->exec("CREATE TABLE  IF NOT EXISTS \"operations\" (\"id\" INTEGER PRIMARY KEY  NOT NULL ,\"time\" DATETIME DEFAULT (CURRENT_TIMESTAMP) ,\"summ\" double NOT NULL  DEFAULT (null) ,\"comment\"  NOT NULL ,\"catid\" INTEGER DEFAULT (null) ,\"side\" BOOL DEFAULT (0) )");
+    model=new QSqlTableModel(NULL,sdb);
+    model->setTable("operations");
+    model->select();
+    model->setEditStrategy(QSqlTableModel::OnFieldChange);
+   }
     fLoad=false;
     idLoaded=0;
-    version=tr("14.06-pre(0.0.3.9)");
+    version=tr("14.06-pre(0.3.9.7)");
     ui->setupUi(this);
     int rowCount=0;
     std::ifstream balanceInput;
@@ -86,10 +102,13 @@ Widget::Widget(QWidget *parent) :
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
     set=new settings(this);
-    sqlMan* db=new sqlMan("ssbm.db");
     //qDebug()<<db->model->database().databaseName();
-    //ui->view->setModel(model);
+    qDebug()<<model->database().databaseName();
+    ui->view->setModel(model);
     ui->view->show();
+    ui->view->resizeColumnToContents(0);
+    ui->view->resizeColumnToContents(5);
+    ui->view->setColumnWidth(3,200);
 
 }
 
@@ -166,6 +185,7 @@ void Widget::addOperation()
     QString typeText="";
     QString data=ui->date->text();
     double bal=ui->balance->text().toDouble();
+
     if(!ui->sum->text().isEmpty())
     {
         double summ=ui->sum->text().toDouble();
