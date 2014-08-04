@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.1" language="ru_RU">
 <context>
     <name>Widget</name>
     <message>
@@ -81,7 +81,7 @@
     <message>
         <location filename="widget.ui" line="199"/>
         <source>Comment</source>
-        <translation></translation>
+        <translation>Коментарий</translation>
     </message>
     <message>
         <location filename="widget.ui" line="204"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="widget.ui" line="209"/>
         <source>summ</source>
-        <translation></translation>
+        <translation>Сумма операции</translation>
     </message>
     <message>
         <location filename="widget.ui" line="214"/>
@@ -130,7 +130,9 @@
         <source>Snipe Studio Budget Manager v.%1
 Using QT5 in Ubuntu Linux
 (CopyLeft)2010-2014</source>
-        <translation></translation>
+        <translation>Snipe Studio Budget Manager v.%1
+Using QT5
+(CopyLeft)2010-2014</translation>
     </message>
 </context>
 <context>

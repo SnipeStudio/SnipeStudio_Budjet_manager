@@ -4,6 +4,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    QTranslator translator;
+    translator.load("spreadsheet_"+QLocale::system().name());
+    qApp->installTranslator(&translator);
+
     a.setWindowIcon(QIcon(":/icon/ico.png"));
     a.setApplicationName("Snipe Studio Budget Manager");
     a.setApplicationVersion("14.06-pre(0.0.4)");

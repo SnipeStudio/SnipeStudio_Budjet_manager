@@ -12,12 +12,16 @@ class sqlMan
 {
 public:
     sqlMan(QString dbname);
-    void addOperation(double summ,QString comment,bool side);
+    void addOperation(sqlMan* db,double summ,QString comment,bool side);
     double getBalance();
-    QSqlTableModel &getModel();
-    QSqlQuery query;
+    double initBal;
+    QString databaseName;
+    QSqlTableModel *getModel();
+    QSqlQuery* query;
     QSqlTableModel* model;
     QSqlDatabase sdb;
+    void init();
+
 
 
 
