@@ -6,7 +6,7 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-   sqlMan* db=new sqlMan("ssbm.db");
+    sqlMan db;
     fLoad=false;
     idLoaded=0;
     version=tr("14.06-pre(0.3.9.7)");
@@ -19,7 +19,7 @@ Widget::Widget(QWidget *parent) :
     QFile file_bal(path);
     QTextStream in_bal(&file_bal);
     in_bal.setCodec("UTF-8");
-    ui->balance->setNum(db->getBalance());
+    ui->balance->setNum(db.getBalance());
     ui->date->setDateTime(QDateTime::currentDateTime());
     QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(ui->date->date().month())).arg(QString::number(ui->date->date().year())).arg(data->getPath());
     qDebug() << fileNameQ;
@@ -72,20 +72,18 @@ Widget::Widget(QWidget *parent) :
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
     set=new settings(this);
-    db->model=new QSqlTableModel(0,db->sdb);
-    db->model->setTable("operations");
+    db.model=new QSqlTableModel(0,db.sdb);
+    db.model->setTable("operations");
 
-    if(!(db->model->select()))
+    if(!(db.model->select()))
     {
         qDebug()<<"ERROR!";
     }
-    db->model->setEditStrategy(QSqlTableModel::OnFieldChange);
-    ui->view->setModel(db->model);
+    ui->view->setModel(db.model);
     ui->view->resizeColumnToContents(0);
     ui->view->resizeColumnToContents(5);
     ui->view->setColumnWidth(3,200);
     ui->view->hideColumn(0);
-   // ui->view->hideRow(0);
     ui->view->sortByColumn(0,Qt::DescendingOrder);
     ui->view->show();
 
@@ -180,9 +178,10 @@ void Widget::addOperation()
         {
             summ*=-1;
         }
-        qDebug()<<db->sdb.databaseName();
-        db->addOperation(db,summ,commentText,side);
-        ui->view->setModel(db->model);
+        db.sdb.setDatabaseName("ssbm.db");
+        qDebug()<<db.sdb.databaseName();
+        db.addOperation(&db,summ,commentText,side);
+        ui->view->setModel(db.model);
         ui->view->hideColumn(0);
         ui->view->resizeColumnToContents(0);
         ui->view->resizeColumnToContents(5);
@@ -190,7 +189,7 @@ void Widget::addOperation()
         //ui->view->hideRow(0);
         ui->view->sortByColumn(0,Qt::DescendingOrder);
         ui->view->show();
-        ui->balance->setNum(db->getBalance());
+        ui->balance->setNum(db.getBalance());
 
     }
 }
@@ -252,21 +251,7 @@ void Widget::load()
         QFile file_bal(path);
         QTextStream in_bal(&file_bal);
         in_bal.setCodec("UTF-8");
-        double balance;
-
-        if(file_bal.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            QString line = in_bal.readLine();
-            qDebug()<<line;
-            balance=line.toDouble();
-
-            file_bal.close();
-        }
-        else
-        {
-            balance=0;
-        }
-        db->getBalance();
+        double balance=db.getBalance();
         ui->balance->setNum(balance);
         ui->date->setDateTime(QDateTime::currentDateTime());
         QString fileNameQ=tr("%3snipeStudio_%1.%2.csv").arg(QString::number(monthSelected)).arg(QString::number(yearSelected)).arg(data->getPath());

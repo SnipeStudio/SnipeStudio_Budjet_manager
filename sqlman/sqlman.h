@@ -11,7 +11,7 @@ class sqlMan;
 class sqlMan
 {
 public:
-    sqlMan(QString dbname);
+    sqlMan();
     void addOperation(sqlMan* db,double summ,QString comment,bool side);
     double getBalance();
     double initBal;

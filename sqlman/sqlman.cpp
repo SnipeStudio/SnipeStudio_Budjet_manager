@@ -1,10 +1,10 @@
 #include "sqlman.h"
 
-sqlMan::sqlMan(QString dbname)
+sqlMan::sqlMan()
 {
-    QString databaseName=dbname;
+    QString databaseName="ssbm.db";
     QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
-    sdb.setDatabaseName(dbname);
+    sdb.setDatabaseName(databaseName);
     if (!sdb.open()) {
            qDebug()<<"ERROR OCCURED";
     }
@@ -34,13 +34,16 @@ void sqlMan::init()
 
 void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side)
 {
-    qDebug()<<db->sdb.databaseName();
-    //this->query=new QSqlQuery(this->sdb);
-    db->query->prepare("INSERT INTO operations (summ, comment, side) VALUES (:summ, :comment, :side)");
-         db->query->bindValue(":summ", summ);
-         db->query->bindValue(":comment", comment);
-         db->query->bindValue(":side", side);
-    if(db->query->exec())
+    if(!side)
+    {
+        summ*=-1;
+    }
+    this->query=new QSqlQuery(this->sdb);
+    this->query->prepare("INSERT INTO operations (summ, comment, side) VALUES (:summ, :comment, :side)");
+         this->query->bindValue(":summ", summ);
+         this->query->bindValue(":comment", comment);
+         this->query->bindValue(":side", side);
+    if(this->query->exec())
     {
         qDebug()<<"OK";
     }
