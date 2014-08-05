@@ -32,9 +32,7 @@ private:
     short yearSelected;
     bool fLoad;
     unsigned long idLoaded;
-    sqlMan* db;
-    QSqlDatabase sdb;
-    QSqlQuery* query;
+    sqlMan db;
 public slots:
     void updLoad(bool);
     void closeEvent(QCloseEvent*);
