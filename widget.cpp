@@ -66,8 +66,6 @@ Widget::Widget(QWidget *parent) :
     connect(ui->about,SIGNAL(clicked()),this,SLOT(help()));
     connect(ui->confirm,SIGNAL(clicked()),this,SLOT(addOperation()));
     connect(ui->settings,SIGNAL(clicked()),this,SLOT(showSettings()));
-    connect(ui->save,SIGNAL(clicked()),this,SLOT(save()));
-    connect(ui->load,SIGNAL(clicked()),this,SLOT(load()));
     connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
