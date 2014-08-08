@@ -33,31 +33,15 @@ Widget::Widget(QWidget *parent) :
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
     set=new settings(this);
-<<<<<<< HEAD
-    QSqlTableModel* model=db.getModel();
-    model->setTable("operations");
-    if(!(model->select()))
-    {
-        if (!db.dbIsOpen()) {
-               qDebug()<<"ERROR OCCURED";
-        }
-        else
-        {
-            db.init();
-        }
-=======
-    db.sdb.open();
-    db.model=new QSqlTableModel(0,db.sdb);
-    db.model->setTable("operations");
-
-    if(!(db.model->select()))
+	QSqlTableModel* model=db.getModel();
+	model->setTable("operations");
+    if(!db.dbIsOpen())
     {
         QMessageBox* a=new QMessageBox(this);
         a->about(this,tr("Error during accessing database"),tr("Can not access database"));
         a->show();
         exit(-1)
         qDebug()<<"ERROR!";
->>>>>>> 2c960d380d2b93a4173da806a30346556ce8a103
     }
     ui->view->setModel(model);
     ui->view->resizeColumnToContents(0);
