@@ -5,11 +5,13 @@
 class settings;
 #endif
 #include <QWidget>
+
 #include <QMenu>
 #include <QAction>
 #include <QDialogButtonBox>
 #include <fstream>
 #include <QTableView>
+#include "datamanager/datamanager.h"
 
 namespace Ui {
 class Widget;
@@ -38,7 +40,6 @@ public slots:
     void closeEvent(QCloseEvent*);
     void help();
     void addOperation();
-    void save();
     void load();
     void NextMonth();
     void PrevMonth();

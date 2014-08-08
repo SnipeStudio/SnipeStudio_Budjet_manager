@@ -9,26 +9,35 @@ settings::settings(Widget* baseWindow) :
     element_cur=new QHBoxLayout();
     element_clean=new QHBoxLayout();
     DataPath=new QLabel();
-    DataPath->setText("Data Path:");
+    DataPath->setText(tr("Data Path:"));
     DataPathLine=new QLineEdit();
-    Currency=new QLabel("Currency");
+    Currency=new QLabel(tr("Currency"));
     CurrencyLine=new QLineEdit();
-    clear=new QPushButton("Clean data");
+    Translation=new QLabel(tr("Translation"));
+    TranslationSelect=new QComboBox();
+    TranslationSelect->addItem(tr("English"));
+    TranslationSelect->addItem(tr("Russian"));
+    TranslationSelect->addItem(tr("German"));
+    TranslationSelect->addItem(tr("Dutch"));
+    TranslationSelect->setCurrentIndex(TranslationSelect->findText(data->getMenuTranslation()));
+    clear=new QPushButton(tr("Clean data"));
     element_data->addWidget(DataPath);
     element_data->addWidget(DataPathLine);
     params->addLayout(element_data);
     element_cur->addWidget(Currency);
     element_cur->addWidget(CurrencyLine);
+    element_cur->addWidget(Translation);
+    element_cur->addWidget(TranslationSelect);
     element_clean->addWidget(clear);
     params->addLayout(element_cur);
     params->addLayout(element_clean);
-    ok=new QPushButton("Ok");
+    ok=new QPushButton(tr("Ok"));
 
     DataPathLine->setText(data->getPath());
     CurrencyLine->setText(data->GetCurrency());
     params->addWidget(ok);
     this->setLayout(params);
-    this->setWindowTitle("Settings");
+    this->setWindowTitle(tr("Settings"));
     connect(clear,SIGNAL(clicked()),this,SLOT(cleanData()));
     connect(ok,SIGNAL(clicked()),this,SLOT(close()));
     connect(ok,SIGNAL(clicked()),this,SLOT(okSlot()));
@@ -47,8 +56,9 @@ void settings::okSlot()
      }
 
    data->setCurrency(CurrencyLine->text());
+   data->setTranslation(TranslationSelect->currentText());
    delete data;
-   a->setText(tr("Your settings saved. \n Visual changes will be applied after program restart or press load"));
+   a->setText(tr("Your settings saved. \n Visual changes will be applied after program restart"));
    a->setWindowTitle(tr("Data saved"));
    connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
    a->show();
@@ -60,8 +70,8 @@ void settings::cleanData()
 {
   QMessageBox* a=new QMessageBox(this);
   a->setText(tr("All data will be cleaned. Use at your own risk. Don't forgot to click load"));
-  a->addButton("cancel",a->RejectRole);
-  a->addButton("ok",a->AcceptRole);
+  a->addButton(tr("cancel"),a->RejectRole);
+  a->addButton(tr("ok"),a->AcceptRole);
   a->show();
   connect(a,SIGNAL(accepted()),this,SLOT(cleanDataOk()));
   connect(a,SIGNAL(rejected()),a,SLOT(close()));

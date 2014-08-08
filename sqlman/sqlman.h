@@ -1,10 +1,13 @@
 #ifndef SQLMAN_H
 #define SQLMAN_H
 #include <QtSql>
+#include <QDir>
+
 #include <QDebug>
 #include <QtCore/QTextStream>
 #include <QtCore/QStringList>
 #include "ui_widget.h"
+#include "datamanager/datamanager.h"
 namespace Ui {
 class sqlMan;
 }
@@ -14,13 +17,17 @@ public:
     sqlMan();
     void addOperation(sqlMan* db,double summ,QString comment,bool side);
     double getBalance();
-    double initBal;
+    void init();
+    QString getDBName();
+    QSqlTableModel* getModel();
+    QSqlDatabase* getDataBase();
+    bool dbIsOpen();
+private:
     QString databaseName;
-    QSqlTableModel *getModel();
     QSqlQuery* query;
     QSqlTableModel* model;
     QSqlDatabase sdb;
-    void init();
+
 
 
 
