@@ -2,7 +2,8 @@
 
 sqlMan::sqlMan()
 {
-    QString databaseName="ssbm.db";
+    dataManager* man=new dataManager();
+    QString databaseName=man->getPath()+"ssbm.db";
     QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
     sdb.setDatabaseName(databaseName);
     if (!sdb.open()) {
@@ -19,16 +20,20 @@ QSqlTableModel* sqlMan::getModel()
     return this->model;
 }
 
-void sqlMan::init()
+int sqlMan::init()
 {
     QSqlQuery* query=new QSqlQuery(sdb);
-    if(query->exec("CREATE TABLE  IF NOT EXISTS \"operations\" (\"id\" INTEGER PRIMARY KEY  NOT NULL ,\"time\" DATETIME DEFAULT (CURRENT_TIMESTAMP) ,\"summ\" double NOT NULL  DEFAULT (null) ,\"comment\"  NOT NULL ,\"catid\" INTEGER DEFAULT (null) ,\"side\" BOOL DEFAULT (0) )"))
+    if(!query->exec("CREATE TABLE  IF NOT EXISTS \"operations\" (\"id\" INTEGER PRIMARY KEY  NOT NULL ,\"time\" DATETIME DEFAULT (CURRENT_TIMESTAMP) ,\"summ\" double NOT NULL  DEFAULT (null) ,\"comment\"  NOT NULL ,\"catid\" INTEGER DEFAULT (null) ,\"side\" BOOL DEFAULT (0) )"))
     {
-      //query->exec("insert into `operations` (id,time,summ,comment,catid,side) values (0,0,0,0,0,0);");
+        return 2;
     }
     this->model=new QSqlTableModel(0,this->sdb);
     this->model->setTable("operations");
-    this->model->select();
+    if(!this->model->select())
+    {
+        return 1;
+    }
+    return 0;
 }
 
 

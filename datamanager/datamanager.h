@@ -2,7 +2,6 @@
 #define DATAMANAGER_H
 #include <QtCore/QFile>
 #include <QTextCodec>
-#include <QMessageBox>
 #include <sqlman/sqlman.h>
 
 

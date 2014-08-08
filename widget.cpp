@@ -70,11 +70,16 @@ Widget::Widget(QWidget *parent) :
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
     set=new settings(this);
+    db.sdb.open();
     db.model=new QSqlTableModel(0,db.sdb);
     db.model->setTable("operations");
 
     if(!(db.model->select()))
     {
+        QMessageBox* a=new QMessageBox(this);
+        a->about(this,tr("Error during accessing database"),tr("Can not access database"));
+        a->show();
+        exit(-1)
         qDebug()<<"ERROR!";
     }
     ui->view->setModel(db.model);

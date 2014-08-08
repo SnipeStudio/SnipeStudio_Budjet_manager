@@ -66,7 +66,7 @@
     <message>
         <location filename="widget.ui" line="203"/>
         <source>&amp;balanceText</source>
-        <translation type="unfinished">die Bilanz</translation>
+        <translation>die Bilanz</translation>
     </message>
     <message>
         <location filename="widget.ui" line="210"/>
