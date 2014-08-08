@@ -7,7 +7,15 @@
 #include <QtCore/QTextStream>
 #include <QtCore/QStringList>
 #include "ui_widget.h"
+<<<<<<< HEAD
 #include "datamanager/datamanager.h"
+=======
+#include "../datamanager/datamanager.h"
+#ifdef _MBOX
+#define _MBOX
+#include <QMessageBox>
+#endif
+>>>>>>> 2c960d380d2b93a4173da806a30346556ce8a103
 namespace Ui {
 class sqlMan;
 }
@@ -27,7 +35,11 @@ private:
     QSqlQuery* query;
     QSqlTableModel* model;
     QSqlDatabase sdb;
+<<<<<<< HEAD
 
+=======
+    int init();
+>>>>>>> 2c960d380d2b93a4173da806a30346556ce8a103
 
 
 

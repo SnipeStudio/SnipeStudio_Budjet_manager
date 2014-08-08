@@ -4,6 +4,8 @@
 #ifdef SETTINGS_H
 class settings;
 #endif
+
+
 #include <QWidget>
 
 #include <QMenu>
@@ -12,6 +14,7 @@ class settings;
 #include <fstream>
 #include <QTableView>
 #include "datamanager/datamanager.h"
+#include "sqlman/sqlman.h"
 
 namespace Ui {
 class Widget;
