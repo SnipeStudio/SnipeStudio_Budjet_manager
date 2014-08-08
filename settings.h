@@ -20,6 +20,8 @@ private:
     QHBoxLayout* element_cur;
     QHBoxLayout* element_clean;
     QLabel* DataPath;
+    QLabel* Translation;
+    QComboBox* TranslationSelect;
     QLineEdit* DataPathLine;
     QLabel* Currency;
     QLineEdit* CurrencyLine;

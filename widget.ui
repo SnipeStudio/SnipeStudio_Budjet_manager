@@ -80,36 +80,10 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetMinAndMaxSize</enum>
       </property>
-      <item>
-       <widget class="QPushButton" name="save">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>&amp;Save</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="load">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>&amp;Load</string>
-        </property>
-       </widget>
-      </item>
-      <item>
+      <item alignment="Qt::AlignVCenter">
        <widget class="QPushButton" name="settings">
         <property name="text">
-         <string>&amp;Settings</string>
+         <string>&amp;settings</string>
         </property>
        </widget>
       </item>
@@ -122,7 +96,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>&amp;About</string>
+         <string>&amp;about</string>
         </property>
        </widget>
       </item>
@@ -135,7 +109,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>&amp;Exit</string>
+         <string>&amp;exit</string>
         </property>
        </widget>
       </item>
@@ -190,14 +164,14 @@
           <item>
            <widget class="QRadioButton" name="profit">
             <property name="text">
-             <string>profit</string>
+             <string>%profit</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QRadioButton" name="expence">
             <property name="text">
-             <string>expence</string>
+             <string>%expence</string>
             </property>
            </widget>
           </item>
@@ -226,7 +200,7 @@
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Balance</string>
+           <string>&amp;balanceText</string>
           </property>
          </widget>
         </item>
@@ -260,14 +234,14 @@
         <item>
          <widget class="QLabel" name="monthTitle">
           <property name="text">
-           <string>TextLabel</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;amp;MonthLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="yearLabel">
           <property name="text">
-           <string>TextLabel</string>
+           <string>&amp;yearLabel</string>
           </property>
          </widget>
         </item>
