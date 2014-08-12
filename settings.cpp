@@ -52,7 +52,7 @@ void settings::okSlot()
    dataManager* data=new dataManager();
    if(DataPathLine->text()!=data->getPath())
      {
-       data->setPath(DataPathLine->text());
+       data->setPath((QDir::fromNativeSeparators(DataPathLine->text())));
      }
 
    data->setCurrency(CurrencyLine->text());
