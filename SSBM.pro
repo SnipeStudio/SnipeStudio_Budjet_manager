@@ -16,7 +16,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
         widget.cpp \
     settings.cpp \
-    sqlman/sqlman.cpp
+    sqlman/sqlman.cpp \
+    datamanager/datamanager.cpp
 
 HEADERS  += widget.h \
     datamanager/datamanager.h \
@@ -28,6 +29,7 @@ FORMS    += widget.ui
 RESOURCES += icons.qrc
 RC_FILE = icon.rc
 
-TRANSLATIONS = spreadsheet_de.ts \
-               spreadsheet_en.ts \
-               spreadsheet_ru.ts
+TRANSLATIONS = translations\ssbm_de.ts \
+               translations\ssbm_de.ts \
+               translations\ssbm_ru.ts \
+               translations\ssbm_nl.ts \
