@@ -16,7 +16,7 @@
     <message>
         <location filename="widget.ui" line="99"/>
         <source>&amp;about</source>
-        <translation>&amp;Over programma...</translation>
+        <translation>&amp;Over ons programma...</translation>
     </message>
     <message>
         <location filename="widget.ui" line="112"/>
