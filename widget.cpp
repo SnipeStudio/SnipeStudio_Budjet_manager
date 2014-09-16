@@ -32,23 +32,24 @@ Widget::Widget(QWidget *parent) :
     connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
     connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
-    set=new settings(this);
 	QSqlTableModel* model=db.getModel();
 	model->setTable("operations");
-    if(!db.dbIsOpen())
+   /* if(!db.dbIsOpen())
     {
         QMessageBox* a=new QMessageBox(this);
         a->about(this,tr("Error during accessing database"),tr("Can not access database"));
         a->show();
         exit(-1)
         qDebug()<<"ERROR!";
-    }
+    }*/
     ui->view->setModel(model);
-    ui->view->resizeColumnToContents(0);
     ui->view->resizeColumnToContents(5);
-    ui->view->setColumnWidth(3,200);
+    ui->view->setColumnWidth(3,329);
+    ui->view->hideColumn(4);
     ui->view->hideColumn(0);
     ui->view->sortByColumn(0,Qt::DescendingOrder);
+    ui->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     ui->view->show();
 
 }
@@ -135,35 +136,13 @@ void Widget::addOperation()
 
 void Widget::load()
 {
-    {
-
-    fLoad=false;
-    QPushButton* ok=new QPushButton(tr("&ok"));
-    QPushButton* cancel=new QPushButton(tr("&cancel"));
-    QMessageBox* load=new QMessageBox();
-    load->setText(tr("Are you sure to force load. Data may be lost"));
-    load->addButton(ok,QMessageBox::AcceptRole);
-    load->addButton(cancel,QMessageBox::RejectRole);
-    connect(load,SIGNAL(accepted()),this,SLOT(updLoad(true);));
-    connect(load,SIGNAL(rejected()),this,SLOT(updLoad(false);));
-    load->show();
-    if(fLoad==true)
-      {
-        dataManager* data=new dataManager();
-        QString path=data->getPath()+"bal.ssff";
-        ui->currency->setText(data->GetCurrency());
-        ui->yearLabel->setNum(yearSelected);
-        QFile file_bal(path);
-        QTextStream in_bal(&file_bal);
-        in_bal.setCodec("UTF-8");
-        double balance=db.getBalance();
-        ui->balance->setNum(balance);
-        ui->date->setDateTime(QDateTime::currentDateTime());
-        ui->balance->setNum(balance);
-        ui->currency->setText(data->GetCurrency());
-        delete data;
-      }
-    }
+  QTranslator translator;
+  dataManager* data=new dataManager();
+  qDebug()<<"translation/ssbm_"+data->getTranslation();
+  translator.load(QDir::toNativeSeparators("translation/ssbm_"+data->getTranslation()));
+  qApp->installTranslator(&translator);
+  ui->retranslateUi(this);
+  delete data;
 }
 
 void Widget::NextMonth()
@@ -193,8 +172,15 @@ void Widget::PrevMonth()
 
 void Widget::showSettings()
 {
-  set->show();
+    set=new settings(this);
+    set->show();
 }
+
+void Widget::closeSettings()
+{
+    delete set;
+}
+
 void Widget::updLoad(bool load)
 {
   fLoad=load;

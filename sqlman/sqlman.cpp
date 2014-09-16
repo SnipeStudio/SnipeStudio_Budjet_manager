@@ -50,20 +50,16 @@ bool sqlMan::dbIsOpen()
     return sdb.isOpen();
 }
 
-int sqlMan::init()
+void sqlMan::init()
 {
     QSqlQuery* query=new QSqlQuery(sdb);
     if(!query->exec("CREATE TABLE  IF NOT EXISTS \"operations\" (\"id\" INTEGER PRIMARY KEY  NOT NULL ,\"time\" DATETIME DEFAULT (CURRENT_TIMESTAMP) ,\"summ\" double NOT NULL  DEFAULT (null) ,\"comment\"  NOT NULL ,\"catid\" INTEGER DEFAULT (null) ,\"side\" BOOL DEFAULT (0) )"))
     {
-        return 2;
+        return;
     }
     this->model=new QSqlTableModel(0,this->sdb);
     this->model->setTable("operations");
-    if(!this->model->select())
-    {
-        return 1;
-    }
-    return 0;
+    this->model->select();
 }
 void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side)
 {

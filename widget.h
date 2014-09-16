@@ -10,6 +10,7 @@ class settings;
 
 #include <QMenu>
 #include <QAction>
+#include <QMessageBox>
 #include <QDialogButtonBox>
 #include <fstream>
 #include <QTableView>
@@ -47,6 +48,7 @@ public slots:
     void NextMonth();
     void PrevMonth();
     void showSettings();
+    void closeSettings();
 };
 
 #endif // WIDGET_H
