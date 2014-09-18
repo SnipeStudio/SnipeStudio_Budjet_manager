@@ -61,15 +61,16 @@ void sqlMan::init()
     this->model->setTable("operations");
     this->model->select();
 }
-void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side)
+void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side,QDateTime time)
 {
     qDebug()<<"Side:"<<side;
     qDebug()<<"Summ:"<<summ;
     this->query=new QSqlQuery(this->sdb);
-    this->query->prepare("INSERT INTO operations (summ, comment, side) VALUES (:summ, :comment, :side)");
+    this->query->prepare("INSERT INTO operations (summ, comment, side,time) VALUES (:summ, :comment, :side,:time)");
          this->query->bindValue(":summ", summ);
          this->query->bindValue(":comment", comment);
          this->query->bindValue(":side", side);
+    this->query->bindValue(":time", time.toString("dd-MM-yyyy hh:mm:ss"));
     if(this->query->exec())
     {
         qDebug()<<"OK";

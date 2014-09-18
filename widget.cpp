@@ -118,9 +118,10 @@ void Widget::addOperation()
         {
             summ*=-1;
         }
+        QDateTime time=ui->date->dateTime();
         db.dbIsOpen();
         qDebug()<<db.getDBName();
-        db.addOperation(&db,summ,commentText,side);
+        db.addOperation(&db,summ,commentText,side,time);
         QSqlTableModel* model=db.getModel();
         ui->view->setModel(model);
         ui->view->hideColumn(0);
