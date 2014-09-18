@@ -27,6 +27,7 @@ private:
     QLineEdit* CurrencyLine;
     QPushButton* clear;
     QPushButton* ok;
+    Widget* baseWindowAddr;
 signals:
 
 public slots:
