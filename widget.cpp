@@ -44,7 +44,7 @@ Widget::Widget(QWidget *parent) :
     }*/
     ui->view->setModel(model);
     ui->view->resizeColumnToContents(5);
-    ui->view->setColumnWidth(3,329);
+    ui->view->setColumnWidth(3,310);
     ui->view->hideColumn(4);
     ui->view->hideColumn(0);
     ui->view->sortByColumn(0,Qt::DescendingOrder);
