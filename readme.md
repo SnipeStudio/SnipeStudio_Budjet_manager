@@ -1,14 +1,21 @@
 Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.5
+Current version: 0.5.2
 Soft requirenments: QT5
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
 
 Simple Budget Manager for you by Snipe Studio
 
-Release Log:    
+Developer's Changelog:
+18 september 2014 (0.5.2):
+        Not ready for next release. According plan 14-10 (0.6) will be in october
+* Added:        Dynamic translation of main application window
+* Added:        Possibility to sort TableView according parameters
+* Fixed:        Invalid time adding bug
+* Changed:      Columns now fit table perfectly
+
 18 august 2014
 	Released version 14-08(0.5) of Snipe Studio Budget Manager  
 	Changelog:
