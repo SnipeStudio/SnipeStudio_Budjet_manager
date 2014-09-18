@@ -33,3 +33,6 @@ TRANSLATIONS = translations\ssbm_de.ts \
                translations\ssbm_de.ts \
                translations\ssbm_ru.ts \
                translations\ssbm_nl.ts \
+
+OTHER_FILES += \
+    readme.md
