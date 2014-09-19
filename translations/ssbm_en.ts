@@ -6,7 +6,7 @@
     <message>
         <location filename="widget.ui" line="47"/>
         <source>Widget</source>
-        <translation>Widget</translation>
+        <translation>Snipe Studio Budget Manager</translation>
     </message>
     <message>
         <location filename="widget.ui" line="86"/>

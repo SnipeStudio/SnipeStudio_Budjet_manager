@@ -34,8 +34,8 @@ private:
     QString tmp;
     QString version;
     settings* set;
-    short monthSelected;
-    short yearSelected;
+   // short monthSelected;
+    //short yearSelected;
     bool fLoad;
     unsigned long idLoaded;
     sqlMan db;
@@ -45,8 +45,8 @@ public slots:
     void help();
     void addOperation();
     void load();
-    void NextMonth();
-    void PrevMonth();
+  //  void NextMonth();
+  //  void PrevMonth();
     void showSettings();
     void closeSettings();
 };
