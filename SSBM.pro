@@ -22,12 +22,13 @@ SOURCES += main.cpp\
 HEADERS  += widget.h \
     datamanager/datamanager.h \
     settings.h \
-    sqlman/sqlman.h
+    sqlman/sqlman.h \
+    app_info.h
 
 FORMS    += widget.ui
 
-RESOURCES += icons.qrc
-RC_FILE = icon.rc
+RESOURCES += res.qrc
+RC_FILE = res.rc
 
 TRANSLATIONS = translations\ssbm_de.ts \
                translations\ssbm_de.ts \
@@ -36,3 +37,5 @@ TRANSLATIONS = translations\ssbm_de.ts \
 
 OTHER_FILES += \
     readme.md
+
+

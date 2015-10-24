@@ -12,6 +12,7 @@ Developer's Changelog:
 24 october 2015 (0.5.3)
 
 * Fixed:       SQL manager minor fixes
+
 18 september 2014 (0.5.2):
         Not ready for next release. According plan 14-10 (0.6) will be in october
 * Added:        Dynamic translation of main application window
