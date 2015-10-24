@@ -80,9 +80,9 @@ void settings::cleanData()
 void settings::cleanDataOk()
 {
   dataManager* data=new dataManager();
-  if(!data->getPath().isEmpty())
-  {
-    QFile::remove(data->getPath());
-  }
+  sqlMan* sql=new sqlMan();
+  sql->clean();
+  baseWindowAddr->load();
+  delete sql;
   delete data;
 }

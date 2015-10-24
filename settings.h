@@ -2,6 +2,7 @@
 #define SETTINGS_H
 #include "datamanager/datamanager.h"
 #include "widget.h"
+#include "sqlman/sqlman.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLineEdit>
