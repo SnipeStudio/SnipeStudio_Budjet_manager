@@ -19,18 +19,18 @@ Widget::Widget(QWidget *parent) :
     in_bal.setCodec("UTF-8");
     ui->balance->setNum(db.getBalance());
     ui->date->setDateTime(QDateTime::currentDateTime());
-    monthSelected=ui->date->date().month();
-    yearSelected=ui->date->date().year();
-    ui->monthTitle->setText(ui->date->date().longMonthName(monthSelected));
-    ui->yearLabel->setNum(yearSelected);
+   // monthSelected=ui->date->date().month();
+    //yearSelected=ui->date->date().year();
+    //ui->monthTitle->setText(ui->date->date().longMonthName(monthSelected));
+   // ui->yearLabel->setNum(yearSelected);
 
     this->setWindowTitle(tr("Snipe Studio Budget Manager"));
     ui->date->setDateTime(QDateTime::currentDateTime());
     connect(ui->about,SIGNAL(clicked()),this,SLOT(help()));
     connect(ui->confirm,SIGNAL(clicked()),this,SLOT(addOperation()));
     connect(ui->settings,SIGNAL(clicked()),this,SLOT(showSettings()));
-    connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
-    connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
+   // connect(ui->nextMonth,SIGNAL(clicked()),this,SLOT(NextMonth()));
+   // connect(ui->PreviousMonth,SIGNAL(clicked()),this,SLOT(PrevMonth()));
     ui->profit->setChecked(true);
 	QSqlTableModel* model=db.getModel();
 	model->setTable("operations");
@@ -139,14 +139,14 @@ void Widget::load()
 {
   QTranslator translator;
   dataManager* data=new dataManager();
-  qDebug()<<"translation/ssbm_"+data->getTranslation();
-  translator.load(QDir::toNativeSeparators("translation/ssbm_"+data->getTranslation()));
+  qDebug()<<"translation/ssbm_"+data->getTranslation()+".qm";
+  translator.load(QDir::toNativeSeparators("translation/ssbm_"+data->getTranslation()+".qm"));
   qApp->installTranslator(&translator);
   ui->retranslateUi(this);
   delete data;
 }
 
-void Widget::NextMonth()
+/*void Widget::NextMonth()
 {
   monthSelected++;
   if(monthSelected>12)
@@ -169,7 +169,7 @@ void Widget::PrevMonth()
   ui->monthTitle->setText(ui->date->date().longMonthName(monthSelected));
   qDebug()<<monthSelected<<" "<<yearSelected;
   this->load();
-}
+}*/
 
 void Widget::showSettings()
 {

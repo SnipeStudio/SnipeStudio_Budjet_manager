@@ -89,3 +89,18 @@ void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side,QD
     db->model->setEditStrategy(QSqlTableModel::OnFieldChange);
 
 }
+
+int sqlMan::clean()
+{
+    query=new QSqlQuery(sdb);
+    this->query->prepare("TRUNCATE TABLE operations;");
+    if(this->query->exec())
+    {
+        qDebug()<<"OK";
+    }
+    else
+    {
+        qDebug()<<"ERROR";
+    }
+    return 0;
+}
