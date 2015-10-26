@@ -15,9 +15,10 @@ class sqlMan
 {
 public:
     sqlMan();
-    void addOperation(sqlMan* db,double summ,QString comment,bool side);
+    void addOperation(sqlMan* db, double summ, QString comment, bool side, QDateTime time);
     double getBalance();
     void init();
+    int clean();
     QString getDBName();
     QSqlTableModel* getModel();
     QSqlDatabase* getDataBase();
