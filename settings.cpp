@@ -3,6 +3,7 @@
 settings::settings(Widget* baseWindow) :
     QWidget()
 {
+
     dataManager* data=new dataManager();
     params=new QVBoxLayout();
     element_data=new QHBoxLayout();
@@ -32,7 +33,7 @@ settings::settings(Widget* baseWindow) :
     params->addLayout(element_cur);
     params->addLayout(element_clean);
     ok=new QPushButton(tr("Ok"));
-
+    baseWindowAddr=baseWindow;
     DataPathLine->setText(data->getPath());
     CurrencyLine->setText(data->GetCurrency());
     params->addWidget(ok);
@@ -48,7 +49,6 @@ settings::settings(Widget* baseWindow) :
 
 void settings::okSlot()
 {
-  QMessageBox* a=new QMessageBox(this);
    dataManager* data=new dataManager();
    if(DataPathLine->text()!=data->getPath())
      {
@@ -58,11 +58,10 @@ void settings::okSlot()
    data->setCurrency(CurrencyLine->text());
    data->setTranslation(TranslationSelect->currentText());
    delete data;
-   a->setText(tr("Your settings saved. \n Visual changes will be applied after program restart"));
-   a->setWindowTitle(tr("Data saved"));
-   connect(a,SIGNAL(buttonClicked(QAbstractButton*)),a,SLOT(close()));
-   a->show();
+   baseWindowAddr->load();
    close();
+   baseWindowAddr->closeSettings();
+
 
 }
 
@@ -81,9 +80,9 @@ void settings::cleanData()
 void settings::cleanDataOk()
 {
   dataManager* data=new dataManager();
-  if(!data->getPath().isEmpty())
-  {
-    QFile::remove(data->getPath());
-  }
+  sqlMan* sql=new sqlMan();
+  sql->clean();
+  baseWindowAddr->load();
+  delete sql;
   delete data;
 }

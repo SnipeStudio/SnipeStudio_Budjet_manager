@@ -50,30 +50,27 @@ bool sqlMan::dbIsOpen()
     return sdb.isOpen();
 }
 
-int sqlMan::init()
+void sqlMan::init()
 {
     QSqlQuery* query=new QSqlQuery(sdb);
     if(!query->exec("CREATE TABLE  IF NOT EXISTS \"operations\" (\"id\" INTEGER PRIMARY KEY  NOT NULL ,\"time\" DATETIME DEFAULT (CURRENT_TIMESTAMP) ,\"summ\" double NOT NULL  DEFAULT (null) ,\"comment\"  NOT NULL ,\"catid\" INTEGER DEFAULT (null) ,\"side\" BOOL DEFAULT (0) )"))
     {
-        return 2;
+        return;
     }
     this->model=new QSqlTableModel(0,this->sdb);
     this->model->setTable("operations");
-    if(!this->model->select())
-    {
-        return 1;
-    }
-    return 0;
+    this->model->select();
 }
-void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side)
+void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side,QDateTime time)
 {
     qDebug()<<"Side:"<<side;
     qDebug()<<"Summ:"<<summ;
     this->query=new QSqlQuery(this->sdb);
-    this->query->prepare("INSERT INTO operations (summ, comment, side) VALUES (:summ, :comment, :side)");
+    this->query->prepare("INSERT INTO operations (summ, comment, side,time) VALUES (:summ, :comment, :side,:time)");
          this->query->bindValue(":summ", summ);
          this->query->bindValue(":comment", comment);
          this->query->bindValue(":side", side);
+    this->query->bindValue(":time", time.toString("dd-MM-yyyy hh:mm:ss"));
     if(this->query->exec())
     {
         qDebug()<<"OK";
@@ -91,4 +88,19 @@ void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side)
     }
     db->model->setEditStrategy(QSqlTableModel::OnFieldChange);
 
+}
+
+int sqlMan::clean()
+{
+    query=new QSqlQuery(sdb);
+    this->query->prepare("TRUNCATE TABLE operations;");
+    if(this->query->exec())
+    {
+        qDebug()<<"OK";
+    }
+    else
+    {
+        qDebug()<<"ERROR";
+    }
+    return 0;
 }

@@ -6,7 +6,7 @@
     <message>
         <location filename="widget.ui" line="47"/>
         <source>Widget</source>
-        <translation>Widget</translation>
+        <translation>Snipe Studio Budget Manager</translation>
     </message>
     <message>
         <location filename="widget.ui" line="86"/>
@@ -96,7 +96,7 @@
     <message>
         <location filename="widget.cpp" line="12"/>
         <source>14.06-pre(0.3.9.7)</source>
-        <translation type="unfinished">14-08 (0.5)</translation>
+        <translation>14-10 (0.6) beta</translation>
     </message>
     <message>
         <location filename="widget.cpp" line="24"/>
