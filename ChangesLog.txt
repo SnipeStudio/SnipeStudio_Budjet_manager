@@ -1,21 +1,51 @@
-16 March 2014
-	Released version 0.0.2 of Snipe Studio Budget Manager
-	Change log:
-		-Added:		Graphical UI
-		-Fixed: 	Issues
-		-Changed:	Save on exit
-		
-07 March 2014
-	Version 0.0.1.9
-    Change log:
-        -Changed: Folder Structure for base project
+29 October 2015 (0.5.3.1) (Not be published ever)
+* Changed:		New icon for application
 
-05 February 2014
-	Released version 0.0.1 of Snipe Studio Budget Manager
-	Change log:
-		-Fixed: Bugs in deleting function
-        -Added: Checkouts for adding operations
-        -Added: Force reload function
-        -Added: Force save function
+24 October 2015 (0.5.3):
+* Fixed:		SQL manager minor fixes
+* Added:    	File info in binary file
+
+18 September 2014 (0.5.2):
+* Added:    	Dynamic translation of main application window
+* Added:    	Possibility to sort TableView according parameters
+* Fixed:		Invalid time adding bug
+* Changed:		Columns now fit table perfectly
+
+12 August 2014 (0.5)
+* Added:    	Multilanguage support
+* Fixed:		memory leaks
+* Changed:		Changed data store to faster way
+* Changed:		Default instalation folder in windows setup
+
+19 April 2014 (0.0.3)
+* Added:    	Menu window on top
+* Added:    	Settings Menu
+* Added:    	Ability to drive-by downloads disc information
+* Added:    	Ability to save the information forced to disk
+* Added:    	Ability to separate storage for different types of
+* Added:    	Ability to change the displayed currency
+* Fixed:		Minor fixes
+
+16 March 2014 (0.0.2)
+* Added:    	Graphical UI
+* Fixed:		Issues
+* Changed:		Save on exit
+		
+07 March 2014 (0.0.1.9
+* Changed:		Folder Structure for base project
+
+05 February 2014 (0.0.1)
+* Fixed:		Bugs in deleting function
+* Added:    	Checkouts for adding operations
+* Added:    	Force reload function
+* Added:    	Force save function
+
+04 February 2014 (0.0.0.7)
+* Added:    	Possibility to delete categories
+* Added:    	Licensing (LGPL3)
+* Fixed:		Minor fixes
+
+30 January 2014 (PRE CONCEPT)
+Start of developing
 
 

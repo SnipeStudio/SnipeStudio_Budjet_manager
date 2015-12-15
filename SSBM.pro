@@ -17,13 +17,15 @@ SOURCES += main.cpp\
         widget.cpp \
     settings.cpp \
     sqlman/sqlman.cpp \
-    datamanager/datamanager.cpp
+    datamanager/datamanager.cpp \
+    logApi/logapi.cpp
 
 HEADERS  += widget.h \
     datamanager/datamanager.h \
     settings.h \
     sqlman/sqlman.h \
-    app_info.h
+    app_info.h \
+    logApi/logapi.h
 
 FORMS    += widget.ui
 
