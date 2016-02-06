@@ -40,10 +40,10 @@ QString sqlMan::getDBName()
 {
     return databaseName;
 }
-QSqlDatabase* sqlMan::getDataBase()
-{
-    return &sdb;
-}
+//QSqlDatabase* sqlMan::getDataBase()
+//{
+//    return &sdb;
+//}
 bool sqlMan::dbIsOpen()
 {
     sdb.open();

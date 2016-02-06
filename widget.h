@@ -1,13 +1,12 @@
 #ifndef WIDGET_H
 #define WIDGET_H
-#include "settings.h"
+#include "settings/settings.h"
 #ifdef SETTINGS_H
 class settings;
 #endif
 
 
 #include <QWidget>
-
 #include <QMenu>
 #include <QAction>
 #include <QMessageBox>
@@ -16,6 +15,7 @@ class settings;
 #include <QTableView>
 #include "datamanager/datamanager.h"
 #include "sqlman/sqlman.h"
+#include "app_info.h"
 
 namespace Ui {
 class Widget;
@@ -30,23 +30,18 @@ public:
     ~Widget();
 
 private:
+  bool initDatabase(sqlMan db);
     Ui::Widget *ui;
     QString tmp;
     QString version;
     settings* set;
-   // short monthSelected;
-    //short yearSelected;
     bool fLoad;
     unsigned long idLoaded;
     sqlMan db;
 public slots:
-    void updLoad(bool);
-    void closeEvent(QCloseEvent*);
     void help();
     void addOperation();
     void load();
-  //  void NextMonth();
-  //  void PrevMonth();
     void showSettings();
     void closeSettings();
 };
