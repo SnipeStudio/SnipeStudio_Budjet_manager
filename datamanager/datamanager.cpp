@@ -15,19 +15,13 @@ dataManager::dataManager()
             result.append(line.split(QString('=')));
             line.remove(QRegExp("//[\\W\\w]{0,}"));
             if(result.at(0)=="DataPath")
-            {
                 dataPath=QDir::toNativeSeparators(result.at(1));
-            }
             if(result.at(0)=="Currency")
-            {
                 Currency=result.at(1);
-            }
             if(result.at(0)=="Translation")
-            {
                 Translation=result.at(1);
-            }
-            if(result.at(0)!="Currency"&&result.at(0)!="DataPath"&&result.at(0)!="Translation")
-            {break;}
+            if(result.at(0)=="DefaultUser")
+                DefUser=result.at(1);
             line = in.readLine();
             result.clear();
 
@@ -42,6 +36,7 @@ dataManager::dataManager()
             out<<"DataPath=\n";
             out<<"Currency=\n";
             out<<"Translation=\n";
+            out<<"DefaultUser=\n";
         }
 
     }
@@ -64,6 +59,7 @@ dataManager::~dataManager()
         out<<tr("DataPath=%1\n").arg(dataPath);
         out<<tr("Currency=%1\n").arg(Currency);
         out<<tr("Translation=%1\n").arg(Translation);
+        out<<tr("DefaultUser=%1\n").arg(DefUser);
     }
     file.close();
 }
@@ -109,6 +105,11 @@ QString dataManager::getMenuTranslation()
     return tr("English");
 }
 
+QString dataManager::getDefaultUser()
+{
+  return DefUser;
+}
+
 void dataManager::setPath(QString data)
 {
     dataPath=data;
@@ -137,4 +138,9 @@ void dataManager::setTranslation(QString translation)
        Translation="nl";
     }
 
+}
+
+void dataManager::setDefaultUser(QString DefaultUser)
+{
+  DefUser=DefaultUser;
 }
