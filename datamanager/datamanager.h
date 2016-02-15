@@ -17,6 +17,7 @@ public:
     QString getTranslation();
     QString getMenuTranslation();
     QString getDefaultUser();
+    int getVerbosity();
 
 signals:
 public slots:
@@ -24,6 +25,8 @@ public slots:
     void setCurrency(QString currency);
     void setTranslation(QString translation);
     void setDefaultUser(QString DefaultUser);
+    void setVerbosity(int verb);
+
 
 private:
     QString dataPath;
@@ -31,6 +34,7 @@ private:
     QString Currency;
     QString Translation;
     QString DefUser;
+    int verbosity;
 };
 
 #endif // DATAMANAGER_H
