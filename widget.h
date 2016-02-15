@@ -1,6 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 #include "settings/settings.h"
+#include "logger/logger.h"
 #ifdef SETTINGS_H
 class settings;
 #endif
@@ -26,7 +27,7 @@ class Widget : public QWidget
     Q_OBJECT
 
 public:
-    explicit Widget(QWidget *parent = 0);
+    explicit Widget(QWidget *parent = 0, logger *log_ptr = 0);
     ~Widget();
 
 private:
@@ -38,6 +39,7 @@ private:
     bool fLoad;
     unsigned long idLoaded;
     sqlMan db;
+    logger* logging;
 public slots:
     void help();
     void addOperation();

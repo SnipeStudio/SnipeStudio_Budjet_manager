@@ -22,9 +22,11 @@ dataManager::dataManager()
                 Translation=result.at(1);
             if(result.at(0)=="DefaultUser")
                 DefUser=result.at(1);
+            if(result.at(0)=="Verbosity")
+                verbosity=result.at(1).toInt();;
+
             line = in.readLine();
             result.clear();
-
         }
     }
     else
@@ -37,6 +39,7 @@ dataManager::dataManager()
             out<<"Currency=\n";
             out<<"Translation=\n";
             out<<"DefaultUser=\n";
+            out<<"Verbosity=0";
         }
 
     }
@@ -55,11 +58,11 @@ dataManager::~dataManager()
     {
         QTextStream out(&file);
         out.setCodec("UTF-8");
-
         out<<tr("DataPath=%1\n").arg(dataPath);
         out<<tr("Currency=%1\n").arg(Currency);
         out<<tr("Translation=%1\n").arg(Translation);
         out<<tr("DefaultUser=%1\n").arg(DefUser);
+        out<<tr("Verbosity=%1\n").arg(verbosity);
     }
     file.close();
 }
@@ -107,7 +110,12 @@ QString dataManager::getMenuTranslation()
 
 QString dataManager::getDefaultUser()
 {
-  return DefUser;
+    return DefUser;
+}
+
+int dataManager::getVerbosity()
+{
+    return verbosity;
 }
 
 void dataManager::setPath(QString data)
@@ -142,5 +150,10 @@ void dataManager::setTranslation(QString translation)
 
 void dataManager::setDefaultUser(QString DefaultUser)
 {
-  DefUser=DefaultUser;
+    DefUser=DefaultUser;
+}
+
+void dataManager::setVerbosity(int verb)
+{
+    verbosity=verbosity;
 }

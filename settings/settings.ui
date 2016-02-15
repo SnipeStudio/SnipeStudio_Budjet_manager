@@ -82,6 +82,36 @@
      </layout>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="element_verbosity">
+      <item>
+       <widget class="QLabel" name="Verbosity">
+        <property name="text">
+         <string>Verbosity:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="verbositySelect">
+        <item>
+         <property name="text">
+          <string>info</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>verbose</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>debug</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="element_clean">
       <item>
        <widget class="QPushButton" name="clear">

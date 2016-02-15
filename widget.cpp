@@ -2,14 +2,23 @@
 
 
 
-Widget::Widget(QWidget *parent) :
+Widget::Widget(QWidget *parent, logger *log_ptr) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
+    if(log_ptr!=0)
+    {
+       logging=log_ptr;
+    }
+    else
+    {
+        logging = new logger();
+    }
     sqlMan db;
     fLoad=false;
     idLoaded=0;
     version=tr(VER_FILEVERSION_STR);
+
     ui->setupUi(this);
     dataManager* data=new dataManager();
     QString path=data->getPath()+"bal.ssff";
@@ -32,7 +41,9 @@ Widget::Widget(QWidget *parent) :
 
 Widget::~Widget()
 {
-  delete ui;
+    logging->writeLog("Closing SSBM");
+    delete ui;
+    delete logging;
 }
 
 bool Widget::initDatabase(sqlMan db)

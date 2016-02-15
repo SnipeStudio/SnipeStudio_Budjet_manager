@@ -34,6 +34,19 @@ void settings::okSlot()
 
    data->setCurrency(ui->CurrencyLine->text());
    data->setTranslation(ui->TranslationSelect->currentText());
+   if(ui->verbositySelect->currentText()=="info")
+   {
+       data->setVerbosity(0);
+   }
+   if(ui->verbositySelect->currentText()=="verbose")
+   {
+       data->setVerbosity(1);
+   }
+   if(ui->verbositySelect->currentText()=="debug")
+   {
+       data->setVerbosity(2);
+   }
+
    delete data;
    close();
 
