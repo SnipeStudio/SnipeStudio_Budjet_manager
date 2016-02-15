@@ -21,7 +21,7 @@ public:
     int clean();
     QString getDBName();
     QSqlTableModel* getModel();
-    QSqlDatabase* getDataBase();
+   // QSqlDatabase* getDataBase();
     bool dbIsOpen();
 private:
     QString databaseName;

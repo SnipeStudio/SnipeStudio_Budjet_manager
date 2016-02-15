@@ -47,7 +47,7 @@
    <string>Widget</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="icons.qrc">
+   <iconset resource="res.qrc">
     <normaloff>:/icon/ico.png</normaloff>:/icon/ico.png</iconset>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
@@ -266,7 +266,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="icons.qrc"/>
+  <include location="res.qrc"/>
  </resources>
  <connections>
   <connection>

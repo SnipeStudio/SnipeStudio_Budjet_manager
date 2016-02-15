@@ -15,27 +15,28 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         widget.cpp \
-    settings.cpp \
     sqlman/sqlman.cpp \
     datamanager/datamanager.cpp \
     logApi/logapi.cpp
+    settings/settings.cpp
 
 HEADERS  += widget.h \
     datamanager/datamanager.h \
-    settings.h \
     sqlman/sqlman.h \
     app_info.h \
     logApi/logapi.h
+    settings/settings.h
 
-FORMS    += widget.ui
+FORMS    += widget.ui \
+    settings/settings.ui
 
 RESOURCES += res.qrc
 RC_FILE = res.rc
 
-TRANSLATIONS = translations\ssbm_de.ts \
-               translations\ssbm_de.ts \
-               translations\ssbm_ru.ts \
-               translations\ssbm_nl.ts \
+TRANSLATIONS = translations/ssbm_de.ts \
+               translations/ssbm_de.ts \
+               translations/ssbm_ru.ts \
+               translations/ssbm_nl.ts \
 
 OTHER_FILES += \
     readme.md
