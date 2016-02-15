@@ -87,6 +87,7 @@ QString dataManager::getTranslation()
     }
     return Translation;
 }
+
 QString dataManager::getMenuTranslation()
 {
     if(Translation=="ru")

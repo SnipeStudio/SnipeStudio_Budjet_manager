@@ -18,7 +18,6 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     fLoad=false;
     idLoaded=0;
     version=tr(VER_FILEVERSION_STR);
-
     ui->setupUi(this);
     dataManager* data=new dataManager();
     QString path=data->getPath()+"bal.ssff";
