@@ -29,37 +29,6 @@ settings::settings(QWidget *parent,logger *loging) :
   ui->verbositySelect->setCurrentIndex(data->getLoglevel());
   delete data;
   loging->debugM("Initializing settings menu: Done");
-}
-
-settings::~settings()
-{
-  delete ui;
-}
-
-void settings::okSlot()
-{
-   dataManager* data=new dataManager();
-   if(ui->DataPathLine->text()!=data->getPath())
-     {
-       data->setPath((QDir::fromNativeSeparators(ui->DataPathLine->text())));
-     }
-
-   data->setCurrency(ui->CurrencyLine->text());
-   data->setTranslation(ui->TranslationSelect->currentText());
-   switch (ui->verbositySelect->currentIndex()) {
-   case 0:
-       data->setLogLevel(0);
-       break;
-   case 1:
-       data->setLogLevel(1);
-       break;
-   case 2:
-       data->setLogLevel(2);
-       break;
-   default:
-       data->setLogLevel(2);
-       break;
-   }
    delete data;
    close();
 

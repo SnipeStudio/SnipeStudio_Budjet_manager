@@ -13,6 +13,7 @@ void logger::close()
     log.close();
 }
 
+
 void logger::infoM(QString infoMessage)
 {
     data=new dataManager();
@@ -57,4 +58,3 @@ void logger::warningM(QString warningMessage)
     }
     delete data;
 }
-
