@@ -4,23 +4,26 @@
 #include <QString>
 #include <QTextStream>
 #include <QTime>
+#include "../datamanager/datamanager.h"
 
 class logger
 {
 public:
     logger();
     void close();
-    void info(QString infoMessage);
-    void verbose(QString verboseMessage);
-    void debug(QString debugMessage);
-    void setVerbosity(int logLevel);
-    void writeLog(QString message,int logLevel);
-    void writeLog(QString message);
-
-
+    void infoM(QString infoMessage);
+    void debugM(QString debugMessage);
+    enum logLevel{
+        off=0,
+        info=1,
+        debug=2
+    };
+    void errorM(QString errorMessage);
+    void warningM(QString warningMessage);
 private:
     QFile log;
-    int verbosity;
+    const QString timeFormat = "hh:mm:ss.zzz";
+    dataManager* data;
 
 };
 

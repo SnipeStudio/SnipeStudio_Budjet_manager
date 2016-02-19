@@ -2,9 +2,10 @@
 
 logger::logger()
 {
-
-    log.setFileName("ssbm.log");
+    data=new dataManager();
+    log.setFileName(QDir::toNativeSeparators("./ssbm.log"));
     log.open(QIODevice::Append);
+    delete data;
 }
 
 void logger::close()
@@ -12,76 +13,48 @@ void logger::close()
     log.close();
 }
 
-void logger::info(QString infoMessage)
-{
-    QTextStream fout(&log);
-    fout<<infoMessage+"\n";
-}
 
-void logger::verbose(QString verboseMessage)
+void logger::infoM(QString infoMessage)
 {
-    QTextStream fout(&log);
-    fout<<verboseMessage+"\n";
-}
-
-void logger::debug(QString debugMessage)
-{
-    QTextStream fout(&log);
-    fout<<debugMessage+"\n";
-}
-
-void logger::setVerbosity(int logLevel)
-{
-    switch(logLevel)
+    data=new dataManager();
+    if(data->getLoglevel()>0)
     {
-    case 0:
-        verbosity=0;
-        break;
-    case 1:
-        verbosity=1;
-        break;
-    case 2:
-        verbosity=2;
-        break;
-    default:
-        verbosity=0;
+        QTextStream fout(&log);
+        fout<<QTime::currentTime().toString(timeFormat)<<",I,"<<infoMessage+"\n";
     }
+    delete data;
 }
 
-void logger::writeLog(QString message, int logLevel)
+
+void logger::debugM(QString debugMessage)
 {
-    switch(logLevel)
+    data=new dataManager();
+    if(data->getLoglevel()>1)
     {
-    case 0:
-        info(message);
-        break;
-    case 1:
-        verbose(message);
-        break;
-    case 2:
-        debug(message);
-        break;
-    default:
-        info(message);
+        QTextStream fout(&log);
+        fout<<QTime::currentTime().toString(timeFormat)<<",D,"<<debugMessage+"\n";
     }
+    delete data;
 }
 
-void logger::writeLog(QString message)
+void logger::errorM(QString errorMessage)
 {
-    switch(verbosity)
+    data=new dataManager();
+    if(data->getLoglevel()>0)
     {
-    case 0:
-        info(message);
-        break;
-    case 1:
-        verbose(message);
-        break;
-    case 2:
-        debug(message);
-        break;
-    default:
-        info(message);
+        QTextStream fout(&log);
+        fout<<QTime::currentTime().toString(timeFormat)<<",E,"<<errorMessage+"\n";
     }
+    delete data;
 }
 
-
+void logger::warningM(QString warningMessage)
+{
+    data=new dataManager();
+    if(data->getLoglevel()>1)
+    {
+        QTextStream fout(&log);
+        fout<<QTime::currentTime().toString(timeFormat)<<",W,"<<warningMessage+"\n";
+    }
+    delete data;
+}

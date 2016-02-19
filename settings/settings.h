@@ -5,6 +5,7 @@
 #include "datamanager/datamanager.h"
 #include "widget.h"
 #include "sqlman/sqlman.h"
+#include "logger/logger.h"
 
 namespace Ui {
   class settings;
@@ -15,7 +16,7 @@ class settings : public QDialog
   Q_OBJECT
 
 public:
-  explicit settings(QWidget *parent = 0);
+  explicit settings(QWidget *parent,logger *loging);
   ~settings();
 
 public slots:

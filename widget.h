@@ -39,7 +39,7 @@ private:
     bool fLoad;
     unsigned long idLoaded;
     sqlMan db;
-    logger* logging;
+    logger* loging;
 public slots:
     void help();
     void addOperation();

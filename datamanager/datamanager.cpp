@@ -22,8 +22,8 @@ dataManager::dataManager()
                 Translation=result.at(1);
             if(result.at(0)=="DefaultUser")
                 DefUser=result.at(1);
-            if(result.at(0)=="Verbosity")
-                verbosity=result.at(1).toInt();;
+            if(result.at(0)=="Loglevel")
+                Loglevel=result.at(1).toInt();;
 
             line = in.readLine();
             result.clear();
@@ -39,7 +39,7 @@ dataManager::dataManager()
             out<<"Currency=\n";
             out<<"Translation=\n";
             out<<"DefaultUser=\n";
-            out<<"Verbosity=0";
+            out<<"LogLevel=0";
         }
 
     }
@@ -50,6 +50,7 @@ dataManager::dataManager()
         dataDir.mkpath(".");
     }
 }
+
 dataManager::~dataManager()
 {
     QString fileNameSettings=tr("settings.cfg");
@@ -62,7 +63,7 @@ dataManager::~dataManager()
         out<<tr("Currency=%1\n").arg(Currency);
         out<<tr("Translation=%1\n").arg(Translation);
         out<<tr("DefaultUser=%1\n").arg(DefUser);
-        out<<tr("Verbosity=%1\n").arg(verbosity);
+        out<<tr("Loglevel=%1\n").arg(Loglevel);
     }
     file.close();
 }
@@ -113,9 +114,9 @@ QString dataManager::getDefaultUser()
     return DefUser;
 }
 
-int dataManager::getVerbosity()
+int dataManager::getLoglevel()
 {
-    return verbosity;
+    return Loglevel;
 }
 
 void dataManager::setPath(QString data)
@@ -153,7 +154,8 @@ void dataManager::setDefaultUser(QString DefaultUser)
     DefUser=DefaultUser;
 }
 
-void dataManager::setVerbosity(int verb)
+
+void dataManager::setLogLevel(int lLevel)
 {
-    verbosity=verbosity;
+    Loglevel=lLevel;
 }

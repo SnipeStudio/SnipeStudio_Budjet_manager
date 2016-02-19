@@ -17,7 +17,7 @@ public:
     QString getTranslation();
     QString getMenuTranslation();
     QString getDefaultUser();
-    int getVerbosity();
+    int getLoglevel();
 
 signals:
 public slots:
@@ -25,7 +25,7 @@ public slots:
     void setCurrency(QString currency);
     void setTranslation(QString translation);
     void setDefaultUser(QString DefaultUser);
-    void setVerbosity(int verb);
+    void setLogLevel(int lLevel);
 
 
 private:
@@ -34,7 +34,12 @@ private:
     QString Currency;
     QString Translation;
     QString DefUser;
-    int verbosity;
+    int Loglevel;
+    enum logLevelenum{
+        off=0,
+        info=1,
+        debug=2
+    };
 };
 
 #endif // DATAMANAGER_H

@@ -1,52 +1,34 @@
 #include "settings.h"
 #include "ui_settings.h"
 
-settings::settings(QWidget *parent) :
+settings::settings(QWidget *parent,logger *loging) :
   QDialog(parent),
   ui(new Ui::settings)
 {
-
+    loging->debugM("Initializing settings menu");
   ui->setupUi(this);
+  loging->debugM("Enabling slots");
   connect(ui->clear,SIGNAL(clicked()),this,SLOT(cleanData()));
   connect(ui->buttonBox,SIGNAL(rejected()),this,SLOT(close()));
   connect(ui->buttonBox,SIGNAL(accepted()),this,SLOT(okSlot()));
-  ui->TranslationSelect->addItem(tr("English"));
-  ui->TranslationSelect->addItem(tr("Russian"));
-  ui->TranslationSelect->addItem(tr("German"));
-  ui->TranslationSelect->addItem(tr("Dutch"));
+  loging->debugM("Enabling slots: Done");
   dataManager* data=new dataManager();
+  loging->debugM(QString("Set translations to: %1").arg(data->getMenuTranslation()));
   ui->TranslationSelect->setCurrentIndex(ui->TranslationSelect->findText(data->getMenuTranslation()));
+  loging->debugM("Set DataPath to:" + data->getPath());
+  ui->DataPathLine->setText(data->getPath());
+  loging->debugM("Set Currency to:" + data->GetCurrency());
+  ui->CurrencyLine->setText(data->GetCurrency());
+  int loglevel = data->getLoglevel();
+  if(loglevel<0 || loglevel>2)
+  {
+      data->setLogLevel(2);
+      loging->debugM(QString("Change log level to debug due to:%1").arg(loglevel));
+  }
+  loging->debugM(QString("Set Log Level to: %1").arg(data->getLoglevel()));
+  ui->verbositySelect->setCurrentIndex(data->getLoglevel());
   delete data;
-}
-
-settings::~settings()
-{
-  delete ui;
-}
-
-void settings::okSlot()
-{
-   dataManager* data=new dataManager();
-   if(ui->DataPathLine->text()!=data->getPath())
-     {
-       data->setPath((QDir::fromNativeSeparators(ui->DataPathLine->text())));
-     }
-
-   data->setCurrency(ui->CurrencyLine->text());
-   data->setTranslation(ui->TranslationSelect->currentText());
-   if(ui->verbositySelect->currentText()=="info")
-   {
-       data->setVerbosity(0);
-   }
-   if(ui->verbositySelect->currentText()=="verbose")
-   {
-       data->setVerbosity(1);
-   }
-   if(ui->verbositySelect->currentText()=="debug")
-   {
-       data->setVerbosity(2);
-   }
-
+  loging->debugM("Initializing settings menu: Done");
    delete data;
    close();
 
