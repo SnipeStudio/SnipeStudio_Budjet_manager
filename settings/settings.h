@@ -16,7 +16,7 @@ class settings : public QDialog
   Q_OBJECT
 
 public:
-  explicit settings(QWidget *parent,logger *loging);
+  explicit settings(QWidget *parent, logger *log_ptr);
   ~settings();
 
 public slots:
@@ -26,6 +26,7 @@ public slots:
 
 private:
   Ui::settings *ui;
+  logger* loging;
 
 
 };

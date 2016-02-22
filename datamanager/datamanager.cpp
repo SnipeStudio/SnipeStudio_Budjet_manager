@@ -154,6 +154,7 @@ void dataManager::setDefaultUser(QString DefaultUser)
     DefUser=DefaultUser;
 }
 
+
 void dataManager::setLogLevel(int lLevel)
 {
     Loglevel=lLevel;
