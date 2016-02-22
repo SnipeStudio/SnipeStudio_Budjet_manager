@@ -1,12 +1,13 @@
 #include "settings.h"
 #include "ui_settings.h"
 
-settings::settings(QWidget *parent,logger *loging) :
+settings::settings(QWidget *parent,logger *log_ptr) :
   QDialog(parent),
   ui(new Ui::settings)
 {
-    loging->debugM("Initializing settings menu");
   ui->setupUi(this);
+  loging=log_ptr;
+  loging->debugM("Initializing settings menu");
   loging->debugM("Enabling slots");
   connect(ui->clear,SIGNAL(clicked()),this,SLOT(cleanData()));
   connect(ui->buttonBox,SIGNAL(rejected()),this,SLOT(close()));
@@ -27,13 +28,45 @@ settings::settings(QWidget *parent,logger *loging) :
   }
   loging->debugM(QString("Set Log Level to: %1").arg(data->getLoglevel()));
   ui->verbositySelect->setCurrentIndex(data->getLoglevel());
-  delete data;
   loging->debugM("Initializing settings menu: Done");
    delete data;
    close();
 
 
 }
+
+settings::~settings()
+{
+    delete ui;
+}
+
+
+void settings::okSlot()
+{
+   dataManager* data=new dataManager();
+   if(ui->DataPathLine->text()!=data->getPath())
+     {
+       data->setPath((QDir::fromNativeSeparators(ui->DataPathLine->text())));
+     }
+
+   data->setCurrency(ui->CurrencyLine->text());
+   data->setTranslation(ui->TranslationSelect->currentText());
+
+   if(ui->verbositySelect->currentText()=="off")
+   {
+       data->setLogLevel(loging->off);
+   }
+   if(ui->verbositySelect->currentText()=="info")
+   {
+       data->setLogLevel(loging->info);
+   }
+   if(ui->verbositySelect->currentText()=="debug")
+   {
+       data->setLogLevel(loging->debug);
+   }
+   close();
+}
+
 
 void settings::cleanData()
 {
