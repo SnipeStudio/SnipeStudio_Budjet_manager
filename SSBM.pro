@@ -37,7 +37,7 @@ win32: RC_ICONS = ico.ico
 
 
 TRANSLATIONS = translations/ssbm_de.ts \
-               translations/ssbm_de.ts \
+               translations/ssbm_en.ts \
                translations/ssbm_ru.ts \
                translations/ssbm_nl.ts \
 

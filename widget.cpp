@@ -72,6 +72,7 @@ bool Widget::initDatabase(sqlMan db)
   ui->view->hideColumn(0);
   ui->view->sortByColumn(0,Qt::DescendingOrder);
   ui->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  ui->view->setAutoFillBackground(true);
   loging->debugM("Database initialized succesfully");
 }
 
