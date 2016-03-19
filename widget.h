@@ -17,7 +17,6 @@ class settings;
 #include "datamanager/datamanager.h"
 #include "sqlman/sqlman.h"
 #include "app_info.h"
-
 namespace Ui {
 class Widget;
 }
@@ -46,6 +45,8 @@ public slots:
     void load();
     void showSettings();
     void closeSettings();
+    void editEntry();
+
 };
 
 #endif // WIDGET_H

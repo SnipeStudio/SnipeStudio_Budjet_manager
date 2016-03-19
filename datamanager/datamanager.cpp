@@ -159,3 +159,4 @@ void dataManager::setLogLevel(int lLevel)
 {
     Loglevel=lLevel;
 }
+

@@ -20,9 +20,11 @@ public:
   ~settings();
 
 public slots:
-    void okSlot();
+   void okSlot();
     void cleanData();
     void cleanDataOk();
+   // void showUserControl();
+    //void on_okButton_clicked();
 
 private:
   Ui::settings *ui;
