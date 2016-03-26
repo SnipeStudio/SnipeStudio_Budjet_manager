@@ -10,8 +10,9 @@ settings::settings(QWidget *parent,logger *log_ptr) :
   loging->debugM("Initializing settings menu");
   loging->debugM("Enabling slots");
   connect(ui->clear,SIGNAL(clicked()),this,SLOT(cleanData()));
-  connect(ui->buttonBox,SIGNAL(rejected()),this,SLOT(close()));
-  connect(ui->buttonBox,SIGNAL(accepted()),this,SLOT(okSlot()));
+ // connect(ui->setting,SIGNAL(A)
+  connect(ui->okButton,SIGNAL(clicked()),this,SLOT(okSlot()));
+  connect(ui->Cancel,SIGNAL(clicked()),this,SLOT(close()));
   loging->debugM("Enabling slots: Done");
   dataManager* data=new dataManager();
   loging->debugM(QString("Set translations to: %1").arg(data->getMenuTranslation()));
@@ -30,43 +31,12 @@ settings::settings(QWidget *parent,logger *log_ptr) :
   ui->verbositySelect->setCurrentIndex(data->getLoglevel());
   loging->debugM("Initializing settings menu: Done");
    delete data;
-   close();
-
-
 }
 
 settings::~settings()
 {
     delete ui;
 }
-
-
-void settings::okSlot()
-{
-   dataManager* data=new dataManager();
-   if(ui->DataPathLine->text()!=data->getPath())
-     {
-       data->setPath((QDir::fromNativeSeparators(ui->DataPathLine->text())));
-     }
-
-   data->setCurrency(ui->CurrencyLine->text());
-   data->setTranslation(ui->TranslationSelect->currentText());
-
-   if(ui->verbositySelect->currentText()=="off")
-   {
-       data->setLogLevel(loging->off);
-   }
-   if(ui->verbositySelect->currentText()=="info")
-   {
-       data->setLogLevel(loging->info);
-   }
-   if(ui->verbositySelect->currentText()=="debug")
-   {
-       data->setLogLevel(loging->debug);
-   }
-   close();
-}
-
 
 void settings::cleanData()
 {
@@ -87,4 +57,42 @@ void settings::cleanDataOk()
   sql->clean();
   delete sql;
   delete data;
+}
+
+//void settings::showUserControl()
+//{
+
+//}
+
+void settings::okSlot()
+{
+    loging->debugM("OK");
+    dataManager* data=new dataManager();
+    loging->debugM("data init");
+    if(ui->DataPathLine->text()!=data->getPath())
+      {
+        data->setPath((QDir::fromNativeSeparators(ui->DataPathLine->text())));
+      }
+
+    data->setCurrency(ui->CurrencyLine->text());
+    loging->debugM(data->GetCurrency());
+    data->setTranslation(ui->TranslationSelect->currentText());
+
+    if(ui->verbositySelect->currentText()=="off")
+    {
+        data->setLogLevel(loging->off);
+    }
+    if(ui->verbositySelect->currentText()=="info")
+    {
+        data->setLogLevel(loging->info);
+    }
+    if(ui->verbositySelect->currentText()=="debug")
+    {
+        data->setLogLevel(loging->debug);
+    }
+
+    loging->debugM("settings saved");
+    delete data;
+    close();
+    loging->debugM("done");
 }

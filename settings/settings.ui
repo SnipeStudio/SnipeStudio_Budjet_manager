@@ -13,139 +13,275 @@
   <property name="windowTitle">
    <string>Settings</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>200</y>
-     <width>301</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>9</y>
-     <width>321</width>
-     <height>183</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <layout class="QHBoxLayout" name="element_data">
-      <item>
-       <widget class="QLabel" name="dataPath">
-        <property name="text">
-         <string>Data Path:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="DataPathLine"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="element_cur">
-      <item>
-       <widget class="QLabel" name="Currency">
-        <property name="text">
-         <string>Currency:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="CurrencyLine"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="element_translation">
-      <item>
-       <widget class="QLabel" name="Translation">
-        <property name="text">
-         <string>Translation:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="TranslationSelect">
-        <item>
-         <property name="text">
-          <string>English</string>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="element_data">
+       <item>
+        <widget class="QLabel" name="dataPath">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>0</height>
+          </size>
          </property>
-        </item>
-        <item>
          <property name="text">
-          <string>Russian</string>
+          <string>Data Path:</string>
          </property>
-        </item>
-        <item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="DataPathLine"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="element_cur">
+       <item>
+        <widget class="QLabel" name="Currency">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text">
-          <string>German</string>
+          <string>Currency:</string>
          </property>
-        </item>
-        <item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="CurrencyLine"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="element_translation">
+       <item>
+        <widget class="QLabel" name="Translation">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>60</width>
+           <height>24</height>
+          </size>
+         </property>
          <property name="text">
-          <string>Dutch</string>
+          <string>Translation:</string>
          </property>
-        </item>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="element_verbosity">
-      <item>
-       <widget class="QLabel" name="Verbosity">
-        <property name="text">
-         <string>Log Level:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="verbositySelect">
-        <item>
+         <property name="textFormat">
+          <enum>Qt::PlainText</enum>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::NoTextInteraction</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="TranslationSelect">
+         <item>
+          <property name="text">
+           <string>English</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Russian</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>German</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dutch</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="element_verbosity">
+       <item>
+        <widget class="QLabel" name="Verbosity">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>1</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>156</width>
+           <height>24</height>
+          </size>
+         </property>
          <property name="text">
-          <string>off</string>
+          <string>Log Level:</string>
          </property>
-        </item>
-        <item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="verbositySelect">
+         <item>
+          <property name="text">
+           <string>off</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>info</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>debug</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="element_clean">
+       <item>
+        <widget class="QPushButton" name="clear">
          <property name="text">
-          <string>info</string>
+          <string>Clean data</string>
          </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>debug</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="element_clean">
-      <item>
-       <widget class="QPushButton" name="clear">
-        <property name="text">
-         <string>Clean data</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="AuthSettings_element">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QCheckBox" name="authcheckbox">
+           <property name="text">
+            <string>Enable Authorization</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="userControl">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>User Control</string>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okButton">
+       <property name="text">
+        <string>Ok</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Cancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>authcheckbox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>userControl</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>248</x>
+     <y>187</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>okButton</receiver>
+   <slot>animateClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>212</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

@@ -80,7 +80,8 @@ void Widget::help()
 {
     loging->debugM("About message called");
     QMessageBox* helpMb=new QMessageBox(this);
-    helpMb->about(this,tr("About SSBM"),tr("Snipe Studio Budget Manager v.%1\nUsing QT5\n2010-2016(ɔ)").arg(this->version));
+    helpMb->about(this,tr("About SSBM"),tr("Snipe Studio Budget Manager v.%1\nUsing QT5\n%2\n%3").arg(this->version).arg(VER_LEGALCOPYRIGHT_STR).arg(VER_LEGALTRADEMARKS1_STR));
+
     helpMb->close();
 }
 
@@ -141,9 +142,6 @@ void Widget::addOperation()
         QSqlTableModel* model=db.getModel();
         ui->view->setModel(model);
         ui->view->hideColumn(0);
-        ui->view->resizeColumnToContents(0);
-        ui->view->resizeColumnToContents(5);
-        ui->view->setColumnWidth(3,200);
         ui->view->sortByColumn(0,Qt::DescendingOrder);
         ui->view->show();
         ui->balance->setNum(db.getBalance());

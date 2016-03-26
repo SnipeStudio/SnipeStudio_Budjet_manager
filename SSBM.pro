@@ -29,7 +29,9 @@ HEADERS  += widget.h \
     res.rc
 
 FORMS    += widget.ui \
-    settings/settings.ui
+    settings/settings.ui \
+    auth/auth.ui \
+    auth/usercontrol.ui
 
 RESOURCES += res.qrc
 RC_FILE = res.rc
