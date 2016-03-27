@@ -16,7 +16,7 @@ class settings : public QDialog
   Q_OBJECT
 
 public:
-  explicit settings(QWidget *parent, logger *log_ptr);
+  explicit settings(QWidget *parent, logger *log_ptr, sqlMan *sql=0);
   ~settings();
 
 public slots:
@@ -25,10 +25,10 @@ public slots:
     void cleanDataOk();
    // void showUserControl();
     //void on_okButton_clicked();
-
 private:
   Ui::settings *ui;
   logger* loging;
+  sqlMan* sqlManager;
 
 
 };

@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     sqlman/sqlman.cpp \
     datamanager/datamanager.cpp \
     settings/settings.cpp \
-    logger/logger.cpp
+    logger/logger.cpp \
+    editentry/editentry.cpp
 
 HEADERS  += widget.h \
     datamanager/datamanager.h \
@@ -26,12 +27,13 @@ HEADERS  += widget.h \
     app_info.h \
     settings/settings.h \
     logger/logger.h \
-    res.rc
+    res.rc \
+    editentry/editentry.h
 
 FORMS    += widget.ui \
     settings/settings.ui \
     auth/auth.ui \
-    auth/usercontrol.ui
+    editentry/editentry.ui
 
 RESOURCES += res.qrc
 RC_FILE = res.rc

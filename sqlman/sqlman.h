@@ -16,13 +16,16 @@ class sqlMan
 public:
     sqlMan();
     void addOperation(sqlMan* db, double summ, QString comment, bool side, QDateTime time);
+    void updateEntry(sqlMan* db,int index,double summ,QString comment,bool side,QDateTime time);
+    void deleteOperation(int index);
     double getBalance();
     void init();
-    int clean();
+    int clean(sqlMan *db);
     QString getDBName();
     QSqlTableModel* getModel();
    // QSqlDatabase* getDataBase();
     bool dbIsOpen();
+    void submit();
 private:
     QString databaseName;
     QSqlQuery* query;

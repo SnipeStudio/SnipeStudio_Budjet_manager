@@ -1,7 +1,6 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 #include "settings/settings.h"
-#include "logger/logger.h"
 #ifdef SETTINGS_H
 class settings;
 #endif
@@ -17,6 +16,8 @@ class settings;
 #include "datamanager/datamanager.h"
 #include "sqlman/sqlman.h"
 #include "app_info.h"
+#include "logger/logger.h"
+#include "editentry/editentry.h"
 namespace Ui {
 class Widget;
 }
@@ -30,22 +31,27 @@ public:
     ~Widget();
 
 private:
-  bool initDatabase(sqlMan db);
+  bool initDatabase(sqlMan *db);
     Ui::Widget *ui;
     QString tmp;
     QString version;
     settings* set;
     bool fLoad;
     unsigned long idLoaded;
-    sqlMan db;
+    sqlMan* db;
     logger* loging;
+    editentry* editdialog;
+
 public slots:
     void help();
     void addOperation();
     void load();
     void showSettings();
     void closeSettings();
-    void editEntry();
+    void editTrigger(QModelIndex index);
+
+    void updateDatabase();
+    //void editEntry();
 
 };
 

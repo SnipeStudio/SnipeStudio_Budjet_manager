@@ -1,12 +1,13 @@
 #include "settings.h"
 #include "ui_settings.h"
 
-settings::settings(QWidget *parent,logger *log_ptr) :
+settings::settings(QWidget *parent, logger *log_ptr, sqlMan* sql) :
   QDialog(parent),
   ui(new Ui::settings)
 {
   ui->setupUi(this);
   loging=log_ptr;
+  sqlManager=sql;
   loging->debugM("Initializing settings menu");
   loging->debugM("Enabling slots");
   connect(ui->clear,SIGNAL(clicked()),this,SLOT(cleanData()));
@@ -53,10 +54,15 @@ void settings::cleanData()
 void settings::cleanDataOk()
 {
   dataManager* data=new dataManager();
-  sqlMan* sql=new sqlMan();
-  sql->clean();
-  delete sql;
+  sqlManager->clean(sqlManager);
   delete data;
+  QMessageBox* a=new QMessageBox(this);
+  a->setText(tr("You should restart the app to this actually working"));
+  a->addButton(tr("ok"),a->AcceptRole);
+  a->show();
+  connect(a,SIGNAL(accepted()),this,SLOT(cleanDataOk()));
+  connect(a,SIGNAL(rejected()),a,SLOT(close()));
+      connect(a,SIGNAL(accepted()),a,SLOT(close()));
 }
 
 //void settings::showUserControl()
