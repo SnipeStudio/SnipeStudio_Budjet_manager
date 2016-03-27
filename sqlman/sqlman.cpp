@@ -57,10 +57,12 @@ void sqlMan::init()
     {
         return;
     }
-    this->model=new QSqlTableModel(0,this->sdb);
-    this->model->setTable("operations");
-    this->model->select();
+    model=new QSqlTableModel(0,sdb);
+    model->setTable("operations");
+    model->select();
+    model->setEditStrategy(QSqlTableModel::OnFieldChange);
 }
+
 void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side,QDateTime time)
 {
     qDebug()<<"Side:"<<side;
@@ -71,36 +73,47 @@ void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side,QD
          this->query->bindValue(":comment", comment);
          this->query->bindValue(":side", side);
     this->query->bindValue(":time", time.toString("dd-MM-yyyy hh:mm:ss"));
-    if(this->query->exec())
-    {
-        qDebug()<<"OK";
-    }
-    else
-    {
-        qDebug()<<"ERROR";
-    }
-    db->model=new QSqlTableModel(0,db->sdb);
-    db->model->setTable("operations");
-
-    if(db->model->select())
-    {
-        qDebug()<<"Model is OK";
-    }
-    db->model->setEditStrategy(QSqlTableModel::OnFieldChange);
+    this->query->exec();
+    delete query;
 
 }
 
-int sqlMan::clean()
+void sqlMan::updateEntry(sqlMan *db,int index, double summ, QString comment, bool side,QDateTime time)
 {
-    query=new QSqlQuery(sdb);
-    this->query->prepare("TRUNCATE TABLE operations;");
-    if(this->query->exec())
-    {
-        qDebug()<<"OK";
-    }
-    else
-    {
-        qDebug()<<"ERROR";
-    }
-    return 0;
+    qDebug()<<"Side:"<<side;
+    qDebug()<<"Summ:"<<summ;
+    this->query=new QSqlQuery(this->sdb);
+    //  qry.prepare( "UPDATE names SET lastname = 'Johnson' WHERE firstname = 'Jane'" );
+    // UPDATE operations set summ = :summ, comment = :comment,side = :side, time = :time  where id=:index;
+    this->query->prepare("UPDATE operations set summ = :summ, comment = :comment,side = :side, time = :time  where id=:index;");
+         this->query->bindValue(":summ", summ);
+         this->query->bindValue(":comment", comment);
+         this->query->bindValue(":side", side);
+    this->query->bindValue(":time", time.toString("dd-MM-yyyy hh:mm:ss"));
+    this->query->bindValue(":index", index);
+    this->query->exec();
+    delete query;
+
 }
+
+void sqlMan::deleteOperation(int index)
+{
+    qDebug()<<"DO YOU WANT A FRYING NAILS?";
+    this->query=new QSqlQuery(this->sdb);
+    this->query->prepare("DELETE FROM operations WHERE id = :index" );
+    this->query->bindValue(":index", index);
+    this->query->exec();
+}
+
+int sqlMan::clean(sqlMan *db)
+{
+    sdb.close();
+    dataManager* data=new dataManager();
+    QString databaseName=QDir::toNativeSeparators(data->getPath()+"/ssbm.db");
+    delete data;
+    qDebug() << sdb.isOpen();
+    qDebug() << QFile::remove(databaseName);
+    sdb.open();
+    this->init();
+}
+
