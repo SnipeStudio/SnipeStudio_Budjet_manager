@@ -131,6 +131,7 @@ void Widget::addOperation()
         db->dbIsOpen();
         loging->debugM("Database name:"+db->getDBName());
         db->addOperation(db,summ,commentText,side,time);
+        this->ui->sum->clear();
         this->updateDatabase();
 
     }

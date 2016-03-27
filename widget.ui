@@ -349,21 +349,5 @@
     </hint>
    </hints>
   </connection>
-  <connection>
-   <sender>confirm</sender>
-   <signal>clicked()</signal>
-   <receiver>sum</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>516</x>
-     <y>63</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>351</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
  </connections>
 </ui>
