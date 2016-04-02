@@ -39,6 +39,7 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     connect(ui->confirm,SIGNAL(clicked()),this,SLOT(addOperation()));
     connect(ui->settings,SIGNAL(clicked()),this,SLOT(showSettings()));
     connect(ui->view,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(editTrigger(QModelIndex)));
+    connect(ui->resetTime,SIGNAL(clicked(bool)),this,SLOT(resetTime()));
     loging->debugM("Done");
     updateDatabase();
 
@@ -131,6 +132,7 @@ void Widget::addOperation()
         db->dbIsOpen();
         loging->debugM("Database name:"+db->getDBName());
         db->addOperation(db,summ,commentText,side,time);
+        this->ui->sum->clear();
         this->updateDatabase();
 
     }
@@ -194,4 +196,9 @@ void Widget::updateDatabase()
     ui->view->horizontalHeader()->setStretchLastSection(true);
     ui->view->show();
     ui->balance->setNum(db->getBalance());
+}
+
+void Widget::resetTime()
+{
+    ui->date->setDateTime(QDateTime::currentDateTime());
 }

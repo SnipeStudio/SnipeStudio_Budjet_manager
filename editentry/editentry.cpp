@@ -11,12 +11,12 @@ editentry::editentry(QWidget *parent, logger* log, QVector<QString> *data,sqlMan
     database = db;
     index=data->at(0).toInt();
     dt=QDateTime::fromString(data->at(1),"dd-MM-yyyy hh:mm:ss");
-    summ=data->at(2).toDouble();
+    summ=fabs(data->at(2).toDouble());
     comment=data->at(3);
     ui->dateTimeEdit->setDateTime(dt);
     ui->lineSumm->setText(QString::number(summ));
     ui->lineEditComment->setText(comment);
-    if(summ>0)
+    if(!data->at(5).toInt())
     {
         ui->radioButtonProfit->click();
     }
@@ -69,24 +69,15 @@ void editentry::on_confirmChanges_clicked()
       }
     if(ui->lineEditComment->text().isEmpty())
         ui->lineEditComment->setText(tr("Default"));
-        bool side=false;
-        if(ui->radioButtonProfit->isChecked())
-        {
-           side=true;
-        }
-        else
-        {
-            side=false;
-        }
 
         QDateTime time=ui->dateTimeEdit->dateTime();
         if(!side)
         {
-            database->updateEntry(database,index,(-1)*ui->lineSumm->text().toDouble(),ui->lineEditComment->text(),side,time);
+            database->updateEntry(database,index,(-1)*ui->lineSumm->text().toDouble(),ui->lineEditComment->text(),ui->radioButtonProfit->isChecked(),time);
         }
         else
         {
-            database->updateEntry(database,index,ui->lineSumm->text().toDouble(),ui->lineEditComment->text(),side,time);
+            database->updateEntry(database,index,ui->lineSumm->text().toDouble(),ui->lineEditComment->text(),ui->radioButtonProfit->isChecked(),time);
         }
         this->close();
 }
