@@ -224,6 +224,9 @@
              <property name="text">
               <string>%profit</string>
              </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
@@ -239,6 +242,13 @@
           <widget class="QDateTimeEdit" name="date">
            <property name="toolTip">
             <string>date of balance changing</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="resetTime">
+           <property name="text">
+            <string>reset time</string>
            </property>
           </widget>
          </item>

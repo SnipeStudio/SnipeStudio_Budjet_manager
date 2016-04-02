@@ -48,6 +48,7 @@ public slots:
     void load();
     void showSettings();
     void closeSettings();
+    void resetTime();
     void editTrigger(QModelIndex index);
 
     void updateDatabase();
