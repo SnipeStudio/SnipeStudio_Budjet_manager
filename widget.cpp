@@ -41,6 +41,11 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     connect(ui->view,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(editTrigger(QModelIndex)));
     connect(ui->resetTime,SIGNAL(clicked(bool)),this,SLOT(resetTime()));
     loging->debugM("Done");
+    loging->debugM("Activating shortcuts");
+    keyEnter = new QShortcut(this);
+    keyEnter->setKey(Qt::Key_Return);
+    connect(keyEnter,SIGNAL(activated()),this,SLOT(addOperation()));
+    loging->debugM("Done");
     updateDatabase();
 
 }

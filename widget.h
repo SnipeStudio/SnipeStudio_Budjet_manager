@@ -11,6 +11,7 @@ class settings;
 #include <QAction>
 #include <QMessageBox>
 #include <QDialogButtonBox>
+#include <QShortcut>
 #include <fstream>
 #include <QTableView>
 #include "datamanager/datamanager.h"
@@ -18,6 +19,7 @@ class settings;
 #include "app_info.h"
 #include "logger/logger.h"
 #include "editentry/editentry.h"
+
 namespace Ui {
 class Widget;
 }
@@ -41,6 +43,7 @@ private:
     sqlMan* db;
     logger* loging;
     editentry* editdialog;
+    QShortcut* keyEnter;
 
 public slots:
     void help();
