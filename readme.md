@@ -12,23 +12,23 @@ Developer's Changelog:
 
 03 april 2016 (0.5.6)
 
-*Added: Keyboard shortcut for confirm button. Press Return to confirm
+* Added: Keyboard shortcut for confirm button. Press Return to confirm
 
 02 april 2016 (0.5.5)
 
-*Added: button for reset dateTime
+* Added: button for reset dateTime
 
 28 of march 2016 (0.5.5)
 
-*Fixed: Table content now is actually stretching to window
-*Fixed: Clean database is working now
-*Added: Edit entry dialog
-*Changed: On confirm old summ has been cleared
+* Fixed: Table content now is actually stretching to window
+* Fixed: Clean database is working now
+* Added: Edit entry dialog
+* Changed: On confirm old summ has been cleared
 
 26 of march 2016 (0.5.4)
 
-*Fixed: changing size of confirm button in russian translated
-*Fixed: size of buttons "settings", "about", "exit" being too big on full
+* Fixed: changing size of confirm button in russian translated
+* Fixed: size of buttons "settings", "about", "exit" being too big on full
 screen application
 
 24 october 2015 (0.5.3)
