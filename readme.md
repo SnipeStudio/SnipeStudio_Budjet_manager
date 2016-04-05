@@ -10,7 +10,15 @@ Simple Budget Manager for you by Snipe Studio
 
 Developer's Changelog:
 
-03 april 2016 (0.5.6)
+05 april 2016 (0.5.6)
+
+* Fixed: Incorrect checkings for edit entry menu
+* Fixed: Incorrect displaying of big numbers, being displayed in scientific form
+* Added: When balance is below 0 balance text highlighting with red
+* Added: On pressing "Delete" key on keyboard currently selected entry is actually deleting
+* Deleted: Code was cleared of qDebug() functions
+
+03 april 2016 (0.5.5)
 
 * Added: Keyboard shortcut for confirm button. Press Return to confirm
 
