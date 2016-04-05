@@ -44,7 +44,10 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     loging->debugM("Activating shortcuts");
     keyEnter = new QShortcut(this);
     keyEnter->setKey(Qt::Key_Return);
+    keyDelete=new QShortcut(this);
+    keyDelete->setKey(Qt::Key_Delete);
     connect(keyEnter,SIGNAL(activated()),this,SLOT(addOperation()));
+    connect(keyDelete,SIGNAL(activated()),this,SLOT(deleteEntry()));
     loging->debugM("Done");
     updateDatabase();
 
@@ -135,7 +138,6 @@ void Widget::addOperation()
         }
         QDateTime time=ui->date->dateTime();
         db->dbIsOpen();
-        loging->debugM("Database name:"+db->getDBName());
         db->addOperation(db,summ,commentText,side,time);
         this->ui->sum->clear();
         this->updateDatabase();
@@ -148,7 +150,6 @@ void Widget::load()
     loging->debugM("load called");
     QTranslator translator;
     dataManager* data=new dataManager();
-    qDebug()<<"translation/ssbm_"+data->getTranslation()+".qm";
     translator.load(QDir::toNativeSeparators("translation/ssbm_"+data->getTranslation()+".qm"));
     qApp->installTranslator(&translator);
     ui->retranslateUi(this);
@@ -197,13 +198,32 @@ void Widget::updateDatabase()
     ui->view->sortByColumn(0,Qt::DescendingOrder);
     ui->view->sortByColumn(0,Qt::DescendingOrder);
     ui->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->view->setAutoFillBackground(true);
     ui->view->horizontalHeader()->setStretchLastSection(true);
     ui->view->show();
-    ui->balance->setNum(db->getBalance());
+    ui->view->selectRow(0);
+
+    ui->balance->setText(QString::number(db->getBalance(),'f',2));
+    QPalette* palette = new QPalette();
+    if(db->getBalance()>=0)
+    {
+        palette->setColor(QPalette::WindowText,Qt::black);
+    }
+    else
+    {
+        palette->setColor(QPalette::WindowText,Qt::red);
+    }
+
+    ui->balance->setPalette(*palette);
 }
 
 void Widget::resetTime()
 {
     ui->date->setDateTime(QDateTime::currentDateTime());
+}
+
+void Widget::deleteEntry()
+{
+    int selectedIndex = ui->view->model()->index(ui->view->currentIndex().row(),0).data().toInt();
+    db->deleteOperation(selectedIndex);
+    updateDatabase();
 }
