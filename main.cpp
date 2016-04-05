@@ -15,10 +15,10 @@ int main(int argc, char *argv[])
     loging->debugM("Translation loaded");
     delete data;
     a.setWindowIcon(QIcon(":/icon/ico.png"));
-    loging->infoM(QString("Version of application set to ").arg(VER_PRODUCTNAME_STR));
+    loging->infoM(QString("Version of application set to %1").arg(VER_PRODUCTVERSION_STR));
     a.setApplicationName(VER_PRODUCTNAME_STR);
-    loging->infoM(QString("Version of file set to %1").arg(VER_FILEVERSION_STR));
-    a.setApplicationVersion(VER_FILEVERSION_STR);
+    a.setApplicationVersion(VER_PRODUCTVERSION_STR);
+    loging->infoM(QString("Version of file set to %1").arg(VER_PRODUCTVERSION_STR));
     a.addLibraryPath("./");
     loging->infoM(QString("Initializing of %1").arg(VER_PRODUCTNAME_STR));
     Widget* w = new Widget(0,loging);

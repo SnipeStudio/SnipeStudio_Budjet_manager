@@ -14,9 +14,9 @@ editentry::editentry(QWidget *parent, logger* log, QVector<QString> *data,sqlMan
     summ=fabs(data->at(2).toDouble());
     comment=data->at(3);
     ui->dateTimeEdit->setDateTime(dt);
-    ui->lineSumm->setText(QString::number(summ));
+    ui->lineSumm->setText(QString::number(summ,'f',2));
     ui->lineEditComment->setText(comment);
-    if(!data->at(5).toInt())
+    if(data->at(5).toInt()>0)
     {
         ui->radioButtonProfit->click();
     }
@@ -71,6 +71,7 @@ void editentry::on_confirmChanges_clicked()
         ui->lineEditComment->setText(tr("Default"));
 
         QDateTime time=ui->dateTimeEdit->dateTime();
+        side=ui->radioButtonProfit->isChecked();
         if(!side)
         {
             database->updateEntry(database,index,(-1)*ui->lineSumm->text().toDouble(),ui->lineEditComment->text(),ui->radioButtonProfit->isChecked(),time);

@@ -44,6 +44,7 @@ private:
     logger* loging;
     editentry* editdialog;
     QShortcut* keyEnter;
+    QShortcut* keyDelete;
 
 public slots:
     void help();
@@ -53,9 +54,8 @@ public slots:
     void closeSettings();
     void resetTime();
     void editTrigger(QModelIndex index);
-
     void updateDatabase();
-    //void editEntry();
+    void deleteEntry();
 
 };
 
