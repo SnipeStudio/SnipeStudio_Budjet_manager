@@ -11,7 +11,6 @@ settings::settings(QWidget *parent, logger *log_ptr, sqlMan* sql) :
   loging->debugM("Initializing settings menu");
   loging->debugM("Enabling slots");
   connect(ui->clear,SIGNAL(clicked()),this,SLOT(cleanData()));
- // connect(ui->setting,SIGNAL(A)
   connect(ui->okButton,SIGNAL(clicked()),this,SLOT(okSlot()));
   connect(ui->Cancel,SIGNAL(clicked()),this,SLOT(close()));
   loging->debugM("Enabling slots: Done");
