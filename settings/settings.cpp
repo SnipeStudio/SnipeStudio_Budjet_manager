@@ -41,7 +41,7 @@ settings::~settings()
 void settings::cleanData()
 {
   QMessageBox* a=new QMessageBox(this);
-  a->setText(tr("All data will be cleaned. Use at your own risk. Don't forgot to click load"));
+  a->setText(tr("All data will be cleaned. Use at your own risk."));
   a->addButton(tr("cancel"),a->RejectRole);
   a->addButton(tr("ok"),a->AcceptRole);
   a->show();
@@ -55,13 +55,6 @@ void settings::cleanDataOk()
   dataManager* data=new dataManager();
   sqlManager->clean(sqlManager);
   delete data;
-  QMessageBox* a=new QMessageBox(this);
-  a->setText(tr("You should restart the app to this actually working"));
-  a->addButton(tr("ok"),a->AcceptRole);
-  a->show();
-  connect(a,SIGNAL(accepted()),this,SLOT(cleanDataOk()));
-  connect(a,SIGNAL(rejected()),a,SLOT(close()));
-      connect(a,SIGNAL(accepted()),a,SLOT(close()));
 }
 
 //void settings::showUserControl()

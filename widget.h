@@ -45,6 +45,7 @@ private:
     editentry* editdialog;
     QShortcut* keyEnter;
     QShortcut* keyDelete;
+    bool lockBool;
 
 public slots:
     void help();
@@ -56,7 +57,8 @@ public slots:
     void editTrigger(QModelIndex index);
     void updateDatabase();
     void deleteEntry();
-
+protected:
+     void closeEvent(QCloseEvent *event);
 };
 
 #endif // WIDGET_H
