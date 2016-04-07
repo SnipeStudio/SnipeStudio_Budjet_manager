@@ -6,6 +6,7 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
+    lockBool=false;
     if(log_ptr!=0)
     {
        loging=log_ptr;
@@ -13,6 +14,14 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     else
     {
         loging = new logger();
+    }
+    if (QFile::exists(QDir::toNativeSeparators("./lockfile"))) {
+        this->close();
+    } else {
+         QFile lock(QDir::toNativeSeparators("./lockfile"));
+         lock.open(QIODevice::Append);
+         lock.close();
+         lockBool=true;
     }
     db=new sqlMan();
     fLoad=false;
@@ -50,15 +59,11 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     connect(keyDelete,SIGNAL(activated()),this,SLOT(deleteEntry()));
     loging->debugM("Done");
     updateDatabase();
-
 }
 
 Widget::~Widget()
 {
-    loging->infoM(QString("Deinitialization of %1").arg(VER_PRODUCTNAME_STR));
-    loging->debugM("Closing SSBM");
-    delete ui;
-    delete loging;
+
 }
 
 bool Widget::initDatabase(sqlMan* db)
@@ -82,9 +87,9 @@ void Widget::help()
     loging->debugM("About message called");
     QMessageBox* helpMb=new QMessageBox(this);
     helpMb->about(this,tr("About SSBM"),tr("Snipe Studio Budget Manager v.%1\nUsing QT5\n%2\n%3").arg(this->version).arg(VER_LEGALCOPYRIGHT_STR).arg(VER_LEGALTRADEMARKS1_STR));
-
     helpMb->close();
 }
+
 
 void Widget::addOperation()
 {
@@ -226,4 +231,16 @@ void Widget::deleteEntry()
     int selectedIndex = ui->view->model()->index(ui->view->currentIndex().row(),0).data().toInt();
     db->deleteOperation(selectedIndex);
     updateDatabase();
+}
+
+void Widget::closeEvent(QCloseEvent *event)
+{
+    if(lockBool)
+    {
+        QFile::remove(QDir::toNativeSeparators("./lockfile"));
+    }
+    loging->infoM(QString("Deinitialization of %1").arg(VER_PRODUCTNAME_STR));
+    loging->debugM("Closing SSBM");
+    delete ui;
+    delete loging;
 }
