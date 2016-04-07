@@ -5,6 +5,7 @@
 
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
     QTranslator translator;
     logger* loging=new logger();
