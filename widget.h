@@ -1,11 +1,6 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 #include "settings/settings.h"
-#ifdef SETTINGS_H
-class settings;
-#endif
-
-
 #include <QWidget>
 #include <QMenu>
 #include <QAction>

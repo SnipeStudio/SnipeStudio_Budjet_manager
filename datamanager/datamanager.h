@@ -35,11 +35,6 @@ private:
     QString Translation;
     QString DefUser;
     int Loglevel;
-    enum logLevelenum{
-        off=0,
-        info=1,
-        debug=2
-    };
 };
 
 #endif // DATAMANAGER_H

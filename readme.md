@@ -1,7 +1,7 @@
 Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.5.7
+Current version: 0.5.8
 Soft requirenments: QT5
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
@@ -9,6 +9,9 @@ Hard requirments: 50-60 mb of ram
 Simple Budget Manager for you by Snipe Studio
 
 Developer's Changelog:
+
+08 april 2016 (0.5.8)
+* Added: something
 
 07 april 2016 (0.5.7)
 * Fixed: Now programm will not run if another instance of programm is already running 

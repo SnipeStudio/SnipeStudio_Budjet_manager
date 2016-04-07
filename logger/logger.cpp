@@ -1,5 +1,6 @@
 #include "logger.h"
 
+// probably i should log file into data path
 logger::logger()
 {
     data=new dataManager();
