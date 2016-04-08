@@ -7,7 +7,7 @@ dataManager::dataManager()
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream in(&file);
-        in.setCodec(QTextCodec::codecForName("UTF-8"));
+ in.setCodec(QTextCodec::codecForName("UTF-8"));
         QString line = in.readLine();
         QStringList result;
         while (!line.isNull())
@@ -15,7 +15,7 @@ dataManager::dataManager()
             result.append(line.split(QString('=')));
             line.remove(QRegExp("//[\\W\\w]{0,}"));
             if(result.at(0)=="DataPath")
-                dataPath=QDir::toNativeSeparators(result.at(1));
+            dataPath=QDir::toNativeSeparators(result.at(1));
             if(result.at(0)=="Currency")
                 Currency=result.at(1);
             if(result.at(0)=="Translation")
@@ -76,10 +76,12 @@ QString dataManager::getPath()
     }
     return dataPath;
 }
+
 QString dataManager::GetCurrency()
 {
     return Currency;
 }
+
 QString dataManager::getTranslation()
 {
     if(Translation=="")
@@ -88,6 +90,7 @@ QString dataManager::getTranslation()
     }
     return Translation;
 }
+
 QString dataManager::getMenuTranslation()
 {
     if(Translation=="ru")
@@ -123,10 +126,13 @@ void dataManager::setPath(QString data)
 {
     dataPath=data;
 }
+
 void dataManager::setCurrency(QString currency)
 {
     Currency=currency;
 }
+
+// need make this more flexible, probably using switch...case statement
 void dataManager::setTranslation(QString translation)
 {
     Translation=translation;
@@ -149,12 +155,13 @@ void dataManager::setTranslation(QString translation)
 
 }
 
+// for future use
 void dataManager::setDefaultUser(QString DefaultUser)
 {
     DefUser=DefaultUser;
 }
 
-
+// sets log level
 void dataManager::setLogLevel(int lLevel)
 {
     Loglevel=lLevel;

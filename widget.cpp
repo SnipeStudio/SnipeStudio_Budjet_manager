@@ -6,7 +6,7 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-    lockBool=false;
+// open new log instance if log_ptr is null
     if(log_ptr!=0)
     {
        loging=log_ptr;
@@ -15,6 +15,9 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     {
         loging = new logger();
     }
+
+// create lock file to prevent double  launch of program, if file already exists, exiting
+    lockBool=false;
     if (QFile::exists(QDir::toNativeSeparators("./lockfile"))) {
         this->close();
     } else {
@@ -23,6 +26,8 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
          lock.close();
          lockBool=true;
     }
+
+// Initialize sqlMan to work with sql database
     db=new sqlMan();
     fLoad=false;
     idLoaded=0;
@@ -31,13 +36,10 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     ui->setupUi(this);
     dataManager* data=new dataManager();
     QString path=data->getPath()+"bal.ssff";
-    loging->debugM(QString("Setting DataPath:%1").arg(data->getPath()));
+    loging->debugM(QString("Setting DataPath:%1").arg(path));
     ui->currency->setText(data->GetCurrency());
     loging->debugM(QString("Setting Currency:%1").arg(data->GetCurrency()));
     loging->debugM("Processing balance");
-    QFile file_bal(path);
-    QTextStream in_bal(&file_bal);
-    in_bal.setCodec("UTF-8");
     ui->balance->setNum(db->getBalance());
     loging->debugM("Done");
     ui->date->setDateTime(QDateTime::currentDateTime());
@@ -62,25 +64,7 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
 }
 
 Widget::~Widget()
-{
-
-}
-
-bool Widget::initDatabase(sqlMan* db)
-{
-  loging->debugM("Get into database initialization");
-  QSqlTableModel* model=db->getModel();
-  model->setTable("operations");
-  if(db->dbIsOpen())
-    {
-      QMessageBox* dbOpenError=new QMessageBox(this);
-      loging->errorM("Error in Db Loading. There are some shit happens during database loading");
-      dbOpenError->warning(this, "Error in Db Loading", "There are some shit happens during database loading");
-      dbOpenError->exec();
-    }
-  updateDatabase();
-  loging->debugM("Database initialized succesfully");
-}
+{}
 
 void Widget::help()
 {
@@ -142,14 +126,17 @@ void Widget::addOperation()
             summ*=-1;
         }
         QDateTime time=ui->date->dateTime();
-        db->dbIsOpen();
+if(db->dbIsOpen()){
         db->addOperation(db,summ,commentText,side,time);
+}
+else {db->init()}
         this->ui->sum->clear();
         this->updateDatabase();
 
     }
 }
 
+// probable need to reuse this code or delete
 void Widget::load()
 {
     loging->debugM("load called");
@@ -165,16 +152,14 @@ void Widget::load()
 void Widget::showSettings()
 {
     loging->debugM("showSettings called");
-    //db->init();
-    set=new settings(this,loging,db);
-    connect(set,SIGNAL(finished(int)),this,SLOT(updateDatabase()));
+    set=new settings(this,loging,db); connect(set,SIGNAL(finished(int)),this,SLOT(closeSettings()));
     set->show();
 }
 
 void Widget::closeSettings()
 {
     loging->debugM("closeSettings called");
-
+updateDatabase();
     delete set;
 }
 
@@ -200,13 +185,14 @@ void Widget::updateDatabase()
     ui->view->hideColumn(4);
     ui->view->hideColumn(5);
     ui->view->resizeColumnsToContents();
-    ui->view->sortByColumn(0,Qt::DescendingOrder);
-    ui->view->sortByColumn(0,Qt::DescendingOrder);
+//  sorting by time by time
+    ui->view->sortByColumn(1,Qt::DescendingOrder);
     ui->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->view->horizontalHeader()->setStretchLastSection(true);
     ui->view->show();
+// selecting top row
     ui->view->selectRow(0);
-
+// formatting balance text
     ui->balance->setText(QString::number(db->getBalance(),'f',2));
     QPalette* palette = new QPalette();
     if(db->getBalance()>=0)
@@ -217,7 +203,6 @@ void Widget::updateDatabase()
     {
         palette->setColor(QPalette::WindowText,Qt::red);
     }
-
     ui->balance->setPalette(*palette);
 }
 
@@ -233,6 +218,7 @@ void Widget::deleteEntry()
     updateDatabase();
 }
 
+// this is works when program is going to close
 void Widget::closeEvent(QCloseEvent *event)
 {
     if(lockBool)

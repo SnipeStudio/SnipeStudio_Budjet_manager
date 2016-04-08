@@ -17,8 +17,10 @@ deploy:
  - api_key: "3940cc517916c31fdbb67f58706eab439f4aecd6"
  - file: SnipeStudio_Budjet_manager/ssbm
  - skip_cleanup: true
- - on:
- - tags: true
+ - on:    
+    repo: SnipeStudio/SnipeStudio_Budjet_manager
+    tags: true
+    all_branches: true
 # - qmake -project
 # - qmake SSBM.pro
 # - make

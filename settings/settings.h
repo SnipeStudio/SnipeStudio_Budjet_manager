@@ -24,7 +24,7 @@ public slots:
     void cleanData();
     void cleanDataOk();
    // void showUserControl();
-    //void on_okButton_clicked();
+
 private:
   Ui::settings *ui;
   logger* loging;

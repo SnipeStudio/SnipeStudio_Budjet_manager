@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QTranslator translator;
     logger* loging=new logger();
     dataManager* data=new dataManager();
-    loging->debugM("Loading translation from " + QDir::toNativeSeparators("translation/ssbm_"+data->getTranslation())+".qm");
+    loging->infoM("Loading translation from " + QDir::toNativeSeparators("translation/ssbm_"+data->getTranslation())+".qm");
     translator.load(QDir::toNativeSeparators("translation/ssbm_"+data->getTranslation()+".qm"));
     qApp->installTranslator(&translator);
     loging->debugM("Translation loaded");

@@ -1,34 +1,49 @@
 Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.5.6
+Current version: 0.5.8
 Soft requirenments: QT5
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
+Latest Build: ![Build status](https://travis-ci.org/SnipeStudio/SnipeStudio_Budjet_manager.svg)
 
 Simple Budget Manager for you by Snipe Studio
 
 Developer's Changelog:
 
-03 april 2016 (0.5.6)
+08 april 2016 (0.5.8)
+* Added: something
 
-*Added: Keyboard shortcut for confirm button. Press Return to confirm
+07 april 2016 (0.5.7)
+* Fixed: Now programm will not run if another instance of programm is already running 
+
+05 april 2016 (0.5.6)
+
+* Fixed: Incorrect checkings for edit entry menu
+* Fixed: Incorrect displaying of big numbers, being displayed in scientific form
+* Added: When balance is below 0 balance text highlighting with red
+* Added: On pressing "Delete" key on keyboard currently selected entry is actually deleting
+* Deleted: Code was cleared of qDebug() functions
+
+03 april 2016 (0.5.5)
+
+* Added: Keyboard shortcut for confirm button. Press Return to confirm
 
 02 april 2016 (0.5.5)
 
-*Added: button for reset dateTime
+* Added: button for reset dateTime
 
 28 of march 2016 (0.5.5)
 
-*Fixed: Table content now is actually stretching to window
-*Fixed: Clean database is working now
-*Added: Edit entry dialog
-*Changed: On confirm old summ has been cleared
+* Fixed: Table content now is actually stretching to window
+* Fixed: Clean database is working now
+* Added: Edit entry dialog
+* Changed: On confirm old summ has been cleared
 
 26 of march 2016 (0.5.4)
 
-*Fixed: changing size of confirm button in russian translated
-*Fixed: size of buttons "settings", "about", "exit" being too big on full
+* Fixed: changing size of confirm button in russian translated
+* Fixed: size of buttons "settings", "about", "exit" being too big on full
 screen application
 
 24 october 2015 (0.5.3)

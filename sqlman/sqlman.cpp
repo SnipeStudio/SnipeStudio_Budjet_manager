@@ -7,9 +7,8 @@ sqlMan::sqlMan()
     delete data;
     QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
     sdb.setDatabaseName(databaseName);
-    if (sdb.open()) {
+    if (sdb.open())
         this->init();
-    }
 }
 
 QSqlTableModel* sqlMan::getModel()
@@ -17,9 +16,9 @@ QSqlTableModel* sqlMan::getModel()
     this->init();
     return model;
 }
+
 double sqlMan::getBalance()
 {
-
     query=new QSqlQuery(sdb);
     this->query->exec("Select sum(summ) from operations;");
     query->next();
@@ -28,19 +27,15 @@ double sqlMan::getBalance()
        return 0.0;
    }
     return this->query->value(0).toDouble();
-
 }
+
 QString sqlMan::getDBName()
 {
     return databaseName;
 }
-//QSqlDatabase* sqlMan::getDataBase()
-//{
-//    return &sdb;
-//}
+
 bool sqlMan::dbIsOpen()
 {
-    sdb.open();
     return sdb.isOpen();
 }
 
@@ -67,7 +62,6 @@ void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side,QD
     this->query->bindValue(":time", time.toString("dd-MM-yyyy hh:mm:ss"));
     this->query->exec();
     delete query;
-
 }
 
 void sqlMan::updateEntry(sqlMan *db,int index, double summ, QString comment, bool side,QDateTime time)
@@ -81,7 +75,6 @@ void sqlMan::updateEntry(sqlMan *db,int index, double summ, QString comment, boo
     this->query->bindValue(":index", index);
     this->query->exec();
     delete query;
-
 }
 
 void sqlMan::deleteOperation(int index)
