@@ -6,6 +6,7 @@ logger::logger()
     data=new dataManager();
     log.setFileName(QDir::toNativeSeparators("./ssbm.log"));
     log.open(QIODevice::Append);
+    timeFormat = "hh:mm:ss.zzz";
     delete data;
 }
 
