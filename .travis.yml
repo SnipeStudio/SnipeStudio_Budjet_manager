@@ -12,3 +12,11 @@ script:
  - qmake SSBM.pro
  - make
  
+deploy:
+  provider: releases
+  api_key:
+    secure: rV67nVyhCuqPtbMbLlodEh5LxFXdmIJvMRn2juF+Kk7VV57z6OVlMVLPm7fZBwY/aOtqtA8klYyByPOC7TDZBzyb6SqR8neh1ZtXJh+1kdWakS5nGMvyYYyn9x2QlSugJ10+NnyvckV1SSwzanOJ4od5a6mdO+VZYYu5942Lqs27qYgHcrjoHbDPvc0lAFoHeMPIJ7/jVYGDYCHpP6l0ak1dzZknml5/cqlUmXsizcphjTmgjWmsrASGsEKTRkaajL1O8sqE6ZsizEoW+zd3yXA64pp7TxiiipG4sIZV/69WtHZzbEGlXNjGVlO2WzsP8By+TKOjJ85W2RFYglE0I0jSsA5Ee/OMxztjakL51i+8r5ViOZTz+jyW6ftBN6yeKcDHY61T/OnxuXyFTRWCisTR1aMicAS6ab4mvDBAhqU3Di3UAV+U0uxsYnVVX0rqYxGtWHJUg5RBUgdLiKhyWrHmG1aWMqo1oB5ISNEVHVjwI2MFdcxgx8hr6xQ4mzfi2Dss0GLRSpKoiwZHeOxn4QxHB7y6Ezfa+qmltn76K95G56TMUsp+VWmVlUcUnUkQBrLxAgHtWxEd3TpWA3Ai0fp7FpsNBn1BtSiYa3Fy9Y3IOxzYsnECZC7RjZmnBaFtgsCsZX/1m+WDz9DPwRGpJKVFraQFXOm2yCTnNeTmhog=
+  file: SnipeStudio_Budjet_manager/ssbm
+  on:
+    repo: SteamDragon/SnipeStudio_Budjet_manager
+    branch: dev
