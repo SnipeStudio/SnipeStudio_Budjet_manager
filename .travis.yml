@@ -6,7 +6,6 @@ before_install:
 
 install:
   - if [ "$QT_BASE" = "55" ]; then sudo apt-get install -y qt55* ; source /opt/qt55/bin/qt55-env.sh ; export QTHOME=/opt/qt55 ; fi
-  - git push origin --tags
 
 script:
  - qmake --version
