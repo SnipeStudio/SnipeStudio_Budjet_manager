@@ -19,7 +19,7 @@ deploy:
  - skip_cleanup: true
  - on:    
     repo: SnipeStudio/SnipeStudio_Budjet_manager
-    tags: true
+    tags: false
     all_branches: true
 # - qmake -project
 # - qmake SSBM.pro#
