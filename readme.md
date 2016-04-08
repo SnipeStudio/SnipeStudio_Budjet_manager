@@ -5,6 +5,7 @@ Current version: 0.5.8
 Soft requirenments: QT5
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
+Latest Build: ![Build status](https://travis-ci.org/SnipeStudio/SnipeStudio_Budjet_manager.svg)
 
 Simple Budget Manager for you by Snipe Studio
 
