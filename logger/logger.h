@@ -22,7 +22,7 @@ public:
     void warningM(QString warningMessage);
 private:
     QFile log;
-    const QString timeFormat = "hh:mm:ss.zzz";
+    QString timeFormat;
     dataManager* data;
 
 };
