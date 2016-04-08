@@ -16,7 +16,7 @@ class settings : public QDialog
   Q_OBJECT
 
 public:
-  explicit settings(QWidget *parent, logger *log_ptr, sqlMan *sql=0);
+  settings(QWidget *parent, logger *log_ptr, sqlMan *sql=0);
   ~settings();
 
 public slots:
