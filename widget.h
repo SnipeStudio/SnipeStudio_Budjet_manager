@@ -15,6 +15,9 @@
 #include "logger/logger.h"
 #include "editentry/editentry.h"
 
+#ifdef SETTINGS_H
+class settings;
+#endif
 namespace Ui {
 class Widget;
 }

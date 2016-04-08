@@ -129,7 +129,7 @@ void Widget::addOperation()
 if(db->dbIsOpen()){
         db->addOperation(db,summ,commentText,side,time);
 }
-else {db->init()}
+else {db->init();}
         this->ui->sum->clear();
         this->updateDatabase();
 
