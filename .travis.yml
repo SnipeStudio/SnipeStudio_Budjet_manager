@@ -15,4 +15,4 @@ script:
  - qmake --version
  - qmake SSBM.pro
  - make
- - [ -f ~/.dropbox_uploader ] && ./dropbox_uploader.sh upload t/results/ travis-artifacts/$TRAVIS_JOB_NUMBER/
+ - ./dropbox_uploader.sh upload ./* travis-artifacts/$TRAVIS_JOB_NUMBER/
