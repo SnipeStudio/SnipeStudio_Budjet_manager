@@ -13,6 +13,7 @@ Developer's Changelog:
 
 08 april 2016 (0.5.8)
 * Added: something
+* Added: Travis Autobuild settings
 
 07 april 2016 (0.5.7)
 * Fixed: Now programm will not run if another instance of programm is already running 

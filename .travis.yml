@@ -8,9 +8,6 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_b838298371c6_key -iv $encrypted_b838298371c6_iv -in .dropbox_uploader.enc -out ~\/.dropbox_uploader -d
 
 
-
-
-
 install:
   - if [ "$QT_BASE" = "55" ]; then sudo apt-get install -y qt55* ; source /opt/qt55/bin/qt55-env.sh ; export QTHOME=/opt/qt55 ; fi
 
