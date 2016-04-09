@@ -5,7 +5,7 @@ before_install:
 - sudo apt-get update -qq
 - wget https://raw.github.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
 - chmod +x dropbox_uploader.sh
-- '[ "$TRAVIS_SECURE_ENV_VARS" == "false" ] || - openssl aes-256-cbc -K $encrypted_b838298371c6_key -iv $encrypted_b838298371c6_iv -in .dropbox_uploader.enc -out ~\/.dropbox_uploader -d
+- openssl aes-256-cbc -K $encrypted_b838298371c6_key -iv $encrypted_b838298371c6_iv -in .dropbox_uploader.enc -out ~\/.dropbox_uploader -d
 
 
 
