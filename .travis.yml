@@ -3,7 +3,11 @@ language: c++
 before_install:
 - if [ "$QT_BASE" = "55" ]; then sudo add-apt-repository ppa:beineri/opt-qt551 -y; fi
 - sudo apt-get update -qq
- - '[ "$TRAVIS_SECURE_ENV_VARS" == "false" ] || openssl aes-256-cbc -K $encrypted_..._key -iv $encrypted_..._iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d'
+- wget https://raw.github.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
+- chmod +x dropbox_uploader.sh
+- '[ "$TRAVIS_SECURE_ENV_VARS" == "false" ] || openssl aes-256-cbc -K $encrypted_..._key -iv $encrypted_..._iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d'
+
+
 
 install:
   - if [ "$QT_BASE" = "55" ]; then sudo apt-get install -y qt55* ; source /opt/qt55/bin/qt55-env.sh ; export QTHOME=/opt/qt55 ; fi
