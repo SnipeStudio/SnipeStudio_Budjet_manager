@@ -66,7 +66,7 @@
     <message>
         <location filename="../widget.ui" line="251"/>
         <source>reset time</source>
-        <translation type="unfinished"></translation>
+        <translation>Сброс времени</translation>
     </message>
     <message>
         <location filename="../widget.ui" line="271"/>
@@ -83,17 +83,17 @@
         <translation type="vanished">14-10 (0.6) beta</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="35"/>
+        <location filename="../widget.cpp" line="44"/>
         <source>Snipe Studio Budget Manager</source>
         <translation>Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="84"/>
+        <location filename="../widget.cpp" line="89"/>
         <source>About SSBM</source>
         <translation>О SSBM</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="84"/>
+        <location filename="../widget.cpp" line="89"/>
         <source>Snipe Studio Budget Manager v.%1
 Using QT5
 %2
@@ -109,7 +109,7 @@ Using QT5 in Ubuntu Linux
 2010-2014(ɔ)</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="120"/>
+        <location filename="../widget.cpp" line="125"/>
         <source>Default</source>
         <translation>Без имени</translation>
     </message>
@@ -170,13 +170,13 @@ Using QT5 in Ubuntu Linux
         <location filename="../datamanager/datamanager.cpp" line="65"/>
         <source>DefaultUser=%1
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../datamanager/datamanager.cpp" line="66"/>
         <source>Loglevel=%1
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../datamanager/datamanager.cpp" line="95"/>
@@ -208,52 +208,52 @@ Using QT5 in Ubuntu Linux
     <message>
         <location filename="../editentry/editentry.ui" line="17"/>
         <source>Edit Entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить запись</translation>
     </message>
     <message>
         <location filename="../editentry/editentry.ui" line="25"/>
         <source>Entry time</source>
-        <translation type="unfinished"></translation>
+        <translation>Время записи</translation>
     </message>
     <message>
         <location filename="../editentry/editentry.ui" line="58"/>
         <source>Summ of operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Сумма операции</translation>
     </message>
     <message>
         <location filename="../editentry/editentry.ui" line="91"/>
         <source>comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Комментарий</translation>
     </message>
     <message>
         <location filename="../editentry/editentry.ui" line="130"/>
         <source>Profit</source>
-        <translation type="unfinished"></translation>
+        <translation>Доход</translation>
     </message>
     <message>
         <location filename="../editentry/editentry.ui" line="137"/>
         <source>Expence</source>
-        <translation type="unfinished"></translation>
+        <translation>Расход</translation>
     </message>
     <message>
         <location filename="../editentry/editentry.ui" line="148"/>
         <source>Confirm Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Подтвердить</translation>
     </message>
     <message>
         <location filename="../editentry/editentry.ui" line="155"/>
         <source>Delete operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить операцию</translation>
     </message>
     <message>
         <location filename="../editentry/editentry.ui" line="162"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>отмена</translation>
     </message>
     <message>
         <location filename="../editentry/editentry.cpp" line="71"/>
         <source>Default</source>
-        <translation type="unfinished">Без имени</translation>
+        <translation>Без имени</translation>
     </message>
 </context>
 <context>
@@ -279,12 +279,12 @@ Using QT5 in Ubuntu Linux
     <message>
         <location filename="../settings/settings.ui" line="50"/>
         <source>Currency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Валюта:</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="88"/>
         <source>Translation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык:</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="102"/>
@@ -309,22 +309,22 @@ Using QT5 in Ubuntu Linux
     <message>
         <location filename="../settings/settings.ui" line="153"/>
         <source>Log Level:</source>
-        <translation type="unfinished"></translation>
+        <translation>Логи:</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="161"/>
         <source>off</source>
-        <translation type="unfinished"></translation>
+        <translation>turned off</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="166"/>
         <source>info</source>
-        <translation type="unfinished"></translation>
+        <translation>info</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="171"/>
         <source>debug</source>
-        <translation type="unfinished"></translation>
+        <translation>debug</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="183"/>
@@ -332,24 +332,14 @@ Using QT5 in Ubuntu Linux
         <translation>Очистить данные</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="196"/>
-        <source>Enable Authorization</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/settings.ui" line="206"/>
-        <source>User Control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/settings.ui" line="237"/>
+        <location filename="../settings/settings.ui" line="209"/>
         <source>Ok</source>
         <translation>&amp;ok</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="244"/>
+        <location filename="../settings/settings.ui" line="216"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>отмена</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="14"/>
@@ -366,9 +356,13 @@ Using QT5 in Ubuntu Linux
         <translation type="vanished">Настройки Сохранены</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="44"/>
         <source>All data will be cleaned. Use at your own risk. Don&apos;t forgot to click load</source>
-        <translation>Все данные будут удалены. Используйте на свой страх и риск</translation>
+        <translation type="vanished">Все данные будут удалены. Используйте на свой страх и риск</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.cpp" line="44"/>
+        <source>All data will be cleaned. Use at your own risk.</source>
+        <translation>Все данные будут удалены. Используйте на свой страх и риск.</translation>
     </message>
     <message>
         <location filename="../settings/settings.cpp" line="45"/>
@@ -377,14 +371,8 @@ Using QT5 in Ubuntu Linux
     </message>
     <message>
         <location filename="../settings/settings.cpp" line="46"/>
-        <location filename="../settings/settings.cpp" line="60"/>
         <source>ok</source>
         <translation>&amp;ok</translation>
-    </message>
-    <message>
-        <location filename="../settings/settings.cpp" line="59"/>
-        <source>You should restart the app to this actually working</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
