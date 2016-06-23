@@ -14,6 +14,7 @@
 #include "app_info.h"
 #include "logger/logger.h"
 #include "editentry/editentry.h"
+#include "addentry/addentry.h"
 
 #ifdef SETTINGS_H
 class settings;
@@ -31,7 +32,7 @@ public:
     ~Widget();
 
 private:
-  bool initDatabase(sqlMan *db);
+  void initDatabase(sqlMan *db);
     Ui::Widget *ui;
     QString tmp;
     QString version;
@@ -47,7 +48,7 @@ private:
 
 public slots:
     void help();
-    void addOperation();
+    void addOperation(bool side);
     void load();
     void showSettings();
     void closeSettings();
@@ -55,8 +56,11 @@ public slots:
     void editTrigger(QModelIndex index);
     void updateDatabase();
     void deleteEntry();
+    void addProfit();
+    void addExpence();
+    void enableWindow();
 protected:
-     void closeEvent(QCloseEvent *event);
+     void closeEvent();
 };
 
 #endif // WIDGET_H

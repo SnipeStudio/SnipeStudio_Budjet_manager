@@ -15,7 +15,7 @@ class sqlMan
 {
 public:
     sqlMan();
-    void addOperation(sqlMan* db, double summ, QString comment, bool side, QDateTime time);
+    void addOperation(double summ, QString comment, bool side, QDateTime time);
     void updateEntry(sqlMan* db,int index,double summ,QString comment,bool side,QDateTime time);
     void deleteOperation(int index);
     double getBalance();
@@ -31,6 +31,7 @@ private:
     QSqlQuery* query;
     QSqlTableModel* model;
     QSqlDatabase sdb;
+    bool dirty;
 
 
 
