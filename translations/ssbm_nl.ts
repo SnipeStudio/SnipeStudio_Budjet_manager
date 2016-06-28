@@ -9,96 +9,90 @@
         <translation>Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="79"/>
+        <location filename="../widget.ui" line="205"/>
+        <source>currency</source>
+        <translation>Valuta</translation>
+    </message>
+    <message>
         <source>&amp;settings</source>
-        <translation>&amp;Instelliingen</translation>
+        <translation type="vanished">&amp;Instelliingen</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="92"/>
         <source>&amp;about</source>
-        <translation>&amp;Over ons programma...</translation>
+        <translation type="vanished">&amp;Over ons programma...</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="143"/>
         <source>&amp;exit</source>
-        <translation>&amp;Sluiten</translation>
+        <translation type="vanished">&amp;Sluiten</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="162"/>
         <source>Comment to balance changing</source>
-        <translation>Etiket op de balans veranderen</translation>
+        <translation type="vanished">Etiket op de balans veranderen</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="165"/>
         <source>Comment</source>
-        <translation>Etiket</translation>
+        <translation type="vanished">Etiket</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="172"/>
         <source>summ of changing</source>
-        <translation>groote van operatie</translation>
+        <translation type="vanished">groote van operatie</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="175"/>
         <source>Summ</source>
-        <translation>Som</translation>
+        <translation type="vanished">Som</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="200"/>
         <source>confirm</source>
-        <translation>&amp;Bevestig</translation>
+        <translation type="vanished">&amp;Bevestig</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="225"/>
         <source>%profit</source>
-        <translation>Inkomen</translation>
+        <translation type="vanished">Inkomen</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="235"/>
         <source>%expence</source>
-        <translation>Uitgave</translation>
+        <translation type="vanished">Uitgave</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="244"/>
         <source>date of balance changing</source>
-        <translation>Transactiie datum</translation>
+        <translation type="vanished">Transactiie datum</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="251"/>
         <source>reset time</source>
-        <translation>Reset Tijd</translation>
+        <translation type="vanished">Reset Tijd</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="271"/>
         <source>&amp;balanceText</source>
-        <translation>Balans</translation>
+        <translation type="vanished">Balans</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="342"/>
         <source>0</source>
-        <translation>0</translation>
+        <translation type="vanished">0</translation>
     </message>
     <message>
         <source>14.06-pre(0.3.9.7)</source>
         <translation type="vanished">14-10 (0.6) beta</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="44"/>
+        <location filename="../widget.cpp" line="40"/>
         <source>Snipe Studio Budget Manager</source>
         <translation>Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="89"/>
+        <location filename="../widget.cpp" line="85"/>
         <source>About SSBM</source>
         <translation>Over SSBM</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="89"/>
+        <location filename="../widget.cpp" line="85"/>
         <source>Snipe Studio Budget Manager v.%1
 Using QT5
 %2
 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Snipe Studio Budget Manager v.%1
+Gebruik QT5
+%2
+%3</translation>
     </message>
     <message>
         <source>Snipe Studio Budget Manager v.%1
@@ -109,9 +103,8 @@ Gebruik QT5
 2010-2014(ɔ)</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="125"/>
         <source>Default</source>
-        <translation>Standaard</translation>
+        <translation type="vanished">Standaard</translation>
     </message>
     <message>
         <source>&amp;ok</source>
@@ -123,21 +116,69 @@ Gebruik QT5
     </message>
 </context>
 <context>
+    <name>addEntry</name>
+    <message>
+        <location filename="../addentry/addentry.ui" line="17"/>
+        <source>Edit Entry</source>
+        <translation>Nieuwe invoer</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="25"/>
+        <source>Entry time</source>
+        <translation>Entry Time</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="58"/>
+        <source>Summ of operation</source>
+        <translation>Som van de werking</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="91"/>
+        <source>comment</source>
+        <translation>Commentaar</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="149"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Side of operation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="155"/>
+        <source>+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="165"/>
+        <source>Add Entry</source>
+        <translation>Voeg Entry</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="172"/>
+        <source>Cancel</source>
+        <translation>annuleren</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.cpp" line="68"/>
+        <source>Default</source>
+        <translation>Standaard</translation>
+    </message>
+</context>
+<context>
     <name>authWindow</name>
     <message>
         <location filename="../auth/auth.ui" line="14"/>
         <source>SSBM Authorization</source>
-        <translation type="unfinished"></translation>
+        <translation>SSBM Authorization</translation>
     </message>
     <message>
         <location filename="../auth/auth.ui" line="27"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Login      </translation>
     </message>
     <message>
         <location filename="../auth/auth.ui" line="61"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>wachtwoord</translation>
     </message>
 </context>
 <context>
@@ -179,26 +220,26 @@ Gebruik QT5
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="95"/>
-        <location filename="../datamanager/datamanager.cpp" line="133"/>
+        <location filename="../datamanager/datamanager.cpp" line="98"/>
+        <location filename="../datamanager/datamanager.cpp" line="139"/>
         <source>Russian</source>
         <translation>Russisch</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="99"/>
-        <location filename="../datamanager/datamanager.cpp" line="109"/>
-        <location filename="../datamanager/datamanager.cpp" line="137"/>
+        <location filename="../datamanager/datamanager.cpp" line="102"/>
+        <location filename="../datamanager/datamanager.cpp" line="112"/>
+        <location filename="../datamanager/datamanager.cpp" line="143"/>
         <source>English</source>
         <translation>Engels</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="103"/>
-        <location filename="../datamanager/datamanager.cpp" line="141"/>
+        <location filename="../datamanager/datamanager.cpp" line="106"/>
+        <location filename="../datamanager/datamanager.cpp" line="147"/>
         <source>German</source>
         <translation>Duitse</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="145"/>
+        <location filename="../datamanager/datamanager.cpp" line="151"/>
         <source>Dutch</source>
         <translation>Nederlands</translation>
     </message>
@@ -332,12 +373,22 @@ Gebruik QT5
         <translation>Clean data</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="209"/>
+        <location filename="../settings/settings.ui" line="196"/>
+        <source>Enable Authorization</source>
+        <translation>inschakelen Autorisatie</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="206"/>
+        <source>User Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="237"/>
         <source>Ok</source>
         <translation>&amp;ok</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="216"/>
+        <location filename="../settings/settings.ui" line="244"/>
         <source>Cancel</source>
         <translation>annuleren</translation>
     </message>

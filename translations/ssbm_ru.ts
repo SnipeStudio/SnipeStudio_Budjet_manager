@@ -9,96 +9,91 @@
         <translation>Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="79"/>
+        <location filename="../widget.ui" line="205"/>
+        <source>currency</source>
+        <translatorcomment>Символ или  обозначение валюты</translatorcomment>
+        <translation>Валюта</translation>
+    </message>
+    <message>
         <source>&amp;settings</source>
-        <translation>&amp;Настройки</translation>
+        <translation type="vanished">&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="92"/>
         <source>&amp;about</source>
-        <translation>&amp;О Программе...</translation>
+        <translation type="vanished">&amp;О Программе...</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="143"/>
         <source>&amp;exit</source>
-        <translation>&amp;Выход</translation>
+        <translation type="vanished">&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="162"/>
         <source>Comment to balance changing</source>
-        <translation>Метка для изменения баланса</translation>
+        <translation type="vanished">Метка для изменения баланса</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="165"/>
         <source>Comment</source>
-        <translation>Метка</translation>
+        <translation type="vanished">Метка</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="172"/>
         <source>summ of changing</source>
-        <translation>Размер операции</translation>
+        <translation type="vanished">Размер операции</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="175"/>
         <source>Summ</source>
-        <translation>Сумма</translation>
+        <translation type="vanished">Сумма</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="200"/>
         <source>confirm</source>
-        <translation>&amp;Подтвердить</translation>
+        <translation type="vanished">&amp;Подтвердить</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="225"/>
         <source>%profit</source>
-        <translation>Прибыль</translation>
+        <translation type="vanished">Прибыль</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="235"/>
         <source>%expence</source>
-        <translation>Расход</translation>
+        <translation type="vanished">Расход</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="244"/>
         <source>date of balance changing</source>
-        <translation>Дата Операции</translation>
+        <translation type="vanished">Дата Операции</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="251"/>
         <source>reset time</source>
-        <translation>Сброс времени</translation>
+        <translation type="vanished">Сброс времени</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="271"/>
         <source>&amp;balanceText</source>
-        <translation>Баланс</translation>
+        <translation type="vanished">Баланс</translation>
     </message>
     <message>
-        <location filename="../widget.ui" line="342"/>
         <source>0</source>
-        <translation>0</translation>
+        <translation type="vanished">0</translation>
     </message>
     <message>
         <source>14.06-pre(0.3.9.7)</source>
         <translation type="vanished">14-10 (0.6) beta</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="44"/>
+        <location filename="../widget.cpp" line="40"/>
         <source>Snipe Studio Budget Manager</source>
         <translation>Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="89"/>
+        <location filename="../widget.cpp" line="85"/>
         <source>About SSBM</source>
         <translation>О SSBM</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="89"/>
+        <location filename="../widget.cpp" line="85"/>
         <source>Snipe Studio Budget Manager v.%1
 Using QT5
 %2
 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Менеджер Бюджета от Snipe Studio v.%1
+Использует QT5
+%2
+%3</translation>
     </message>
     <message>
         <source>Snipe Studio Budget Manager v.%1
@@ -109,9 +104,8 @@ Using QT5 in Ubuntu Linux
 2010-2014(ɔ)</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="125"/>
         <source>Default</source>
-        <translation>Без имени</translation>
+        <translation type="vanished">Без имени</translation>
     </message>
     <message>
         <source>&amp;ok</source>
@@ -123,21 +117,69 @@ Using QT5 in Ubuntu Linux
     </message>
 </context>
 <context>
+    <name>addEntry</name>
+    <message>
+        <location filename="../addentry/addentry.ui" line="17"/>
+        <source>Edit Entry</source>
+        <translation>Новая запись</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="25"/>
+        <source>Entry time</source>
+        <translation>Время записи</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="58"/>
+        <source>Summ of operation</source>
+        <translation>Сумма операции</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="91"/>
+        <source>comment</source>
+        <translation>Комментарий</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="149"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Side of operation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="155"/>
+        <source>+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="165"/>
+        <source>Add Entry</source>
+        <translation>Добавить запись</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.ui" line="172"/>
+        <source>Cancel</source>
+        <translation>отмена</translation>
+    </message>
+    <message>
+        <location filename="../addentry/addentry.cpp" line="68"/>
+        <source>Default</source>
+        <translation>Без имени</translation>
+    </message>
+</context>
+<context>
     <name>authWindow</name>
     <message>
         <location filename="../auth/auth.ui" line="14"/>
         <source>SSBM Authorization</source>
-        <translation type="unfinished"></translation>
+        <translation>SSBM Authorization</translation>
     </message>
     <message>
         <location filename="../auth/auth.ui" line="27"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Логин</translation>
     </message>
     <message>
         <location filename="../auth/auth.ui" line="61"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль   </translation>
     </message>
 </context>
 <context>
@@ -179,26 +221,26 @@ Using QT5 in Ubuntu Linux
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="95"/>
-        <location filename="../datamanager/datamanager.cpp" line="133"/>
+        <location filename="../datamanager/datamanager.cpp" line="98"/>
+        <location filename="../datamanager/datamanager.cpp" line="139"/>
         <source>Russian</source>
         <translation>Русский</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="99"/>
-        <location filename="../datamanager/datamanager.cpp" line="109"/>
-        <location filename="../datamanager/datamanager.cpp" line="137"/>
+        <location filename="../datamanager/datamanager.cpp" line="102"/>
+        <location filename="../datamanager/datamanager.cpp" line="112"/>
+        <location filename="../datamanager/datamanager.cpp" line="143"/>
         <source>English</source>
         <translation>Английский</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="103"/>
-        <location filename="../datamanager/datamanager.cpp" line="141"/>
+        <location filename="../datamanager/datamanager.cpp" line="106"/>
+        <location filename="../datamanager/datamanager.cpp" line="147"/>
         <source>German</source>
         <translation>Немецкий</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="145"/>
+        <location filename="../datamanager/datamanager.cpp" line="151"/>
         <source>Dutch</source>
         <translation>Голландский</translation>
     </message>
@@ -332,12 +374,22 @@ Using QT5 in Ubuntu Linux
         <translation>Очистить данные</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="209"/>
+        <location filename="../settings/settings.ui" line="196"/>
+        <source>Enable Authorization</source>
+        <translation>Включить Авторизацию</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="206"/>
+        <source>User Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="237"/>
         <source>Ok</source>
         <translation>&amp;ok</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="216"/>
+        <location filename="../settings/settings.ui" line="244"/>
         <source>Cancel</source>
         <translation>отмена</translation>
     </message>
