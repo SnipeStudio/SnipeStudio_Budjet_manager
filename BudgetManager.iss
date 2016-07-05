@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Budget Manager"
-#define MyAppVersion "0.6.0.2"
+#define MyAppVersion "0.6.1.1 Dev"
 #define MyAppPublisher "Snipe Studio"
 #define MyAppURL "http://snipestudio.blogspot.ru/"
 #define MyAppExeName "ssbm.exe"
@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{C19B0635-73AB-43C4-B0A1-8329037DE1A9}
+AppId={{E831562B-7770-4E40-B2FA-6E0097F89213}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}

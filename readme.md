@@ -1,7 +1,7 @@
 Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.6
+Current version: 0.6.1.1
 Soft requirenments: QT5, lib-mesa-gl
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
@@ -9,6 +9,16 @@ Hard requirments: 50-60 mb of ram
 Simple Budget Manager for you by Snipe Studio
 
 Developer's Changelog:
+29 June 2016 (0.6.1.1)
+
+*Updated: Translations
+
+24 June 2016 (0.6.1.1)
+
+*Changed: Design to be more material Designy
+*Changed: method to submit operations
+
+
 21 april 2016 (0.6)
 
 *Updated: Translations
