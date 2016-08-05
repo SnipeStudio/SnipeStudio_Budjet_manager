@@ -1,7 +1,7 @@
 Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.6.1.4
+Current version: 0.6.1.5
 Soft requirenments: QT5, lib-mesa-gl
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
@@ -9,32 +9,37 @@ Hard requirments: 50-60 mb of ram
 Simple Budget Manager for you by Snipe Studio
 
 Developer's Changelog:
+8 August 2016 (0.6.1.5)
+
+* Fixed: Lock file deleting on application exit
+* Updated: Readme.md file
+
 8 August 2016 (0.6.1.4)
 
-*CleanUp: Simplifying code
+* CleanUp: Simplifying code
 
 
 8 August 2016 (0.6.1.3)
 
-*Fixed: lock Mechanism to prevent multiple launches
+* Fixed: lock Mechanism to prevent multiple launches
 
 8 August 2016 (0.6.1.2)
 
-*Added: Message to Settings menu to actually notify user that he should restart app after language change
+* Added: Message to Settings menu to actually notify user that he should restart app after language change
 
 29 June 2016 (0.6.1.1)
 
-*Updated: Translations
+* Updated: Translations
 
 24 June 2016 (0.6.1.1)
 
-*Changed: Design to be more material Designy
-*Changed: method to submit operations
+* Changed: Design to be more material Designy
+* Changed: method to submit operations
 
 
 21 april 2016 (0.6)
 
-*Updated: Translations
+* Updated: Translations
 
 08 april 2016 (0.5.8)
 * Added: something
