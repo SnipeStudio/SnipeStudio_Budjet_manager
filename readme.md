@@ -24,17 +24,17 @@ Developer's Changelog:
 
 29 June 2016 (0.6.1.1)
 
-*Updated: Translations
+* Updated: Translations
 
 24 June 2016 (0.6.1.1)
 
-*Changed: Design to be more material Designy
-*Changed: method to submit operations
+* Changed: Design to be more material Designy
+* Changed: method to submit operations
 
 
 21 april 2016 (0.6)
 
-*Updated: Translations
+* Updated: Translations
 
 08 april 2016 (0.5.8)
 * Added: something
