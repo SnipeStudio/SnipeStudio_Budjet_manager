@@ -16,9 +16,13 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     {
         loging = new logger();
     }
-    if (QFile::exists(QDir::toNativeSeparators("./lockfile"))) {
+    if (QFile::exists(QDir::toNativeSeparators("./lockfile")))
+    {
         this->close();
-    } else {
+        exit(-1);
+    }
+    else
+    {
          QFile lock(QDir::toNativeSeparators("./lockfile"));
          lock.open(QIODevice::Append);
          lock.close();
@@ -59,7 +63,9 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
 
 Widget::~Widget()
 {
-delete db;
+     QFile lock(QDir::toNativeSeparators("./lockfile"));
+     lock.remove();
+     delete db;
 }
 
 void Widget::initDatabase(sqlMan* db)
@@ -184,13 +190,6 @@ void Widget::showSettings()
     this->setEnabled(false);
 
 
-}
-
-void Widget::closeSettings()
-{
-    loging->debugM("closeSettings called");
-
-    delete set;
 }
 
 void Widget::editTrigger(QModelIndex index)
