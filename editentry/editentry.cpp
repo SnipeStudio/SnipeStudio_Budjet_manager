@@ -74,11 +74,11 @@ void editentry::on_confirmChanges_clicked()
         side=ui->radioButtonProfit->isChecked();
         if(!side)
         {
-            database->updateEntry(database,index,(-1)*ui->lineSumm->text().toDouble(),ui->lineEditComment->text(),ui->radioButtonProfit->isChecked(),time);
+            database->updateEntry(index,(-1)*ui->lineSumm->text().toDouble(),ui->lineEditComment->text(),ui->radioButtonProfit->isChecked(),time);
         }
         else
         {
-            database->updateEntry(database,index,ui->lineSumm->text().toDouble(),ui->lineEditComment->text(),ui->radioButtonProfit->isChecked(),time);
+            database->updateEntry(index,ui->lineSumm->text().toDouble(),ui->lineEditComment->text(),ui->radioButtonProfit->isChecked(),time);
         }
         this->close();
 }

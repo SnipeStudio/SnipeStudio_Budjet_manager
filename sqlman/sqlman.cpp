@@ -78,7 +78,7 @@ void sqlMan::addOperation(double summ, QString comment, bool side,QDateTime time
     delete query;
 }
 
-void sqlMan::updateEntry(sqlMan *db,int index, double summ, QString comment, bool side,QDateTime time)
+void sqlMan::updateEntry(int index, double summ, QString comment, bool side,QDateTime time)
 {
     this->query=new QSqlQuery(this->sdb);
     this->query->prepare("UPDATE operations set summ = :summ, comment = :comment,side = :side, time = :time  where id=:index;");
@@ -99,15 +99,15 @@ void sqlMan::deleteOperation(int index)
     this->query->exec();
 }
 
-int sqlMan::clean(sqlMan *db)
+int sqlMan::clean()
 {
-    sdb.close();
-    dataManager* data=new dataManager();
-    QString databaseName=QDir::toNativeSeparators(data->getPath()+"/ssbm.db");
+    this->sdb.close();
+    dataManager* data = new dataManager();
+    QString dbFile = data->getPath().append("/ssbm.db");
+    QDir dir;
+    dir.remove(dbFile);
     delete data;
-    sdb.isOpen();
-    QFile::remove(databaseName);
-    sdb.open();
     this->init();
+    return 0;
 }
 
