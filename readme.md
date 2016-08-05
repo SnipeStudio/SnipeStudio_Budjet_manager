@@ -11,16 +11,16 @@ Simple Budget Manager for you by Snipe Studio
 Developer's Changelog:
 8 August 2016 (0.6.1.4)
 
-*CleanUp: Simplifying code
+* CleanUp: Simplifying code
 
 
 8 August 2016 (0.6.1.3)
 
-*Fixed: lock Mechanism to prevent multiple launches
+* Fixed: lock Mechanism to prevent multiple launches
 
 8 August 2016 (0.6.1.2)
 
-*Added: Message to Settings menu to actually notify user that he should restart app after language change
+* Added: Message to Settings menu to actually notify user that he should restart app after language change
 
 29 June 2016 (0.6.1.1)
 
