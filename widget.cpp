@@ -7,7 +7,6 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     ui(new Ui::Widget)
 {
     db = new sqlMan();
-    lockBool=false;
     if(log_ptr!=0)
     {
        loging=log_ptr;
@@ -26,7 +25,6 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
          QFile lock(QDir::toNativeSeparators("./lockfile"));
          lock.open(QIODevice::Append);
          lock.close();
-         lockBool=true;
     }
     fLoad=false;
     idLoaded=0;
@@ -63,8 +61,6 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
 
 Widget::~Widget()
 {
-     QFile lock(QDir::toNativeSeparators("./lockfile"));
-     lock.remove();
      delete db;
 }
 
@@ -259,14 +255,12 @@ void Widget::deleteEntry()
     updateDatabase();
 }
 
-void Widget::closeEvent()
+void Widget::closeEvent(QCloseEvent *event)
 {
-    if(lockBool)
-    {
-        QFile::remove(QDir::toNativeSeparators("./lockfile"));
-    }
+    while(!QDir().remove(QDir().absoluteFilePath(QDir::toNativeSeparators("./lockfile"))));
     loging->infoM(QString("Deinitialization of %1").arg(VER_PRODUCTNAME_STR));
     loging->debugM("Closing SSBM");
     delete ui;
     delete loging;
 }
+

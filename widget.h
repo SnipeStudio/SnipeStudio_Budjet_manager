@@ -59,7 +59,7 @@ public slots:
     void addExpence();
     void enableWindow();
 protected:
-     void closeEvent();
+     void closeEvent(QCloseEvent *event);
 };
 
 #endif // WIDGET_H
