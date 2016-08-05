@@ -1,7 +1,7 @@
 Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.6.1.5
+Current version: 0.6.1.6
 Soft requirenments: QT5, lib-mesa-gl
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
@@ -9,6 +9,11 @@ Hard requirments: 50-60 mb of ram
 Simple Budget Manager for you by Snipe Studio
 
 Developer's Changelog:
+8 August 2016 (0.6.1.6)
+
+* Fixed: Database was not cleaned after click 'clean' from settings form
+* Updated: Readme.md file
+
 8 August 2016 (0.6.1.5)
 
 * Fixed: Lock file deleting on application exit

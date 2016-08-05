@@ -101,12 +101,9 @@ void sqlMan::deleteOperation(int index)
 
 int sqlMan::clean()
 {
-    this->sdb.close();
-    dataManager* data = new dataManager();
-    QString dbFile = data->getPath().append("/ssbm.db");
-    QDir dir;
-    dir.remove(dbFile);
-    delete data;
+    this->query=new QSqlQuery(this->sdb);
+    this->query->prepare("DELETE FROM operations" );
+    qDebug()<<this->query->exec();
     this->init();
     return 0;
 }
