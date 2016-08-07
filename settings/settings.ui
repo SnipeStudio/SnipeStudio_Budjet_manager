@@ -177,10 +177,13 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="element_clean">
+       <property name="topMargin">
+        <number>0</number>
+       </property>
        <item>
-        <widget class="QPushButton" name="clear">
+        <widget class="QPushButton" name="cleanButton">
          <property name="text">
-          <string>Clean data</string>
+          <string>Clean Database</string>
          </property>
         </widget>
        </item>
@@ -190,8 +193,32 @@
       <layout class="QVBoxLayout" name="AuthSettings_element">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="sizeConstraint">
+          <enum>QLayout::SetNoConstraint</enum>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QCheckBox" name="authcheckbox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string>Enable Authorization</string>
            </property>
@@ -201,6 +228,18 @@
           <widget class="QPushButton" name="userControl">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
            </property>
            <property name="text">
             <string>User Control</string>

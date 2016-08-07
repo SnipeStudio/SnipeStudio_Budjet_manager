@@ -9,6 +9,7 @@ sqlMan::sqlMan()
     sdb.setDatabaseName(databaseName);
     if (sdb.open())
         this->init();
+    dirty = false;
 }
 
 QSqlTableModel* sqlMan::getModel()
@@ -42,7 +43,7 @@ bool sqlMan::dbIsOpen()
 void sqlMan::init()
 {
     QSqlQuery* query=new QSqlQuery(sdb);
-    if(!query->exec("CREATE TABLE  IF NOT EXISTS \"operations\" (\"id\" INTEGER PRIMARY KEY  NOT NULL ,\"time\" DATETIME DEFAULT (CURRENT_TIMESTAMP) ,\"summ\" double NOT NULL  DEFAULT (null) ,\"comment\"  NOT NULL ,\"catid\" INTEGER DEFAULT (null) ,\"side\" BOOL DEFAULT (0) )"))
+    if(!query->exec("CREATE TABLE  IF NOT EXISTS \"operations\" (\"id\" INTEGER PRIMARY KEY  NOT NULL ,\"time\" DATETIME DEFAULT (CURRENT_TIMESTAMP) ,\"summ\" NOT NULL  DEFAULT (null) ,\"comment\"  NOT NULL ,\"catid\" INTEGER DEFAULT (null) ,\"side\" BOOL DEFAULT (0) )"))
     {
         return;
     }
@@ -52,19 +53,32 @@ void sqlMan::init()
     model->setEditStrategy(QSqlTableModel::OnFieldChange);
 }
 
-void sqlMan::addOperation(sqlMan *db, double summ, QString comment, bool side,QDateTime time)
+void sqlMan::addOperation(double summ, QString comment, bool side,QDateTime time)
 {
+    if(dirty)
+    {
+        dirty = false;
+        return;
+    }
     this->query=new QSqlQuery(this->sdb);
     this->query->prepare("INSERT INTO operations (summ, comment, side,time) VALUES (:summ, :comment, :side,:time)");
          this->query->bindValue(":summ", QString::number(summ,'f',2));
          this->query->bindValue(":comment", comment);
-         this->query->bindValue(":side", side);
+    if(side)
+    {
+       this->query->bindValue(":side", 1);
+    }
+    else
+    {
+        this->query->bindValue(":side", 0);
+    }
     this->query->bindValue(":time", time.toString("dd-MM-yyyy hh:mm:ss"));
     this->query->exec();
+    dirty = true;
     delete query;
 }
 
-void sqlMan::updateEntry(sqlMan *db,int index, double summ, QString comment, bool side,QDateTime time)
+void sqlMan::updateEntry(int index, double summ, QString comment, bool side,QDateTime time)
 {
     this->query=new QSqlQuery(this->sdb);
     this->query->prepare("UPDATE operations set summ = :summ, comment = :comment,side = :side, time = :time  where id=:index;");
@@ -85,15 +99,12 @@ void sqlMan::deleteOperation(int index)
     this->query->exec();
 }
 
-int sqlMan::clean(sqlMan *db)
+int sqlMan::clean()
 {
-    sdb.close();
-    dataManager* data=new dataManager();
-    QString databaseName=QDir::toNativeSeparators(data->getPath()+"/ssbm.db");
-    delete data;
-    sdb.isOpen();
-    QFile::remove(databaseName);
-    sdb.open();
+    this->query=new QSqlQuery(this->sdb);
+    this->query->prepare("DELETE FROM operations" );
+    qDebug()<<this->query->exec();
     this->init();
+    return 0;
 }
 

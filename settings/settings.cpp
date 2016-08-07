@@ -10,7 +10,7 @@ settings::settings(QWidget *parent, logger *log_ptr, sqlMan* sql) :
   sqlManager=sql;
   loging->debugM("Initializing settings menu");
   loging->debugM("Enabling slots");
-  connect(ui->clear,SIGNAL(clicked()),this,SLOT(cleanData()));
+  connect(ui->cleanButton,SIGNAL(clicked()),this,SLOT(cleanData()));
   connect(ui->okButton,SIGNAL(clicked()),this,SLOT(okSlot()));
   connect(ui->Cancel,SIGNAL(clicked()),this,SLOT(close()));
   loging->debugM("Enabling slots: Done");
@@ -47,14 +47,11 @@ void settings::cleanData()
   a->show();
   connect(a,SIGNAL(accepted()),this,SLOT(cleanDataOk()));
   connect(a,SIGNAL(rejected()),a,SLOT(close()));
-      connect(a,SIGNAL(accepted()),a,SLOT(close()));
   }
 
 void settings::cleanDataOk()
 {
-  dataManager* data=new dataManager();
-  sqlManager->clean(sqlManager);
-  delete data;
+  sqlManager->clean();
 }
 
 //void settings::showUserControl()
@@ -64,6 +61,7 @@ void settings::cleanDataOk()
 
 void settings::okSlot()
 {
+    bool updatedLanguage = false;
     loging->debugM("OK");
     dataManager* data=new dataManager();
     loging->debugM("data init");
@@ -74,6 +72,10 @@ void settings::okSlot()
 
     data->setCurrency(ui->CurrencyLine->text());
     loging->debugM(data->GetCurrency());
+    if(ui->TranslationSelect->currentText() != data->getMenuTranslation())
+    {
+        updatedLanguage = true;
+    }
     data->setTranslation(ui->TranslationSelect->currentText());
 
     if(ui->verbositySelect->currentText()=="off")
@@ -91,6 +93,18 @@ void settings::okSlot()
 
     loging->debugM("settings saved");
     delete data;
-    close();
-    loging->debugM("done");
+    if(updatedLanguage)
+    {
+        QMessageBox* a = new QMessageBox(this);
+        a->setText(tr("You need to restart application to language settings will be applied"));
+        connect(a,SIGNAL(accepted()),a,SLOT(close()));
+        a->show();
+    }
+    else
+    {
+
+        close();
+        loging->debugM("done");
+    }
+
 }

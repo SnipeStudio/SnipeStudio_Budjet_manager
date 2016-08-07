@@ -2,11 +2,11 @@
 #define APP_INFO_H
 
 
-#define VER_FILEVERSION             0,6,0,1
-#define VER_FILEVERSION_STR         "0.6.0.1 DEV\0"
+#define VER_FILEVERSION             0,6,1,4
+#define VER_FILEVERSION_STR         "0.6.1.4 DEV\0"
 
-#define VER_PRODUCTVERSION          0,6,0,1
-#define VER_PRODUCTVERSION_STR      "0.6.0.1 DEV\0"
+#define VER_PRODUCTVERSION          0,6,1,4
+#define VER_PRODUCTVERSION_STR      "0.6.1.4 DEV\0"
 
 #define VER_COMPANYNAME_STR         "Snipe Studio"
 #define VER_FILEDESCRIPTION_STR     "Simple Budget Manager for Your needs"

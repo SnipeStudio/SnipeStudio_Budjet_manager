@@ -2,6 +2,7 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include "datamanager/datamanager.h"
 #include "widget.h"
 #include "sqlman/sqlman.h"

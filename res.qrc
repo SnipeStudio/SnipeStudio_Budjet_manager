@@ -2,4 +2,11 @@
     <qresource prefix="/icon">
         <file>ico.png</file>
     </qresource>
+    <qresource prefix="/images">
+        <file>images/setting.png</file>
+        <file>images/info.png</file>
+        <file>images/plus.png</file>
+        <file>images/minus.png</file>
+        <file>images/exit.png</file>
+    </qresource>
 </RCC>
