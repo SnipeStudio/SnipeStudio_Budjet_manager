@@ -271,6 +271,13 @@
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="exportButton">
+       <property name="text">
+        <string>Export data</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="okButton">
        <property name="text">
         <string>Ok</string>

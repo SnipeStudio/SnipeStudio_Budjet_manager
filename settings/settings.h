@@ -7,6 +7,7 @@
 #include "widget.h"
 #include "sqlman/sqlman.h"
 #include "logger/logger.h"
+#include "export/export.h"
 
 namespace Ui {
   class settings;
@@ -22,8 +23,9 @@ public:
 
 public slots:
    void okSlot();
-    void cleanData();
-    void cleanDataOk();
+   void cleanData();
+   void cleanDataOk();
+   void showExport();
    // void showUserControl();
 
 private:
