@@ -14,6 +14,7 @@ settings::settings(QWidget *parent, logger *log_ptr, sqlMan* sql) :
   connect(ui->okButton,SIGNAL(clicked()),this,SLOT(okSlot()));
   connect(ui->Cancel,SIGNAL(clicked()),this,SLOT(close()));
   connect(ui->exportButton,SIGNAL(clicked()), this, SLOT(showExport()));
+  connect(ui->importButton,SIGNAL(clicked()), this, SLOT(showImport()));
   loging->debugM("Enabling slots: Done");
   dataManager* data=new dataManager();
   loging->debugM(QString("Set translations to: %1").arg(data->getMenuTranslation()));
@@ -116,3 +117,14 @@ void settings::showExport()
     connect(ex,SIGNAL(finished(int)),this,SLOT(updateDatabase()));
     ex->show();
 }
+
+void settings::showImport()
+{
+    loging->debugM("showImport called");
+    Import* ex = new Import(0, sqlManager);
+    connect(ex,SIGNAL(finished(int)),this,SLOT(updateDatabase()));
+    ex->show();
+}
+
+
+

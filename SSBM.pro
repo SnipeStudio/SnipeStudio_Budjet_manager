@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     logger/logger.cpp \
     editentry/editentry.cpp \
     addentry/addentry.cpp \
-    export/export.cpp
+    export/export.cpp \
+    import/import.cpp
 
 HEADERS  += widget.h \
     datamanager/datamanager.h \
@@ -32,14 +33,16 @@ HEADERS  += widget.h \
     res.rc \
     editentry/editentry.h \
     addentry/addentry.h \
-    export/export.h
+    export/export.h \
+    import/import.h
 
 FORMS    += widget.ui \
     settings/settings.ui \
     auth/auth.ui \
     editentry/editentry.ui \
     addentry/addentry.ui \
-    export/export.ui
+    export/export.ui \
+    import/import.ui
 
 RESOURCES += res.qrc
 RC_FILE = res.rc

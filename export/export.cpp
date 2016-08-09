@@ -4,8 +4,9 @@
 Export::Export(QWidget *parent, QSqlTableModel* modelOut) :
     QWidget(parent),
     ui(new Ui::Export)
-{
+{    
     ui->setupUi(this);
+    ui->progressBar->hide();
     model=modelOut;
     connect(ui->save, SIGNAL(clicked()), this , SLOT(saveData()));
 
@@ -18,14 +19,24 @@ Export::~Export()
 
 void Export::saveData()
 {
-    int rows = model->rowCount();
+    ui->progressBar->show();
+
     int columns = model->columnCount();
     QString filename=QDir::toNativeSeparators(ui->pathLine->text()+"\\" +ui->filenameLine->text());
     QFile* file = new QFile(filename);
     file->open(QIODevice::Append);
-    QTextStream fout(file);
-    for(int row = 0; row<rows; row++)
+    while(model->canFetchMore())
     {
+        model->fetchMore();
+    }
+    int rows = model->rowCount();
+    QTextStream fout(file);
+    fout<<rows<<"\n";
+    qDebug()<<model->rowCount();;
+    ui->progressBar->setMaximum(rows);
+    for(long row = 0; row<rows; row++)
+    {
+        ui->progressBar->setValue(row);
         QString line = "";
         for (int column = 0; column < columns; column++)
         {
