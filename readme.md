@@ -5,7 +5,7 @@ Current version: 0.6.1.8
 Soft requirenments: QT5, lib-mesa-gl
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
-
+[![build status](https://gitlab.com/SteamDragon/Budjet_manager/badges/dev/build.svg)](https://github.com/SteamDragon/SnipeStudio_Budjet_manager/commits/dev)
 Simple Budget Manager for you by Snipe Studio
 
 Developer's Changelog:
