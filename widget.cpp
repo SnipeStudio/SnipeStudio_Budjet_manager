@@ -263,4 +263,3 @@ void Widget::closeEvent(QCloseEvent *event)
     delete ui;
     delete loging;
 }
-

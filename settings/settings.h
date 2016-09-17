@@ -8,6 +8,7 @@
 #include "sqlman/sqlman.h"
 #include "logger/logger.h"
 #include "export/export.h"
+#include "import/import.h"
 
 namespace Ui {
   class settings;
@@ -26,6 +27,7 @@ public slots:
    void cleanData();
    void cleanDataOk();
    void showExport();
+   void showImport();
    // void showUserControl();
 
 private:
