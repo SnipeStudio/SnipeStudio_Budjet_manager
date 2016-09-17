@@ -1,0 +1,11 @@
+Build_Linux:
+  script:
+  - sudo apt-get install qtcreator -y
+  - dos2unix *
+  - qmake 
+  - make
+  - mv ssbm ssbm_linux
+  artifacts:
+    paths:
+    - ssbm_linux
+    - readme.md
