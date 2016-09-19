@@ -9,3 +9,17 @@ Build_Linux:
     paths:
     - ssbm_linux
     - readme.md
+  tags:
+    - cabox	
+Build_Windows:
+  script:
+  - D:\soft\QT\5.5\mingw492_32\bin\qmake.exe
+  - D:\soft\QT\Tools\mingw492_32\bin\mingw32-make.exe
+  - cp ../build-SSBM-Desktop_Qt_5_5_1_MinGW_32bit-Release\release\ssbm.exe D:\git\Deploy
+  - c:\Program Files (x86)\Inno Setup 5\ISCC.exe BudgetManager.iss
+  artifacts:
+    paths:
+    - Output\BudgetManager_Setup_0.6.exe
+    - readme.md
+  tags:
+    - windows
