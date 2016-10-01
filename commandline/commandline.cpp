@@ -45,11 +45,9 @@ bool commandLine::IsHelp()
 bool commandLine::IsVersion()
 {
     isVersion = parser->isSet(*versionOption);
-    QTextStream(stdout) << isVersion << endl;
-
     if(isVersion)
     {
-        parser->showVersion();
+        QTextStream(stdout) << VER_FILEVERSION << endl;
     }
     return isVersion;
 }

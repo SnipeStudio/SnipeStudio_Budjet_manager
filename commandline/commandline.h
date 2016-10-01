@@ -5,6 +5,7 @@
 #include <QList>
 #include <QString>
 #include <QDebug>
+#include "app_info.h"
 
 #ifdef COMMANDLINE_H
 class commandLine;
