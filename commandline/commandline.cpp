@@ -26,7 +26,6 @@ commandLine::commandLine(int argc, char* argv[])
     if(isCommandLine)
     {
         std::cout << "Command mode activated" << std::endl;
-
     }
     IsHelp();
     IsVersion();
