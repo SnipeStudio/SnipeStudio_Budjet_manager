@@ -4,6 +4,8 @@ Build_Linux:
   - dos2unix *
   - qmake 
   - make
+  - ssbm -c -v
+  - ssbm -c -h
   - mv ssbm ssbm_linux
   artifacts:
     paths:
@@ -15,6 +17,8 @@ Build_Linux:
 Build_Windows:
   script:
   - D:\git\runner\runn.bat
+  - D:\deploy\ssbm.exe -c -v
+  - D:\deploy\ssbm.exe -c -h
   artifacts:
     paths:
     - Output\BudgetManager_Setup_*

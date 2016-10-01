@@ -2,10 +2,10 @@
 
 sqlMan::sqlMan()
 {
-    dataManager* data=new dataManager();
-    QString databaseName=QDir::toNativeSeparators(data->getPath()+"/ssbm.db");
+    dataManager *data=new dataManager();
+    databaseName = QDir::toNativeSeparators(data->getPath()+"/ssbm.db");
     delete data;
-    QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
+    sdb = QSqlDatabase::addDatabase("QSQLITE");
     sdb.setDatabaseName(databaseName);
     if (sdb.open())
         this->init();
