@@ -1,11 +1,10 @@
 #include "widget.h"
 #include "app_info.h"
 #include "logger/logger.h"
-#include <QApplication>
+#include "commandline/commandline.h"
 
 int main(int argc, char *argv[])
 {
-
     QApplication a(argc, argv);
     QTranslator translator;
     logger* loging=new logger();
@@ -21,8 +20,19 @@ int main(int argc, char *argv[])
     a.setApplicationVersion(VER_PRODUCTVERSION_STR);
     loging->infoM(QString("Version of file set to %1").arg(VER_PRODUCTVERSION_STR));
     a.addLibraryPath("./");
-    loging->infoM(QString("Initializing of %1").arg(VER_PRODUCTNAME_STR));
-    Widget* w = new Widget(0,loging);
-    w->show();
-    return a.exec();
+    commandLine* console = new commandLine(argc, argv);
+    if(console->IsCommandLine())
+    {
+        loging->infoM(QString("Initializing of %1 console app").arg(VER_PRODUCTNAME_STR));
+        console->IsVersion();
+        console->IsHelp();
+        return 0;
+    }
+    else
+    {
+        loging->infoM(QString("Initializing of %1").arg(VER_PRODUCTNAME_STR));
+        Widget* w = new Widget(0,loging);
+        w->show();
+        return a.exec();
+    }
 }

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Budget Manager"
-#define MyAppVersion "0.6.1.8 Dev"
+#define MyAppVersion "0.6.1.9 Dev"
 #define MyAppPublisher "Snipe Studio"
 #define MyAppURL "http://snipestudio.blogspot.ru/"
 #define MyAppExeName "ssbm.exe"

@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     editentry/editentry.cpp \
     addentry/addentry.cpp \
     export/export.cpp \
-    import/import.cpp
+    import/import.cpp \
+    commandline/commandline.cpp
 
 HEADERS  += widget.h \
     datamanager/datamanager.h \
@@ -34,7 +35,8 @@ HEADERS  += widget.h \
     editentry/editentry.h \
     addentry/addentry.h \
     export/export.h \
-    import/import.h
+    import/import.h \
+    commandline/commandline.h
 
 FORMS    += widget.ui \
     settings/settings.ui \
@@ -58,7 +60,10 @@ OTHER_FILES += \
     readme.md
 
 DISTFILES += \
-    ico.ico
+    ico.ico \
+    .gitlab-ci.yml \
+    BudgetManager.iss \
+    CHANGELOG
 
 
 

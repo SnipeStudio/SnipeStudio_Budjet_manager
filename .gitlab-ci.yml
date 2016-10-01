@@ -9,6 +9,7 @@ Build_Linux:
     paths:
     - ssbm_linux
     - readme.md
+    - CHANGELOG
   tags:
     - cabox	
 Build_Windows:
@@ -16,7 +17,8 @@ Build_Windows:
   - D:\git\runner\runn.bat
   artifacts:
     paths:
-    - Output\BudgetManager_Setup_0.6.exe
+    - Output\BudgetManager_Setup_*
     - readme.md
+    - CHANGELOG
   tags:
     - windows
