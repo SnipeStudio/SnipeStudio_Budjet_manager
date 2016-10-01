@@ -4,8 +4,6 @@ Build_Linux:
   - dos2unix *
   - qmake 
   - make
-  - ssbm -c -v
-  - ssbm -c -h
   - mv ssbm ssbm_linux
   artifacts:
     paths:
