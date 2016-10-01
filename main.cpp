@@ -5,6 +5,8 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
+
     commandLine* console = new commandLine(argc, argv);
     logger* loging=new logger();
     dataManager* data=new dataManager();
