@@ -1,3 +1,7 @@
+30 October 2016 (0.7.0.0)
+
+* Fixed: now clearing database not saves old data and really clear database file
+
 1 October 2016 (0.6.1.9)
 
 * Added: Basic console control for autotest using
