@@ -8,6 +8,9 @@ settings::settings(QWidget *parent, logger *log_ptr, sqlMan* sql) :
   ui->setupUi(this);
   loging=log_ptr;
   sqlManager=sql;
+  select = new QPushButton(this);
+  select->setText("...");
+  ui->element_data->addWidget(select);
   loging->debugM("Initializing settings menu");
   loging->debugM("Enabling slots");
   connect(ui->cleanButton,SIGNAL(clicked()),this,SLOT(cleanData()));
@@ -15,6 +18,7 @@ settings::settings(QWidget *parent, logger *log_ptr, sqlMan* sql) :
   connect(ui->Cancel,SIGNAL(clicked()),this,SLOT(close()));
   connect(ui->exportButton,SIGNAL(clicked()), this, SLOT(showExport()));
   connect(ui->importButton,SIGNAL(clicked()), this, SLOT(showImport()));
+  connect(this->select, SIGNAL(clicked()), this, SLOT(selectFolder()));
   loging->debugM("Enabling slots: Done");
   dataManager* data=new dataManager();
   loging->debugM(QString("Set translations to: %1").arg(data->getMenuTranslation()));
@@ -124,6 +128,19 @@ void settings::showImport()
     Import* ex = new Import(0, sqlManager);
     connect(ex,SIGNAL(finished(int)),this,SLOT(updateDatabase()));
     ex->show();
+}
+
+void settings::selectFolder()
+{
+    QFileDialog* selectFolderDialog = new QFileDialog(this);
+    selectFolderDialog->setOption(QFileDialog::DontUseNativeDialog);
+    selectFolderDialog->setFileMode(QFileDialog::Directory);
+    selectFolderDialog->setOption(QFileDialog::ShowDirsOnly);
+    if(selectFolderDialog->exec())
+    {
+        QString directory = selectFolderDialog->selectedFiles()[0];
+        ui->DataPathLine->setText(directory);
+    }
 }
 
 
