@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include <QFileDialog>
 #include "datamanager/datamanager.h"
 #include "widget.h"
 #include "sqlman/sqlman.h"
@@ -28,12 +29,14 @@ public slots:
    void cleanDataOk();
    void showExport();
    void showImport();
+   void selectFolder();
    // void showUserControl();
 
 private:
   Ui::settings *ui;
   logger* loging;
   sqlMan* sqlManager;
+  QPushButton* select;
 
 
 };
