@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Budget Manager"
-#define MyAppVersion "0.6.1.1 Dev"
+#define MyAppVersion "0.7.0.2"
 #define MyAppPublisher "Snipe Studio"
 #define MyAppURL "http://snipestudio.blogspot.ru/"
 #define MyAppExeName "ssbm.exe"
@@ -24,8 +24,8 @@ DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 LicenseFile=D:\git\Deploy\Licenses\license.txt
 InfoBeforeFile=D:\git\Deploy\Licenses\about.txt
-OutputBaseFilename=BudgetManager_Setup_0.6
-SetupIconFile=D:\git\SSBM\dev\SnipeStudio_Budjet_manager\ico.ico
+OutputBaseFilename=BudgetManager_Setup_0.8_dev
+SetupIconFile=.\ico.ico
 Compression=lzma
 SolidCompression=yes
 

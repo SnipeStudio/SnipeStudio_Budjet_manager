@@ -1,15 +1,13 @@
 #include "widget.h"
 #include "app_info.h"
 #include "logger/logger.h"
-#include <QApplication>
 
 int main(int argc, char *argv[])
 {
-
     QApplication a(argc, argv);
-    QTranslator translator;
     logger* loging=new logger();
     dataManager* data=new dataManager();
+    QTranslator translator;
     loging->infoM("Loading translation from " + QDir::toNativeSeparators("translation/ssbm_"+data->getTranslation())+".qm");
     translator.load(QDir::toNativeSeparators("translation/ssbm_"+data->getTranslation()+".qm"));
     qApp->installTranslator(&translator);

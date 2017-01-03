@@ -1,0 +1,26 @@
+Build_Linux:
+  script:
+  - sudo apt-get install qtcreator -y
+  - dos2unix *
+  - qmake 
+  - make
+  - mv ssbm ssbm_linux
+  artifacts:
+    paths:
+    - ssbm_linux
+    - readme.md
+    - CHANGELOG
+  tags:
+    - cabox	
+Build_Windows:
+  script:
+  - D:\git\runner\runn.bat
+  - D:\deploy\ssbm.exe -c -v
+  - D:\deploy\ssbm.exe -c -h
+  artifacts:
+    paths:
+    - Output\BudgetManager_Setup_*
+    - readme.md
+    - CHANGELOG
+  tags:
+    - windows

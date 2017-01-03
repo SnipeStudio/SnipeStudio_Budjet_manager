@@ -1,3 +1,14 @@
+
+30 October 2016 (0.7.0.0)
+
+* Fixed: now clearing database not saves old data and really clear database file
+
+1 October 2016 (0.6.1.9)
+
+* Added: Basic console control for autotest using
+* Added: Help option
+* Added: version information option
+* Added: Console output in console mode
 9 August 2016 (0.6.1.8)
 
 * Added: Import to database from CSV file

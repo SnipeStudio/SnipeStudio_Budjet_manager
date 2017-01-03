@@ -2,10 +2,10 @@
 
 sqlMan::sqlMan()
 {
-    dataManager* data=new dataManager();
-    QString databaseName=QDir::toNativeSeparators(data->getPath()+"/ssbm.db");
+    dataManager *data=new dataManager();
+    databaseName = QDir::toNativeSeparators(data->getPath()+"/ssbm.db");
     delete data;
-    QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
+    sdb = QSqlDatabase::addDatabase("QSQLITE");
     sdb.setDatabaseName(databaseName);
     if (sdb.open())
         this->init();
@@ -42,6 +42,11 @@ bool sqlMan::dbIsOpen()
 
 void sqlMan::init()
 {
+    if (!sdb.open())
+    {
+        sdb = QSqlDatabase::addDatabase("QSQLITE");
+        sdb.setDatabaseName(databaseName);
+    }
     QSqlQuery* query=new QSqlQuery(sdb);
     if(!query->exec("CREATE TABLE  IF NOT EXISTS \"operations\" (\"id\" INTEGER PRIMARY KEY  NOT NULL ,\"time\" DATETIME DEFAULT (CURRENT_TIMESTAMP) ,\"summ\" NOT NULL  DEFAULT (null) ,\"comment\"  NOT NULL ,\"catid\" INTEGER DEFAULT (null) ,\"side\" BOOL DEFAULT (0) )"))
     {
@@ -98,7 +103,7 @@ void sqlMan::deleteOperation(int index)
     this->query->bindValue(":index", index);
     this->query->exec();
 }
-
+/*
 int sqlMan::clean()
 {
     this->query=new QSqlQuery(this->sdb);
@@ -106,5 +111,15 @@ int sqlMan::clean()
     qDebug()<<this->query->exec();
     this->init();
     return 0;
+}
+*/
+
+int sqlMan::clean()
+{
+    this->query->clear();
+    this->sdb.close();
+    qDebug() << sdb.isOpen();
+    qDebug() << QFile::remove(this->databaseName);
+    this->init();
 }
 

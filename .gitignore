@@ -19,3 +19,5 @@ release/
 prj/
 *.user*
 *.user
+ui_*
+Makefile*

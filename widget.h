@@ -16,6 +16,7 @@
 #include "editentry/editentry.h"
 #include "addentry/addentry.h"
 
+
 #ifdef SETTINGS_H
 class settings;
 #endif
