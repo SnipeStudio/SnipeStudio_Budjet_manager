@@ -9,6 +9,7 @@ Import::Import(QWidget *parent, sqlMan* sqlManOut) :
     ui->progressBar->hide();
     sqlManager=sqlManOut;
     connect(ui->buttonBox,SIGNAL(accepted()),this, SLOT(saveData()));
+    connect(ui->select, SIGNAL(clicked()), this, SLOT(selectFile()));
 }
 
 Import::~Import()
@@ -19,7 +20,7 @@ Import::~Import()
 void Import::saveData()
 {
     ui->progressBar->show();
-    QString filename=QDir::toNativeSeparators(ui->pathLine->text()+"\\" +ui->filenameLine->text());
+    QString filename=QDir::toNativeSeparators(ui->filenameLine->text());
     QFile* file = new QFile(filename);
     file->open(QIODevice::ReadOnly);
     QTextStream fin(file);
@@ -44,5 +45,18 @@ void Import::saveData()
     }
     file->close();
     this->close();
+}
 
+void Import::selectFile()
+{
+    dataManager* data = new dataManager();
+    QFileDialog* selectFileDialog = new QFileDialog(this);
+    selectFileDialog->setOption(QFileDialog::DontUseNativeDialog);
+    selectFileDialog->setDirectory(data->getPath());
+    if(selectFileDialog->exec())
+    {
+        QString file = selectFileDialog->selectedFiles()[0];
+        ui->filenameLine->setText(file);
+    }
+    delete data;
 }

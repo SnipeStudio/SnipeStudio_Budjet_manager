@@ -2,7 +2,8 @@
 
 dataManager::dataManager()
 {
-    QString fileNameSettings=tr("settings.cfg");
+    QString dataFolder = QDir::homePath() + "/ssbm/";
+    QString fileNameSettings= dataFolder + "settings.cfg";
     QFile file(fileNameSettings);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -35,19 +36,19 @@ dataManager::dataManager()
         {
             QTextStream out(&file);
             out.setCodec("UTF-8");
-            out<<"DataPath=\n";
+            out<<"DataPath="<<dataFolder<<"\n";
             out<<"Currency=\n";
-            out<<"Translation=\n";
+            out<<"Translation=en\n";
             out<<"DefaultUser=\n";
-            out<<"LogLevel=0";
+            out<<"LogLevel=0\n";
         }
-
+        dataPath = dataFolder;
     }
     file.close();
     QDir dataDir(dataPath);
     if(!dataDir.exists())
     {
-        dataDir.mkpath(".");
+        dataDir.mkpath(dataPath);
     }
 }
 
@@ -72,7 +73,7 @@ QString dataManager::getPath()
 {
     if(dataPath=="")
     {
-        return "./";
+        return QDir::homePath() + "/ssbm/";
     }
     return dataPath;
 }
