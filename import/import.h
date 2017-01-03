@@ -2,6 +2,8 @@
 #define IMPORT_H
 
 #include <QDialog>
+
+#include <QFileDialog>
 #include "sqlman/sqlman.h"
 
 namespace Ui {
@@ -18,6 +20,7 @@ public:
 
 public slots:
     void saveData();
+    void selectFile();
 
 private:
     Ui::Import *ui;

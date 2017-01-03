@@ -4,7 +4,6 @@
 #include <QTextCodec>
 #include <sqlman/sqlman.h>
 
-
 class dataManager : public QObject
 {
     Q_OBJECT
