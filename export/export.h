@@ -2,6 +2,7 @@
 #define EXPORT_H
 
 #include <QWidget>
+#include <QFileDialog>
 #include "sqlman/sqlman.h"
 
 namespace Ui {
@@ -22,6 +23,7 @@ private:
 
 public slots:
     void saveData();
+    void selectPath();
 
 };
 

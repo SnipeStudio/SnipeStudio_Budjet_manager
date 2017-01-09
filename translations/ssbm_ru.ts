@@ -2,6 +2,52 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
+    <name>Export</name>
+    <message>
+        <location filename="../export/export.ui" line="20"/>
+        <source>Export Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../export/export.ui" line="36"/>
+        <source>Filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../export/export.ui" line="59"/>
+        <source>Path to export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../export/export.ui" line="100"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../export/export.ui" line="107"/>
+        <source>Cancel</source>
+        <translation type="unfinished">отмена</translation>
+    </message>
+</context>
+<context>
+    <name>Import</name>
+    <message>
+        <location filename="../import/import.ui" line="14"/>
+        <source>Import Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../import/import.ui" line="28"/>
+        <source>FileName:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../import/import.ui" line="47"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Widget</name>
     <message>
         <location filename="../widget.ui" line="41"/>
@@ -75,17 +121,17 @@
         <translation type="vanished">14-10 (0.6) beta</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="40"/>
+        <location filename="../widget.cpp" line="43"/>
         <source>Snipe Studio Budget Manager</source>
         <translation>Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="85"/>
+        <location filename="../widget.cpp" line="88"/>
         <source>About SSBM</source>
         <translation>О SSBM</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="85"/>
+        <location filename="../widget.cpp" line="88"/>
         <source>Snipe Studio Budget Manager v.%1
 Using QT5
 %2
@@ -185,62 +231,61 @@ Using QT5 in Ubuntu Linux
 <context>
     <name>dataManager</name>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="5"/>
-        <location filename="../datamanager/datamanager.cpp" line="56"/>
+        <location filename="../datamanager/datamanager.cpp" line="57"/>
         <source>settings.cfg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="62"/>
+        <location filename="../datamanager/datamanager.cpp" line="63"/>
         <source>DataPath=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="63"/>
+        <location filename="../datamanager/datamanager.cpp" line="64"/>
         <source>Currency=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="64"/>
+        <location filename="../datamanager/datamanager.cpp" line="65"/>
         <source>Translation=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="65"/>
+        <location filename="../datamanager/datamanager.cpp" line="66"/>
         <source>DefaultUser=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="66"/>
+        <location filename="../datamanager/datamanager.cpp" line="67"/>
         <source>Loglevel=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="98"/>
-        <location filename="../datamanager/datamanager.cpp" line="139"/>
+        <location filename="../datamanager/datamanager.cpp" line="99"/>
+        <location filename="../datamanager/datamanager.cpp" line="140"/>
         <source>Russian</source>
         <translation>Русский</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="102"/>
-        <location filename="../datamanager/datamanager.cpp" line="112"/>
-        <location filename="../datamanager/datamanager.cpp" line="143"/>
+        <location filename="../datamanager/datamanager.cpp" line="103"/>
+        <location filename="../datamanager/datamanager.cpp" line="113"/>
+        <location filename="../datamanager/datamanager.cpp" line="144"/>
         <source>English</source>
         <translation>Английский</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="106"/>
-        <location filename="../datamanager/datamanager.cpp" line="147"/>
+        <location filename="../datamanager/datamanager.cpp" line="107"/>
+        <location filename="../datamanager/datamanager.cpp" line="148"/>
         <source>German</source>
         <translation>Немецкий</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="151"/>
+        <location filename="../datamanager/datamanager.cpp" line="152"/>
         <source>Dutch</source>
         <translation>Голландский</translation>
     </message>
@@ -299,6 +344,24 @@ Using QT5 in Ubuntu Linux
     </message>
 </context>
 <context>
+    <name>main</name>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="14"/>
+        <source>Allows use console variables.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="18"/>
+        <source>Exporting database to &lt;file&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="19"/>
+        <source>file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>settings</name>
     <message>
         <source>Your settings saved. 
@@ -306,7 +369,7 @@ Using QT5 in Ubuntu Linux
         <translation type="vanished">Настройки Сохранены</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="30"/>
+        <location filename="../settings/settings.ui" line="40"/>
         <source>Data Path:</source>
         <translation>Директория с данными:</translation>
     </message>
@@ -319,77 +382,96 @@ Using QT5 in Ubuntu Linux
         <translation type="vanished">Перевод</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="50"/>
+        <location filename="../settings/settings.ui" line="63"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="86"/>
         <source>Currency:</source>
         <translation>Валюта:</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="88"/>
+        <location filename="../settings/settings.ui" line="131"/>
         <source>Translation:</source>
         <translation>Язык:</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="102"/>
+        <location filename="../settings/settings.ui" line="151"/>
         <source>English</source>
         <translation>Английский</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="107"/>
+        <location filename="../settings/settings.ui" line="156"/>
         <source>Russian</source>
         <translation>Русский</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="112"/>
+        <location filename="../settings/settings.ui" line="161"/>
         <source>German</source>
         <translation>Немецкий</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="117"/>
+        <location filename="../settings/settings.ui" line="166"/>
         <source>Dutch</source>
         <translation>Голландский</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="153"/>
+        <location filename="../settings/settings.ui" line="202"/>
         <source>Log Level:</source>
         <translation>Логи:</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="161"/>
+        <location filename="../settings/settings.ui" line="216"/>
         <source>off</source>
         <translation>turned off</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="166"/>
+        <location filename="../settings/settings.ui" line="221"/>
         <source>info</source>
         <translation>info</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="171"/>
+        <location filename="../settings/settings.ui" line="226"/>
         <source>debug</source>
         <translation>debug</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="183"/>
-        <source>Clean data</source>
-        <translation>Очистить данные</translation>
+        <location filename="../settings/settings.ui" line="241"/>
+        <source>Clean Database</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="196"/>
+        <source>Clean data</source>
+        <translation type="vanished">Очистить данные</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="278"/>
         <source>Enable Authorization</source>
         <translation>Включить Авторизацию</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="206"/>
+        <location filename="../settings/settings.ui" line="300"/>
         <source>User Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="237"/>
+        <location filename="../settings/settings.ui" line="318"/>
+        <source>Import Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="325"/>
+        <source>Export Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="332"/>
         <source>Ok</source>
         <translation>&amp;ok</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="244"/>
+        <location filename="../settings/settings.ui" line="339"/>
         <source>Cancel</source>
         <translation>отмена</translation>
     </message>
@@ -412,19 +494,24 @@ Using QT5 in Ubuntu Linux
         <translation type="vanished">Все данные будут удалены. Используйте на свой страх и риск</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="44"/>
+        <location filename="../settings/settings.cpp" line="47"/>
         <source>All data will be cleaned. Use at your own risk.</source>
         <translation>Все данные будут удалены. Используйте на свой страх и риск.</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="45"/>
+        <location filename="../settings/settings.cpp" line="48"/>
         <source>cancel</source>
         <translation>&amp;отмена</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="46"/>
+        <location filename="../settings/settings.cpp" line="49"/>
         <source>ok</source>
         <translation>&amp;ok</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.cpp" line="102"/>
+        <source>You need to restart application to language settings will be applied</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
