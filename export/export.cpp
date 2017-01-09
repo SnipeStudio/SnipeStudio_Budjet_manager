@@ -9,6 +9,7 @@ Export::Export(QWidget *parent, QSqlTableModel* modelOut) :
     ui->progressBar->hide();
     model=modelOut;
     connect(ui->save, SIGNAL(clicked()), this , SLOT(saveData()));
+    connect(ui->selectFolder, SIGNAL(clicked()), this, SLOT(selectPath()));
 
 }
 
@@ -22,7 +23,7 @@ void Export::saveData()
     ui->progressBar->show();
 
     int columns = model->columnCount();
-    QString filename=QDir::toNativeSeparators(ui->pathLine->text()+"\\" +ui->filenameLine->text());
+    QString filename=QDir::toNativeSeparators(ui->pathLine->text()+"/" +ui->filenameLine->text());
     QFile* file = new QFile(filename);
     file->open(QIODevice::Append);
     while(model->canFetchMore())
@@ -52,3 +53,18 @@ void Export::saveData()
 
 
 
+void Export::selectPath()
+{
+    dataManager* data = new dataManager();
+    QFileDialog* selectFolderDialog = new QFileDialog(this);
+    selectFolderDialog->setOption(QFileDialog::DontUseNativeDialog);
+    selectFolderDialog->setFileMode(QFileDialog::Directory);
+    selectFolderDialog->setOption(QFileDialog::ShowDirsOnly);
+    selectFolderDialog->setDirectory(data->getPath());
+    if(selectFolderDialog->exec())
+    {
+        QString directory = selectFolderDialog->selectedFiles()[0];
+        ui->pathLine->setText(directory);
+    }
+    delete data;
+}

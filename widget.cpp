@@ -15,14 +15,15 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     {
         loging = new logger();
     }
-    if (QFile::exists(QDir::toNativeSeparators("./lockfile")))
+    dataManager* dataMan = new dataManager();
+    if (QFile::exists(QDir::toNativeSeparators(dataMan->getPath()+"lockfile")))
     {
-        this->close();
+        delete dataMan;
         exit(-1);
     }
     else
     {
-         QFile lock(QDir::toNativeSeparators("./lockfile"));
+         QFile lock(QDir::toNativeSeparators(dataMan->getPath()+"lockfile"));
          lock.open(QIODevice::Append);
          lock.close();
     }
@@ -31,13 +32,13 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     version=tr(VER_FILEVERSION_STR);
     loging->debugM("Initialize user interface");
     ui->setupUi(this);
-    dataManager* data=new dataManager();
-    QString path=data->getPath()+"bal.ssff";
-    loging->debugM(QString("Setting DataPath:%1").arg(data->getPath()));
-    ui->currency->setText(data->GetCurrency());
-    loging->debugM(QString("Setting Currency:%1").arg(data->GetCurrency()));
+    QString path=dataMan->getPath()+"bal.ssff";
+    loging->debugM(QString("Setting DataPath:%1").arg(dataMan->getPath()));
+    ui->currency->setText(dataMan->GetCurrency());
+    loging->debugM(QString("Setting Currency:%1").arg(dataMan->GetCurrency()));
     loging->debugM("Processing balance");
     loging->debugM("Done");
+    delete dataMan;
    // ui->date->setDateTime(QDateTime::currentDateTime());
     this->setWindowTitle(tr("Snipe Studio Budget Manager"));
     //ui->date->setDateTime(QDateTime::currentDateTime());
@@ -62,6 +63,7 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
 Widget::~Widget()
 {
      delete db;
+    this->closeEvent();
 }
 
 void Widget::initDatabase(sqlMan* db)
@@ -179,12 +181,12 @@ void Widget::showSettings()
     loging->debugM("showSettings called");
     //db->init();
 
-    set = new settings(0,loging,db);
+
+    this->setEnabled(false);
+    set = new settings(this,loging,db);
     connect(set,SIGNAL(finished(int)),this,SLOT(updateDatabase()));
     connect(set,SIGNAL(finished(int)),this,SLOT(enableWindow()));
     set->show();
-    this->setEnabled(false);
-
 
 }
 
@@ -241,6 +243,7 @@ void Widget::updateDatabase()
 void Widget::enableWindow()
 {
     this->setEnabled(true);
+    delete set;
 }
 
 void Widget::resetTime()
@@ -255,11 +258,14 @@ void Widget::deleteEntry()
     updateDatabase();
 }
 
-void Widget::closeEvent(QCloseEvent *event)
+void Widget::closeEvent()
 {
-    while(!QDir().remove(QDir().absoluteFilePath(QDir::toNativeSeparators("./lockfile"))));
+    dataManager* data = new dataManager();
+    while(!QDir().remove(QDir().absoluteFilePath(QDir::toNativeSeparators(data->getPath()+"lockfile"))));
     loging->infoM(QString("Deinitialization of %1").arg(VER_PRODUCTNAME_STR));
     loging->debugM("Closing SSBM");
+    delete data;
     delete ui;
     delete loging;
+    exit(0);
 }

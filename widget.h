@@ -59,8 +59,7 @@ public slots:
     void addProfit();
     void addExpence();
     void enableWindow();
-protected:
-     void closeEvent(QCloseEvent *event);
+     void closeEvent();
 };
 
 #endif // WIDGET_H

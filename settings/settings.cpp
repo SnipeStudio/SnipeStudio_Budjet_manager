@@ -98,17 +98,19 @@ void settings::okSlot()
     delete data;
     if(updatedLanguage)
     {
-        QMessageBox* a = new QMessageBox(this);
+        this->setDisabled(true);
+        QMessageBox* a = new QMessageBox();
         a->setText(tr("You need to restart application to language settings will be applied"));
         connect(a,SIGNAL(accepted()),a,SLOT(close()));
         a->show();
     }
-    else
-    {
+    loging->debugM("done");
+    this->close();
+}
 
-        close();
-        loging->debugM("done");
-    }
+void settings::enableWindow()
+{
+    this->setEnabled(true);
 }
 
 void settings::showExport()

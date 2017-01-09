@@ -30,6 +30,7 @@ public slots:
    void showExport();
    void showImport();
    void selectFolder();
+   void enableWindow();
    // void showUserControl();
 
 private:
