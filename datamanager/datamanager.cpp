@@ -1,4 +1,5 @@
 #include "datamanager.h"
+#include <QDebug>
 
 dataManager::dataManager()
 {
@@ -15,8 +16,6 @@ dataManager::dataManager()
         {
             result.append(line.split(QString('=')));
             line.remove(QRegExp("//[\\W\\w]{0,}"));
-            if(result.at(0)=="DataPath")
-            dataPath=QDir::toNativeSeparators(result.at(1));
             if(result.at(0)=="Currency")
                 Currency=result.at(1);
             if(result.at(0)=="Translation")
@@ -24,9 +23,10 @@ dataManager::dataManager()
             if(result.at(0)=="DefaultUser")
                 DefUser=result.at(1);
             if(result.at(0)=="Loglevel")
-                Loglevel=result.at(1).toInt();;
-
+                Loglevel=result.at(1).toInt();
             line = in.readLine();
+            if(result.at(0)!= "")
+                qDebug()<< result.at(0) << "=" << result.at(1);
             result.clear();
         }
     }
@@ -54,7 +54,9 @@ dataManager::dataManager()
 
 dataManager::~dataManager()
 {
-    QString fileNameSettings=tr("settings.cfg");
+
+    QString dataFolder = QDir::homePath() + "/ssbm/";
+    QString fileNameSettings = dataFolder + "settings.cfg";
     QFile file(fileNameSettings);
     if(file.open(QIODevice::WriteOnly))
     {

@@ -6,27 +6,32 @@
     <message>
         <location filename="../export/export.ui" line="20"/>
         <source>Export Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Export Data</translation>
     </message>
     <message>
         <location filename="../export/export.ui" line="36"/>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../export/export.ui" line="59"/>
         <source>Path to export</source>
-        <translation type="unfinished"></translation>
+        <translation>Export path</translation>
     </message>
     <message>
-        <location filename="../export/export.ui" line="100"/>
+        <location filename="../export/export.ui" line="78"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../export/export.ui" line="113"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
-        <location filename="../export/export.ui" line="107"/>
+        <location filename="../export/export.ui" line="120"/>
         <source>Cancel</source>
-        <translation type="unfinished">cancel</translation>
+        <translation>Cancel</translation>
     </message>
 </context>
 <context>
@@ -34,17 +39,17 @@
     <message>
         <location filename="../import/import.ui" line="14"/>
         <source>Import Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Import Data</translation>
     </message>
     <message>
         <location filename="../import/import.ui" line="28"/>
         <source>FileName:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filename:</translation>
     </message>
     <message>
         <location filename="../import/import.ui" line="47"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
 </context>
 <context>
@@ -125,12 +130,12 @@
         <translation>Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="88"/>
+        <location filename="../widget.cpp" line="89"/>
         <source>About SSBM</source>
         <translation>About SSBM</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="88"/>
+        <location filename="../widget.cpp" line="89"/>
         <source>Snipe Studio Budget Manager v.%1
 Using QT5
 %2
@@ -230,61 +235,56 @@ Using QT5
 <context>
     <name>dataManager</name>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="57"/>
-        <source>settings.cfg</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../datamanager/datamanager.cpp" line="63"/>
+        <location filename="../datamanager/datamanager.cpp" line="65"/>
         <source>DataPath=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="64"/>
+        <location filename="../datamanager/datamanager.cpp" line="66"/>
         <source>Currency=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="65"/>
+        <location filename="../datamanager/datamanager.cpp" line="67"/>
         <source>Translation=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="66"/>
+        <location filename="../datamanager/datamanager.cpp" line="68"/>
         <source>DefaultUser=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="67"/>
+        <location filename="../datamanager/datamanager.cpp" line="69"/>
         <source>Loglevel=%1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="99"/>
-        <location filename="../datamanager/datamanager.cpp" line="140"/>
+        <location filename="../datamanager/datamanager.cpp" line="101"/>
+        <location filename="../datamanager/datamanager.cpp" line="142"/>
         <source>Russian</source>
         <translation>Russian</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="103"/>
-        <location filename="../datamanager/datamanager.cpp" line="113"/>
-        <location filename="../datamanager/datamanager.cpp" line="144"/>
+        <location filename="../datamanager/datamanager.cpp" line="105"/>
+        <location filename="../datamanager/datamanager.cpp" line="115"/>
+        <location filename="../datamanager/datamanager.cpp" line="146"/>
         <source>English</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="107"/>
-        <location filename="../datamanager/datamanager.cpp" line="148"/>
+        <location filename="../datamanager/datamanager.cpp" line="109"/>
+        <location filename="../datamanager/datamanager.cpp" line="150"/>
         <source>German</source>
         <translation>German</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="152"/>
+        <location filename="../datamanager/datamanager.cpp" line="154"/>
         <source>Dutch</source>
         <translation>Dutch</translation>
     </message>
@@ -347,17 +347,17 @@ Using QT5
     <message>
         <location filename="../commandline/commandline.cpp" line="14"/>
         <source>Allows use console variables.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="18"/>
         <source>Exporting database to &lt;file&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporting database to &lt;file&gt;.</translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="19"/>
         <source>file</source>
-        <translation type="unfinished"></translation>
+        <translation>file</translation>
     </message>
 </context>
 <context>
@@ -383,7 +383,7 @@ Using QT5
     <message>
         <location filename="../settings/settings.ui" line="63"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="86"/>
@@ -438,7 +438,7 @@ Using QT5
     <message>
         <location filename="../settings/settings.ui" line="241"/>
         <source>Clean Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Clean Database</translation>
     </message>
     <message>
         <source>Clean data</source>
@@ -457,12 +457,12 @@ Using QT5
     <message>
         <location filename="../settings/settings.ui" line="318"/>
         <source>Import Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Import Data</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="325"/>
         <source>Export Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Export Data</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="332"/>
@@ -508,9 +508,9 @@ Using QT5
         <translation>&amp;ok</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="102"/>
+        <location filename="../settings/settings.cpp" line="103"/>
         <source>You need to restart application to language settings will be applied</source>
-        <translation type="unfinished"></translation>
+        <translation>You need to restart application to language settings will be applied</translation>
     </message>
 </context>
 </TS>
