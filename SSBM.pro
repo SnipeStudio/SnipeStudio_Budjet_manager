@@ -63,7 +63,7 @@ DISTFILES += \
     ico.ico \
     .gitlab-ci.yml \
     BudgetManager.iss \
-    CHANGELOG
+    CHANGELOG.md
 
 
 
