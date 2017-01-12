@@ -4,13 +4,12 @@
 Export::Export(QWidget *parent, QSqlTableModel* modelOut) :
     QWidget(parent),
     ui(new Ui::Export)
-{    
+{
     ui->setupUi(this);
     ui->progressBar->hide();
-    model=modelOut;
+    model = modelOut;
     connect(ui->save, SIGNAL(clicked()), this , SLOT(saveData()));
     connect(ui->selectFolder, SIGNAL(clicked()), this, SLOT(selectPath()));
-
 }
 
 Export::~Export()
@@ -23,35 +22,34 @@ void Export::saveData()
     ui->progressBar->show();
 
     int columns = model->columnCount();
-    QString filename=QDir::toNativeSeparators(ui->pathLine->text()+"/" +ui->filenameLine->text());
+    QString filename = QDir::toNativeSeparators(ui->pathLine->text() + "/" + ui->filenameLine->text());
     QFile* file = new QFile(filename);
     file->open(QIODevice::Append);
     while(model->canFetchMore())
     {
         model->fetchMore();
     }
+
     int rows = model->rowCount();
     QTextStream fout(file);
-    fout<<rows<<"\n";
-    qDebug()<<model->rowCount();;
+    fout << rows << "\n";
     ui->progressBar->setMaximum(rows);
-    for(long row = 0; row<rows; row++)
+    for(long row = 0; row < rows; row++)
     {
         ui->progressBar->setValue(row);
         QString line = "";
         for (int column = 0; column < columns; column++)
         {
           QModelIndex index = model->index(row, column);
-          line+= model->data(index).toString() + ";";
+          line += model->data(index).toString() + ";";
         }
 
-        fout<<line<<"\n";
+        fout << line << "\n";
     }
+
     file->close();
     this->close();
 }
-
-
 
 void Export::selectPath()
 {
@@ -66,5 +64,6 @@ void Export::selectPath()
         QString directory = selectFolderDialog->selectedFiles()[0];
         ui->pathLine->setText(directory);
     }
+
     delete data;
 }

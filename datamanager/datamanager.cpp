@@ -1,10 +1,9 @@
 #include "datamanager.h"
-#include <QDebug>
 
 dataManager::dataManager()
 {
     QString dataFolder = QDir::homePath() + "/ssbm/";
-    QString fileNameSettings= dataFolder + "settings.cfg";
+    QString fileNameSettings = dataFolder + "settings.cfg";
     QFile file(fileNameSettings);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -16,17 +15,32 @@ dataManager::dataManager()
         {
             result.append(line.split(QString('=')));
             line.remove(QRegExp("//[\\W\\w]{0,}"));
-            if(result.at(0)=="Currency")
-                Currency=result.at(1);
-            if(result.at(0)=="Translation")
-                Translation=result.at(1);
-            if(result.at(0)=="DefaultUser")
-                DefUser=result.at(1);
-            if(result.at(0)=="Loglevel")
-                Loglevel=result.at(1).toInt();
+            if(result.at(0) == "Currency")
+            {
+                Currency = result.at(1);
+            }
+
+            if(result.at(0) == "Translation")
+            {
+                Translation = result.at(1);
+            }
+
+            if(result.at(0) == "DefaultUser")
+            {
+                DefUser = result.at(1);
+            }
+
+            if(result.at(0) == "Loglevel")
+            {
+                Loglevel = result.at(1).toInt();
+            }
+
             line = in.readLine();
             if(result.at(0)!= "")
+            {
                 qDebug()<< result.at(0) << "=" << result.at(1);
+            }
+
             result.clear();
         }
     }
@@ -36,14 +50,15 @@ dataManager::dataManager()
         {
             QTextStream out(&file);
             out.setCodec("UTF-8");
-            out<<"DataPath="<<dataFolder<<"\n";
-            out<<"Currency=\n";
-            out<<"Translation=en\n";
-            out<<"DefaultUser=\n";
-            out<<"LogLevel=0\n";
+            out << "DataPath=" <<dataFolder << "\n";
+            out << "Currency=\n";
+            out << "Translation=en\n";
+            out << "DefaultUser=\n";
+            out << "LogLevel=0\n";
         }
         dataPath = dataFolder;
     }
+
     file.close();
     QDir dataDir(dataPath);
     if(!dataDir.exists())
@@ -62,18 +77,18 @@ dataManager::~dataManager()
     {
         QTextStream out(&file);
         out.setCodec("UTF-8");
-        out<<tr("DataPath=%1\n").arg(dataPath);
-        out<<tr("Currency=%1\n").arg(Currency);
-        out<<tr("Translation=%1\n").arg(Translation);
-        out<<tr("DefaultUser=%1\n").arg(DefUser);
-        out<<tr("Loglevel=%1\n").arg(Loglevel);
+        out << QString("DataPath=%1\n").arg(dataPath);
+        out << QString("Currency=%1\n").arg(Currency);
+        out << QString("Translation=%1\n").arg(Translation);
+        out << QString("DefaultUser=%1\n").arg(DefUser);
+        out << QString("Loglevel=%1\n").arg(Loglevel);
     }
     file.close();
 }
 
 QString dataManager::getPath()
 {
-    if(dataPath=="")
+    if(dataPath == "")
     {
         return QDir::homePath() + "/ssbm/";
     }
@@ -87,31 +102,35 @@ QString dataManager::GetCurrency()
 
 QString dataManager::getTranslation()
 {
-    if(Translation=="")
+    if(Translation == "")
     {
         return "en";
     }
+
     return Translation;
 }
 
 QString dataManager::getMenuTranslation()
 {
-    if(Translation=="ru")
+    if(Translation == "ru")
     {
        return tr("Russian");
     }
-    if(Translation=="en")
+
+    if(Translation == "en")
     {
        return tr("English");
     }
-    if(Translation=="de")
+
+    if(Translation == "de")
     {
       return tr("German");
     }
-    if(Translation=="nl")
+    if(Translation == "nl")
     {
-       return "Dutch";
+       return tr("Dutch");
     }
+
     return tr("English");
 }
 
@@ -127,46 +146,44 @@ int dataManager::getLoglevel()
 
 void dataManager::setPath(QString data)
 {
-    dataPath=data;
+    dataPath = data;
 }
 
 void dataManager::setCurrency(QString currency)
 {
-    Currency=currency;
+    Currency = currency;
 }
 
-// need make this more flexible, probably using switch...case statement
 void dataManager::setTranslation(QString translation)
 {
-    Translation=translation;
-    if(Translation==tr("Russian"))
+    Translation = translation;
+    if(Translation == tr("Russian"))
     {
-       Translation="ru";
+        Translation = "ru";
     }
-    if(Translation==tr("English"))
+    else if(Translation == tr("German"))
     {
-       Translation="en";
+        Translation = "de";
     }
-    if(Translation==tr("German"))
+    else if(Translation == tr("Dutch"))
     {
-       Translation="de";
+        Translation = "nl";
     }
-    if(Translation==tr("Dutch"))
+    else
     {
-       Translation="nl";
+        Translation = "en";
     }
-
 }
 
 // for future use
 void dataManager::setDefaultUser(QString DefaultUser)
 {
-    DefUser=DefaultUser;
+    DefUser = DefaultUser;
 }
 
 // sets log level
 void dataManager::setLogLevel(int lLevel)
 {
-    Loglevel=lLevel;
+    Loglevel = lLevel;
 }
 

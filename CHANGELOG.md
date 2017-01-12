@@ -1,3 +1,8 @@
+12 January 2017 (0.7.0.7)
+
+* Code Cleanup
+* Fixed: small buggs
+
 11 January 2017 (0.7.0.6)
 
 * Fixed: Settings being not correctly saved in some cases
