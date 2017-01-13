@@ -2,6 +2,7 @@
 
 * Fixed: Settings being not correctly saved in some cases
 * Updated: Translations
+
 9 January 2017 (0.7.0.5)
 
 * Fixed: Lockfile being not deleted on exit
