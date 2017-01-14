@@ -19,27 +19,40 @@ class commandLine
 {
 public:
     commandLine(int argc, char *argv[]);
-    bool IsCommandLine();
     bool IsHelp();
     bool IsVersion();
     bool IsExport();
+    bool IsImport();
+    bool IsProfit();
+    bool IsExpence();
+
+    bool cLine;
 
 private:
     QCommandLineParser* parser;
-    bool isCommandLine;
     bool isHelp;
     bool isVersion;
     bool isExport;
+    bool isImport;
+    bool isProfit;
+    bool isExpence;
     dataManager* data;
-    QCommandLineOption* console;
     QCommandLineOption* helpOption;
     QCommandLineOption* versionOption;
     QCommandLineOption* exportOption;
+    QCommandLineOption* importOption;
+    QCommandLineOption* profitOption;
+    QCommandLineOption* expenceOption;
+    QCommandLineOption* listOption;
     void initDatabase(sqlMan* db);
     QStringList arguments;
     sqlMan* db;
     QSqlTableModel* model;
     bool exportConsole(QString path);
+    bool importConsole(QString path);
+    bool profitConsole(double summ, QString comment, bool side, QString dateTime);
+    bool expenceConsole(double summ, QString comment, bool side, QString dateTime);
+
 };
 
 #endif // COMMANDLINE_H

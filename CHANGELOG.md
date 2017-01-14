@@ -1,6 +1,7 @@
 14 January 2017 (0.7.0.8)
 
 * Added: Key shoercuts for add profit and expence operations
+* Added: Console control for testing purpurses
 
 12 January 2017 (0.7.0.7)
 

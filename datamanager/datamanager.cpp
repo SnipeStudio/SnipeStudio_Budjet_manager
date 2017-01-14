@@ -36,11 +36,6 @@ dataManager::dataManager()
             }
 
             line = in.readLine();
-            if(result.at(0)!= "")
-            {
-                qDebug()<< result.at(0) << "=" << result.at(1);
-            }
-
             result.clear();
         }
     }
@@ -50,7 +45,7 @@ dataManager::dataManager()
         {
             QTextStream out(&file);
             out.setCodec("UTF-8");
-            out << "DataPath=" <<dataFolder << "\n";
+            out << "DataPath=" << dataFolder << "\n";
             out << "Currency=\n";
             out << "Translation=en\n";
             out << "DefaultUser=\n";

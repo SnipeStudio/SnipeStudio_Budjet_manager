@@ -1,10 +1,19 @@
 #include "widget.h"
 #include "app_info.h"
 #include "logger/logger.h"
+#include "commandline/commandline.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    commandLine* cLine = new commandLine(argc, argv);
+    if(cLine->cLine)
+    {
+        exit(0);
+    }
+
+    delete cLine;
+
     logger* loging = new logger();
     dataManager* data = new dataManager();
     QTranslator translator;
