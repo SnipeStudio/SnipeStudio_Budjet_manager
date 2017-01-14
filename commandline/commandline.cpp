@@ -9,66 +9,73 @@ commandLine::commandLine(int argc, char* argv[])
     }
 
     parser = new QCommandLineParser();
-
-    console = new QCommandLineOption(QStringList() << "c" << "console",
-                                     QCoreApplication::translate("main", "Allows use console variables."));
-    parser->addOption(*console);
-
     exportOption = new QCommandLineOption(QStringList() << "e" << "export",
                                           QCoreApplication::translate("main", "Exporting database to <file>."),
                                           QCoreApplication::translate("main", "file"));
     parser->addOption(*exportOption);
+    importOption = new QCommandLineOption(QStringList() << "i" << "import",
+                                          QCoreApplication::translate("main", "Importing database from <file>"),
+                                          QCoreApplication::translate("main", "file"));
+    parser->addOption(*importOption);
+    profitOption = new QCommandLineOption(QStringList() << "p" << "plus",
+                                          QCoreApplication::translate("main", "Add Profit with parameters. \n"
+                                                                              "Format of data is \"dd-MM-yyyy hh:mm:ss\".\n"
+                                                                              " Arguments sent with \";\" symbol between\n"),
+                                          QCoreApplication::translate("main", "summ;comment;data"));
+    parser->addOption(*profitOption);
 
-
+    expenceOption = new QCommandLineOption(QStringList() << "m" << "minus",
+                                          QCoreApplication::translate("main", "Add Expence with parameters. \n"
+                                                                              "Format of data is \"dd-MM-yyyy hh:mm:ss\".\n"
+                                                                              " Arguments sent with \";\" symbol between\n"),
+                                          QCoreApplication::translate("main", "summ;comment;data"));
+    parser->addOption(*expenceOption);
     helpOption = new QCommandLineOption(parser->addHelpOption());
     versionOption = new QCommandLineOption(parser->addVersionOption());
     parser->parse(arguments);
-    if(isCommandLine)
-    {
-        std::cout << "Command mode activated" << std::endl;
-    }
+    cLine = false;
     IsHelp();
     IsVersion();
     IsExport();
-
+    IsImport();
+    IsProfit();
 }
 
 void commandLine::initDatabase(sqlMan* db)
 {
-    model=db->getModel();
+    model = db->getModel();
     model->setTable("operations");
     if(!db->dbIsOpen())
     {
-        std::cerr << "Error in Db Loading. There are some shit happens during database loading"<< std::endl;
-        exit (1);
-    }
-    std::cout << "Database initialized succesfully"<< std::endl;
-}
+        qDebug().noquote() <<"Error in Db Loading. There are some shit happens during database loading";
 
-bool commandLine::IsCommandLine()
-{
-    isCommandLine = parser->isSet(*console);
-    return isCommandLine;
+    }
+
+    qDebug().noquote() << "Database initialized succesfully";
 }
 
 bool commandLine::IsHelp()
 {
-    isHelp = parser->isSet(*helpOption);
-    if(isHelp)
+    if(parser->isSet(*helpOption))
     {
-        std::cout << parser->helpText().toStdString() << std::endl;
+       cLine = true;
+       qDebug().noquote() << parser->helpText();
+
     }
-    return isHelp;
+
+    return false;
 }
 
 bool commandLine::IsVersion()
 {
-    isVersion = parser->isSet(*versionOption);
-    if(isVersion)
+    if(parser->isSet(*versionOption))
     {
-        std::cout << VER_FILEVERSION_STR << std::endl;
+        qDebug().noquote() << VER_PRODUCTNAME_STR << VER_FILEVERSION_STR;
+        cLine = true;;
+
     }
-    return isVersion;
+
+    return false;
 }
 
 bool commandLine::IsExport()
@@ -76,21 +83,103 @@ bool commandLine::IsExport()
     isExport = parser->isSet(*exportOption);
     if(isExport)
     {
-        db = new sqlMan();
-        initDatabase(db);
         model = db->getModel();
-        std::cout << "Exporting mode On" << std::endl;
+        qDebug().noquote() << "Exporting mode On";
         if(!exportConsole(parser->value(*exportOption)))
         {
-            std::cout << "Succesfully exported to " << parser->value(*exportOption).toStdString() << std::endl;
+            qDebug() << "Succesfully exported to " + parser->value(*exportOption);
+            cLine = true;;
+
+
         }
         else
         {
-            std::cerr << "Failed to export " << parser->value(*exportOption).toStdString() << std::endl;
+            qDebug().noquote() <<"Failed to export " << parser->value(*exportOption);
+            cLine = true;;
+
 
         }
     }
-    return isVersion;
+
+    return isExport;
+}
+
+bool commandLine::IsImport()
+{
+    isImport = parser->isSet(*importOption);
+    if(isImport)
+    {
+        db = new sqlMan();
+        initDatabase(db);
+        model = db->getModel();
+        qDebug().noquote() << "Import mode On";
+        cLine = true;;
+
+        if(!importConsole(parser->value(*importOption)))
+        {
+            qDebug() << "Succesfully imported to " + parser->value(*importOption);
+
+        }
+        else
+        {
+            qDebug().noquote() << "Failed to import " << parser->value(*importOption);
+
+        }
+    }
+
+    return isImport;
+}
+
+bool commandLine::IsProfit()
+{
+    if(!parser->isSet(*profitOption))
+    {
+        return false;
+    }
+
+    cLine = true;;
+    db = new sqlMan();
+    initDatabase(db);
+
+    qDebug().noquote() << "Add profit mode";
+
+    QStringList list = parser->value(*profitOption).split(";");
+
+    if(profitConsole(list[0].toDouble(), list[1], true, list[2]))
+    {
+        qDebug().noquote() << "Successfully add PROFIT OPERATION";
+
+    }
+    else
+    {
+        qDebug().noquote() << "Failed to add PROFIT OPERATION";
+    }
+}
+
+bool commandLine::IsExpence()
+{
+    if(!parser->isSet(*expenceOption))
+    {
+        return false;
+    }
+
+    cLine = true;;
+    db = new sqlMan();
+    initDatabase(db);
+
+    qDebug().noquote() << "Add expence mode";
+
+    QStringList list = parser->value(*profitOption).split(";");
+
+    if(profitConsole(list[0].toDouble(), list[1], false, list[2]))
+    {
+        qDebug().noquote() << "Successfully add Expence OPERATION";
+
+    }
+    else
+    {
+        qDebug().noquote() << "Failed to add Expence OPERATION";
+    }
 }
 
 
@@ -99,7 +188,7 @@ bool commandLine::exportConsole(QString path)
     QFile* file;
     try{
         int columns = model->columnCount();
-        QString filename=QDir::toNativeSeparators(path);
+        QString filename = QDir::toNativeSeparators(path);
         file = new QFile(filename);
         file->open(QIODevice::Append);
         do
@@ -109,8 +198,8 @@ bool commandLine::exportConsole(QString path)
 
         int rows = model->rowCount();
         QTextStream fout(file);
-        fout<<rows<<"\n";
-        for(long row = 0; row<rows; row++)
+        fout << rows << "\n";
+        for(long row = 0; row < rows; row++)
         {
             QString line = "";
             for (int column = 0; column < columns; column++)
@@ -122,7 +211,7 @@ bool commandLine::exportConsole(QString path)
             fout<<line<<"\n";
         }
         file->close();
-        return 0;
+        return false;
     }
     catch(QException)
     {
@@ -130,6 +219,59 @@ bool commandLine::exportConsole(QString path)
         {
             file->close();
         }
-        return 1;
+        return true;
     }
 }
+
+bool commandLine::importConsole(QString path)
+{
+    try
+    {
+        QString filename = QDir::toNativeSeparators(path);
+        QFile* file = new QFile(filename);
+        file->open(QIODevice::ReadOnly);
+        QTextStream fin(file);
+        int rows = 0;
+        int row = 0;
+        fin >> rows;
+        while (!fin.atEnd())
+        {
+            QString line = fin.readLine();
+            if(line.isEmpty())
+            {
+                continue;
+            }
+
+            QStringList list = line.split(';');
+            QDateTime dateTime = QDateTime::fromString(list[1], "dd-MM-yyyy hh:mm:ss");
+            double summ = list[2].toDouble();
+            QString comment = list[3];
+            bool side = list.at(5).toInt();
+            db->addOperation(summ, comment, side, dateTime);
+            db->addOperation(summ, comment, side, dateTime);
+            row++;
+        }
+
+        file->close();
+    }
+    catch(QException)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool commandLine::profitConsole(double summ, QString comment, bool side, QString dateTime)
+{
+        QDateTime dateTime_data = QDateTime::fromString(dateTime, "dd-MM-yyyy hh:mm:ss");
+        db->addOperation(summ, comment, true, dateTime_data);
+    return true;
+}
+
+bool commandLine::expenceConsole(double summ, QString comment, bool side, QString dateTime)
+{
+        QDateTime dateTime_data = QDateTime::fromString(dateTime, "dd-MM-yyyy hh:mm:ss");
+        db->addOperation(summ, comment, false, dateTime_data);
+    return true;
+}
+

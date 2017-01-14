@@ -45,6 +45,8 @@ private:
     editentry* editdialog;
     QShortcut* keyEnter;
     QShortcut* keyDelete;
+    QShortcut* keyPlus;
+    QShortcut* keyMinus;
     bool lockBool;
 
 public slots:
@@ -52,7 +54,6 @@ public slots:
     void addOperation(bool side);
     void load();
     void showSettings();
-    void resetTime();
     void editTrigger(QModelIndex index);
     void updateDatabase();
     void deleteEntry();

@@ -1,6 +1,5 @@
 #include "logger.h"
 
-// probably i should log file into data path
 logger::logger()
 {
     data=new dataManager();
@@ -18,45 +17,49 @@ void logger::close()
 
 void logger::infoM(QString infoMessage)
 {
-    data=new dataManager();
-    if(data->getLoglevel()>0)
+    data = new dataManager();
+    if(data->getLoglevel() > 0)
     {
         QTextStream fout(&log);
-        fout<<QTime::currentTime().toString(timeFormat)<<",I,"<<infoMessage+"\n";
+        fout << QTime::currentTime().toString(timeFormat) << ",I," << infoMessage + "\n";
     }
+
     delete data;
 }
 
 
 void logger::debugM(QString debugMessage)
 {
-    data=new dataManager();
-    if(data->getLoglevel()>1)
+    data = new dataManager();
+    if(data->getLoglevel() > 1)
     {
         QTextStream fout(&log);
-        fout<<QTime::currentTime().toString(timeFormat)<<",D,"<<debugMessage+"\n";
+        fout << QTime::currentTime().toString(timeFormat) << ",D, "<< debugMessage + "\n";
     }
+
     delete data;
 }
 
 void logger::errorM(QString errorMessage)
 {
-    data=new dataManager();
-    if(data->getLoglevel()>0)
+    data = new dataManager();
+    if(data->getLoglevel() > 0)
     {
         QTextStream fout(&log);
-        fout<<QTime::currentTime().toString(timeFormat)<<",E,"<<errorMessage+"\n";
+        fout << QTime::currentTime().toString(timeFormat) << ",E," << errorMessage + "\n";
     }
+
     delete data;
 }
 
 void logger::warningM(QString warningMessage)
 {
-    data=new dataManager();
-    if(data->getLoglevel()>1)
+    data = new dataManager();
+    if(data->getLoglevel() > 1)
     {
         QTextStream fout(&log);
-        fout<<QTime::currentTime().toString(timeFormat)<<",W,"<<warningMessage+"\n";
+        fout << QTime::currentTime().toString(timeFormat) << ",W," << warningMessage + "\n";
     }
+
     delete data;
 }
