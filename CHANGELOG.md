@@ -1,3 +1,10 @@
+15 January 2017 (0.7.0.9)
+
+* Fixed: Not correct work of clean database function
+* Fixed: Expense command line option now works properly
+* Added: Clean Database command line option
+* Added: Command line option to get all commandline operations
+
 14 January 2017 (0.7.0.8)
 
 * Added: Key shoercuts for add profit and expence operations
