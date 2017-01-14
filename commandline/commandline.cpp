@@ -1,13 +1,13 @@
 #include "commandline.h"
 
-commandLine::commandLine(int argc, char* argv[])
+commandLine::commandLine(int argc, char* argv[], sqlMan* database)
 {
+
     for(int i = 0; i < argc; i++)
     {
         QString str = QString((argv[i]));
         arguments.push_back(str);
     }
-
     parser = new QCommandLineParser();
     exportOption = new QCommandLineOption(QStringList() << "e" << "export",
                                           QCoreApplication::translate("main", "Exporting database to <file>."),
@@ -20,25 +20,34 @@ commandLine::commandLine(int argc, char* argv[])
     profitOption = new QCommandLineOption(QStringList() << "p" << "plus",
                                           QCoreApplication::translate("main", "Add Profit with parameters. \n"
                                                                               "Format of data is \"dd-MM-yyyy hh:mm:ss\".\n"
-                                                                              " Arguments sent with \";\" symbol between\n"),
+                                                                              " Arguments sent with \"\" symbol between\n"),
                                           QCoreApplication::translate("main", "summ;comment;data"));
     parser->addOption(*profitOption);
 
     expenceOption = new QCommandLineOption(QStringList() << "m" << "minus",
                                           QCoreApplication::translate("main", "Add Expence with parameters. \n"
-                                                                              "Format of data is \"dd-MM-yyyy hh:mm:ss\".\n"
-                                                                              " Arguments sent with \";\" symbol between\n"),
+                                                                              "Format of data is \"ddMMyyyy_hhmm\".\n"
+                                                                              " Arguments sent with \"\" symbol between\n"),
                                           QCoreApplication::translate("main", "summ;comment;data"));
     parser->addOption(*expenceOption);
+    listOption = new QCommandLineOption(QStringList()<< "l" << "list",
+                                        QCoreApplication::translate("main", "Print list of operations from database"));
+    parser->addOption(*listOption);
+    cleanOption = new QCommandLineOption(QStringList() << "c" << "clean",
+                                         QCoreApplication::translate("main", "Clean database of all data"));
+    parser->addOption(*cleanOption);
     helpOption = new QCommandLineOption(parser->addHelpOption());
     versionOption = new QCommandLineOption(parser->addVersionOption());
     parser->parse(arguments);
     cLine = false;
+    db = database;
+    IsClean();
     IsHelp();
     IsVersion();
     IsExport();
     IsImport();
     IsProfit();
+    IsList();
 }
 
 void commandLine::initDatabase(sqlMan* db)
@@ -138,21 +147,19 @@ bool commandLine::IsProfit()
     }
 
     cLine = true;;
-    db = new sqlMan();
-    initDatabase(db);
-
     qDebug().noquote() << "Add profit mode";
 
     QStringList list = parser->value(*profitOption).split(";");
 
-    if(profitConsole(list[0].toDouble(), list[1], true, list[2]))
+    if(profitConsole(list[0].toDouble(), list[1], list[2]))
     {
         qDebug().noquote() << "Successfully add PROFIT OPERATION";
-
+        return true;
     }
     else
     {
         qDebug().noquote() << "Failed to add PROFIT OPERATION";
+        return false;
     }
 }
 
@@ -164,24 +171,54 @@ bool commandLine::IsExpence()
     }
 
     cLine = true;;
-    db = new sqlMan();
-    initDatabase(db);
-
     qDebug().noquote() << "Add expence mode";
 
     QStringList list = parser->value(*profitOption).split(";");
 
-    if(profitConsole(list[0].toDouble(), list[1], false, list[2]))
+    if(expenceConsole(list[0].toDouble(), list[1], list[2]))
     {
         qDebug().noquote() << "Successfully add Expence OPERATION";
+        return true;
 
     }
     else
     {
         qDebug().noquote() << "Failed to add Expence OPERATION";
+        return false;
     }
 }
 
+bool commandLine::IsList()
+{
+    if(!parser->isSet(*listOption))
+    {
+        return false;
+    }
+
+    cLine = true;;
+
+    if(!this->writeOperations())
+    {
+        return false;
+    }
+    return true;
+}
+
+bool commandLine::IsClean()
+{
+    if(!parser->isSet(*cleanOption))
+    {
+        return false;
+    }
+
+    cLine = true;;
+
+    if(!this->cleanDatabase())
+    {
+        return false;
+    }
+    return true;
+}
 
 bool commandLine::exportConsole(QString path)
 {
@@ -261,17 +298,46 @@ bool commandLine::importConsole(QString path)
     return true;
 }
 
-bool commandLine::profitConsole(double summ, QString comment, bool side, QString dateTime)
+bool commandLine::profitConsole(double summ, QString comment, QString dateTime)
 {
-        QDateTime dateTime_data = QDateTime::fromString(dateTime, "dd-MM-yyyy hh:mm:ss");
+        QDateTime dateTime_data = QDateTime::fromString(dateTime, "ddMMyyyy_hhmm");
         db->addOperation(summ, comment, true, dateTime_data);
     return true;
 }
 
-bool commandLine::expenceConsole(double summ, QString comment, bool side, QString dateTime)
+bool commandLine::expenceConsole(double summ, QString comment, QString dateTime)
 {
-        QDateTime dateTime_data = QDateTime::fromString(dateTime, "dd-MM-yyyy hh:mm:ss");
+        QDateTime dateTime_data = QDateTime::fromString(dateTime, "ddMMyyyy_hhmm");
         db->addOperation(summ, comment, false, dateTime_data);
     return true;
 }
 
+bool commandLine::writeOperations()
+{
+    try
+    {
+        data = new dataManager();
+        qDebug().noquote() << db->getListOfOperations(' ');
+        qDebug().noquote() << "Total is :" << db->getBalance() << " " << data->GetCurrency();
+        delete data;
+    }
+    catch(QException)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+bool commandLine::cleanDatabase()
+{
+    try
+    {
+        this->db->clean();
+        return true;
+    }
+    catch(QException)
+    {
+        return false;
+    }
+}

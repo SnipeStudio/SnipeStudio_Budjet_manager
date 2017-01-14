@@ -43,6 +43,23 @@ bool sqlMan::dbIsOpen()
     return sdb.isOpen();
 }
 
+QString sqlMan::getListOfOperations(QChar separator)
+{
+    int rows = model->rowCount();
+    int columns = model->columnCount();
+    QString line = "";
+    for(long row = 0; row < rows; row++)
+    {
+        for (int column = 0; column < columns; column++)
+        {
+            QModelIndex index = model->index(row, column);
+            line += model->data(index).toString() + separator;
+        }
+        line += "\n";
+    }
+    return line;
+}
+
 void sqlMan::init()
 {
     if (!sdb.open())
@@ -116,6 +133,7 @@ int sqlMan::clean()
 {
     try
     {
+        this->query = new QSqlQuery(this->sdb);
         this->query->clear();
         this->sdb.close();
         qDebug() << sdb.isOpen();

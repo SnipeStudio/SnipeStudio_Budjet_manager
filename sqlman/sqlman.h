@@ -26,6 +26,7 @@ public:
    // QSqlDatabase* getDataBase();
     bool dbIsOpen();
     void submit();
+    QString getListOfOperations(QChar separator);
 private:
     QString databaseName;
     QSqlQuery* query;

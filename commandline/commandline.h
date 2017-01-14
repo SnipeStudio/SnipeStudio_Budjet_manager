@@ -18,13 +18,15 @@ class commandLine;
 class commandLine
 {
 public:
-    commandLine(int argc, char *argv[]);
+    commandLine(int argc, char *argv[], sqlMan *database);
     bool IsHelp();
     bool IsVersion();
     bool IsExport();
     bool IsImport();
     bool IsProfit();
     bool IsExpence();
+    bool IsList();
+    bool IsClean();
 
     bool cLine;
 
@@ -44,15 +46,17 @@ private:
     QCommandLineOption* profitOption;
     QCommandLineOption* expenceOption;
     QCommandLineOption* listOption;
+    QCommandLineOption* cleanOption;
     void initDatabase(sqlMan* db);
     QStringList arguments;
     sqlMan* db;
     QSqlTableModel* model;
     bool exportConsole(QString path);
     bool importConsole(QString path);
-    bool profitConsole(double summ, QString comment, bool side, QString dateTime);
-    bool expenceConsole(double summ, QString comment, bool side, QString dateTime);
-
+    bool profitConsole(double summ, QString comment, QString dateTime);
+    bool expenceConsole(double summ, QString comment, QString dateTime);
+    bool writeOperations();
+    bool cleanDatabase();
 };
 
 #endif // COMMANDLINE_H
