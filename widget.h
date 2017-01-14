@@ -45,6 +45,8 @@ private:
     editentry* editdialog;
     QShortcut* keyEnter;
     QShortcut* keyDelete;
+    QShortcut* keyPlus;
+    QShortcut* keyMinus;
     bool lockBool;
 
 public slots:

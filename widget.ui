@@ -95,6 +95,12 @@
              <height>40</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>Add profit operation</string>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -132,6 +138,12 @@
              <width>40</width>
              <height>40</height>
             </size>
+           </property>
+           <property name="toolTip">
+            <string>Add expence operation</string>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
            </property>
            <property name="text">
             <string/>
@@ -293,6 +305,9 @@
              <height>40</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>About program</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -336,6 +351,9 @@
              <width>40</width>
              <height>40</height>
             </size>
+           </property>
+           <property name="toolTip">
+            <string>Settings</string>
            </property>
            <property name="text">
             <string/>

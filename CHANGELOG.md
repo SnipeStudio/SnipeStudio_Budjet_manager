@@ -1,7 +1,12 @@
+14 January 2017 (0.7.0.8)
+
+* Added: Key shoercuts for add profit and expence operations
+
 12 January 2017 (0.7.0.7)
 
 * Code Cleanup
 * Fixed: small buggs
+* Added: Tooltips for main window
 
 11 January 2017 (0.7.0.6)
 

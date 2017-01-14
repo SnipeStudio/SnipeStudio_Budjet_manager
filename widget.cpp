@@ -48,6 +48,12 @@ Widget::Widget(QWidget *parent, logger *log_ptr) :
     loging->debugM("Activating shortcuts");
     keyDelete = new QShortcut(this);
     keyDelete->setKey(Qt::Key_Delete);
+    keyPlus = new QShortcut(this);
+    keyPlus->setKey(Qt::Key_Plus);
+    keyMinus = new QShortcut(this);
+    keyMinus->setKey(Qt::Key_Minus);
+    connect(keyPlus, SIGNAL(activated()), this, SLOT(addProfit()));
+    connect(keyMinus, SIGNAL(activated()), this, SLOT(addExpence()));
     connect(keyDelete, SIGNAL(activated()), this, SLOT(deleteEntry()));
     loging->debugM("Done");
     updateDatabase();

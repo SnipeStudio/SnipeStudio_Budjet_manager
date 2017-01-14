@@ -3,7 +3,7 @@
 sqlMan::sqlMan()
 {
     dataManager *data = new dataManager();
-    databaseName = QDir::toNativeSeparators(data->getPath()+"/ssbm.db");
+    databaseName = QDir::toNativeSeparators(data->getPath() + "/ssbm.db");
     delete data;
     sdb = QSqlDatabase::addDatabase("QSQLITE");
     sdb.setDatabaseName(databaseName);
