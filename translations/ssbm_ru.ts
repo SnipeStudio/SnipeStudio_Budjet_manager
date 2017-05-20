@@ -67,7 +67,7 @@
     <message>
         <location filename="../widget.ui" line="143"/>
         <source>Add expence operation</source>
-        <translation type="unfinished">Добавить операцию расхода</translation>
+        <translation>Добавить операцию расхода</translation>
     </message>
     <message>
         <location filename="../widget.ui" line="217"/>
@@ -78,12 +78,12 @@
     <message>
         <location filename="../widget.ui" line="309"/>
         <source>About program</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widget.ui" line="356"/>
         <source>Settings</source>
-        <translation type="unfinished">&amp;Настройки</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <source>&amp;settings</source>
@@ -150,17 +150,17 @@
         <translation type="vanished">Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="71"/>
+        <location filename="../widget.cpp" line="70"/>
         <source>Error in Db Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Error in Db Loading</translation>
     </message>
     <message>
         <location filename="../widget.cpp" line="71"/>
         <source>There are some shit happens during database loading</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="83"/>
+        <location filename="../widget.cpp" line="82"/>
         <source>About SSBM</source>
         <translation>О SSBM</translation>
     </message>
@@ -236,15 +236,15 @@ Using QT5 in Ubuntu Linux
     <message>
         <location filename="../addentry/addentry.ui" line="172"/>
         <source>Cancel</source>
-        <translation>отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../addentry/addentry.cpp" line="66"/>
+        <location filename="../addentry/addentry.cpp" line="56"/>
         <source>Invalid summ value</source>
-        <translation type="unfinished"></translation>
+        <translation>Неверное значение суммы</translation>
     </message>
     <message>
-        <location filename="../addentry/addentry.cpp" line="74"/>
+        <location filename="../addentry/addentry.cpp" line="63"/>
         <source>Default</source>
         <translation>Без имени</translation>
     </message>
@@ -270,28 +270,34 @@ Using QT5 in Ubuntu Linux
 <context>
     <name>dataManager</name>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="117"/>
-        <location filename="../datamanager/datamanager.cpp" line="160"/>
+        <location filename="../datamanager/datamanager.cpp" line="90"/>
+        <location filename="../datamanager/datamanager.cpp" line="120"/>
         <source>Russian</source>
         <translation>Русский</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="122"/>
-        <location filename="../datamanager/datamanager.cpp" line="134"/>
+        <location filename="../datamanager/datamanager.cpp" line="94"/>
+        <location filename="../datamanager/datamanager.cpp" line="107"/>
         <source>English</source>
         <translation>Английский</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="127"/>
-        <location filename="../datamanager/datamanager.cpp" line="164"/>
+        <location filename="../datamanager/datamanager.cpp" line="98"/>
+        <location filename="../datamanager/datamanager.cpp" line="122"/>
         <source>German</source>
         <translation>Немецкий</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="131"/>
-        <location filename="../datamanager/datamanager.cpp" line="168"/>
+        <location filename="../datamanager/datamanager.cpp" line="101"/>
+        <location filename="../datamanager/datamanager.cpp" line="124"/>
         <source>Dutch</source>
         <translation>Голландский</translation>
+    </message>
+    <message>
+        <location filename="../datamanager/datamanager.cpp" line="104"/>
+        <location filename="../datamanager/datamanager.cpp" line="126"/>
+        <source>French</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -342,7 +348,7 @@ Using QT5 in Ubuntu Linux
         <translation>отмена</translation>
     </message>
     <message>
-        <location filename="../editentry/editentry.cpp" line="74"/>
+        <location filename="../editentry/editentry.cpp" line="60"/>
         <source>Default</source>
         <translation>Без имени</translation>
     </message>
@@ -350,19 +356,56 @@ Using QT5 in Ubuntu Linux
 <context>
     <name>main</name>
     <message>
-        <location filename="../commandline/commandline.cpp" line="15"/>
         <source>Allows use console variables.</source>
-        <translation>Позволяет использовать консольные переменные.</translation>
+        <translation type="vanished">Позволяет использовать консольные переменные.</translation>
     </message>
     <message>
-        <location filename="../commandline/commandline.cpp" line="18"/>
+        <location filename="../commandline/commandline.cpp" line="13"/>
         <source>Exporting database to &lt;file&gt;.</source>
         <translation>Экспорт базы данных в &lt;файл&gt;.</translation>
     </message>
     <message>
-        <location filename="../commandline/commandline.cpp" line="19"/>
+        <location filename="../commandline/commandline.cpp" line="14"/>
+        <location filename="../commandline/commandline.cpp" line="20"/>
         <source>file</source>
         <translation>файл</translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="19"/>
+        <source>Importing database from &lt;file&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="25"/>
+        <source>Add Profit with parameters. 
+Format of data is &quot;dd-MM-yyyy hh:mm:ss&quot;.
+ Arguments sent with &quot;&quot; symbol between
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="29"/>
+        <location filename="../commandline/commandline.cpp" line="39"/>
+        <source>summ;comment;data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="35"/>
+        <source>Add Expence with parameters. 
+Format of data is &quot;ddMMyyyy_hhmm&quot;.
+ Arguments sent with &quot;&quot; symbol between
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="44"/>
+        <source>Print list of operations from database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="50"/>
+        <source>Clean database of all data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -503,22 +546,22 @@ Using QT5 in Ubuntu Linux
         <translation type="vanished">Все данные будут удалены. Используйте на свой страх и риск</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="48"/>
+        <location filename="../settings/settings.cpp" line="44"/>
         <source>All data will be cleaned. Use at your own risk.</source>
         <translation>Все данные будут удалены. Используйте на свой страх и риск.</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="49"/>
+        <location filename="../settings/settings.cpp" line="45"/>
         <source>cancel</source>
         <translation>&amp;отмена</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="50"/>
+        <location filename="../settings/settings.cpp" line="46"/>
         <source>ok</source>
         <translation>&amp;ok</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="104"/>
+        <location filename="../settings/settings.cpp" line="86"/>
         <source>You need to restart application to language settings will be applied</source>
         <translation>Необходимо перезапустить приложение для применения языковых настроек</translation>
     </message>

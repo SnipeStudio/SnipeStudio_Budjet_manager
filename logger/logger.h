@@ -6,25 +6,20 @@
 #include <QTime>
 #include "../datamanager/datamanager.h"
 
-class logger
-{
+class logger {
 public:
-    logger();
-    void close();
-    void infoM(QString infoMessage);
-    void debugM(QString debugMessage);
-    enum logLevel{
-        off=0,
-        info=1,
-        debug=2
-    };
-    void errorM(QString errorMessage);
-    void warningM(QString warningMessage);
-private:
-    QFile log;
-    QString timeFormat;
-    dataManager* data;
+  logger();
+  void close();
+  void Info(QString infoMessage);
+  void Debug(QString debugMessage);
+  enum logLevel { off = 0, info = 1, debug = 2 };
+  void Error(QString errorMessage);
+  void Warning(QString warningMessage);
 
+private:
+  QFile log;
+  QString timeFormat;
+  dataManager *data;
 };
 
 #endif // LOGGER_H

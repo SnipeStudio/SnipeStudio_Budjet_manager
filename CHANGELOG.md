@@ -1,3 +1,7 @@
+21.05.2017 (0.8.0.1)
+* Code style formatting
+* Added: Initial commit for french translation
+
 15 January 2017 (0.7.0.9)
 
 * Fixed: Not correct work of clean database function

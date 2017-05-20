@@ -9,22 +9,20 @@ namespace Ui {
 class Export;
 }
 
-class Export : public QWidget
-{
-    Q_OBJECT
+class Export : public QWidget {
+  Q_OBJECT
 
 public:
-    explicit Export(QWidget *parent = 0, QSqlTableModel *modelOut = NULL);
-    ~Export();
+  explicit Export(QWidget *parent = 0, QSqlTableModel *modelOut = NULL);
+  ~Export();
 
 private:
-    QSqlTableModel *model;
-    Ui::Export *ui;
+  QSqlTableModel *model;
+  Ui::Export *ui;
 
 public slots:
-    void saveData();
-    void selectPath();
-
+  void saveData();
+  void selectPath();
 };
 
 #endif // EXPORT_H

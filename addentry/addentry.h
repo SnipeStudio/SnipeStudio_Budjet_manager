@@ -13,24 +13,23 @@ namespace Ui {
 class addEntry;
 }
 
-class addEntry : public QDialog
-{
-    Q_OBJECT
+class addEntry : public QDialog {
+  Q_OBJECT
 
 public:
-    explicit addEntry(bool side, sqlMan* sqlOut, QWidget *parent = 0);
-    ~addEntry();
+  explicit addEntry(bool side, sqlMan *sqlOut, QWidget *parent = 0);
+  ~addEntry();
 
 private:
-    Ui::addEntry *ui;
-    sqlMan* sql;
-    bool side;
-    double summ;
+  Ui::addEntry *ui;
+  sqlMan *sql;
+  bool side;
+  double summ;
 
 public slots:
-    void on_cancel_clicked();
-    void on_confirmChanges_clicked();
-    void enable();
+  void on_cancel_clicked();
+  void on_confirmChanges_clicked();
+  void enable();
 };
 
 #endif // ADDENTRY_H

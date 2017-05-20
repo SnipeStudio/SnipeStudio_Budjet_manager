@@ -31,7 +31,6 @@ HEADERS  += widget.h \
     app_info.h \
     settings/settings.h \
     logger/logger.h \
-    res.rc \
     editentry/editentry.h \
     addentry/addentry.h \
     export/export.h \
@@ -47,7 +46,7 @@ FORMS    += widget.ui \
     import/import.ui
 
 RESOURCES += res.qrc
-RC_FILE = res.rc
+RC_FILE =
 win32: RC_ICONS = ico.ico
 
 
@@ -55,6 +54,7 @@ TRANSLATIONS = translations/ssbm_de.ts \
                translations/ssbm_en.ts \
                translations/ssbm_ru.ts \
                translations/ssbm_nl.ts \
+               translations/ssbm_fr.ts \
 
 OTHER_FILES += \
     readme.md

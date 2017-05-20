@@ -11,31 +11,29 @@
 namespace Ui {
 class sqlMan;
 }
-class sqlMan
-{
+class sqlMan {
 public:
-    sqlMan();
-    void addOperation(double summ, QString comment, bool side, QDateTime time);
-    void updateEntry(int index, double summ, QString comment, bool side, QDateTime time);
-    void deleteOperation(int index);
-    double getBalance();
-    void init();
-    int clean();
-    QString getDBName();
-    QSqlTableModel* getModel();
-   // QSqlDatabase* getDataBase();
-    bool dbIsOpen();
-    void submit();
-    QString getListOfOperations(QChar separator);
+  sqlMan();
+  void addOperation(double summ, QString comment, bool side, QDateTime time);
+  void updateEntry(int index, double summ, QString comment, bool side,
+                   QDateTime time);
+  void deleteOperation(int index);
+  double getBalance();
+  void init();
+  int clean();
+  QString getDBName();
+  QSqlTableModel *getModel();
+  // QSqlDatabase* getDataBase();
+  bool dbIsOpen();
+  void submit();
+  QString getListOfOperations(QChar separator);
+
 private:
-    QString databaseName;
-    QSqlQuery* query;
-    QSqlTableModel* model;
-    QSqlDatabase sdb;
-    bool dirty;
-
-
-
+  QString databaseName;
+  QSqlQuery *query;
+  QSqlTableModel *model;
+  QSqlDatabase sdb;
+  bool dirty;
 };
 
 #endif // SQLMAN_H

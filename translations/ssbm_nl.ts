@@ -62,12 +62,12 @@
     <message>
         <location filename="../widget.ui" line="99"/>
         <source>Add profit operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg winstoperatie toe</translation>
     </message>
     <message>
         <location filename="../widget.ui" line="143"/>
         <source>Add expence operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg de expense-operatie toe</translation>
     </message>
     <message>
         <location filename="../widget.ui" line="217"/>
@@ -77,12 +77,12 @@
     <message>
         <location filename="../widget.ui" line="309"/>
         <source>About program</source>
-        <translation type="unfinished"></translation>
+        <translation>Over ons programma</translation>
     </message>
     <message>
         <location filename="../widget.ui" line="356"/>
         <source>Settings</source>
-        <translation type="unfinished">&amp;Instelliingen</translation>
+        <translation>Instelliingen</translation>
     </message>
     <message>
         <source>&amp;settings</source>
@@ -149,17 +149,17 @@
         <translation type="vanished">Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="71"/>
+        <location filename="../widget.cpp" line="70"/>
         <source>Error in Db Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Error in Db Loading</translation>
     </message>
     <message>
         <location filename="../widget.cpp" line="71"/>
         <source>There are some shit happens during database loading</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="83"/>
+        <location filename="../widget.cpp" line="82"/>
         <source>About SSBM</source>
         <translation>Over SSBM</translation>
     </message>
@@ -205,7 +205,7 @@ Gebruik QT5
     <message>
         <location filename="../addentry/addentry.ui" line="25"/>
         <source>Entry time</source>
-        <translation>Entry Time</translation>
+        <translation>Ingangstijd</translation>
     </message>
     <message>
         <location filename="../addentry/addentry.ui" line="58"/>
@@ -235,15 +235,15 @@ Gebruik QT5
     <message>
         <location filename="../addentry/addentry.ui" line="172"/>
         <source>Cancel</source>
-        <translation>annuleren</translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
-        <location filename="../addentry/addentry.cpp" line="66"/>
+        <location filename="../addentry/addentry.cpp" line="56"/>
         <source>Invalid summ value</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongeldige somwaarde</translation>
     </message>
     <message>
-        <location filename="../addentry/addentry.cpp" line="74"/>
+        <location filename="../addentry/addentry.cpp" line="63"/>
         <source>Default</source>
         <translation>Standaard</translation>
     </message>
@@ -258,7 +258,7 @@ Gebruik QT5
     <message>
         <location filename="../auth/auth.ui" line="27"/>
         <source>Login</source>
-        <translation>Login      </translation>
+        <translation>Login</translation>
     </message>
     <message>
         <location filename="../auth/auth.ui" line="61"/>
@@ -269,28 +269,34 @@ Gebruik QT5
 <context>
     <name>dataManager</name>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="117"/>
-        <location filename="../datamanager/datamanager.cpp" line="160"/>
+        <location filename="../datamanager/datamanager.cpp" line="90"/>
+        <location filename="../datamanager/datamanager.cpp" line="120"/>
         <source>Russian</source>
         <translation>Russisch</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="122"/>
-        <location filename="../datamanager/datamanager.cpp" line="134"/>
+        <location filename="../datamanager/datamanager.cpp" line="94"/>
+        <location filename="../datamanager/datamanager.cpp" line="107"/>
         <source>English</source>
         <translation>Engels</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="127"/>
-        <location filename="../datamanager/datamanager.cpp" line="164"/>
+        <location filename="../datamanager/datamanager.cpp" line="98"/>
+        <location filename="../datamanager/datamanager.cpp" line="122"/>
         <source>German</source>
         <translation>Duitse</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="131"/>
-        <location filename="../datamanager/datamanager.cpp" line="168"/>
+        <location filename="../datamanager/datamanager.cpp" line="101"/>
+        <location filename="../datamanager/datamanager.cpp" line="124"/>
         <source>Dutch</source>
         <translation>Nederlands</translation>
+    </message>
+    <message>
+        <location filename="../datamanager/datamanager.cpp" line="104"/>
+        <location filename="../datamanager/datamanager.cpp" line="126"/>
+        <source>French</source>
+        <translation>Frans</translation>
     </message>
 </context>
 <context>
@@ -341,7 +347,7 @@ Gebruik QT5
         <translation>annuleren</translation>
     </message>
     <message>
-        <location filename="../editentry/editentry.cpp" line="74"/>
+        <location filename="../editentry/editentry.cpp" line="60"/>
         <source>Default</source>
         <translation>Standaard</translation>
     </message>
@@ -349,19 +355,56 @@ Gebruik QT5
 <context>
     <name>main</name>
     <message>
-        <location filename="../commandline/commandline.cpp" line="15"/>
         <source>Allows use console variables.</source>
-        <translation>Toelaat console variabelen.</translation>
+        <translation type="vanished">Toelaat console variabelen.</translation>
     </message>
     <message>
-        <location filename="../commandline/commandline.cpp" line="18"/>
+        <location filename="../commandline/commandline.cpp" line="13"/>
         <source>Exporting database to &lt;file&gt;.</source>
         <translation>Exporteren database &lt;file&gt;.</translation>
     </message>
     <message>
-        <location filename="../commandline/commandline.cpp" line="19"/>
+        <location filename="../commandline/commandline.cpp" line="14"/>
+        <location filename="../commandline/commandline.cpp" line="20"/>
         <source>file</source>
         <translation>file</translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="19"/>
+        <source>Importing database from &lt;file&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="25"/>
+        <source>Add Profit with parameters. 
+Format of data is &quot;dd-MM-yyyy hh:mm:ss&quot;.
+ Arguments sent with &quot;&quot; symbol between
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="29"/>
+        <location filename="../commandline/commandline.cpp" line="39"/>
+        <source>summ;comment;data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="35"/>
+        <source>Add Expence with parameters. 
+Format of data is &quot;ddMMyyyy_hhmm&quot;.
+ Arguments sent with &quot;&quot; symbol between
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="44"/>
+        <source>Print list of operations from database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="50"/>
+        <source>Clean database of all data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -502,22 +545,22 @@ Gebruik QT5
         <translation type="vanished">Alle data word schoongemaakt. Gebruiken op eige risico</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="48"/>
+        <location filename="../settings/settings.cpp" line="44"/>
         <source>All data will be cleaned. Use at your own risk.</source>
         <translation>Alle data word schoongemaakt. Gebruiken op eige risico.</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="49"/>
+        <location filename="../settings/settings.cpp" line="45"/>
         <source>cancel</source>
         <translation>&amp;annuleren</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="50"/>
+        <location filename="../settings/settings.cpp" line="46"/>
         <source>ok</source>
         <translation>&amp;ok</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="104"/>
+        <location filename="../settings/settings.cpp" line="86"/>
         <source>You need to restart application to language settings will be applied</source>
         <translation>Je nodig hebt om opnieuw te starten applicatie om de taal instellingen worden toegepast</translation>
     </message>

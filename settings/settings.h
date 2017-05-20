@@ -12,34 +12,31 @@
 #include "import/import.h"
 
 namespace Ui {
-  class settings;
+class settings;
 }
 
-class settings : public QDialog
-{
+class settings : public QDialog {
   Q_OBJECT
 
 public:
-  settings(QWidget *parent, logger *log_ptr, sqlMan *sql=0);
+  settings(QWidget *parent, logger *log_ptr, sqlMan *sql = 0);
   ~settings();
 
 public slots:
-   void okSlot();
-   void cleanData();
-   void cleanDataOk();
-   void showExport();
-   void showImport();
-   void selectFolder();
-   void enableWindow();
-   // void showUserControl();
+  void okSlot();
+  void cleanData();
+  void cleanDataOk();
+  void showExport();
+  void showImport();
+  void selectFolder();
+  void enableWindow();
+  // void showUserControl();
 
 private:
   Ui::settings *ui;
-  logger* loging;
-  sqlMan* sqlManager;
-  QPushButton* select;
-
-
+  logger *loging;
+  sqlMan *sqlManager;
+  QPushButton *select;
 };
 
 #endif // SETTINGS_H

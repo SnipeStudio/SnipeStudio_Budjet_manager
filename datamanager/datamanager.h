@@ -4,36 +4,34 @@
 #include <QTextCodec>
 #include <sqlman/sqlman.h>
 
-class dataManager : public QObject
-{
-    Q_OBJECT
+class dataManager : public QObject {
+  Q_OBJECT
 public:
-    dataManager();
-    ~dataManager();
+  dataManager();
+  ~dataManager();
 
-    QString getPath();
-    QString GetCurrency();
-    QString getTranslation();
-    QString getMenuTranslation();
-    QString getDefaultUser();
-    int getLoglevel();
+  QString getPath();
+  QString GetCurrency();
+  QString getTranslation();
+  QString getMenuTranslation();
+  QString getDefaultUser();
+  int getLoglevel();
 
 signals:
 public slots:
-    void setPath(QString data);
-    void setCurrency(QString currency);
-    void setTranslation(QString translation);
-    void setDefaultUser(QString DefaultUser);
-    void setLogLevel(int lLevel);
-
+  void setPath(QString data);
+  void setCurrency(QString currency);
+  void setTranslation(QString translation);
+  void setDefaultUser(QString DefaultUser);
+  void setLogLevel(int lLevel);
 
 private:
-    QString dataPath;
-    QString configPath;
-    QString Currency;
-    QString Translation;
-    QString DefUser;
-    int Loglevel;
+  QString dataPath;
+  QString configPath;
+  QString Currency;
+  QString Translation;
+  QString DefUser;
+  int Loglevel;
 };
 
 #endif // DATAMANAGER_H
