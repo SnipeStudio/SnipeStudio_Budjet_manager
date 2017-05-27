@@ -5,6 +5,10 @@ addEntry::addEntry(bool side, sqlMan *sqlOut, QWidget *parent)
     : QDialog(parent), ui(new Ui::addEntry) {
   sql = sqlOut;
   ui->setupUi(this);
+  dataManager *data = new dataManager();
+  data->reloadTranslator();
+  ui->retranslateUi(this);
+  delete data;
   this->side = side;
 
   // TODO: Probably i should define it somehow another way
@@ -15,9 +19,6 @@ addEntry::addEntry(bool side, sqlMan *sqlOut, QWidget *parent)
   }
 
   ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
-  connect(ui->cancel, SIGNAL(clicked(bool)), this, SLOT(on_cancel_clicked()));
-  connect(ui->confirmChanges, SIGNAL(clicked(bool)), this,
-          SLOT(on_confirmChanges_clicked()));
 }
 
 addEntry::~addEntry() { delete ui; }
@@ -52,15 +53,15 @@ void addEntry::on_confirmChanges_clicked() {
        ui->lineSumm->text().isEmpty()) ||
       !summDigits || dots > 1) {
     this->setEnabled(false);
-    QMessageBox *a = new QMessageBox(this);
-    a->setText(tr("Invalid summ value"));
-    a->show();
-    connect(a, SIGNAL(finished(int)), this, SLOT(enable()));
+    QMessageBox a(this);
+    a.setText(tr("Invalid summ value"));
+    a.show();
+    connect(&a, SIGNAL(finished(int)), this, SLOT(enable()));
     return;
   }
 
   if (ui->lineEditComment->text().isEmpty()) {
-    ui->lineEditComment->setText(tr("Default"));
+    ui->lineEditComment->setText("Default");
   }
 
   summ = ui->lineSumm->text().toDouble();
@@ -74,4 +75,7 @@ void addEntry::on_confirmChanges_clicked() {
   this->close();
 }
 
-void addEntry::enable() { this->setEnabled(true); }
+void addEntry::enable() {
+  this->setEnabled(true);
+  this->ui->confirmChanges->setEnabled(true);
+}

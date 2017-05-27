@@ -10,7 +10,7 @@ logger::logger() {
 
 void logger::close() { log.close(); }
 
-void logger::infoM(QString infoMessage) {
+void logger::Info(QString infoMessage) {
   data = new dataManager();
   if (data->getLoglevel() > 0) {
     QTextStream fout(&log);
@@ -21,7 +21,7 @@ void logger::infoM(QString infoMessage) {
   delete data;
 }
 
-void logger::debugM(QString debugMessage) {
+void logger::Debug(QString debugMessage) {
   data = new dataManager();
   if (data->getLoglevel() > 1) {
     QTextStream fout(&log);
@@ -32,7 +32,7 @@ void logger::debugM(QString debugMessage) {
   delete data;
 }
 
-void logger::errorM(QString errorMessage) {
+void logger::Error(QString errorMessage) {
   data = new dataManager();
   if (data->getLoglevel() > 0) {
     QTextStream fout(&log);
@@ -43,7 +43,7 @@ void logger::errorM(QString errorMessage) {
   delete data;
 }
 
-void logger::warningM(QString warningMessage) {
+void logger::Warning(QString warningMessage) {
   data = new dataManager();
   if (data->getLoglevel() > 1) {
     QTextStream fout(&log);

@@ -4,6 +4,10 @@
 Export::Export(QWidget *parent, QSqlTableModel *modelOut)
     : QWidget(parent), ui(new Ui::Export) {
   ui->setupUi(this);
+  dataManager *data = new dataManager();
+  data->reloadTranslator();
+  ui->retranslateUi(this);
+  delete data;
   ui->progressBar->hide();
   model = modelOut;
   connect(ui->save, SIGNAL(clicked()), this, SLOT(saveData()));

@@ -5,6 +5,10 @@ editentry::editentry(QWidget *parent, logger *log, QVector<QString> *data,
                      sqlMan *db)
     : QDialog(parent), ui(new Ui::editentry) {
   ui->setupUi(this);
+  dataManager *dataMan = new dataManager();
+  dataMan->reloadTranslator();
+  ui->retranslateUi(this);
+  delete dataMan;
   log_ptr = log;
   database = db;
   index = data->at(0).toInt();

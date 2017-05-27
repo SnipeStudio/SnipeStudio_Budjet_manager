@@ -21,25 +21,25 @@ Widget::Widget(QWidget *parent, logger *log_ptr)
   fLoad = false;
   idLoaded = 0;
   version = VER_FILEVERSION_STR;
-  loging->debugM("Initialize user interface");
+  loging->Debug("Initialize user interface");
   ui->setupUi(this);
   QString path = dataMan->getPath() + "bal.ssff";
-  loging->debugM(QString("Setting DataPath:%1").arg(dataMan->getPath()));
+  loging->Debug(QString("Setting DataPath:%1").arg(dataMan->getPath()));
   ui->currency->setText(dataMan->GetCurrency());
-  loging->debugM(QString("Setting Currency:%1").arg(dataMan->GetCurrency()));
-  loging->debugM("Processing balance");
-  loging->debugM("Done");
+  loging->Debug(QString("Setting Currency:%1").arg(dataMan->GetCurrency()));
+  loging->Debug("Processing balance");
+  loging->Debug("Done");
   delete dataMan;
   this->setWindowTitle("Snipe Studio Budget Manager");
-  loging->debugM("Activating Slots");
+  loging->Debug("Activating Slots");
   connect(ui->about, SIGNAL(clicked()), this, SLOT(help()));
   connect(ui->profit, SIGNAL(clicked()), this, SLOT(addProfit()));
   connect(ui->expence, SIGNAL(clicked()), this, SLOT(addExpence()));
   connect(ui->settings, SIGNAL(clicked()), this, SLOT(showSettings()));
   connect(ui->view, SIGNAL(doubleClicked(QModelIndex)), this,
           SLOT(editTrigger(QModelIndex)));
-  loging->debugM("Done");
-  loging->debugM("Activating shortcuts");
+  loging->Debug("Done");
+  loging->Debug("Activating shortcuts");
   keyDelete = new QShortcut(this);
   keyDelete->setKey(Qt::Key_Delete);
   keyPlus = new QShortcut(this);
@@ -49,7 +49,7 @@ Widget::Widget(QWidget *parent, logger *log_ptr)
   connect(keyPlus, SIGNAL(activated()), this, SLOT(addProfit()));
   connect(keyMinus, SIGNAL(activated()), this, SLOT(addExpence()));
   connect(keyDelete, SIGNAL(activated()), this, SLOT(deleteEntry()));
-  loging->debugM("Done");
+  loging->Debug("Done");
   updateDatabase();
 }
 
@@ -59,32 +59,31 @@ Widget::~Widget() {
 }
 
 void Widget::initDatabase(sqlMan *db) {
-  loging->debugM("Get into database initialization");
+  loging->Debug("Get into database initialization");
   QSqlTableModel *model = db->getModel();
   model->setTable("operations");
   if (db->dbIsOpen()) {
     QMessageBox *dbOpenError = new QMessageBox(this);
-    loging->errorM("Error in Db Loading. There are some shit happens during "
-                   "database loading");
-    dbOpenError->warning(
-        this, tr("Error in Db Loading"),
-        tr("There are some shit happens during database loading"));
+    loging->Error("Error in Db Loading. There are some shit happens during "
+                  "database loading");
+    dbOpenError->warning(this, "Error in Db Loading",
+                         "There are some shit happens during database loading");
     dbOpenError->exec();
   }
 
   updateDatabase();
-  loging->debugM("Database initialized succesfully");
+  loging->Debug("Database initialized succesfully");
 }
 
 void Widget::help() {
-  loging->debugM("About message called");
-  QMessageBox *helpMb = new QMessageBox(this);
-  helpMb->about(this, tr("About SSBM"),
-                tr("Snipe Studio Budget Manager v.%1\nUsing QT5\n%2\n%3")
-                    .arg(this->version)
-                    .arg(VER_LEGALCOPYRIGHT_STR)
-                    .arg(VER_LEGALTRADEMARKS1_STR));
-  helpMb->close();
+  loging->Debug("About message called");
+  QMessageBox helpMb(this);
+  helpMb.about(this, "About SSBM",
+               QString("Snipe Studio Budget Manager v.%1\nUsing QT5\n%2\n%3")
+                   .arg(this->version)
+                   .arg(VER_LEGALCOPYRIGHT_STR)
+                   .arg(VER_LEGALTRADEMARKS1_STR));
+  helpMb.close();
 }
 
 void Widget::addProfit() { addOperation(true); }
@@ -100,7 +99,7 @@ void Widget::addOperation(bool side) {
 }
 
 void Widget::load() {
-  loging->debugM("load called");
+  loging->Debug("load called");
   QTranslator translator;
   dataManager *data = new dataManager();
   translator.load(QDir::toNativeSeparators("translations/ssbm_" +
@@ -111,12 +110,23 @@ void Widget::load() {
 }
 
 void Widget::showSettings() {
-  loging->debugM("showSettings called");
+  loging->Debug("showSettings called");
   this->setEnabled(false);
-  set = new settings(this, loging, db);
+  if (set != NULL)
+    set = new settings(this, loging, db);
   connect(set, SIGNAL(finished(int)), this, SLOT(updateDatabase()));
   connect(set, SIGNAL(finished(int)), this, SLOT(enableWindow()));
+  connect(set, SIGNAL(finished(int)), this, SLOT(closeSettings()));
   set->show();
+}
+
+void Widget::closeSettings() {
+  dataManager *data = new dataManager();
+  data->reloadTranslator();
+  ui->retranslateUi(this);
+  set->hide();
+  set->close();
+  delete data;
 }
 
 void Widget::editTrigger(QModelIndex index) {
@@ -159,10 +169,7 @@ void Widget::updateDatabase() {
   delete data;
 }
 
-void Widget::enableWindow() {
-  this->setEnabled(true);
-  delete set;
-}
+void Widget::enableWindow() { this->setEnabled(true); }
 
 void Widget::deleteEntry() {
   int selectedIndex = ui->view->model()
@@ -178,8 +185,8 @@ void Widget::closeEvent() {
   while (!QDir().remove(QDir().absoluteFilePath(
       QDir::toNativeSeparators(data->getPath() + "lockfile"))))
     ;
-  loging->infoM(QString("Deinitialization of %1").arg(VER_PRODUCTNAME_STR));
-  loging->debugM("Closing SSBM");
+  loging->Info(QString("Deinitialization of %1").arg(VER_PRODUCTNAME_STR));
+  loging->Debug("Closing SSBM");
   delete data;
   delete ui;
   delete loging;

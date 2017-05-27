@@ -4,6 +4,10 @@
 Import::Import(QWidget *parent, sqlMan *sqlManOut)
     : QDialog(parent), ui(new Ui::Import) {
   ui->setupUi(this);
+  dataManager *data = new dataManager();
+  data->reloadTranslator();
+  ui->retranslateUi(this);
+  delete data;
   ui->progressBar->hide();
   sqlManager = sqlManOut;
   connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(saveData()));

@@ -151,22 +151,27 @@
          </property>
          <item>
           <property name="text">
-           <string>English</string>
+           <string>en</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Russian</string>
+           <string>fr</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>German</string>
+           <string>de</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Dutch</string>
+           <string>nl</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ru</string>
           </property>
          </item>
         </widget>

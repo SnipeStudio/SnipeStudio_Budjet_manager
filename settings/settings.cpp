@@ -6,34 +6,35 @@ settings::settings(QWidget *parent, logger *log_ptr, sqlMan *sql)
   ui->setupUi(this);
   loging = log_ptr;
   sqlManager = sql;
-  loging->debugM("Initializing settings menu");
-  loging->debugM("Enabling slots");
+  loging->Debug("Initializing settings menu");
+  loging->Debug("Enabling slots");
   connect(ui->cleanButton, SIGNAL(clicked()), this, SLOT(cleanData()));
   connect(ui->okButton, SIGNAL(clicked()), this, SLOT(okSlot()));
   connect(ui->Cancel, SIGNAL(clicked()), this, SLOT(close()));
   connect(ui->exportButton, SIGNAL(clicked()), this, SLOT(showExport()));
   connect(ui->importButton, SIGNAL(clicked()), this, SLOT(showImport()));
   connect(ui->select, SIGNAL(clicked()), this, SLOT(selectFolder()));
-  loging->debugM("Enabling slots: Done");
+  loging->Debug("Enabling slots: Done");
   dataManager *data = new dataManager();
-  loging->debugM(
+  data->reloadTranslator();
+  ui->retranslateUi(this);
+  loging->Debug(
       QString("Set translations to: %1").arg(data->getMenuTranslation()));
   ui->TranslationSelect->setCurrentIndex(
       ui->TranslationSelect->findText(data->getMenuTranslation()));
-  loging->debugM("Set DataPath to:" + data->getPath());
+  loging->Debug("Set DataPath to:" + data->getPath());
   ui->DataPathLine->setText(data->getPath());
-  loging->debugM("Set Currency to:" + data->GetCurrency());
+  loging->Debug("Set Currency to:" + data->GetCurrency());
   ui->CurrencyLine->setText(data->GetCurrency());
   int loglevel = data->getLoglevel();
   if (loglevel < 0 || loglevel > 2) {
     data->setLogLevel(2);
-    loging->debugM(
-        QString("Change log level to debug due to:%1").arg(loglevel));
+    loging->Debug(QString("Change log level to debug due to:%1").arg(loglevel));
   }
 
-  loging->debugM(QString("Set Log Level to: %1").arg(data->getLoglevel()));
+  loging->Debug(QString("Set Log Level to: %1").arg(data->getLoglevel()));
   ui->verbositySelect->setCurrentIndex(data->getLoglevel());
-  loging->debugM("Initializing settings menu: Done");
+  loging->Debug("Initializing settings menu: Done");
   delete data;
 }
 
@@ -53,15 +54,15 @@ void settings::cleanDataOk() { sqlManager->clean(); }
 
 void settings::okSlot() {
   bool updatedLanguage = false;
-  loging->debugM("OK");
+  loging->Debug("OK");
   dataManager *data = new dataManager();
-  loging->debugM("data init");
+  loging->Debug("data init");
   if (ui->DataPathLine->text() != data->getPath()) {
     data->setPath((QDir::fromNativeSeparators(ui->DataPathLine->text())));
   }
 
   data->setCurrency(ui->CurrencyLine->text());
-  loging->debugM(data->GetCurrency());
+  loging->Debug(data->GetCurrency());
   if (ui->TranslationSelect->currentText() != data->getMenuTranslation()) {
     updatedLanguage = true;
   }
@@ -78,32 +79,23 @@ void settings::okSlot() {
     data->setLogLevel(loging->debug);
   }
 
-  loging->debugM("settings saved");
+  loging->Debug("settings saved");
   delete data;
-  if (updatedLanguage) {
-    this->setDisabled(true);
-    QMessageBox *a = new QMessageBox();
-    a->setText(tr("You need to restart application to language settings will "
-                  "be applied"));
-    connect(a, SIGNAL(accepted()), a, SLOT(close()));
-    a->show();
-  }
-
-  loging->debugM("done");
+  loging->Debug("done");
   this->close();
 }
 
 void settings::enableWindow() { this->setEnabled(true); }
 
 void settings::showExport() {
-  loging->debugM("showExport called");
+  loging->Debug("showExport called");
   Export *exportWindow = new Export(0, sqlManager->getModel());
   connect(exportWindow, SIGNAL(finished(int)), this, SLOT(updateDatabase()));
   exportWindow->show();
 }
 
 void settings::showImport() {
-  loging->debugM("showImport called");
+  loging->Debug("showImport called");
   Import *import = new Import(0, sqlManager);
   connect(import, SIGNAL(finished(int)), this, SLOT(updateDatabase()));
   import->show();

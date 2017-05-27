@@ -72,7 +72,7 @@
     <message>
         <location filename="../widget.ui" line="217"/>
         <source>currency</source>
-        <translation>Valuta</translation>
+        <translation> </translation>
     </message>
     <message>
         <location filename="../widget.ui" line="309"/>
@@ -149,27 +149,19 @@
         <translation type="vanished">Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="70"/>
         <source>Error in Db Loading</source>
-        <translation>Error in Db Loading</translation>
+        <translation type="vanished">Error in Db Loading</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="71"/>
-        <source>There are some shit happens during database loading</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../widget.cpp" line="82"/>
         <source>About SSBM</source>
-        <translation>Over SSBM</translation>
+        <translation type="vanished">Over SSBM</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="83"/>
         <source>Snipe Studio Budget Manager v.%1
 Using QT5
 %2
 %3</source>
-        <translation>Snipe Studio Budget Manager v.%1
+        <translation type="vanished">Snipe Studio Budget Manager v.%1
 Gebruik QT5
 %2
 %3</translation>
@@ -238,14 +230,13 @@ Gebruik QT5
         <translation>Annuleren</translation>
     </message>
     <message>
-        <location filename="../addentry/addentry.cpp" line="56"/>
+        <location filename="../addentry/addentry.cpp" line="57"/>
         <source>Invalid summ value</source>
         <translation>Ongeldige somwaarde</translation>
     </message>
     <message>
-        <location filename="../addentry/addentry.cpp" line="63"/>
         <source>Default</source>
-        <translation>Standaard</translation>
+        <translation type="vanished">Standaard</translation>
     </message>
 </context>
 <context>
@@ -269,34 +260,53 @@ Gebruik QT5
 <context>
     <name>dataManager</name>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="90"/>
-        <location filename="../datamanager/datamanager.cpp" line="120"/>
         <source>Russian</source>
-        <translation>Russisch</translation>
+        <translation type="vanished">Russisch</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="94"/>
-        <location filename="../datamanager/datamanager.cpp" line="107"/>
         <source>English</source>
-        <translation>Engels</translation>
+        <translation type="vanished">Engels</translation>
+    </message>
+    <message>
+        <source>German</source>
+        <translation type="vanished">Duitse</translation>
+    </message>
+    <message>
+        <source>Dutch</source>
+        <translation type="vanished">Nederlands</translation>
+    </message>
+    <message>
+        <source>French</source>
+        <translation type="vanished">Frans</translation>
+    </message>
+    <message>
+        <location filename="../datamanager/datamanager.cpp" line="91"/>
+        <location filename="../datamanager/datamanager.cpp" line="117"/>
+        <source>ru</source>
+        <translation>Русский</translation>
+    </message>
+    <message>
+        <location filename="../datamanager/datamanager.cpp" line="95"/>
+        <location filename="../datamanager/datamanager.cpp" line="119"/>
+        <source>de</source>
+        <translation>Deutsch</translation>
     </message>
     <message>
         <location filename="../datamanager/datamanager.cpp" line="98"/>
-        <location filename="../datamanager/datamanager.cpp" line="122"/>
-        <source>German</source>
-        <translation>Duitse</translation>
-    </message>
-    <message>
-        <location filename="../datamanager/datamanager.cpp" line="101"/>
-        <location filename="../datamanager/datamanager.cpp" line="124"/>
-        <source>Dutch</source>
+        <location filename="../datamanager/datamanager.cpp" line="121"/>
+        <source>nl</source>
         <translation>Nederlands</translation>
     </message>
     <message>
+        <location filename="../datamanager/datamanager.cpp" line="101"/>
+        <location filename="../datamanager/datamanager.cpp" line="123"/>
+        <source>fr</source>
+        <translation>français</translation>
+    </message>
+    <message>
         <location filename="../datamanager/datamanager.cpp" line="104"/>
-        <location filename="../datamanager/datamanager.cpp" line="126"/>
-        <source>French</source>
-        <translation>Frans</translation>
+        <source>en</source>
+        <translation>English</translation>
     </message>
 </context>
 <context>
@@ -347,7 +357,7 @@ Gebruik QT5
         <translation>annuleren</translation>
     </message>
     <message>
-        <location filename="../editentry/editentry.cpp" line="60"/>
+        <location filename="../editentry/editentry.cpp" line="64"/>
         <source>Default</source>
         <translation>Standaard</translation>
     </message>
@@ -361,32 +371,32 @@ Gebruik QT5
     <message>
         <location filename="../commandline/commandline.cpp" line="13"/>
         <source>Exporting database to &lt;file&gt;.</source>
-        <translation>Exporteren database &lt;file&gt;.</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="14"/>
         <location filename="../commandline/commandline.cpp" line="20"/>
         <source>file</source>
-        <translation>file</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="19"/>
         <source>Importing database from &lt;file&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="25"/>
         <source>Add Profit with parameters. 
-Format of data is &quot;dd-MM-yyyy hh:mm:ss&quot;.
- Arguments sent with &quot;&quot; symbol between
+Format of data is &quot;ddMMyyyy_hhmmss&quot;.
+ Arguments sent in &quot;&quot; symbol between
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="29"/>
         <location filename="../commandline/commandline.cpp" line="39"/>
         <source>summ;comment;data</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="35"/>
@@ -394,17 +404,17 @@ Format of data is &quot;dd-MM-yyyy hh:mm:ss&quot;.
 Format of data is &quot;ddMMyyyy_hhmm&quot;.
  Arguments sent with &quot;&quot; symbol between
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="44"/>
         <source>Print list of operations from database</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="50"/>
         <source>Clean database of all data</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -430,7 +440,7 @@ Format of data is &quot;ddMMyyyy_hhmm&quot;.
     <message>
         <location filename="../settings/settings.ui" line="63"/>
         <source>Select Data path</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer Gegevenspad</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="66"/>
@@ -448,47 +458,47 @@ Format of data is &quot;ddMMyyyy_hhmm&quot;.
         <translation>Taal:</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="154"/>
         <source>English</source>
-        <translation>Engels</translation>
+        <translation type="vanished">Engels</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="159"/>
+        <source>French</source>
+        <translation type="vanished">Frans</translation>
+    </message>
+    <message>
         <source>Russian</source>
-        <translation>Russisch</translation>
+        <translation type="vanished">Russisch</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="164"/>
         <source>German</source>
-        <translation>Duitse</translation>
+        <translation type="vanished">Duitse</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="169"/>
         <source>Dutch</source>
-        <translation>Nederlands</translation>
+        <translation type="vanished">Nederlands</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="205"/>
+        <location filename="../settings/settings.ui" line="210"/>
         <source>Log Level:</source>
         <translation>Log Level:</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="219"/>
+        <location filename="../settings/settings.ui" line="224"/>
         <source>off</source>
-        <translation>af</translation>
+        <translation>Geen</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="224"/>
+        <location filename="../settings/settings.ui" line="229"/>
         <source>info</source>
         <translation>info</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="229"/>
+        <location filename="../settings/settings.ui" line="234"/>
         <source>debug</source>
         <translation>debug</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="244"/>
+        <location filename="../settings/settings.ui" line="249"/>
         <source>Clean Database</source>
         <translation>Het schoonmaken van de database</translation>
     </message>
@@ -497,39 +507,64 @@ Format of data is &quot;ddMMyyyy_hhmm&quot;.
         <translation type="vanished">Clean data</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="281"/>
+        <location filename="../settings/settings.ui" line="154"/>
+        <source>en</source>
+        <translation>English</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="159"/>
+        <source>fr</source>
+        <translation>français</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="164"/>
+        <source>de</source>
+        <translation>Deutsch</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="169"/>
+        <source>nl</source>
+        <translation>Nederlands</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="174"/>
+        <source>ru</source>
+        <translation>Русский</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="286"/>
         <source>Enable Authorization</source>
         <translation>inschakelen Autorisatie</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="303"/>
+        <location filename="../settings/settings.ui" line="308"/>
         <source>User Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikerscontrole</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="321"/>
+        <location filename="../settings/settings.ui" line="326"/>
         <source>Import Data</source>
         <translation>importeren</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="328"/>
+        <location filename="../settings/settings.ui" line="333"/>
         <source>Export Data</source>
         <translation>Export</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="335"/>
+        <location filename="../settings/settings.ui" line="340"/>
         <source>Ok</source>
-        <translation>&amp;ok</translation>
+        <translation>ok</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="342"/>
+        <location filename="../settings/settings.ui" line="347"/>
         <source>Cancel</source>
         <translation>annuleren</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="14"/>
         <source>Settings</source>
-        <translation>&amp;Instelliingen</translation>
+        <translation>Instelliingen</translation>
     </message>
     <message>
         <source>Your settings saved. 
@@ -545,24 +580,19 @@ Format of data is &quot;ddMMyyyy_hhmm&quot;.
         <translation type="vanished">Alle data word schoongemaakt. Gebruiken op eige risico</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="44"/>
+        <location filename="../settings/settings.cpp" line="45"/>
         <source>All data will be cleaned. Use at your own risk.</source>
         <translation>Alle data word schoongemaakt. Gebruiken op eige risico.</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="45"/>
-        <source>cancel</source>
-        <translation>&amp;annuleren</translation>
-    </message>
-    <message>
         <location filename="../settings/settings.cpp" line="46"/>
-        <source>ok</source>
-        <translation>&amp;ok</translation>
+        <source>cancel</source>
+        <translation>annuleren</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="86"/>
-        <source>You need to restart application to language settings will be applied</source>
-        <translation>Je nodig hebt om opnieuw te starten applicatie om de taal instellingen worden toegepast</translation>
+        <location filename="../settings/settings.cpp" line="47"/>
+        <source>ok</source>
+        <translation>ok</translation>
     </message>
 </context>
 </TS>

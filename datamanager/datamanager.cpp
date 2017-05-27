@@ -52,8 +52,8 @@ dataManager::dataManager() {
 }
 
 dataManager::~dataManager() {
-
-  QString dataFolder = QDir::homePath() + "/ssbm/";
+  // for correctly load settings file
+  QString dataFolder = QDir().homePath() + "/ssbm/";
   QString fileNameSettings = dataFolder + "settings.cfg";
   QFile file(fileNameSettings);
   if (file.open(QIODevice::WriteOnly)) {
@@ -72,6 +72,7 @@ QString dataManager::getPath() {
   if (dataPath == "") {
     return QDir::homePath() + "/ssbm/";
   }
+
   return dataPath;
 }
 
@@ -87,24 +88,20 @@ QString dataManager::getTranslation() {
 
 QString dataManager::getMenuTranslation() {
   if (Translation == "ru") {
-    return tr("Russian");
-  }
-
-  if (Translation == "en") {
-    return tr("English");
+    return tr("ru");
   }
 
   if (Translation == "de") {
-    return tr("German");
+    return tr("de");
   }
   if (Translation == "nl") {
-    return tr("Dutch");
+    return tr("nl");
   }
   if (Translation == "fr") {
-    return tr("French");
+    return tr("fr");
   }
 
-  return tr("English");
+  return tr("en");
 }
 
 QString dataManager::getDefaultUser() { return DefUser; }
@@ -117,13 +114,13 @@ void dataManager::setCurrency(QString currency) { Currency = currency; }
 
 void dataManager::setTranslation(QString translation) {
   Translation = translation;
-  if (Translation == tr("Russian")) {
+  if (Translation == tr("ru")) {
     Translation = "ru";
-  } else if (Translation == tr("German")) {
+  } else if (Translation == tr("de")) {
     Translation = "de";
-  } else if (Translation == tr("Dutch")) {
+  } else if (Translation == tr("nl")) {
     Translation = "nl";
-  } else if (Translation == tr("French")) {
+  } else if (Translation == tr("fr")) {
     Translation = "fr";
   } else {
     Translation = "en";
@@ -135,3 +132,17 @@ void dataManager::setDefaultUser(QString DefaultUser) { DefUser = DefaultUser; }
 
 // sets log level
 void dataManager::setLogLevel(int lLevel) { Loglevel = lLevel; }
+void dataManager::loadTranslator() {
+  QString translationPath =
+      QDir::toNativeSeparators(QString("%1/translations/ssbm_%2.qm")
+                                   .arg(this->getPath())
+                                   .arg(this->getTranslation()));
+  translator.load(translationPath);
+  if (qApp->installTranslator(&translator)) {
+  }
+}
+
+void dataManager::reloadTranslator() {
+  qApp->removeTranslator(&translator);
+  this->loadTranslator();
+}

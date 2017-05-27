@@ -1,3 +1,10 @@
+27.05.2017 (0.8.1)
+* Updated: Version number to be cleanly readed
+* Updated: Now translation properly loading on fly
+* Updated: Finished French translation
+* Updated: code cleanup
+* Deleted: Double adding operation hax fix
+
 21.05.2017 (0.8.0.1)
 * Code style formatting
 * Added: Initial commit for french translation

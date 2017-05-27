@@ -35,7 +35,8 @@ HEADERS  += widget.h \
     addentry/addentry.h \
     export/export.h \
     import/import.h \
-    commandline/commandline.h
+    commandline/commandline.h \
+    res.rc
 
 FORMS    += widget.ui \
     settings/settings.ui \
@@ -46,7 +47,7 @@ FORMS    += widget.ui \
     import/import.ui
 
 RESOURCES += res.qrc
-RC_FILE =
+RC_FILE = res.rc
 win32: RC_ICONS = ico.ico
 
 
@@ -63,7 +64,10 @@ DISTFILES += \
     ico.ico \
     .gitlab-ci.yml \
     BudgetManager.iss \
-    CHANGELOG.md
+    CHANGELOG.md \
+    build.sh \
+    .build \
+    prepareSource.sh
 
 
 

@@ -24,8 +24,8 @@ commandLine::commandLine(int argc, char *argv[], sqlMan *database) {
                     << "plus",
       QCoreApplication::translate("main",
                                   "Add Profit with parameters. \n"
-                                  "Format of data is \"dd-MM-yyyy hh:mm:ss\".\n"
-                                  " Arguments sent with \"\" symbol between\n"),
+                                  "Format of data is \"ddMMyyyy_hhmmss\".\n"
+                                  " Arguments sent in \"\" symbol between\n"),
       QCoreApplication::translate("main", "summ;comment;data"));
   parser->addOption(*profitOption);
 

@@ -9,7 +9,8 @@ class dataManager : public QObject {
 public:
   dataManager();
   ~dataManager();
-
+  void loadTranslator();
+  void reloadTranslator();
   QString getPath();
   QString GetCurrency();
   QString getTranslation();
@@ -26,6 +27,7 @@ public slots:
   void setLogLevel(int lLevel);
 
 private:
+  QTranslator translator;
   QString dataPath;
   QString configPath;
   QString Currency;

@@ -69,13 +69,6 @@ void sqlMan::init() {
 
 void sqlMan::addOperation(double summ, QString comment, bool side,
                           QDateTime time) {
-  // TODO: Find out why the hell out there are double run for AddOperation
-  // Function
-  if (dirty) {
-    dirty = false;
-    return;
-  }
-
   this->query = new QSqlQuery(this->sdb);
   this->query->prepare("INSERT INTO operations (summ, comment, side,time) "
                        "VALUES (:summ, :comment, :side,:time)");
