@@ -16,7 +16,6 @@
 #include "editentry/editentry.h"
 #include "addentry/addentry.h"
 
-
 #ifdef SETTINGS_H
 class settings;
 #endif
@@ -24,43 +23,43 @@ namespace Ui {
 class Widget;
 }
 
-class Widget : public QWidget
-{
-    Q_OBJECT
+class Widget : public QWidget {
+  Q_OBJECT
 
 public:
-    explicit Widget(QWidget *parent = 0, logger *log_ptr = 0);
-    ~Widget();
+  explicit Widget(QWidget *parent = 0, logger *log_ptr = 0);
+  ~Widget();
 
 private:
   void initDatabase(sqlMan *db);
-    Ui::Widget *ui;
-    QString tmp;
-    QString version;
-    settings* set;
-    bool fLoad;
-    unsigned long idLoaded;
-    sqlMan* db;
-    logger* loging;
-    editentry* editdialog;
-    QShortcut* keyEnter;
-    QShortcut* keyDelete;
-    QShortcut* keyPlus;
-    QShortcut* keyMinus;
-    bool lockBool;
+  Ui::Widget *ui;
+  QString tmp;
+  QString version;
+  settings *set;
+  bool fLoad;
+  unsigned long idLoaded;
+  sqlMan *db;
+  logger *loging;
+  editentry *editdialog;
+  QShortcut *keyEnter;
+  QShortcut *keyDelete;
+  QShortcut *keyPlus;
+  QShortcut *keyMinus;
+  bool lockBool;
 
 public slots:
-    void help();
-    void addOperation(bool side);
-    void load();
-    void showSettings();
-    void editTrigger(QModelIndex index);
-    void updateDatabase();
-    void deleteEntry();
-    void addProfit();
-    void addExpence();
-    void enableWindow();
-     void closeEvent();
+  void help();
+  void addOperation(bool side);
+  void load();
+  void showSettings();
+  void closeSettings();
+  void editTrigger(QModelIndex index);
+  void updateDatabase();
+  void deleteEntry();
+  void addProfit();
+  void addExpence();
+  void enableWindow();
+  void closeEvent();
 };
 
 #endif // WIDGET_H

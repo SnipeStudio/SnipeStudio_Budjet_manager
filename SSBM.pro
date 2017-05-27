@@ -31,12 +31,12 @@ HEADERS  += widget.h \
     app_info.h \
     settings/settings.h \
     logger/logger.h \
-    res.rc \
     editentry/editentry.h \
     addentry/addentry.h \
     export/export.h \
     import/import.h \
-    commandline/commandline.h
+    commandline/commandline.h \
+    res.rc
 
 FORMS    += widget.ui \
     settings/settings.ui \
@@ -55,6 +55,7 @@ TRANSLATIONS = translations/ssbm_de.ts \
                translations/ssbm_en.ts \
                translations/ssbm_ru.ts \
                translations/ssbm_nl.ts \
+               translations/ssbm_fr.ts \
 
 OTHER_FILES += \
     readme.md
@@ -63,7 +64,10 @@ DISTFILES += \
     ico.ico \
     .gitlab-ci.yml \
     BudgetManager.iss \
-    CHANGELOG.md
+    CHANGELOG.md \
+    build.sh \
+    .build \
+    prepareSource.sh
 
 
 

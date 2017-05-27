@@ -62,27 +62,27 @@
     <message>
         <location filename="../widget.ui" line="99"/>
         <source>Add profit operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Profit-Betrieb hinzufügen</translation>
     </message>
     <message>
         <location filename="../widget.ui" line="143"/>
         <source>Add expence operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Fügen Sie den Existenzvorgang hinzu</translation>
     </message>
     <message>
         <location filename="../widget.ui" line="217"/>
         <source>currency</source>
-        <translation>die Währung</translation>
+        <translation> </translation>
     </message>
     <message>
         <location filename="../widget.ui" line="309"/>
         <source>About program</source>
-        <translation type="unfinished"></translation>
+        <translation>Über das Programm</translation>
     </message>
     <message>
         <location filename="../widget.ui" line="356"/>
         <source>Settings</source>
-        <translation type="unfinished">&amp;Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>&amp;settings</source>
@@ -149,27 +149,19 @@
         <translation type="vanished">Snipe Studio Budget Manager</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="71"/>
         <source>Error in Db Loading</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Error in Db Loading</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="71"/>
-        <source>There are some shit happens during database loading</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../widget.cpp" line="83"/>
         <source>About SSBM</source>
-        <translation>Über SSBM</translation>
+        <translation type="vanished">Über SSBM</translation>
     </message>
     <message>
-        <location filename="../widget.cpp" line="83"/>
         <source>Snipe Studio Budget Manager v.%1
 Using QT5
 %2
 %3</source>
-        <translation>Snipe Studio Preisgünstiger Betriebsleiterr v.%1
+        <translation type="vanished">Snipe Studio Preisgünstiger Betriebsleiterr v.%1
 Das Verwenden von QT5
 %2
 %3</translation>
@@ -235,17 +227,16 @@ Das Verwenden von QT5
     <message>
         <location filename="../addentry/addentry.ui" line="172"/>
         <source>Cancel</source>
-        <translation>stornieren</translation>
+        <translation>Stornieren</translation>
     </message>
     <message>
-        <location filename="../addentry/addentry.cpp" line="66"/>
+        <location filename="../addentry/addentry.cpp" line="57"/>
         <source>Invalid summ value</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungültiger Summwert</translation>
     </message>
     <message>
-        <location filename="../addentry/addentry.cpp" line="74"/>
         <source>Default</source>
-        <translation>Verzug</translation>
+        <translation type="vanished">Verzug</translation>
     </message>
 </context>
 <context>
@@ -258,7 +249,7 @@ Das Verwenden von QT5
     <message>
         <location filename="../auth/auth.ui" line="27"/>
         <source>Login</source>
-        <translation>das Login </translation>
+        <translation>das Login</translation>
     </message>
     <message>
         <location filename="../auth/auth.ui" line="61"/>
@@ -269,28 +260,53 @@ Das Verwenden von QT5
 <context>
     <name>dataManager</name>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="117"/>
-        <location filename="../datamanager/datamanager.cpp" line="160"/>
         <source>Russian</source>
-        <translation>Russisch</translation>
+        <translation type="vanished">Russisch</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="122"/>
-        <location filename="../datamanager/datamanager.cpp" line="134"/>
         <source>English</source>
-        <translation>Englisch</translation>
+        <translation type="vanished">Englisch</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="127"/>
-        <location filename="../datamanager/datamanager.cpp" line="164"/>
         <source>German</source>
+        <translation type="vanished">Deutsch</translation>
+    </message>
+    <message>
+        <source>Dutch</source>
+        <translation type="vanished">Holländisch</translation>
+    </message>
+    <message>
+        <source>French</source>
+        <translation type="vanished">Französisch</translation>
+    </message>
+    <message>
+        <location filename="../datamanager/datamanager.cpp" line="91"/>
+        <location filename="../datamanager/datamanager.cpp" line="117"/>
+        <source>ru</source>
+        <translation>Русский</translation>
+    </message>
+    <message>
+        <location filename="../datamanager/datamanager.cpp" line="95"/>
+        <location filename="../datamanager/datamanager.cpp" line="119"/>
+        <source>de</source>
         <translation>Deutsch</translation>
     </message>
     <message>
-        <location filename="../datamanager/datamanager.cpp" line="131"/>
-        <location filename="../datamanager/datamanager.cpp" line="168"/>
-        <source>Dutch</source>
-        <translation>Holländisch</translation>
+        <location filename="../datamanager/datamanager.cpp" line="98"/>
+        <location filename="../datamanager/datamanager.cpp" line="121"/>
+        <source>nl</source>
+        <translation>Nederlands</translation>
+    </message>
+    <message>
+        <location filename="../datamanager/datamanager.cpp" line="101"/>
+        <location filename="../datamanager/datamanager.cpp" line="123"/>
+        <source>fr</source>
+        <translation>français</translation>
+    </message>
+    <message>
+        <location filename="../datamanager/datamanager.cpp" line="104"/>
+        <source>en</source>
+        <translation>English</translation>
     </message>
 </context>
 <context>
@@ -341,7 +357,7 @@ Das Verwenden von QT5
         <translation>stornieren</translation>
     </message>
     <message>
-        <location filename="../editentry/editentry.cpp" line="74"/>
+        <location filename="../editentry/editentry.cpp" line="64"/>
         <source>Default</source>
         <translation>Verzug</translation>
     </message>
@@ -349,19 +365,56 @@ Das Verwenden von QT5
 <context>
     <name>main</name>
     <message>
-        <location filename="../commandline/commandline.cpp" line="15"/>
         <source>Allows use console variables.</source>
-        <translation>Ermöglicht die Verwendung von Konsolenvariablen.</translation>
+        <translation type="vanished">Ermöglicht die Verwendung von Konsolenvariablen.</translation>
     </message>
     <message>
-        <location filename="../commandline/commandline.cpp" line="18"/>
+        <location filename="../commandline/commandline.cpp" line="13"/>
         <source>Exporting database to &lt;file&gt;.</source>
-        <translation>Exportieren der Datenbank in &lt;file&gt;.</translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="14"/>
+        <location filename="../commandline/commandline.cpp" line="20"/>
+        <source>file</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../commandline/commandline.cpp" line="19"/>
-        <source>file</source>
-        <translation>die Datei</translation>
+        <source>Importing database from &lt;file&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="25"/>
+        <source>Add Profit with parameters. 
+Format of data is &quot;ddMMyyyy_hhmmss&quot;.
+ Arguments sent in &quot;&quot; symbol between
+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="29"/>
+        <location filename="../commandline/commandline.cpp" line="39"/>
+        <source>summ;comment;data</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="35"/>
+        <source>Add Expence with parameters. 
+Format of data is &quot;ddMMyyyy_hhmm&quot;.
+ Arguments sent with &quot;&quot; symbol between
+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="44"/>
+        <source>Print list of operations from database</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../commandline/commandline.cpp" line="50"/>
+        <source>Clean database of all data</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -387,7 +440,8 @@ Das Verwenden von QT5
     <message>
         <location filename="../settings/settings.ui" line="63"/>
         <source>Select Data path</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Перевод от Google Translate</translatorcomment>
+        <translation>Wählen Sie Datenpfad</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="66"/>
@@ -405,47 +459,47 @@ Das Verwenden von QT5
         <translation>Sprache:</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="154"/>
         <source>English</source>
-        <translation>Englisch</translation>
+        <translation type="vanished">Englisch</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="159"/>
+        <source>French</source>
+        <translation type="vanished">Französisch</translation>
+    </message>
+    <message>
         <source>Russian</source>
-        <translation>Russisch</translation>
+        <translation type="vanished">Russisch</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="164"/>
         <source>German</source>
-        <translation>Deutsch</translation>
+        <translation type="vanished">Deutsch</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="169"/>
         <source>Dutch</source>
-        <translation>Holländisch</translation>
+        <translation type="vanished">Holländisch</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="205"/>
+        <location filename="../settings/settings.ui" line="210"/>
         <source>Log Level:</source>
         <translation>Log Level:</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="219"/>
+        <location filename="../settings/settings.ui" line="224"/>
         <source>off</source>
-        <translation>aus</translation>
+        <translation>Keiner</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="224"/>
+        <location filename="../settings/settings.ui" line="229"/>
         <source>info</source>
         <translation>info</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="229"/>
+        <location filename="../settings/settings.ui" line="234"/>
         <source>debug</source>
-        <translation>debug</translation>
+        <translation>Debuggen</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="244"/>
+        <location filename="../settings/settings.ui" line="249"/>
         <source>Clean Database</source>
         <translation>Saubere Datenbank</translation>
     </message>
@@ -454,39 +508,64 @@ Das Verwenden von QT5
         <translation type="vanished">Saubere Daten</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="281"/>
+        <location filename="../settings/settings.ui" line="154"/>
+        <source>en</source>
+        <translation>English</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="159"/>
+        <source>fr</source>
+        <translation>français</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="164"/>
+        <source>de</source>
+        <translation>Deutsch</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="169"/>
+        <source>nl</source>
+        <translation>Nederlands</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="174"/>
+        <source>ru</source>
+        <translation>Русский</translation>
+    </message>
+    <message>
+        <location filename="../settings/settings.ui" line="286"/>
         <source>Enable Authorization</source>
         <translation>Aktivieren Autorisierung</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="303"/>
+        <location filename="../settings/settings.ui" line="308"/>
         <source>User Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzersteuerung</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="321"/>
+        <location filename="../settings/settings.ui" line="326"/>
         <source>Import Data</source>
         <translation>importieren</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="328"/>
+        <location filename="../settings/settings.ui" line="333"/>
         <source>Export Data</source>
         <translation>exportieren</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="335"/>
+        <location filename="../settings/settings.ui" line="340"/>
         <source>Ok</source>
-        <translation>&amp;ok</translation>
+        <translation>ok</translation>
     </message>
     <message>
-        <location filename="../settings/settings.ui" line="342"/>
+        <location filename="../settings/settings.ui" line="347"/>
         <source>Cancel</source>
         <translation>stornieren</translation>
     </message>
     <message>
         <location filename="../settings/settings.ui" line="14"/>
         <source>Settings</source>
-        <translation>&amp;Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Your settings saved. 
@@ -502,24 +581,19 @@ Das Verwenden von QT5
         <translation type="vanished">Alle Daten werden gereinigt. Verwenden Sie an Ihrer eigenen Gefahr</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="48"/>
+        <location filename="../settings/settings.cpp" line="45"/>
         <source>All data will be cleaned. Use at your own risk.</source>
         <translation>Alle Daten werden gereinigt. Verwenden Sie an Ihrer eigenen Gefahr.</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="49"/>
+        <location filename="../settings/settings.cpp" line="46"/>
         <source>cancel</source>
-        <translation>&amp;stornieren</translation>
+        <translation>stornieren</translation>
     </message>
     <message>
-        <location filename="../settings/settings.cpp" line="50"/>
+        <location filename="../settings/settings.cpp" line="47"/>
         <source>ok</source>
-        <translation>&amp;ok</translation>
-    </message>
-    <message>
-        <location filename="../settings/settings.cpp" line="104"/>
-        <source>You need to restart application to language settings will be applied</source>
-        <translation>Sie müssen die Anwendung auf die Spracheinstellungen neu starten</translation>
+        <translation>ok</translation>
     </message>
 </context>
 </TS>
