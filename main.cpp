@@ -26,10 +26,5 @@ int main(int argc, char *argv[]) {
   loging->Info(QString("Initializing of %1").arg(VER_PRODUCTNAME_STR));
   Widget *w = new Widget(0, loging);
   w->show();
-
-  /// TODO: Fix this mess
-  /// or it's ok, IDK really
-  int exitCode = a.exec();
-  delete w;
-  return exitCode;
+  return a.exec();
 }
