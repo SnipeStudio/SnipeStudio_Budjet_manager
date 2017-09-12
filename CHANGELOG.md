@@ -1,3 +1,6 @@
+09.06.2017 (0.8.2)
+* Fixed: Bad code style in return function. Changed to QT style one
+
 27.05.2017 (0.8.1)
 * Updated: Version number to be cleanly readed
 * Updated: Now translation properly loading on fly

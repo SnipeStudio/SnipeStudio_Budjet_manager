@@ -1,8 +1,8 @@
 Snipe Studio Budget Manager
 ===
 ~~~~~~~~~~
-Current version: 0.7
-Soft requirenments: QT5, lib-mesa-gl
+Current version: 0.8.2
+Soft requirenments: QT5.9.0, lib-mesa-gl
 Hard requirments: 50-60 mb of ram
 ~~~~~~~~~~
 

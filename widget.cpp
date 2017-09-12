@@ -3,6 +3,7 @@
 Widget::Widget(QWidget *parent, logger *log_ptr)
     : QWidget(parent), ui(new Ui::Widget) {
   db = new sqlMan();
+  this->setAttribute(Qt::WA_DeleteOnClose);
   if (log_ptr != 0) {
     loging = log_ptr;
   } else {
