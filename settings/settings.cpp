@@ -1,7 +1,8 @@
 #include "settings.h"
 #include "ui_settings.h"
 
-settings::settings(QWidget *parent, logger *log_ptr, sqlMan *sql)
+settings::settings(QWidget *parent, logger *log_ptr, sqlMan *sql,
+                   dataManager *dataman)
     : QDialog(parent), ui(new Ui::settings) {
   ui->setupUi(this);
   loging = log_ptr;
@@ -15,7 +16,7 @@ settings::settings(QWidget *parent, logger *log_ptr, sqlMan *sql)
   connect(ui->importButton, SIGNAL(clicked()), this, SLOT(showImport()));
   connect(ui->select, SIGNAL(clicked()), this, SLOT(selectFolder()));
   loging->Debug("Enabling slots: Done");
-  dataManager *data = new dataManager();
+  data = dataman;
   data->reloadTranslator();
   ui->retranslateUi(this);
   loging->Debug(
@@ -35,7 +36,6 @@ settings::settings(QWidget *parent, logger *log_ptr, sqlMan *sql)
   loging->Debug(QString("Set Log Level to: %1").arg(data->getLoglevel()));
   ui->verbositySelect->setCurrentIndex(data->getLoglevel());
   loging->Debug("Initializing settings menu: Done");
-  delete data;
 }
 
 settings::~settings() { delete ui; }
@@ -55,7 +55,6 @@ void settings::cleanDataOk() { sqlManager->clean(); }
 void settings::okSlot() {
   bool updatedLanguage = false;
   loging->Debug("OK");
-  dataManager *data = new dataManager();
   loging->Debug("data init");
   if (ui->DataPathLine->text() != data->getPath()) {
     data->setPath((QDir::fromNativeSeparators(ui->DataPathLine->text())));
@@ -80,7 +79,6 @@ void settings::okSlot() {
   }
 
   loging->Debug("settings saved");
-  delete data;
   loging->Debug("done");
   this->close();
 }
@@ -102,7 +100,6 @@ void settings::showImport() {
 }
 
 void settings::selectFolder() {
-  dataManager *data = new dataManager();
   QFileDialog *selectFolderDialog = new QFileDialog(this);
   selectFolderDialog->setOption(QFileDialog::DontUseNativeDialog);
   selectFolderDialog->setFileMode(QFileDialog::Directory);
@@ -112,6 +109,4 @@ void settings::selectFolder() {
     QString directory = selectFolderDialog->selectedFiles()[0];
     ui->DataPathLine->setText(directory);
   }
-
-  delete data;
 }

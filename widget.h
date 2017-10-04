@@ -1,20 +1,20 @@
 #ifndef WIDGET_H
 #define WIDGET_H
-#include "settings/settings.h"
-#include <QWidget>
-#include <QMenu>
-#include <QAction>
-#include <QMessageBox>
-#include <QDialogButtonBox>
-#include <QShortcut>
-#include <fstream>
-#include <QTableView>
-#include "datamanager/datamanager.h"
-#include "sqlman/sqlman.h"
-#include "app_info.h"
-#include "logger/logger.h"
-#include "editentry/editentry.h"
 #include "addentry/addentry.h"
+#include "app_info.h"
+#include "datamanager/datamanager.h"
+#include "editentry/editentry.h"
+#include "logger/logger.h"
+#include "settings/settings.h"
+#include "sqlman/sqlman.h"
+#include <QAction>
+#include <QDialogButtonBox>
+#include <QMenu>
+#include <QMessageBox>
+#include <QShortcut>
+#include <QTableView>
+#include <QWidget>
+#include <fstream>
 
 #ifdef SETTINGS_H
 class settings;
@@ -27,15 +27,17 @@ class Widget : public QWidget {
   Q_OBJECT
 
 public:
-  explicit Widget(QWidget *parent = 0, logger *log_ptr = 0);
+  explicit Widget(QWidget *parent = 0, logger *log_ptr = 0,
+                  dataManager *dataMan = 0);
   ~Widget();
 
 private:
   void initDatabase(sqlMan *db);
+  dataManager *data;
   Ui::Widget *ui;
   QString tmp;
   QString version;
-  settings *set;
+  settings *set = NULL;
   bool fLoad;
   unsigned long idLoaded;
   sqlMan *db;

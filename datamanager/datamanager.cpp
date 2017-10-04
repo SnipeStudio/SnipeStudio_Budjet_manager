@@ -2,70 +2,25 @@
 
 dataManager::dataManager() {
   QString dataFolder = QDir::homePath() + "/ssbm/";
-  QString fileNameSettings = dataFolder + "settings.cfg";
-  QFile file(fileNameSettings);
-  if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    QTextStream in(&file);
-    in.setCodec(QTextCodec::codecForName("UTF-8"));
-    QString line = in.readLine();
-    QStringList result;
-    while (!line.isNull()) {
-      result.append(line.split(QString('=')));
-      line.remove(QRegExp("//[\\W\\w]{0,}"));
-      if (result.at(0) == "Currency") {
-        Currency = result.at(1);
-      }
-
-      if (result.at(0) == "Translation") {
-        Translation = result.at(1);
-      }
-
-      if (result.at(0) == "DefaultUser") {
-        DefUser = result.at(1);
-      }
-
-      if (result.at(0) == "Loglevel") {
-        Loglevel = result.at(1).toInt();
-      }
-
-      line = in.readLine();
-      result.clear();
-    }
-  } else {
-    if (file.open(QIODevice::WriteOnly)) {
-      QTextStream out(&file);
-      out.setCodec("UTF-8");
-      out << "DataPath=" << dataFolder << "\n";
-      out << "Currency=\n";
-      out << "Translation=en\n";
-      out << "DefaultUser=\n";
-      out << "LogLevel=0\n";
-    }
-    dataPath = dataFolder;
-  }
-
-  file.close();
   QDir dataDir(dataPath);
   if (!dataDir.exists()) {
     dataDir.mkpath(dataPath);
   }
+  QString fileNameSettings = dataFolder + "settings.cfg";
+  set = new QSettings(fileNameSettings, QSettings::IniFormat);
+  reloadSettings();
+}
+
+void dataManager::writeSettings() {
+  set->setValue("Currency", Currency);
+  set->setValue("Translation", Translation);
+  set->setValue("DefaultUser", DefUser);
+  set->setValue("Loglevel", Loglevel);
 }
 
 dataManager::~dataManager() {
-  // for correctly load settings file
-  QString dataFolder = QDir().homePath() + "/ssbm/";
-  QString fileNameSettings = dataFolder + "settings.cfg";
-  QFile file(fileNameSettings);
-  if (file.open(QIODevice::WriteOnly)) {
-    QTextStream out(&file);
-    out.setCodec("UTF-8");
-    out << QString("DataPath=%1\n").arg(dataPath);
-    out << QString("Currency=%1\n").arg(Currency);
-    out << QString("Translation=%1\n").arg(Translation);
-    out << QString("DefaultUser=%1\n").arg(DefUser);
-    out << QString("Loglevel=%1\n").arg(Loglevel);
-  }
-  file.close();
+  writeSettings();
+  delete set;
 }
 
 QString dataManager::getPath() {
@@ -108,9 +63,24 @@ QString dataManager::getDefaultUser() { return DefUser; }
 
 int dataManager::getLoglevel() { return Loglevel; }
 
-void dataManager::setPath(QString data) { dataPath = data; }
+void dataManager::reloadSettings() {
+  set->sync();
+  Currency = set->value("Currency").toString();
+  Translation = set->value("Translation").toString();
+  DefUser = set->value("DefaultUser").toString();
+  Loglevel = set->value("Loglevel").toInt();
+}
 
-void dataManager::setCurrency(QString currency) { Currency = currency; }
+void dataManager::setPath(QString data) {
+  dataPath = data;
+  reloadSettings();
+}
+
+void dataManager::setCurrency(QString currency) {
+  Currency = currency;
+  writeSettings();
+  reloadSettings();
+}
 
 void dataManager::setTranslation(QString translation) {
   Translation = translation;
@@ -125,10 +95,18 @@ void dataManager::setTranslation(QString translation) {
   } else {
     Translation = "en";
   }
+
+  writeSettings();
+  reloadSettings();
 }
 
 // for future use
-void dataManager::setDefaultUser(QString DefaultUser) { DefUser = DefaultUser; }
+void dataManager::setDefaultUser(QString DefaultUser) {
+  DefUser = DefaultUser;
+
+  writeSettings();
+  reloadSettings();
+}
 
 // sets log level
 void dataManager::setLogLevel(int lLevel) { Loglevel = lLevel; }
@@ -145,4 +123,7 @@ void dataManager::loadTranslator() {
 void dataManager::reloadTranslator() {
   qApp->removeTranslator(&translator);
   this->loadTranslator();
+
+  writeSettings();
+  reloadSettings();
 }

@@ -1,7 +1,8 @@
 #ifndef DATAMANAGER_H
 #define DATAMANAGER_H
-#include <QtCore/QFile>
+#include <QSettings>
 #include <QTextCodec>
+#include <QtCore/QFile>
 #include <sqlman/sqlman.h>
 
 class dataManager : public QObject {
@@ -17,6 +18,7 @@ public:
   QString getMenuTranslation();
   QString getDefaultUser();
   int getLoglevel();
+  void reloadSettings();
 
 signals:
 public slots:
@@ -34,6 +36,8 @@ private:
   QString Translation;
   QString DefUser;
   int Loglevel;
+  QSettings *set;
+  void writeSettings();
 };
 
 #endif // DATAMANAGER_H

@@ -1,13 +1,14 @@
 #ifndef SQLMAN_H
 #define SQLMAN_H
-#include <QtSql>
 #include <QDir>
+#include <QtSql>
 
-#include <QDebug>
-#include <QtCore/QTextStream>
-#include <QtCore/QStringList>
-#include "ui_widget.h"
 #include "datamanager/datamanager.h"
+#include "ssbmDatabaseModel/ssbmdatabasemodel.h"
+#include "ui_widget.h"
+#include <QDebug>
+#include <QtCore/QStringList>
+#include <QtCore/QTextStream>
 namespace Ui {
 class sqlMan;
 }
@@ -22,7 +23,7 @@ public:
   void init();
   int clean();
   QString getDBName();
-  QSqlTableModel *getModel();
+  ssbmDatabaseModel *getModel();
   // QSqlDatabase* getDataBase();
   bool dbIsOpen();
   void submit();
@@ -31,7 +32,7 @@ public:
 private:
   QString databaseName;
   QSqlQuery *query;
-  QSqlTableModel *model;
+  ssbmDatabaseModel *model;
   QSqlDatabase sdb;
   bool dirty;
 };

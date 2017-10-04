@@ -1,3 +1,6 @@
+14.10.2017 (0.8.3)
+* Added: Row coloring for states of entry. Red for expences, green for profit
+
 09.06.2017 (0.8.2)
 * Fixed: Bad code style in return function. Changed to QT style one
 
@@ -21,7 +24,7 @@
 
 14 January 2017 (0.7.0.8)
 
-* Added: Key shoercuts for add profit and expence operations
+* Added: Key shortcuts for add profit and expence operations
 * Added: Console control for testing purpurses
 
 12 January 2017 (0.7.0.7)

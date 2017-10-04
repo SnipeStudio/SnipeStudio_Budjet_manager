@@ -13,7 +13,7 @@ sqlMan::sqlMan() {
   dirty = false;
 }
 
-QSqlTableModel *sqlMan::getModel() {
+ssbmDatabaseModel *sqlMan::getModel() {
   this->init();
   return model;
 }
@@ -61,10 +61,10 @@ void sqlMan::init() {
     return;
   }
 
-  model = new QSqlTableModel(0, sdb);
+  model = new ssbmDatabaseModel(0, sdb);
   model->setTable("operations");
   model->select();
-  model->setEditStrategy(QSqlTableModel::OnFieldChange);
+  model->setEditStrategy(ssbmDatabaseModel::OnFieldChange);
 }
 
 void sqlMan::addOperation(double summ, QString comment, bool side,

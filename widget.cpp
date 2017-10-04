@@ -1,21 +1,19 @@
 #include "widget.h"
 
-Widget::Widget(QWidget *parent, logger *log_ptr)
+Widget::Widget(QWidget *parent, logger *log_ptr, dataManager *dataMan)
     : QWidget(parent), ui(new Ui::Widget) {
   db = new sqlMan();
+  data = dataMan;
   this->setAttribute(Qt::WA_DeleteOnClose);
   if (log_ptr != 0) {
     loging = log_ptr;
   } else {
     loging = new logger();
   }
-  dataManager *dataMan = new dataManager();
-  if (QFile::exists(
-          QDir::toNativeSeparators(dataMan->getPath() + "lockfile"))) {
-    delete dataMan;
+  if (QFile::exists(QDir::toNativeSeparators(data->getPath() + "lockfile"))) {
     exit(-1);
   } else {
-    QFile lock(QDir::toNativeSeparators(dataMan->getPath() + "lockfile"));
+    QFile lock(QDir::toNativeSeparators(data->getPath() + "lockfile"));
     lock.open(QIODevice::Append);
     lock.close();
   }
@@ -24,13 +22,11 @@ Widget::Widget(QWidget *parent, logger *log_ptr)
   version = VER_FILEVERSION_STR;
   loging->Debug("Initialize user interface");
   ui->setupUi(this);
-  QString path = dataMan->getPath() + "bal.ssff";
-  loging->Debug(QString("Setting DataPath:%1").arg(dataMan->getPath()));
-  ui->currency->setText(dataMan->GetCurrency());
-  loging->Debug(QString("Setting Currency:%1").arg(dataMan->GetCurrency()));
+  loging->Debug(QString("Setting DataPath:%1").arg(data->getPath()));
+  ui->currency->setText(data->GetCurrency());
+  loging->Debug(QString("Setting Currency:%1").arg(data->GetCurrency()));
   loging->Debug("Processing balance");
   loging->Debug("Done");
-  delete dataMan;
   this->setWindowTitle("Snipe Studio Budget Manager");
   loging->Debug("Activating Slots");
   connect(ui->about, SIGNAL(clicked()), this, SLOT(help()));
@@ -61,8 +57,6 @@ Widget::~Widget() {
 
 void Widget::initDatabase(sqlMan *db) {
   loging->Debug("Get into database initialization");
-  QSqlTableModel *model = db->getModel();
-  model->setTable("operations");
   if (db->dbIsOpen()) {
     QMessageBox *dbOpenError = new QMessageBox(this);
     loging->Error("Error in Db Loading. There are some shit happens during "
@@ -102,32 +96,33 @@ void Widget::addOperation(bool side) {
 void Widget::load() {
   loging->Debug("load called");
   QTranslator translator;
-  dataManager *data = new dataManager();
   translator.load(QDir::toNativeSeparators("translations/ssbm_" +
                                            data->getTranslation() + ".qm"));
   qApp->installTranslator(&translator);
   ui->retranslateUi(this);
-  delete data;
 }
 
 void Widget::showSettings() {
   loging->Debug("showSettings called");
   this->setEnabled(false);
   if (set != NULL)
-    set = new settings(this, loging, db);
-  connect(set, SIGNAL(finished(int)), this, SLOT(updateDatabase()));
-  connect(set, SIGNAL(finished(int)), this, SLOT(enableWindow()));
-  connect(set, SIGNAL(finished(int)), this, SLOT(closeSettings()));
+    delete set;
+  set = new settings(this, loging, db, data);
+  connect(set, &QDialog::finished, this, &Widget::enableWindow);
+  connect(set, &QDialog::finished, this, &Widget::closeSettings);
   set->show();
+  set->setEnabled(true);
 }
 
 void Widget::closeSettings() {
-  dataManager *data = new dataManager();
   data->reloadTranslator();
+  disconnect(set, &QDialog::finished, this, &Widget::updateDatabase);
+  disconnect(set, &QDialog::finished, this, &Widget::enableWindow);
+  disconnect(set, &QDialog::finished, this, &Widget::closeSettings);
   ui->retranslateUi(this);
   set->hide();
   set->close();
-  delete data;
+  updateDatabase();
 }
 
 void Widget::editTrigger(QModelIndex index) {
@@ -143,7 +138,7 @@ void Widget::editTrigger(QModelIndex index) {
 }
 
 void Widget::updateDatabase() {
-  QSqlTableModel *model = db->getModel();
+  QAbstractTableModel *model = db->getModel();
   ui->view->setModel(model);
   ui->view->hideColumn(0);
   ui->view->hideColumn(4);
@@ -153,7 +148,8 @@ void Widget::updateDatabase() {
   ui->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   ui->view->horizontalHeader()->setStretchLastSection(true);
   ui->view->show();
-  ui->view->selectRow(0);
+  // ui->view->selectRow(0);
+
   ui->balance->setText(QString::number(db->getBalance(), 'f', 2));
   QPalette *palette = new QPalette();
   if (db->getBalance() == 0) {
@@ -165,9 +161,11 @@ void Widget::updateDatabase() {
   }
 
   ui->balance->setPalette(*palette);
-  dataManager *data = new dataManager();
-  ui->currency->setText(data->GetCurrency());
-  delete data;
+  QString Currency = QString();
+  ui->currency->setText(Currency);
+  Currency = data->GetCurrency();
+  ui->currency->setText(Currency);
+  ui->currency->repaint();
 }
 
 void Widget::enableWindow() { this->setEnabled(true); }
@@ -182,7 +180,6 @@ void Widget::deleteEntry() {
 }
 
 void Widget::closeEvent() {
-  dataManager *data = new dataManager();
   while (!QDir().remove(QDir().absoluteFilePath(
       QDir::toNativeSeparators(data->getPath() + "lockfile"))))
     ;

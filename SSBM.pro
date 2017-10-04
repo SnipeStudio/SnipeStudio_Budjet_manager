@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     addentry/addentry.cpp \
     export/export.cpp \
     import/import.cpp \
-    commandline/commandline.cpp
+    commandline/commandline.cpp \
+    ssbmDatabaseModel/ssbmdatabasemodel.cpp
 
 HEADERS  += widget.h \
     datamanager/datamanager.h \
@@ -36,7 +37,8 @@ HEADERS  += widget.h \
     export/export.h \
     import/import.h \
     commandline/commandline.h \
-    res.rc
+    res.rc \
+    ssbmDatabaseModel/ssbmdatabasemodel.h
 
 FORMS    += widget.ui \
     settings/settings.ui \

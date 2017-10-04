@@ -1,7 +1,7 @@
-#include "widget.h"
 #include "app_info.h"
-#include "logger/logger.h"
 #include "commandline/commandline.h"
+#include "logger/logger.h"
+#include "widget.h"
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
       QString("Version of file set to %1").arg(VER_PRODUCTVERSION_STR));
   a.addLibraryPath(QDir::toNativeSeparators("./"));
   loging->Info(QString("Initializing of %1").arg(VER_PRODUCTNAME_STR));
-  Widget *w = new Widget(0, loging);
+  Widget *w = new Widget(0, loging, data);
   w->show();
   return a.exec();
 }
