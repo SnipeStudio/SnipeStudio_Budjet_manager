@@ -7,9 +7,9 @@ int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
   sqlMan *db = new sqlMan();
   commandLine *cLine = new commandLine(argc, argv, db);
-  if (cLine->cLine) {
-    exit(0);
-  }
+if (cLine->cLine) {
+exit(0);
+}
   delete cLine;
   delete db;
   logger *loging = new logger();

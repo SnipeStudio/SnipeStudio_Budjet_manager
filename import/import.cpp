@@ -12,6 +12,9 @@ Import::Import(QWidget *parent, sqlMan *sqlManOut)
   sqlManager = sqlManOut;
   connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(saveData()));
   connect(ui->select, SIGNAL(clicked()), this, SLOT(selectFile()));
+#ifdef __ANDROID_API__
+  this->setMinimumWidth(1000);
+#endif
 }
 
 Import::~Import() { delete ui; }

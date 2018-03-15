@@ -16,9 +16,9 @@ QVariant ssbmDatabaseModel::data(const QModelIndex &index, int role) const {
   case Qt::BackgroundRole: {
     int row = index.row();
     if (this->index(row, 2).data().toDouble() < 0) {
-      return QBrush(QColor(Qt::red));
+      return QBrush(QColor(255,0,0, 30));
     } else if (this->index(row, 2).data().toDouble() > 0) {
-      return QBrush(QColor(Qt::green));
+      return QBrush(QColor(0,255,0, 30));
     } else {
       return QBrush(QColor(Qt::white));
     }

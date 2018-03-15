@@ -36,6 +36,9 @@ settings::settings(QWidget *parent, logger *log_ptr, sqlMan *sql,
   loging->Debug(QString("Set Log Level to: %1").arg(data->getLoglevel()));
   ui->verbositySelect->setCurrentIndex(data->getLoglevel());
   loging->Debug("Initializing settings menu: Done");
+#ifdef __ANDROID_API__
+  this->setMinimumWidth(1000);
+#endif
 }
 
 settings::~settings() { delete ui; }

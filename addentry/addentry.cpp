@@ -10,6 +10,10 @@ addEntry::addEntry(bool side, sqlMan *sqlOut, QWidget *parent)
   ui->retranslateUi(this);
   delete data;
   this->side = side;
+#ifdef __ANDROID_API__
+  ui->dateTimeEdit->setMinimumHeight(100);
+  this->setMinimumWidth(1000);
+#endif
 
   // TODO: Probably i should define it somehow another way
   if (side) {

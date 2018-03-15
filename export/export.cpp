@@ -12,6 +12,9 @@ Export::Export(QWidget *parent, QSqlTableModel *modelOut)
   model = modelOut;
   connect(ui->save, SIGNAL(clicked()), this, SLOT(saveData()));
   connect(ui->selectFolder, SIGNAL(clicked()), this, SLOT(selectPath()));
+#ifdef __ANDROID_API__
+  this->setMinimumWidth(1000);
+#endif
 }
 
 Export::~Export() { delete ui; }

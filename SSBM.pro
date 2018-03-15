@@ -11,8 +11,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = ssbm
 TEMPLATE = app
-
-
 SOURCES += main.cpp\
         widget.cpp \
     sqlman/sqlman.cpp \
@@ -70,6 +68,4 @@ DISTFILES += \
     build.sh \
     .build \
     prepareSource.sh
-
-
-
+ICON = ico.ico
